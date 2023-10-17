@@ -10,9 +10,18 @@ fi
 cd $HOME
 
 # Install packages with apt
-apt -y update
 
+## Update and upgrade
+apt -y update
 apt -y upgrade
+
+## Add software-properties-common to add ppa repositories for newer installs
+apt -y install software-properties-common python3-launchpadlib
+
+### Add repositories
+#add-apt-repository ppa:neovim-ppa/stable
+
+### Install stuff :D
 apt -y install git tmux neovim fish htop ranger wget curl binutils nasm gcc-multilib g++-multilib libc6-dev-i386 libc6-dbg nmap libssl-dev libffi-dev gdb build-essential ltrace strace ruby-rubygems python3 python3-gmpy2 python3-pip python3-dev ruby-full netcat-traditional autoconf libtool automake zsh-autosuggestions zsh-syntax-highlighting zsh
 # netcat => netcat-traditional     skipped libc6-dbg:i386
 
@@ -49,6 +58,21 @@ fi
 
 # Other customizations
 
+## TPM (tmux plugin manager)
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    echo "Installing TPM..."
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
+## NVchad
+if [ ! -d "$HOME/.config/nvim/lua/core" ]; then
+    echo "Installing NVChad..."
+	mkdir ~/tmp
+	mv ~/.config/nvim/lua/custom ~/tmp/nvim_custom
+    git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+	mv ~/tmp/nvim_custom ~/.config/nvim/lua/custom
+fi
+
 ## oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Installing oh-my-zsh..."
@@ -57,7 +81,6 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
     RUNZSH=no
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 fi
-
 
 ## zsh dependencies
 
