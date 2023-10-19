@@ -23,7 +23,7 @@ apt -y install software-properties-common python3-launchpadlib
 
 ### Install stuff :D
 apt -y install git tmux neovim fish htop ranger wget curl binutils nasm gcc-multilib g++-multilib libc6-dev-i386 libc6-dbg nmap libssl-dev libffi-dev gdb build-essential ltrace strace ruby-rubygems python3 python3-gmpy2 python3-pip python3-dev ruby-full netcat-traditional autoconf libtool automake zsh-autosuggestions zsh-syntax-highlighting zsh
-# netcat => netcat-traditional     skipped libc6-dbg:i386
+# netcat => netcat-traditional     skipped libc6-dbg:i386 and lazygit
 
 # Update Python pip packages and install needed packages
 pip install --upgrade pip
