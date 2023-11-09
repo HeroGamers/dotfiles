@@ -37,7 +37,7 @@ pip install --upgrade setuptools
 pip install --upgrade numpy pandas scipy sympy Pillow asyncio aiohttp beautifulsoup4 thefuck
 
 ## CTF stuff
-pip install --upgrade capstone pyelftools==0.29 pycryptodome pwntools ropgadet gmpy2 z3-solver angr
+pip install --upgrade capstone pyelftools==0.29 pycryptodome pwntools ropgadet gmpy2 z3-solver angr ciphey
 #pip install --upgrade --ignore-installed pwntools
 #pip install --upgrade ropgadget
 gem install one_gadget
