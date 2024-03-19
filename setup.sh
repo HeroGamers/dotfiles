@@ -22,7 +22,7 @@ apt -y install software-properties-common python3-launchpadlib
 #add-apt-repository ppa:neovim-ppa/stable
 
 ### Install stuff :D
-apt -y install git tmux neovim fish htop ranger wget curl binutils nasm gcc-multilib g++-multilib libc6-dev-i386 libc6-dbg nmap libssl-dev libffi-dev gdb build-essential ltrace strace ruby-rubygems python3 python3-gmpy2 python3-pip python3-dev python3-setuptools ruby-full netcat-traditional autoconf libtool automake zsh-autosuggestions zsh-syntax-highlighting zsh tldr bat ffmpeg imagemagick ncdu
+apt -y install git tmux neovim fish htop ranger wget curl binutils nasm gcc-multilib g++-multilib libc6-dev-i386 libc6-dbg nmap libssl-dev libffi-dev gdb build-essential ltrace strace ruby-rubygems python3 python3-gmpy2 python3-pip python3-dev python3-setuptools ruby-full netcat-traditional autoconf libtool automake zsh-autosuggestions zsh-syntax-highlighting zsh tldr bat ffmpeg imagemagick ncdu ipcalc
 # netcat => netcat-traditional     skipped libc6-dbg:i386 and lazygit
 
 # Update Python pip packages and install needed packages
