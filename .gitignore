@@ -1,3 +1,6 @@
+# NixOS stuff
+nixos/hardware-configuration.nix
+
 # Compiled Lua sources
 luac.out
 
