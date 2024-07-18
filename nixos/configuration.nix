@@ -111,8 +111,10 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "dk";
-    xkbVariant = "winkeys";
+    xkb = {    
+      layout = "dk";
+      variant = "winkeys";
+    };
   };
 
   # Configure console keymap
