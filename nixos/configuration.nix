@@ -2,7 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ input,
+{
+  inputs,
   outputs,
   lib,
   config,
@@ -153,7 +154,7 @@
       openssh.authorizedKeys.keys = [
         # TODO: Add authorized SSH keys
       ];
-    }
+    };
   };
 
   # Install firefox.
