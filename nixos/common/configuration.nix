@@ -1,16 +1,19 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   inputs,
   outputs,
   lib,
   config,
   pkgs,
+  home-manager,
   ...
 }: {
   imports = [
+    # Import Home Manager
+    inputs.home-manager.nixosModules.home-manager
+
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
 
@@ -20,12 +23,9 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
   ];
 
-  nixpkgs = {
+  nixpkgs = lib.mkDefault {
     # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
@@ -52,7 +52,7 @@
 
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
+  in lib.mkDefault {
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
@@ -70,10 +70,11 @@
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = lib.mkDefault {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
-  networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -81,44 +82,46 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager.enable = lib.mkDefault true;
 
   # Set your time zone.
-  time.timeZone = "Europe/Copenhagen";
+  time.timeZone = lib.mkDefault "Europe/Copenhagen";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_DK.UTF-8";
+  i18n = lib.mkDefault {
+    defaultLocale = "en_DK.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "da_DK.UTF-8";
-    LC_IDENTIFICATION = "da_DK.UTF-8";
-    LC_MEASUREMENT = "da_DK.UTF-8";
-    LC_MONETARY = "da_DK.UTF-8";
-    LC_NAME = "da_DK.UTF-8";
-    LC_NUMERIC = "da_DK.UTF-8";
-    LC_PAPER = "da_DK.UTF-8";
-    LC_TELEPHONE = "da_DK.UTF-8";
-    LC_TIME = "da_DK.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "da_DK.UTF-8";
+      LC_IDENTIFICATION = "da_DK.UTF-8";
+      LC_MEASUREMENT = "da_DK.UTF-8";
+      LC_MONETARY = "da_DK.UTF-8";
+      LC_NAME = "da_DK.UTF-8";
+      LC_NUMERIC = "da_DK.UTF-8";
+      LC_PAPER = "da_DK.UTF-8";
+      LC_TELEPHONE = "da_DK.UTF-8";
+      LC_TIME = "da_DK.UTF-8";
+    };
   };
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  services.xserver.enable = lib.mkDefault true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = lib.mkDefault true;
+  services.desktopManager.plasma6.enable = lib.mkDefault true;
 
   # Configure keymap in X11
   services.xserver = {
-    xkb = {    
+    xkb = lib.mkDefault {    
       layout = "dk";
       variant = "winkeys";
     };
   };
 
   # Configure console keymap
-  console.keyMap = "dk-latin1";
+  console.keyMap = lib.mkDefault "dk-latin1";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -158,18 +161,34 @@
       ];
     };
   };
+  
+  # make home-manager as a module of nixos
+  # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs outputs; };
+  };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  programs.firefox.enable = lib.mkDefault true;
 
-    # List packages installed in system profile. To search, run:
+  # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim
     wget
     vscode
     git
+    zsh
   ];
+
+  # Set shell to zsh globally
+  users.defaultUserShell = pkgs.zsh;
+  users.users.hero.shell = pkgs.zsh;
+  environment.shells = with pkgs; [ zsh ];
+  programs.zsh.enable = true;
+  environment.pathsToLink = [ "/share/zsh" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -182,7 +201,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh = {
+  services.openssh = lib.mkDefault {
     enable = true;
     settings = {
       # Opinionated: forbid root login through SSH.
@@ -194,17 +213,10 @@
   };
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall = lib.mkDefault {
+    allowedTCPPorts = [ 22 ];
+    allowedUDPPorts = [ 22 ];
+  };
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
-
 }
