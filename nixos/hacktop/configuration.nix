@@ -13,6 +13,9 @@
     # Import the common configuration
     ../common
 
+    # Security
+    ../common/security.nix
+
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];

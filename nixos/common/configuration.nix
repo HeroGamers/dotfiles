@@ -194,18 +194,12 @@
     fish
     htop
     curl
-    binutils
     nasm
     nmap
-    pwntools
-    pwndbg
     imagemagick
     ncdu
     ipcalc
     libressl # netcat
-    patchelf
-    one_gadget
-    pwninit
     lazygit
   ];
 

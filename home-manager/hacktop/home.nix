@@ -9,6 +9,9 @@
     imports = [
         # Global common Home Manager config
         ../common
+
+        # Security
+        ../common/security.nix
     ];
 
     home = {
