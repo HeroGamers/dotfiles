@@ -8,6 +8,7 @@
   config,
   pkgs,
   home-manager,
+  nixpkgs,
   ...
 }: {
   imports = [
@@ -53,14 +54,15 @@
 
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in lib.mkDefault {
+  in {
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Opinionated: disable global registry
       flake-registry = "";
       # Workaround for https://github.com/NixOS/nix/issues/9574
-      nix-path = config.nix.nixPath;
+      # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
+      nix-path = lib.mkForce config.nix.nixPath; # lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
     };
     # Opinionated: disable channels
     channel.enable = false;
@@ -69,6 +71,12 @@
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
+
+  # but NIX_PATH is still used by many useful tools, so we set it to the same value as the one used by this flake.
+  # Make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
+  # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
+  environment.etc."nix/path/nixpkgs".source = inputs.nixpkgs;
+  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
 
   # Bootloader.
   boot.loader = lib.mkDefault {
