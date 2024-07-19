@@ -9,6 +9,13 @@
     # Nerdfont
     fonts.fontconfig.enable = true;
 
+    home.packages = with pkgs; [
+        (nerdfonts.override { fonts = [ "Meslo" "JetBrainsMono" "FiraCode" "DroidSansMono" ]; })
+    ];
+
+    # Enable thefuck
+    programs.thefuck.enable = true;
+
     # Enable ZSH, oh-my-zsh and powerlevel10k
     programs.zsh = {
         enable = true;
@@ -45,17 +52,17 @@
                 name = "powerlevel10k";
                 src = "${zsh-powerlevel10k}/share/zsh-powerlevel10k";
             }
-            #{
-            #    file = "p10k.zsh";
-            #    name = "powerlevel10k-config";
-            #    src = ../../config/zsh/p10k;
-            #}
+            {
+                file = "p10k.zsh";
+                name = "powerlevel10k-config";
+                src = ./config/zsh/p10k;
+            }
         ];
 
         oh-my-zsh = {
             enable = true;
             plugins = [ "git" "thefuck" "aliases" "docker" "docker-compose" "pip" "node" ];
-            theme = "powerlevel10k/powerlevel10k";
+            #theme = "powerlevel10k/powerlevel10k";
         };
     };
 }
