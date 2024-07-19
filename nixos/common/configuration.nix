@@ -195,12 +195,13 @@
     htop
     curl
     nasm
-    nmap
     imagemagick
     ncdu
     ipcalc
     libressl # netcat
     lazygit
+    dig
+    busybox
   ];
 
   # Set shell to zsh globally

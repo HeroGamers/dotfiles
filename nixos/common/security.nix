@@ -12,6 +12,8 @@
         pwntools
         pwndbg
         binutils
+        hping
+        nmap
         (python3.withPackages (python-pkgs: [
             python-pkgs.capstone
             python-pkgs.angr
