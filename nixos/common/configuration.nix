@@ -23,6 +23,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
+    ./python.nix
   ];
 
   nixpkgs = lib.mkDefault {
@@ -175,12 +176,36 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
+  # git tmux neovim fish htop ranger wget curl binutils nasm gcc-multilib 
+  # g++-multilib libc6-dev-i386 libc6-dbg nmap libssl-dev libffi-dev gdb build-essential
+  # ltrace strace ruby-rubygems python3 python3-gmpy2 python3-pip python3-dev python3-setuptools
+  # ruby-full netcat-traditional autoconf libtool automake zsh-autosuggestions zsh-syntax-highlighting
+  # zsh tldr bat ffmpeg imagemagick ncdu ipcalc
   environment.systemPackages = with pkgs; [
     neovim
     wget
     vscode
     git
     zsh
+    tmux
+    tldr
+    ffmpeg-headless
+    fish
+    htop
+    curl
+    binutils
+    nasm
+    nmap
+    pwntools
+    pwndbg
+    imagemagick
+    ncdu
+    ipcalc
+    libressl # netcat
+    patchelf
+    one_gadget
+    pwninit
   ];
 
   # Set shell to zsh globally
