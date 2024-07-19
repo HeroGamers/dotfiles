@@ -206,6 +206,7 @@
     patchelf
     one_gadget
     pwninit
+    lazygit
   ];
 
   # Set shell to zsh globally
