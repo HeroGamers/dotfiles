@@ -13,6 +13,8 @@
 
     environment.systemPackages = with pkgs; [
         docker
+        #electron
+        #nodejs
         (python3.withPackages (python-pkgs: [
             
         ]))

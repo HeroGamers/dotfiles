@@ -8,6 +8,7 @@
   config,
   pkgs,
   home-manager,
+  options,
   nixpkgs,
   ...
 }: {
@@ -59,7 +60,7 @@
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Opinionated: disable global registry
-      flake-registry = "";
+      # flake-registry = "";
       # Workaround for https://github.com/NixOS/nix/issues/9574
       # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
       nix-path = lib.mkForce config.nix.nixPath; # lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
@@ -210,6 +211,8 @@
     lazygit
     dig
     busybox
+    nix-index
+    fzf
   ];
 
   # Set shell to zsh globally
@@ -218,6 +221,17 @@
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
   environment.pathsToLink = [ "/share/zsh" ];
+
+  # Enable LD
+  programs.nix-ld.enable = true;
+  ## If needed, you can add missing libraries here. nix-index-database is your friend to
+  ## find the name of the package from the error message:
+  ## https://github.com/nix-community/nix-index-database
+  programs.nix-ld.libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [ 
+    # Electron stuff
+    # nix-alien-find-libs ./node_modules/electron/dist/electron
+    alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out xorg.libX11.out xorg.libXScrnSaver.out xorg.libXcomposite.out xorg.libXcursor.out xorg.libXdamage.out xorg.libXext.out xorg.libXfixes.out xorg.libXi.out xorg.libXrandr.out xorg.libXrender.out xorg.libXtst.out xorg.libxcb.out
+  ]);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
