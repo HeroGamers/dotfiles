@@ -15,6 +15,9 @@
             python-pkgs.pillow
             python-pkgs.aiohttp
             python-pkgs.beautifulsoup4
+            python-pkgs.tkinter
+            python-pkgs.matplotlib
+            python-pkgs.pyaudio
         ]))
     ];
 }
