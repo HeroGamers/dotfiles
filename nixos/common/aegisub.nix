@@ -6,11 +6,13 @@
   ...
 }:
 {
-  # https://nixos.wiki/wiki/Wine
   environment.systemPackages = with pkgs; [
     aegisub
-    (lua.withPackages(ps: with ps; [
-        busted luafilesystem moonscript
-        ]))
+    #(aegisub.override {
+    #    #useBundledLuaJIT = true;
+    #    #luajit = (luajit.withPackages(ps: with ps; [
+    #    #    moonscript
+    #    #]));
+    #})
   ];
 }
