@@ -25,6 +25,9 @@
     # Aegisub and other video tools
     ../common/video-editing.nix
 
+    # Image editing
+    ../common/image-editing.nix
+
     # Games
     ../common/games.nix
 
