@@ -213,6 +213,8 @@
     busybox
     nix-index
     fzf
+    vlc
+    mpv
   ];
 
   # Set shell to zsh globally
