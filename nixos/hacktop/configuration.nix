@@ -22,8 +22,8 @@
     # Wine
     ../common/wine.nix
 
-    # Lua and aegisub
-    ../common/aegisub.nix
+    # Aegisub and other video tools
+    ../common/video-editing.nix
 
     # Games
     ../common/games.nix
