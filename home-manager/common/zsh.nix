@@ -58,11 +58,31 @@
                 name = "powerlevel10k-config";
                 src = ./config/zsh/p10k;
             }
+            {
+                file = "F-Sy-H.plugin.zsh";
+                name = "F-Sy-H";
+                src = "${zsh-f-sy-h}/share/zsh/site-functions";
+            }
+            {
+                file = "zsh-autocomplete.plugin.zsh";
+                name = "zsh-autocomplete";
+                src = "${zsh-autocomplete}/share/zsh-autocomplete";
+            }
+            {
+                file = "nix-zsh-completions.plugin.zsh";
+                name = "nix-zsh-completions";
+                src = "${nix-zsh-completions}/share/zsh/plugins/nix";
+            }
+            {
+                file = "zsh-autosuggestions.plugin.zsh";
+                name = "zsh-autosuggestions";
+                src = "${zsh-autocomplete}/share/zsh-autosuggestions";
+            }
         ];
 
         oh-my-zsh = {
             enable = true;
-            plugins = [ "git" "thefuck" "aliases" "docker" "docker-compose" "pip" "node" ];
+            plugins = [ "git" "thefuck" "aliases" "docker" "docker-compose" "pip" "node" ]; #"zsh-autosuggestions" "zsh-autocomplete" "F-Sy-H" ];
             #theme = "powerlevel10k/powerlevel10k";
         };
     };
