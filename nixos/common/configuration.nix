@@ -124,7 +124,7 @@
 
   # Configure keymap in X11
   services.xserver = {
-    xkb = lib.mkDefault {    
+    xkb = lib.mkDefault {
       layout = "dk";
       variant = "winkeys";
     };
@@ -153,7 +153,13 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.libinput = {
+    enable = true;
+    touchpad = {
+      clickMethod = "clickfinger";
+      tapping = false;
+    };
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
@@ -232,7 +238,7 @@
   programs.nix-ld.libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [ 
     # Electron stuff
     # nix-alien-find-libs ./node_modules/electron/dist/electron
-    alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out xorg.libX11.out xorg.libXScrnSaver.out xorg.libXcomposite.out xorg.libXcursor.out xorg.libXdamage.out xorg.libXext.out xorg.libXfixes.out xorg.libXi.out xorg.libXrandr.out xorg.libXrender.out xorg.libXtst.out xorg.libxcb.out
+    # alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out xorg.libX11.out xorg.libXScrnSaver.out xorg.libXcomposite.out xorg.libXcursor.out xorg.libXdamage.out xorg.libXext.out xorg.libXfixes.out xorg.libXi.out xorg.libXrandr.out xorg.libXrender.out xorg.libXtst.out xorg.libxcb.out
   ]);
 
   # Some programs need SUID wrappers, can be configured further or are
