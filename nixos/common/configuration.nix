@@ -221,6 +221,7 @@
     fzf
     vlc
     mpv
+    wl-clipboard
   ];
 
   # Set shell to zsh globally
