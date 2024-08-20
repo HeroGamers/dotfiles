@@ -209,12 +209,14 @@
     ncdu
     neovim
     nix-index
+    openvpn
     tldr
     tmux
     tor-browser
     vlc
     vscode
     wget
+    wireguard-tools
     wl-clipboard
     zsh
   ];
