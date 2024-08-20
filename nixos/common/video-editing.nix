@@ -8,7 +8,6 @@
 {
   environment.systemPackages = with pkgs; [
     aegisub
-    ffmpeg
     kdenlive
     mkvtoolnix
     #(aegisub.override {
