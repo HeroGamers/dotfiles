@@ -6,14 +6,15 @@
   ...
 }: {
     environment.systemPackages = with pkgs; [
-        patchelf
-        one_gadget
-        pwninit
-        pwntools
-        pwndbg
         binutils
         hping
         nmap
+        one_gadget
+        patchelf
+        pwndbg
+        pwninit
+        pwntools
+        wireshark
         (python3.withPackages (python-pkgs: [
             python-pkgs.angr
             python-pkgs.capstone
