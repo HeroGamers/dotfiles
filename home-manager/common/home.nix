@@ -20,6 +20,9 @@
     # ./nvim.nix
     ./zsh.nix
     ./tmux.nix
+
+    # Theme
+    ./theme.nix
   ];
 
   # Set your username
@@ -45,4 +48,7 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
+  # Wayland, X, etc. support for session vars
+  #systemd.user.sessionVariables = config.home-manager.users.hero.home.sessionVariables;
 }

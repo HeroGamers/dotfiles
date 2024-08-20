@@ -27,6 +27,9 @@
     # ./users.nix
     ./python.nix
 
+    # Theme
+    ./theme.nix
+
     # Systemd services
     ./systemd-services.nix
   ];

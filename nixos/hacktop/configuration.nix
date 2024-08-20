@@ -7,9 +7,6 @@
   ...
 }: {
   imports = [
-    # Import Home Manager
-    inputs.home-manager.nixosModules.home-manager
-
     # Import the common configuration
     ../common
 
