@@ -213,6 +213,7 @@
     vlc
     mpv
     wl-clipboard
+    tor-browser
   ];
 
   # Set shell to zsh globally
@@ -275,6 +276,10 @@
 
       # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
       server_names = [ "cloudflare" "mullvad-doh" ];
+
+      # Local network forwarding rules
+      # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-forwarding-rules.txt
+      forwarding_rules = "../../services/networking/forwarding-rules.txt";
     };
   };
 
