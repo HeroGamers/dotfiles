@@ -282,12 +282,15 @@
 
       # Local network forwarding rules
       # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-forwarding-rules.txt
-      forwarding_rules = "../../services/networking/forwarding-rules.txt";
+      forwarding_rules = "/etc/nixos/services/networking/forwarding-rules.txt";
     };
   };
 
   systemd.services.dnscrypt-proxy2.serviceConfig = {
     StateDirectory = "dnscrypt-proxy";
+
+    # It got permission denied on the /etc/nixos directory
+    ReadOnlyPaths = [ "/etc/nixos/services/networking" ];
   };
 
   # Networking stuff
