@@ -189,31 +189,31 @@
   # ruby-full netcat-traditional autoconf libtool automake zsh-autosuggestions zsh-syntax-highlighting
   # zsh tldr bat ffmpeg imagemagick ncdu ipcalc
   environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    vscode
-    git
-    zsh
-    tmux
-    tldr
+    busybox
+    curl
+    dig
     ffmpeg-headless
     fish
-    htop
-    curl
-    nasm
-    imagemagick
-    ncdu
-    ipcalc
-    libressl # netcat
-    lazygit
-    dig
-    busybox
-    nix-index
     fzf
-    vlc
+    git
+    htop
+    imagemagick
+    ipcalc
+    lazygit
+    libressl # netcat
     mpv
-    wl-clipboard
+    nasm
+    ncdu
+    neovim
+    nix-index
+    tldr
+    tmux
     tor-browser
+    vlc
+    vscode
+    wget
+    wl-clipboard
+    zsh
   ];
 
   # Set shell to zsh globally

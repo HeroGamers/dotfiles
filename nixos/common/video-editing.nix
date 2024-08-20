@@ -7,10 +7,10 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    mkvtoolnix
     aegisub
     ffmpeg
     kdenlive
+    mkvtoolnix
     #(aegisub.override {
     #    #useBundledLuaJIT = true;
     #    #luajit = (luajit.withPackages(ps: with ps; [
