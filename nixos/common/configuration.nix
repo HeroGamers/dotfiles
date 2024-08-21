@@ -200,6 +200,7 @@
     dig
     ffmpeg-headless
     fish
+    freerdp3
     fzf
     git
     htop
