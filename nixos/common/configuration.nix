@@ -207,6 +207,7 @@
     ipcalc
     lazygit
     libressl # netcat
+    macchanger
     mpv
     nasm
     ncdu

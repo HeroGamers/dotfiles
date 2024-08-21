@@ -6,8 +6,22 @@
   ...
 }: {
     environment.systemPackages = with pkgs; [
+        aircrack-ng
+        apktool
+        autopsy
         binutils
+        binwalk
+        bloodhound
+        burpsuite
+        ffuf
+        firewalk
+        foremost
+        ghidra
+        hashcat
         hping
+        john
+        metasploit
+        mimikatz
         nmap
         one_gadget
         patchelf
@@ -15,7 +29,14 @@
         pwndbg
         pwninit
         pwntools
+        sherlock
+        sqlmap
+        steghide
+        tcpdump
+        thc-hydra
         wireshark
+        wordlists
+        wpscan
         (python3.withPackages (python-pkgs: [
             python-pkgs.angr
             python-pkgs.capstone
