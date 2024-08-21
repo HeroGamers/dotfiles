@@ -22,6 +22,7 @@
         john
         metasploit
         mimikatz
+        net-snmp
         nmap
         one_gadget
         patchelf
@@ -29,6 +30,7 @@
         pwndbg
         pwninit
         pwntools
+        samba
         sherlock
         sqlmap
         steghide

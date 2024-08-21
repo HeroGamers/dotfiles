@@ -213,13 +213,18 @@
     ncdu
     neovim
     nix-index
+    openssh
     openvpn
+    p7zip
+    tightvnc
     tldr
     tmux
     tor-browser
+    unrar
     vlc
     vscode
     wget
+    whois
     wireguard-tools
     wl-clipboard
     zsh
