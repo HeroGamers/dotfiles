@@ -11,6 +11,7 @@
         nmap
         one_gadget
         patchelf
+        powershell
         pwndbg
         pwninit
         pwntools
