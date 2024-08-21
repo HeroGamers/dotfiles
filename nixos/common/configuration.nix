@@ -216,7 +216,7 @@
     openssh
     openvpn
     p7zip
-    tightvnc
+    tigervnc
     tldr
     tmux
     tor-browser
