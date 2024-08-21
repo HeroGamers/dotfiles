@@ -216,6 +216,7 @@
     openssh
     openvpn
     p7zip
+    rdesktop
     tigervnc
     tldr
     tmux
