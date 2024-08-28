@@ -4,6 +4,7 @@
     ...
 }:
 {
+  # Inspired/yoinked a lot by https://github.com/fufexan/dotfiles
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     env = [
@@ -70,7 +71,7 @@
       groupbar = {
         font_size = 10;
         gradients = false;
-        text_color = "rgb(${c.primary})";
+        #text_color = "rgb(${c.primary})";
       };
     };
 

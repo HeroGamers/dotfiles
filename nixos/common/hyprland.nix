@@ -1,6 +1,7 @@
 {
     inputs,
     pkgs,
+    lib,
     ...
 }: let
     # For the mesa driver possible mismatch
