@@ -69,6 +69,14 @@
         enable = true;
         flavor = "${config.catppuccin.flavor}";
     };
+    
+    # Also enable for hyprland
+    wayland.windowManager.hyprland.catppuccin = {
+        enable = true;
+
+        accent = "${config.catppuccin.accent}";
+        flavor = "${config.catppuccin.flavor}";
+    };
 
     # For Gnome (though I use KDE, but might as well put it here :) )
     # From: https://www.reddit.com/r/NixOS/comments/18hdool/how_do_i_set_a_global_dark_theme_and_configure_gtk/
@@ -80,4 +88,5 @@
     #         color-scheme = "prefer-dark";
     #     };
     # };
+
 }
