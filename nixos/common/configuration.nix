@@ -23,6 +23,9 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
+    # Hyprland
+    ./hyprland.nix
+
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     ./python.nix
@@ -115,9 +118,10 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = lib.mkDefault true;
 
-  # Enable the KDE Plasma Desktop Environment.
+  # Enable SDDM
   services.displayManager.sddm.enable = lib.mkDefault true;
-  services.desktopManager.plasma6.enable = lib.mkDefault true;
+  # Enable the KDE Plasma Desktop Environment.
+  #services.desktopManager.plasma6.enable = lib.mkDefault true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -221,7 +225,6 @@
     openssh
     openvpn
     p7zip
-    pipewire
     rdesktop
     tigervnc
     tldr
@@ -234,6 +237,7 @@
     whois
     wireguard-tools
     wl-clipboard
+    xdg-desktop-portal-hyprland # XDP
     zsh
   ];
 
