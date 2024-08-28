@@ -25,6 +25,9 @@
         };
     };
 
+    # `gtk.catppuccin.enable` and `gtk.catppuccin.gnomeShellTheme` are deprecated and will be removed in a future release.
+    # The upstream port has been archived and support will no longer be provided.
+    # Please see https://github.com/catppuccin/gtk/issues/262
     # gtk = {
     #     enable = true;
 

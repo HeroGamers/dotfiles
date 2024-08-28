@@ -166,8 +166,8 @@
       description = "Hero";
       extraGroups = [ "networkmanager" "wheel" "docker" ];
       packages = with pkgs; [
-        kdePackages.kate
-      #  thunderbird
+        # kdePackages.kate
+        # thunderbird
       ];
       openssh.authorizedKeys.keys = [
         # TODO: Add authorized SSH keys
@@ -198,6 +198,7 @@
     busybox
     curl
     dig
+    dunst # Notification daemon
     ffmpeg-headless
     fish
     freerdp3
@@ -206,17 +207,21 @@
     htop
     imagemagick
     ipcalc
+    kdePackages.polkit-kde-agent-1 # Authentication agent
+    kitty
     lazygit
     libressl # netcat
     macchanger
     mpv
     nasm
     ncdu
+    neofetch
     neovim
     nix-index
     openssh
     openvpn
     p7zip
+    pipewire
     rdesktop
     tigervnc
     tldr
@@ -231,6 +236,9 @@
     wl-clipboard
     zsh
   ];
+
+  # Hint electron apps to use wayland:
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Set shell to zsh globally
   users.defaultUserShell = pkgs.zsh;
