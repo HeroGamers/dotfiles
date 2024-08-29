@@ -69,6 +69,32 @@
         enable = true;
         flavor = "${config.catppuccin.flavor}";
     };
+
+    programs.kitty.catppuccin = {
+        enable = true;
+        flavor = "${config.catppuccin.flavor}";
+    };
+
+    programs.mpv.catppuccin = {
+        enable = true;
+
+        accent = "${config.catppuccin.accent}";
+        flavor = "${config.catppuccin.flavor}";
+    };
+
+    programs.lazygit.catppuccin = {
+        enable = true;
+
+        accent = "${config.catppuccin.accent}";
+        flavor = "${config.catppuccin.flavor}";
+    };
+
+    programs.waybar.catppuccin = {
+        enable = true;
+
+        accent = "${config.catppuccin.accent}";
+        flavor = "${config.catppuccin.flavor}";
+    };
     
     # Also enable for hyprland
     wayland.windowManager.hyprland.catppuccin = {
