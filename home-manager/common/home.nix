@@ -32,6 +32,13 @@
   home = lib.mkDefault {
     username = "hero";
     homeDirectory = "/home/hero";
+
+    # make stuff work on wayland
+    sessionVariables = {
+      QT_QPA_PLATFORM = "wayland";
+      SDL_VIDEODRIVER = "wayland";
+      XDG_SESSION_TYPE = "wayland";
+    };
   };
 
   programs = lib.mkDefault {

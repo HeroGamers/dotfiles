@@ -214,7 +214,7 @@
     htop
     imagemagick
     ipcalc
-    kdePackages.polkit-kde-agent-1 # Authentication agent
+    kdePackages.dolphin
     kitty
     lazygit
     libressl # netcat
@@ -240,7 +240,7 @@
     whois
     wireguard-tools
     wl-clipboard
-    xdg-desktop-portal-hyprland # XDP
+    wofi
     zsh
   ];
 
