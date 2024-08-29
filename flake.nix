@@ -29,6 +29,8 @@
     nixpkgs,
     home-manager,
     catppuccin,
+    hyprland,
+    hyprland-plugins,
     ...
   } @ inputs: let
     inherit (self) outputs;
