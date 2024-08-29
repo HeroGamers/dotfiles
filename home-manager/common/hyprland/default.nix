@@ -5,8 +5,8 @@
     ...
 }: {
     imports = [
-        ./binds.nix
         ./settings.nix
+        ./binds.nix
     ];
 
     wayland.windowManager.hyprland = lib.mkDefault {
