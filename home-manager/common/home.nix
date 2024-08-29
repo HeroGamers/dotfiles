@@ -53,6 +53,9 @@
 
     # Add stuff for your user as you see fit:
     neovim.enable = true;
+    kitty.enable = true;
+    mpv.enable = true;
+    lazygit.enable = true;
   };
   # home.packages = with pkgs; [ steam ];
 

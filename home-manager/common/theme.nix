@@ -91,8 +91,6 @@
 
     programs.waybar.catppuccin = {
         enable = true;
-
-        accent = "${config.catppuccin.accent}";
         flavor = "${config.catppuccin.flavor}";
     };
     

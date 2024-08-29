@@ -216,15 +216,16 @@
     imagemagick
     ipcalc
     kdePackages.dolphin
-    kitty
-    lazygit
+    #kitty # defined in hm
+    #lazygit # defined in hm
     libressl # netcat
     macchanger
-    mpv
+    #mpv # defined in hm
     nasm
     ncdu
     neofetch
-    neovim
+    networkmanager # my beloved <3
+    #neovim # defined in hm
     nix-index
     openssh
     openvpn
