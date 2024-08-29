@@ -45,6 +45,7 @@
         plugins = with inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}; [
             hyprbars
             hyprexpo
+            hyprlock
         ];
     };
 

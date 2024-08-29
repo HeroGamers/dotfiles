@@ -20,7 +20,6 @@ in {
 
         # Use the package from the flake
         package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-
     };
 
     # Prevent FPS drops from mismatched version of mesa drivers

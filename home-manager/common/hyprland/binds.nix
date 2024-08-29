@@ -6,6 +6,7 @@
   wayland.windowManager.hyprland.settings = {
     bind =
     [
+        "$mod, Q, exec, kitty"
         "$mod, F, exec, firefox"
         ", Print, exec, grimblast copy area"
     ]

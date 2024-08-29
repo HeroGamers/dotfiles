@@ -12,9 +12,9 @@
     # ];
 
     exec-once = [
-      #"hyprlock"
-      #"waybar"
-      #"dunst"
+      "hyprlock"
+      "waybar"
+      "dunst"
       "systemctl --user start plasma-polkit-agent"
       #"${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
     ];
@@ -75,14 +75,14 @@
     #   };
     # };
 
-    # input = {
-    #   kb_layout = "ro";
+    input = {
+      kb_layout = "dk";
 
     #   # focus change on cursor move
     #   follow_mouse = 1;
     #   accel_profile = "flat";
     #   touchpad.scroll_factor = 0.1;
-    # };
+    };
 
     # dwindle = {
     #   # keep floating dimentions while tiling

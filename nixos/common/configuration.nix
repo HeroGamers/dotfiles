@@ -33,6 +33,9 @@
     # Theme
     ./theme.nix
 
+    # Mobile tethering (iOS)
+    ./mobile-tethering.nix
+
     # Systemd services
     ./systemd-services.nix
   ];
@@ -121,7 +124,7 @@
   # Enable SDDM
   services.displayManager.sddm.enable = lib.mkDefault true;
   # Enable the KDE Plasma Desktop Environment.
-  #services.desktopManager.plasma6.enable = lib.mkDefault true;
+  services.desktopManager.plasma6.enable = lib.mkDefault true;
 
   # Configure keymap in X11
   services.xserver = {
