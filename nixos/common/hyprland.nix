@@ -22,6 +22,9 @@ in {
         package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     };
 
+    # For Hyprlock to work with PAM
+    #security.pam.services.hyprlock = {};
+
     # Prevent FPS drops from mismatched version of mesa drivers
     # https://github.com/hyprwm/Hyprland/issues/5148
     # updated from hardware.opengl -> hardware.graphics

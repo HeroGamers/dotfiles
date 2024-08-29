@@ -49,6 +49,18 @@
         ];
     };
 
+    programs = {
+        waybar = {
+            enable = true;
+        };
+        wlogout = {
+            enable = true;
+        };
+        # hyprlock = {
+        #     enable = true;
+        # };
+    };
+
     # Enable gtk
     #gtk.enable = true;
 }
