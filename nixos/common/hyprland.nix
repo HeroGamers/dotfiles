@@ -24,11 +24,12 @@ in {
 
     # Prevent FPS drops from mismatched version of mesa drivers
     # https://github.com/hyprwm/Hyprland/issues/5148
-    hardware.opengl = {
+    # updated from hardware.opengl -> hardware.graphics
+    hardware.graphics = {
         package = pkgs-unstable.mesa.drivers;
 
         # if you also want 32-bit support (e.g for Steam)
-        driSupport32Bit = true;
+        enable32Bit = true;
         package32 = pkgs-unstable.pkgsi686Linux.mesa.drivers;
     };
 }
