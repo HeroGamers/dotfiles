@@ -12,6 +12,9 @@
 
         # Security
         ../common/security.nix
+
+        # Monitors on Hyprland
+        ./monitors.nix
     ];
 
     home = {
