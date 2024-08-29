@@ -15,7 +15,7 @@ in {
     };
 
     # Enable Hyprland
-    programs.hyprland = lib.mkDefault {
+    programs.hyprland = {
         enable = true;
 
         # Use the package from the flake

@@ -9,7 +9,7 @@
         ./binds.nix
     ];
 
-    wayland.windowManager.hyprland = lib.mkDefault {
+    wayland.windowManager.hyprland = {
         enable = true;
 
         # Use the hyprland from the flake
