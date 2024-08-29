@@ -6,13 +6,6 @@
   pkgs,
   ...
 }: {
-    # Nerdfont
-    fonts.fontconfig.enable = true;
-
-    home.packages = with pkgs; [
-        (nerdfonts.override { fonts = [ "Meslo" "JetBrainsMono" "FiraCode" "DroidSansMono" ]; })
-    ];
-
     # Enable thefuck
     programs.thefuck.enable = true;
 

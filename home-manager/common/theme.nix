@@ -9,6 +9,13 @@
         inputs.catppuccin.homeManagerModules.catppuccin
     ];
 
+    # Nerdfont
+    fonts.fontconfig.enable = true;
+
+    home.packages = with pkgs; [
+        (nerdfonts.override { fonts = [ "Meslo" "JetBrainsMono" "FiraCode" "DroidSansMono" "FantasqueSansMono" ]; })
+    ];
+
     # Catpuccin options
     # https://nix.catppuccin.com/options/home-manager-options.html
     catppuccin = {
@@ -89,9 +96,115 @@
         flavor = "${config.catppuccin.flavor}";
     };
 
-    programs.waybar.catppuccin = {
-        enable = true;
-        flavor = "${config.catppuccin.flavor}";
+    programs.waybar = {
+        # Inspired/yeeted from https://github.com/rubyowo/dotfiles/blob/nixos/users/rei/confs/waybar/style.css
+        style = ''
+            * {
+                font-family: FantasqueSansMono Nerd Font;
+                font-size: 19px;
+                min-height: 0;
+            }
+
+            window#waybar {
+                background: transparent;
+            }
+
+            #workspaces {
+                border-radius: 1rem;
+                background-color: @surface0;
+                margin-top: 1rem;
+                margin: 3px 3px 0px 3px;
+            }
+
+            #workspaces button {
+                color: @pink;
+                border-radius: 1rem;
+                padding-left: 6px;
+                margin: 5px 0;
+                box-shadow: inset 0 -3px transparent;
+                transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
+                background-color: transparent;
+            }
+
+            #workspaces button.active {
+                color: @flamingo;
+                border-radius: 1rem;
+            }
+
+            #workspaces button:hover {
+                color: @rosewater;
+                border-radius: 1rem;
+            }
+
+            #tray,
+            #network,
+            #backlight,
+            #clock,
+            #battery,
+            #pulseaudio,
+            #custom-lock,
+            #custom-power {
+                background-color: @surface0;
+                margin: 3px 3px 0px 3px;
+                padding: 5px 5px 5px 5px;
+                border-radius: 1rem;
+            }
+
+            #clock {
+                color: @lavender;
+            }
+
+            #battery {
+                color: @green;
+            }
+
+            #battery.charging {
+                color: @green;
+            }
+
+            #battery.warning:not(.charging) {
+                color: @red;
+            }
+
+            #network {
+                color: @flamingo;
+            }
+
+            #backlight {
+                color: @yellow;
+            }
+
+            #pulseaudio {
+                color: @pink;
+            }
+
+            #pulseaudio.muted {
+                color: @red;
+            }
+
+            #custom-power {
+                border-radius: 1rem;
+                color: @red;
+                margin-bottom: 1rem;
+            }
+
+            #tray {
+                border-radius: 1rem;
+            }
+
+            tooltip {
+                background: @base;
+                border: 1px solid @pink;
+            }
+
+            tooltip label {
+                color: @text;
+            }
+        '';
+        catppuccin = {
+            enable = true;
+            flavor = "${config.catppuccin.flavor}";
+        };
     };
     
     # Also enable for hyprland
