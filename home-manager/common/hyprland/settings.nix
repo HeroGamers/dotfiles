@@ -31,8 +31,8 @@
     # exec-once = waybar & hyprpaper & firefox
     exec-once = [
       #"hyprlock"
-      #"waybar"
-      #"dunst"
+      "waybar"
+      "dunst"
       #"systemctl --user start plasma-polkit-agent"
       #"${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
     ];
@@ -222,21 +222,21 @@
 
     # debug.disable_logs = false;
 
-    # plugin = {
-    #   hyprbars = {
-    #     bar_height = 20;
-    #     bar_precedence_over_border = true;
-    #   };
+    plugin = {
+      hyprbars = {
+        bar_height = 20;
+        bar_precedence_over_border = true;
+      };
 
-    #   hyprexpo = {
-    #     columns = 3;
-    #     gap_size = 4;
-    #     bg_col = "rgb(000000)";
+      hyprexpo = {
+        columns = 3;
+        gap_size = 4;
+        bg_col = "rgb(000000)";
 
-    #     enable_gesture = true;
-    #     gesture_distance = 300;
-    #     gesture_positive = false;
-    #   };
-    # };
+        enable_gesture = true;
+        gesture_distance = 300;
+        gesture_positive = false;
+      };
+    };
   };
 }
