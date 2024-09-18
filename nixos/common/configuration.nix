@@ -227,6 +227,7 @@
     networkmanager # my beloved <3
     #neovim # defined in hm
     nix-index
+    obsidian
     openssh
     openvpn
     p7zip
