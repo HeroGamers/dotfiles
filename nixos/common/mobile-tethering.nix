@@ -5,7 +5,7 @@
 {
     services.usbmuxd = {
         enable = true;
-        package = pkgs.usbmuxd2;
+        #package = pkgs.usbmuxd2;
     };
 
     environment.systemPackages = with pkgs; [
