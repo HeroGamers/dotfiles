@@ -40,7 +40,7 @@
         wordlists
         wpscan
         (python3.withPackages (python-pkgs: [
-            python-pkgs.angr
+            #python-pkgs.angr # currently broken on nixpkgs
             python-pkgs.capstone
             python-pkgs.gmpy2
             python-pkgs.pwndbg

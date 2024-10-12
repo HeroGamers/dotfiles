@@ -62,6 +62,9 @@
     config = {
       # Disable if you don't want unfree packages
       allowUnfree = true;
+
+      # Allow broken packages
+      #allowBroken = true;
     };
   };
 
