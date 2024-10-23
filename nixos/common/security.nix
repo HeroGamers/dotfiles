@@ -46,6 +46,7 @@
             #python-pkgs.angr # currently broken on nixpkgs
             python-pkgs.capstone
             python-pkgs.gmpy2
+            python-pkgs.mitmproxy
             python-pkgs.pwndbg
             python-pkgs.pwntools
             python-pkgs.pycryptodome
