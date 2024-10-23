@@ -19,9 +19,11 @@
         ghidra
         hashcat
         hping
+        iodine
         john
         metasploit
         mimikatz
+        mitmproxy
         net-snmp
         nmap
         one_gadget
@@ -39,6 +41,7 @@
         wireshark
         wordlists
         wpscan
+        wstunnel
         (python3.withPackages (python-pkgs: [
             #python-pkgs.angr # currently broken on nixpkgs
             python-pkgs.capstone
