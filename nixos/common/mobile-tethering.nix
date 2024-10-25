@@ -1,15 +1,11 @@
-{
-    pkgs,
-    ...
-}:
-{
-    services.usbmuxd = {
-        enable = true;
-        #package = pkgs.usbmuxd2;
-    };
+{pkgs, ...}: {
+  services.usbmuxd = {
+    enable = true;
+    #package = pkgs.usbmuxd2;
+  };
 
-    environment.systemPackages = with pkgs; [
-        libimobiledevice
-        ifuse # to mount with ifuse
-    ];
+  environment.systemPackages = with pkgs; [
+    libimobiledevice
+    ifuse # to mount with ifuse
+  ];
 }

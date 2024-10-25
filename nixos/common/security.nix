@@ -5,54 +5,54 @@
   pkgs,
   ...
 }: {
-    environment.systemPackages = with pkgs; [
-        aircrack-ng
-        apktool
-        autopsy
-        binutils
-        binwalk
-        bloodhound
-        burpsuite
-        ffuf
-        firewalk
-        foremost
-        ghidra
-        hashcat
-        hping
-        iodine
-        john
-        metasploit
-        mimikatz
-        mitmproxy
-        net-snmp
-        nmap
-        one_gadget
-        patchelf
-        powershell
-        pwndbg
-        pwninit
-        pwntools
-        samba
-        sherlock
-        sqlmap
-        steghide
-        tcpdump
-        thc-hydra
-        wireshark
-        wordlists
-        wpscan
-        wstunnel
-        (python3.withPackages (python-pkgs: [
-            #python-pkgs.angr # currently broken on nixpkgs
-            python-pkgs.capstone
-            python-pkgs.gmpy2
-            python-pkgs.mitmproxy
-            python-pkgs.pwndbg
-            python-pkgs.pwntools
-            python-pkgs.pycryptodome
-            python-pkgs.pyelftools
-            python-pkgs.ropgadget
-            python-pkgs.z3-solver
-        ]))
-    ];
+  environment.systemPackages = with pkgs; [
+    aircrack-ng
+    apktool
+    autopsy
+    binutils
+    binwalk
+    bloodhound
+    burpsuite
+    ffuf
+    firewalk
+    foremost
+    ghidra
+    hashcat
+    hping
+    iodine
+    john
+    metasploit
+    mimikatz
+    mitmproxy
+    net-snmp
+    nmap
+    one_gadget
+    patchelf
+    powershell
+    pwndbg
+    pwninit
+    pwntools
+    samba
+    sherlock
+    sqlmap
+    steghide
+    tcpdump
+    thc-hydra
+    wireshark
+    wordlists
+    wpscan
+    wstunnel
+    (python3.withPackages (python-pkgs: [
+      #python-pkgs.angr # currently broken on nixpkgs
+      python-pkgs.capstone
+      python-pkgs.gmpy2
+      python-pkgs.mitmproxy
+      python-pkgs.pwndbg
+      python-pkgs.pwntools
+      python-pkgs.pycryptodome
+      python-pkgs.pyelftools
+      python-pkgs.ropgadget
+      python-pkgs.z3-solver
+    ]))
+  ];
 }

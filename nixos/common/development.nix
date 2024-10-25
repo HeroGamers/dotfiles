@@ -5,18 +5,17 @@
   pkgs,
   ...
 }: {
-    # Enable docker
-    virtualisation.docker = {
-        enable = true;
-        storageDriver = "btrfs";
-    };
+  # Enable docker
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+  };
 
-    environment.systemPackages = with pkgs; [
-        docker
-        #electron
-        #nodejs
-        (python3.withPackages (python-pkgs: [
-            
-        ]))
-    ];
+  environment.systemPackages = with pkgs; [
+    docker
+    #electron
+    #nodejs
+    (python3.withPackages (python-pkgs: [
+      ]))
+  ];
 }

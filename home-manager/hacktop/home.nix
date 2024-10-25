@@ -6,19 +6,19 @@
   pkgs,
   ...
 }: {
-    imports = [
-        # Global common Home Manager config
-        ../common
+  imports = [
+    # Global common Home Manager config
+    ../common
 
-        # Security
-        ../common/security.nix
+    # Security
+    ../common/security.nix
 
-        # Monitors on Hyprland
-        ./monitors.nix
-    ];
+    # Monitors on Hyprland
+    ./monitors.nix
+  ];
 
-    home = {
-        # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-        stateVersion = "24.05";
-    };
+  home = {
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    stateVersion = "24.05";
+  };
 }

@@ -178,7 +178,7 @@
       initialPassword = "HelloWorld!";
       isNormalUser = true;
       description = "Hero";
-      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      extraGroups = ["networkmanager" "wheel" "docker"];
       packages = with pkgs; [
         # kdePackages.kate
         # thunderbird
@@ -188,14 +188,14 @@
       ];
     };
   };
-  
+
   # make home-manager as a module of nixos
   # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
   home-manager = {
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = {inherit inputs outputs;};
   };
 
   # Install firefox.
@@ -204,7 +204,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  # git tmux neovim fish htop ranger wget curl binutils nasm gcc-multilib 
+  # git tmux neovim fish htop ranger wget curl binutils nasm gcc-multilib
   # g++-multilib libc6-dev-i386 libc6-dbg nmap libssl-dev libffi-dev gdb build-essential
   # ltrace strace ruby-rubygems python3 python3-gmpy2 python3-pip python3-dev python3-setuptools
   # ruby-full netcat-traditional autoconf libtool automake zsh-autosuggestions zsh-syntax-highlighting
@@ -260,20 +260,22 @@
   # Set shell to zsh globally
   users.defaultUserShell = pkgs.zsh;
   users.users.hero.shell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
   programs.zsh.enable = true;
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = ["/share/zsh"];
 
   # Enable LD
   programs.nix-ld.enable = true;
   ## If needed, you can add missing libraries here. nix-index-database is your friend to
   ## find the name of the package from the error message:
   ## https://github.com/nix-community/nix-index-database
-  programs.nix-ld.libraries = options.programs.nix-ld.libraries.default ++ (with pkgs; [ 
-    # Electron stuff
-    # nix-alien-find-libs ./node_modules/electron/dist/electron
-    # alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out xorg.libX11.out xorg.libXScrnSaver.out xorg.libXcomposite.out xorg.libXcursor.out xorg.libXdamage.out xorg.libXext.out xorg.libXfixes.out xorg.libXi.out xorg.libXrandr.out xorg.libXrender.out xorg.libXtst.out xorg.libxcb.out
-  ]);
+  programs.nix-ld.libraries =
+    options.programs.nix-ld.libraries.default
+    ++ (with pkgs; [
+      # Electron stuff
+      # nix-alien-find-libs ./node_modules/electron/dist/electron
+      # alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out xorg.libX11.out xorg.libXScrnSaver.out xorg.libXcomposite.out xorg.libXcursor.out xorg.libXdamage.out xorg.libXext.out xorg.libXfixes.out xorg.libXi.out xorg.libXrandr.out xorg.libXrender.out xorg.libXtst.out xorg.libxcb.out
+    ]);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -316,7 +318,7 @@
       };
 
       # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
-      server_names = [ "cloudflare" "mullvad-doh" ];
+      server_names = ["cloudflare" "mullvad-doh"];
 
       # Local network forwarding rules
       # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-forwarding-rules.txt
@@ -330,7 +332,6 @@
 
   # Networking stuff
   networking = lib.mkDefault {
-
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     # Configure network proxy if necessary
@@ -345,7 +346,7 @@
     };
 
     # Use local nameservers
-    nameservers = [ "127.0.0.1" "::1" ];
+    nameservers = ["127.0.0.1" "::1"];
 
     # If using dhcpcd:
     dhcpcd.extraConfig = "nohook resolv.conf";
@@ -354,12 +355,11 @@
     firewall = {
       # Or disable the firewall altogether.
       # enable = false;
-      allowedTCPPorts = [ 22 ];
-      allowedUDPPorts = [ 22 ];
+      allowedTCPPorts = [22];
+      allowedUDPPorts = [22];
     };
   };
 
   # And disable resolvd
   services.resolved.enable = lib.mkDefault false;
-  
 }

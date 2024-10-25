@@ -11,8 +11,8 @@
 
   environment.systemPackages = with pkgs; [
     (catppuccin-kde.override {
-      accents = [ "${config.catppuccin.accent}" "pink" ];
-      flavour = [ "${config.catppuccin.flavor}" "macchiato" ];
+      accents = ["${config.catppuccin.accent}" "pink"];
+      flavour = ["${config.catppuccin.flavor}" "macchiato"];
     })
   ];
 }

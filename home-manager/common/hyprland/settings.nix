@@ -1,10 +1,9 @@
 {
-    pkgs,
-    config,
-    lib,
-    ...
-}:
-{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   # Inspired/yoinked a lot by https://github.com/fufexan/dotfiles
   wayland.windowManager.hyprland.settings = {
     # See https://wiki.hyprland.org/Configuring/Keywords/
@@ -158,7 +157,7 @@
       # enable variable refresh rate (effective depending on hardware)
       #vrr = 1;
     };
-    
+
     #############
     ### INPUT ###
     #############

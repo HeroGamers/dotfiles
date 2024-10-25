@@ -1,10 +1,7 @@
-{
-    config, 
-    ...
-}:
-{
+{config, ...}: {
   wayland.windowManager.hyprland.settings = {
-    bind = [
+    bind =
+      [
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         "$mod, Q, exec, kitty"
         "$mod, F, exec, firefox"
@@ -34,32 +31,32 @@
         # Scroll through existing workspaces with mainMod + scroll
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
-    ]
-    # Switch workspaces with mod + [0-9]
-    # Move active window to a workspace with mod + SHIFT + [0-9]
-    ++ (
+      ]
+      # Switch workspaces with mod + [0-9]
+      # Move active window to a workspace with mod + SHIFT + [0-9]
+      ++ (
         # workspaces
         # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
         builtins.concatLists (builtins.genList (
             x: let
-            ws = let
+              ws = let
                 c = (x + 1) / 10;
-            in
+              in
                 builtins.toString (x + 1 - (c * 10));
             in [
-            "$mod, ${ws}, workspace, ${toString (x + 1)}"
-            "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+              "$mod, ${ws}, workspace, ${toString (x + 1)}"
+              "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
             ]
-        )
-        10)
-    );
+          )
+          10)
+      );
 
     # mouse movements
     bindm = [
-        # Move/resize windows with mod + LMB/RMB and dragging
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-        #"$mod ALT, mouse:272, resizewindow"
+      # Move/resize windows with mod + LMB/RMB and dragging
+      "$mod, mouse:272, movewindow"
+      "$mod, mouse:273, resizewindow"
+      #"$mod ALT, mouse:272, resizewindow"
     ];
   };
 }
