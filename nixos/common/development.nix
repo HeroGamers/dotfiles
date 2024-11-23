@@ -15,7 +15,5 @@
     docker
     #electron
     #nodejs
-    (python3.withPackages (python-pkgs: [
-      ]))
   ];
 }

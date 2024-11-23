@@ -18,6 +18,18 @@
       python-pkgs.scipy
       python-pkgs.sympy
       python-pkgs.tkinter
+
+      # Security
+      #python-pkgs.angr # currently broken on nixpkgs
+      python-pkgs.capstone
+      python-pkgs.gmpy2
+      python-pkgs.mitmproxy
+      python-pkgs.pwndbg
+      python-pkgs.pwntools
+      python-pkgs.pycryptodome
+      python-pkgs.pyelftools
+      python-pkgs.ropgadget
+      python-pkgs.z3-solver
     ]))
   ];
 }

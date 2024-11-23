@@ -42,17 +42,5 @@
     wordlists
     wpscan
     wstunnel
-    (python3.withPackages (python-pkgs: [
-      #python-pkgs.angr # currently broken on nixpkgs
-      python-pkgs.capstone
-      python-pkgs.gmpy2
-      python-pkgs.mitmproxy
-      python-pkgs.pwndbg
-      python-pkgs.pwntools
-      python-pkgs.pycryptodome
-      python-pkgs.pyelftools
-      python-pkgs.ropgadget
-      python-pkgs.z3-solver
-    ]))
   ];
 }
