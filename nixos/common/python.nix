@@ -32,7 +32,7 @@
       python-pkgs.capstone
       python-pkgs.gmpy2
       python-pkgs.mitmproxy
-      python-pkgs.pwndbg
+      #python-pkgs.pwndbg # removed
       python-pkgs.pwntools
       python-pkgs.pycryptodome
       python-pkgs.pyelftools

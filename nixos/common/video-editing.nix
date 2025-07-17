@@ -7,7 +7,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     aegisub
-    kdenlive
+    kdePackages.kdenlive
     mkvtoolnix
     #(aegisub.override {
     #    #useBundledLuaJIT = true;

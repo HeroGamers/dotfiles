@@ -7,7 +7,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     blender
-    gimp
+    # gimp # broken
     inkscape
   ];
 }

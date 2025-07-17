@@ -6,14 +6,18 @@
 }: {
   imports = [
     # Import Catpuccin
-    inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
   ];
 
   # Nerdfont
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["Meslo" "JetBrainsMono" "FiraCode" "DroidSansMono" "FantasqueSansMono"];})
+    nerd-fonts.meslo-lg
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.fantasque-sans-mono
   ];
 
   # Catpuccin options

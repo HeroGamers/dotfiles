@@ -1,0 +1,29 @@
+evaluation warning: `programs.zsh.initExtraBeforeCompInit` is deprecated, use `programs.zsh.initContent` with `lib.mkOrder 550` instead.
+
+                    Example: programs.zsh.initContent = lib.mkOrder 550 "your content here";
+evaluation warning: hero profile: The option `programs.waybar.catppuccin.flavor' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.waybar.flavor'.
+evaluation warning: hero profile: The option `programs.waybar.catppuccin.enable' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.waybar.enable'.
+evaluation warning: hero profile: The option `programs.tmux.catppuccin.flavor' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.tmux.flavor'.
+evaluation warning: hero profile: The option `programs.tmux.catppuccin.enable' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.tmux.enable'.
+evaluation warning: hero profile: The option `programs.neovim.catppuccin.flavor' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.nvim.flavor'.
+evaluation warning: hero profile: The option `programs.neovim.catppuccin.enable' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.nvim.enable'.
+evaluation warning: hero profile: The option `programs.mpv.catppuccin.accent' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.mpv.accent'.
+evaluation warning: hero profile: The option `programs.mpv.catppuccin.flavor' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.mpv.flavor'.
+evaluation warning: hero profile: The option `programs.mpv.catppuccin.enable' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.mpv.enable'.
+evaluation warning: hero profile: The option `programs.lazygit.catppuccin.accent' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.lazygit.accent'.
+evaluation warning: hero profile: The option `programs.lazygit.catppuccin.flavor' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.lazygit.flavor'.
+evaluation warning: hero profile: The option `programs.lazygit.catppuccin.enable' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.lazygit.enable'.
+evaluation warning: hero profile: The option `qt.style.catppuccin.accent' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.kvantum.accent'.
+evaluation warning: hero profile: The option `qt.style.catppuccin.flavor' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.kvantum.flavor'.
+evaluation warning: hero profile: The option `qt.style.catppuccin.enable' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.kvantum.enable'.
+evaluation warning: hero profile: The option `programs.kitty.catppuccin.flavor' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.kitty.flavor'.
+evaluation warning: hero profile: The option `programs.kitty.catppuccin.enable' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.kitty.enable'.
+evaluation warning: hero profile: The option `wayland.windowManager.hyprland.catppuccin.accent' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.hyprland.accent'.
+evaluation warning: hero profile: The option `wayland.windowManager.hyprland.catppuccin.flavor' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.hyprland.flavor'.
+evaluation warning: hero profile: The option `wayland.windowManager.hyprland.catppuccin.enable' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.hyprland.enable'.
+evaluation warning: hero profile: The option `catppuccin.pointerCursor.accent' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.cursors.accent'.
+evaluation warning: hero profile: The option `catppuccin.pointerCursor.flavor' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.cursors.flavor'.
+evaluation warning: hero profile: The option `catppuccin.pointerCursor.enable' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/home-manager/common/theme.nix' has been renamed to `catppuccin.cursors.enable'.
+evaluation warning: hero profile: The option `programs.zsh.syntaxHighlighting.catppuccin.enable` has been renamed to `catppuccin.zsh-syntax-highlighting.enable`.
+evaluation warning: hero profile: The option `programs.zsh.syntaxHighlighting.catppuccin.flavor` has been renamed to `catppuccin.zsh-syntax-highlighting.flavor`.
+evaluation warning: The option `hardware.pulseaudio' defined in `/nix/store/b4j18k86jw4q299l5d3j25b8pp0kbdqj-source/nixos/common/configuration.nix' has been renamed to `services.pulseaudio'.

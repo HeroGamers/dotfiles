@@ -6,8 +6,14 @@
   pkgs,
   ...
 }: {
-  # Enable thefuck
-  programs.thefuck.enable = true;
+  # Enable pay-respects
+  programs.pay-respects = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  # Enable ripgrep
+  programs.ripgrep.enable = true;
 
   # Enable ZSH, oh-my-zsh and powerlevel10k
   programs.zsh = {
@@ -16,7 +22,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initExtra = ''
+    initContent = ''
       bindkey "''${key[Up]}" up-line-or-search
       bindkey "''${key[Down]}" down-line-or-search
       bindkey "^[[H" beginning-of-line
