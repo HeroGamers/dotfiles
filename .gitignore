@@ -1,5 +1,7 @@
 # NixOS stuff
 
+pkgs/result
+pkgs/*/result
 
 # Compiled Lua sources
 luac.out

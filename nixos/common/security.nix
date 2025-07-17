@@ -19,6 +19,7 @@
     ghidra
     hashcat
     hping
+    ida-pro
     iodine
     john
     metasploit
@@ -34,6 +35,7 @@
     pwntools
     samba
     sherlock
+    sleuthkit
     sqlmap
     steghide
     tcpdump

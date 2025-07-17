@@ -6,6 +6,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    uv
     (python3.withPackages (python-pkgs: [
       python-pkgs.aiofiles
       python-pkgs.aiohttp

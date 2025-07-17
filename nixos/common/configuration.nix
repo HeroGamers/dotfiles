@@ -51,12 +51,13 @@
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
-      # Or define it inline, for example:
-      # (final: prev: {
+      # Hackpkgs
+      (final: prev: {
+        inherit (inputs.hackpkgs.packages.x86_64-linux) ida-pro;
       #   hi = final.hello.overrideAttrs (oldAttrs: {
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
-      # })
+      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -234,6 +235,7 @@
     networkmanager # my beloved <3
     #neovim # defined in hm
     nix-index
+    nss
     obsidian
     openssh
     openvpn
@@ -276,6 +278,9 @@
       # nix-alien-find-libs ./node_modules/electron/dist/electron
       # alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out xorg.libX11.out xorg.libXScrnSaver.out xorg.libXcomposite.out xorg.libXcursor.out xorg.libXdamage.out xorg.libXext.out xorg.libXfixes.out xorg.libXi.out xorg.libXrandr.out xorg.libXrender.out xorg.libXtst.out xorg.libxcb.out
     ]);
+  
+  # SSH Agent
+  programs.ssh.startAgent = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

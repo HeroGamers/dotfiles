@@ -15,5 +15,18 @@
     docker
     #electron
     #nodejs
+    cmake
+    # gnumake
+    # ninja
+    # gdb
+    # ant
+    # maven
+    # nodejs-10_x
+    # jekyll
+    gcc
+    rustup
+    llvm
+    # lld
+    # lldb
   ];
 }

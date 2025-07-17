@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "Hero's config";
 
   inputs = {
     # Nixpkgs
@@ -7,7 +7,7 @@
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
@@ -15,10 +15,16 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager-stable.url = "github:nix-community/home-manager/release-24.05";
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
 
     # Catppuccin
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Hyprland
     hyprland = {
@@ -28,12 +34,22 @@
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Hackpkgs
+    hackpkgs = {
+      # url = "git+https://github.com/HeroGamers/hackpkgs";
+      # url = "github:HeroGamers/hackpkgs";
+      url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = {
     self,
     nixpkgs,
+    hackpkgs,
     home-manager,
     catppuccin,
     hyprland,
