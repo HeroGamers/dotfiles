@@ -97,13 +97,13 @@
       accent = "${config.catppuccin.accent}";
       flavor = "${config.catppuccin.flavor}";
     };
-    
+
     waybar = {
       enable = true;
       flavor = "${config.catppuccin.flavor}";
     };
   };
-  
+
   qt = {
     enable = true;
     platformTheme.name = "kvantum";

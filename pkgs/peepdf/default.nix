@@ -1,5 +1,7 @@
-{ python2Packages, fetchFromGitHub }:
-
+{
+  python2Packages,
+  fetchFromGitHub,
+}:
 python2Packages.buildPythonApplication {
   pname = "peepdf-unstable";
   version = "20161117";

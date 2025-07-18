@@ -39,7 +39,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initContent = lib.mkMerge [ beforeCompInit afterCompInit ];
+    initContent = lib.mkMerge [beforeCompInit afterCompInit];
 
     shellAliases = {
       ll = "ls -l";

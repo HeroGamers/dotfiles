@@ -55,9 +55,9 @@
       (final: prev: {
         inherit (inputs.hackpkgs.packages.${final.system}) ida-pro;
         inherit (inputs.pwndbg.packages.${final.system}) pwndbg;
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
+        #   hi = final.hello.overrideAttrs (oldAttrs: {
+        #     patches = [ ./change-hello-to-hi.patch ];
+        #   });
       })
     ];
     # Configure your nixpkgs instance
@@ -212,6 +212,7 @@
   # ruby-full netcat-traditional autoconf libtool automake zsh-autosuggestions zsh-syntax-highlighting
   # zsh tldr bat ffmpeg imagemagick ncdu ipcalc
   environment.systemPackages = with pkgs; [
+    alejandra # Formatter for nix files
     busybox
     curl
     dig
@@ -280,7 +281,7 @@
       # nix-alien-find-libs ./node_modules/electron/dist/electron
       # alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out xorg.libX11.out xorg.libXScrnSaver.out xorg.libXcomposite.out xorg.libXcursor.out xorg.libXdamage.out xorg.libXext.out xorg.libXfixes.out xorg.libXi.out xorg.libXrandr.out xorg.libXrender.out xorg.libXtst.out xorg.libxcb.out
     ]);
-  
+
   # SSH Agent
   programs.ssh.startAgent = true;
 
