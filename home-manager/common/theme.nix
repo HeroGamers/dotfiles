@@ -28,76 +28,89 @@
     accent = "pink";
     flavor = "macchiato";
 
-    pointerCursor = {
+    cursors = {
       enable = true;
 
       accent = "${config.catppuccin.accent}";
       flavor = "${config.catppuccin.flavor}";
     };
+
+    # `gtk.catppuccin.enable` and `gtk.catppuccin.gnomeShellTheme` are deprecated and will be removed in a future release.
+    # The upstream port has been archived and support will no longer be provided.
+    # Please see https://github.com/catppuccin/gtk/issues/262
+    # gtk = {
+    #     enable = true;
+
+    #     catppuccin = {
+    #         enable = true;
+
+    #         accent = "${config.catppuccin.accent}";
+    #         flavor = "${config.catppuccin.flavor}";
+    #     };
+    # };
+
+    kvantum = {
+      enable = true;
+
+      accent = "${config.catppuccin.accent}";
+      flavor = "${config.catppuccin.flavor}";
+    };
+
+    nvim = {
+      enable = true;
+      flavor = "${config.catppuccin.flavor}";
+    };
+
+    tmux = {
+      enable = true;
+      flavor = "${config.catppuccin.flavor}";
+    };
+
+    zsh-syntax-highlighting = {
+      enable = true;
+      flavor = "${config.catppuccin.flavor}";
+    };
+
+    kitty = {
+      enable = true;
+      flavor = "${config.catppuccin.flavor}";
+    };
+
+    mpv = {
+      enable = true;
+
+      accent = "${config.catppuccin.accent}";
+      flavor = "${config.catppuccin.flavor}";
+    };
+
+    lazygit = {
+      enable = true;
+
+      accent = "${config.catppuccin.accent}";
+      flavor = "${config.catppuccin.flavor}";
+    };
+
+    # Also enable for hyprland
+    hyprland = {
+      enable = true;
+
+      accent = "${config.catppuccin.accent}";
+      flavor = "${config.catppuccin.flavor}";
+    };
+    
+    waybar = {
+      enable = true;
+      flavor = "${config.catppuccin.flavor}";
+    };
   };
-
-  # `gtk.catppuccin.enable` and `gtk.catppuccin.gnomeShellTheme` are deprecated and will be removed in a future release.
-  # The upstream port has been archived and support will no longer be provided.
-  # Please see https://github.com/catppuccin/gtk/issues/262
-  # gtk = {
-  #     enable = true;
-
-  #     catppuccin = {
-  #         enable = true;
-
-  #         accent = "${config.catppuccin.accent}";
-  #         flavor = "${config.catppuccin.flavor}";
-  #     };
-  # };
-
+  
   qt = {
     enable = true;
     platformTheme.name = "kvantum";
 
     style = {
       name = "kvantum";
-
-      catppuccin = {
-        enable = true;
-
-        accent = "${config.catppuccin.accent}";
-        flavor = "${config.catppuccin.flavor}";
-      };
     };
-  };
-
-  programs.neovim.catppuccin = {
-    enable = true;
-    flavor = "${config.catppuccin.flavor}";
-  };
-
-  programs.tmux.catppuccin = {
-    enable = true;
-    flavor = "${config.catppuccin.flavor}";
-  };
-
-  programs.zsh.syntaxHighlighting.catppuccin = {
-    enable = true;
-    flavor = "${config.catppuccin.flavor}";
-  };
-
-  programs.kitty.catppuccin = {
-    enable = true;
-    flavor = "${config.catppuccin.flavor}";
-  };
-
-  programs.mpv.catppuccin = {
-    enable = true;
-
-    accent = "${config.catppuccin.accent}";
-    flavor = "${config.catppuccin.flavor}";
-  };
-
-  programs.lazygit.catppuccin = {
-    enable = true;
-
-    accent = "${config.catppuccin.accent}";
-    flavor = "${config.catppuccin.flavor}";
   };
 
   programs.waybar = {
@@ -205,18 +218,6 @@
           color: @text;
       }
     '';
-    catppuccin = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
-  };
-
-  # Also enable for hyprland
-  wayland.windowManager.hyprland.catppuccin = {
-    enable = true;
-
-    accent = "${config.catppuccin.accent}";
-    flavor = "${config.catppuccin.flavor}";
   };
 
   # For Gnome (though I use KDE, but might as well put it here :) )

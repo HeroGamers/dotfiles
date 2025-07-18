@@ -146,7 +146,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -236,6 +236,7 @@
     networkmanager # my beloved <3
     #neovim # defined in hm
     nix-index
+    nix-output-monitor
     nss
     obsidian
     openssh

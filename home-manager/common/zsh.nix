@@ -16,33 +16,8 @@
   programs.ripgrep.enable = true;
 
   # Enable ZSH, oh-my-zsh and powerlevel10k
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    initContent = ''
-      bindkey "''${key[Up]}" up-line-or-search
-      bindkey "''${key[Down]}" down-line-or-search
-      bindkey "^[[H" beginning-of-line
-      bindkey "^[[F" end-of-line
-      bindkey "^[[3~" delete-char
-    '';
-
-    shellAliases = {
-      ll = "ls -l";
-      update = "sudo nixos-rebuild switch";
-      vim = "nvim";
-      lg = "lazygit";
-    };
-
-    history = {
-      size = 10000;
-      path = "${config.xdg.dataHome}/zsh/history";
-    };
-
-    initExtraBeforeCompInit = ''
+  programs.zsh = let
+    beforeCompInit = lib.mkOrder 550 ''
       # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
       # Initialization code that may require console input (password prompts, [y/n]
       # confirmations, etc.) must go above this block; everything else may go below.
@@ -51,6 +26,32 @@
         source "$P10K_INSTANT_PROMPT"
       fi
     '';
+    afterCompInit = lib.mkOrder 1000 ''
+      bindkey "''${key[Up]}" up-line-or-search
+      bindkey "''${key[Down]}" down-line-or-search
+      bindkey "^[[H" beginning-of-line
+      bindkey "^[[F" end-of-line
+      bindkey "^[[3~" delete-char
+    '';
+  in {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+
+    initContent = lib.mkMerge [ beforeCompInit afterCompInit ];
+
+    shellAliases = {
+      ll = "ls -l";
+      update = "sudo nixos-rebuild switch --log-format internal-json -v |& nom --json";
+      vim = "nvim";
+      lg = "lazygit";
+    };
+
+    history = {
+      size = 10000;
+      path = "${config.xdg.dataHome}/zsh/history";
+    };
 
     plugins = with pkgs; [
       {
@@ -87,7 +88,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "thefuck" "aliases" "docker" "docker-compose" "pip" "node"]; #"zsh-autosuggestions" "zsh-autocomplete" "F-Sy-H" ];
+      plugins = ["git" "aliases" "docker" "docker-compose" "pip" "node"]; #"zsh-autosuggestions" "zsh-autocomplete" "F-Sy-H" ];
       #theme = "powerlevel10k/powerlevel10k";
     };
   };
