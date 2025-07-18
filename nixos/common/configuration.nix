@@ -16,6 +16,9 @@
     # Import Home Manager
     inputs.home-manager.nixosModules.home-manager
 
+    # nix-index-database
+    inputs.nix-index-database.nixosModules.nix-index
+
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
 
@@ -200,6 +203,9 @@
     extraSpecialArgs = {inherit inputs outputs;};
   };
 
+  # Comma, with nix-index-database
+  programs.nix-index-database.comma.enable = true;
+
   # Install firefox.
   programs.firefox.enable = lib.mkDefault true;
 
@@ -236,7 +242,7 @@
     neofetch
     networkmanager # my beloved <3
     #neovim # defined in hm
-    nix-index
+    # nix-index # using nix-index-database instead
     nix-output-monitor
     nss
     obsidian
