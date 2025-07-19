@@ -115,6 +115,7 @@
     # battery               # internal battery
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
+    nix_shell_wrapper       # nix-shell wrapper
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
@@ -1674,6 +1675,20 @@
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
+  }
+
+  function prompt_nix_shell_wrapper() {
+    # Example prompt to show how to optionally include the $NIX_SHELL_WRAPPER_DESCRIPTIONS if present:
+    # CYAN="\[\e[0;36m\]"
+    # NC="\[\e[0m\]"
+    # PS1="\${NIX_SHELL_WRAPPER_DESCRIPTIONS:+${CYAN}\$NIX_SHELL_WRAPPER_DESCRIPTIONS${NC}:}"
+    # PS1="${PS1}\w$ "
+    [[ -n $NIX_SHELL_WRAPPER_DESCRIPTIONS ]] || return
+
+    p10k segment \
+      -t "${NIX_SHELL_WRAPPER_DESCRIPTIONS}" \
+      -f cyan \
+      -i '🔧'
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job

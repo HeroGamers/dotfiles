@@ -20,6 +20,9 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    # Flake utils
+    flake-utils.url = "github:numtide/flake-utils";
+
     # Catppuccin
     catppuccin = {
       url = "github:catppuccin/nix";
@@ -55,6 +58,13 @@
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # nix-shell wrapper
+    nix-shell-wrapper = {
+        url = "github:NixenBiksen/nix-shell-wrapper";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-utils.follows = "flake-utils";
     };
   };
 

@@ -183,7 +183,7 @@
       initialPassword = "HelloWorld!";
       isNormalUser = true;
       description = "Hero";
-      extraGroups = ["networkmanager" "wheel" "docker"];
+      extraGroups = ["networkmanager" "wheel" "docker" "dialout" ];
       packages = with pkgs; [
         # kdePackages.kate
         # thunderbird

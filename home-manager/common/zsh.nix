@@ -15,6 +15,13 @@
   # Enable ripgrep
   programs.ripgrep.enable = true;
 
+  # Direnv
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   # Enable ZSH, oh-my-zsh and powerlevel10k
   programs.zsh = let
     beforeCompInit = lib.mkOrder 550 ''
@@ -32,6 +39,13 @@
       bindkey "^[[H" beginning-of-line
       bindkey "^[[F" end-of-line
       bindkey "^[[3~" delete-char
+
+      # Define a function to use nix-shell-wrapper
+      function nix_shell_wrapper() {
+          history -a # Save command history before starting the shell
+          ${inputs.nix-shell-wrapper.packages.x86_64-linux.default}/bin/nix-shell-wrapper "$@"
+          history -r # Reload command history after exiting the shell
+      }
     '';
   in {
     enable = true;
@@ -43,9 +57,10 @@
 
     shellAliases = {
       ll = "ls -l";
-      update = "sudo nixos-rebuild switch --log-format internal-json -v |& nom --json";
+      update = "sudo sh -c 'nixos-rebuild switch --log-format internal-json -v |& nom --json'";
       vim = "nvim";
       lg = "lazygit";
+      ns = "nix_shell_wrapper";
     };
 
     history = {
@@ -88,7 +103,7 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "aliases" "docker" "docker-compose" "pip" "node"]; #"zsh-autosuggestions" "zsh-autocomplete" "F-Sy-H" ];
+      plugins = [ "git" "aliases" "docker" "docker-compose" "pip" "node" "direnv" ]; #"zsh-autosuggestions" "zsh-autocomplete" "F-Sy-H" ];
       #theme = "powerlevel10k/powerlevel10k";
     };
   };
