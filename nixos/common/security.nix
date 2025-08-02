@@ -25,6 +25,7 @@
     metasploit
     mimikatz
     mitmproxy
+    netexec
     net-snmp
     nmap
     one_gadget
