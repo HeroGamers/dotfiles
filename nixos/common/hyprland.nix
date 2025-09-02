@@ -20,6 +20,11 @@ in {
 
     # Use the package from the flake
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
+    # https://wiki.hypr.land/Useful-Utilities/Systemd-start/#uwsm
+    withUWSM = true; # recommended for most users
   };
 
   # For Hyprlock to work with PAM
@@ -35,4 +40,11 @@ in {
     enable32Bit = true;
     package32 = pkgs-unstable.pkgsi686Linux.mesa;
   };
+
+  # Screensharing support
+  # https://wiki.nixos.org/wiki/Hyprland#Screensharing
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+  # };
 }

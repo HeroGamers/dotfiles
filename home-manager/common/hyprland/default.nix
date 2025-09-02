@@ -21,19 +21,20 @@
 
     # '';
 
-    systemd = {
-      # Enables hyprland-session.target on startup
-      enable = true;
+    # Replaced with UWSM
+    # systemd = {
+    #   # Enables hyprland-session.target on startup
+    #   enable = true;
 
-      # https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#programs-dont-work-in-systemd-services-but-do-on-the-terminal
-      variables = ["--all"];
+    #   # https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/#programs-dont-work-in-systemd-services-but-do-on-the-terminal
+    #   variables = ["--all"];
 
-      # First two lines from https://github.com/nix-community/home-manager/blob/e1391fb22e18a36f57e6999c7a9f966dc80ac073/modules/services/window-managers/hyprland.nix#L99-L102
-      extraCommands = [
-        "systemctl --user stop graphical-session.target"
-        "systemctl --user start hyprland-session.target"
-      ];
-    };
+    #   # First two lines from https://github.com/nix-community/home-manager/blob/e1391fb22e18a36f57e6999c7a9f966dc80ac073/modules/services/window-managers/hyprland.nix#L99-L102
+    #   extraCommands = [
+    #     "systemctl --user stop graphical-session.target"
+    #     "systemctl --user start hyprland-session.target"
+    #   ];
+    # };
 
     # Enable xwayland (default true tho)
     xwayland.enable = true;

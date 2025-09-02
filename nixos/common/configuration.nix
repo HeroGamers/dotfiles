@@ -134,7 +134,7 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = lib.mkDefault true;
 
-  # Enable SDDM
+  # Enable SDDM display manager - https://wiki.nixos.org/wiki/Wayland#Display_Managers
   services.displayManager.sddm.enable = lib.mkDefault true;
   # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = lib.mkDefault true;
@@ -225,6 +225,7 @@
   environment.systemPackages = with pkgs; [
     alejandra # Formatter for nix files
     # busybox
+    brightnessctl
     coreutils # Provides basic GNU utilities
     curl
     dig
