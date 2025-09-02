@@ -8,6 +8,7 @@
   environment.systemPackages = with pkgs; [
     aircrack-ng
     apktool
+    arsenal
     autopsy
     binutils
     binwalk
@@ -46,4 +47,9 @@
     wpscan
     wstunnel
   ];
+
+  # Prevent GC of IDA Pro
+  # system.extraDependencies = [
+  #   ida-pro.src
+  # ];
 }

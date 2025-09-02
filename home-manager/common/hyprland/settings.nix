@@ -55,8 +55,8 @@
 
     # https://wiki.hyprland.org/Configuring/Variables/#general
     general = {
-      gaps_in = 5;
-      gaps_out = 20;
+      gaps_in = 1;
+      gaps_out = 1;
 
       border_size = 2;
 
@@ -75,19 +75,21 @@
 
     # https://wiki.hyprland.org/Configuring/Variables/#decoration
     decoration = {
-      rounding = 10;
+      rounding = 1;
 
       # Change transparency of focused and unfocused windows
       active_opacity = 1.0;
       inactive_opacity = 1.0;
 
-      drop_shadow = true;
-      shadow_range = 4;
-      shadow_render_power = 3;
-      "col.shadow" = "rgba(1a1a1aee)";
-      #shadow_ignore_window = true;
-      #shadow_offset = "0 15";
-      #shadow_scale = 0.97;
+      shadow = {
+        enabled = true;
+        range = 4;
+        render_power = 3;
+        color = "rgba(1a1a1aee)";
+        #ignore_window = true;
+        #offset = "0 15";
+        #scale = 0.97;
+      };
 
       # https://wiki.hyprland.org/Configuring/Variables/#blur
       blur = {

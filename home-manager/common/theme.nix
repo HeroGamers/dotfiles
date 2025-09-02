@@ -115,56 +115,112 @@
 
   programs.waybar = {
     # Inspired/yeeted from https://github.com/rubyowo/dotfiles/blob/nixos/users/rei/confs/waybar/style.css
+    # and https://github.com/qoheniac/config/blob/main/waybar/style.css
     style = ''
       * {
-          font-family: FantasqueSansMono Nerd Font;
-          font-size: 19px;
+          border: none;
+          border-radius: 0;
+          font-family: "JetBrainsMono Nerd Font", "Clear Sans", "Font Awesome 6 Free Solid", monospace;
+          font-size: 12px;
           min-height: 0;
       }
 
       window#waybar {
-          background: transparent;
+          /*background: transparent;*/
+          background-color: rgba(43, 48, 59, 1);
+          color: #ffffff;
+          transition-property: background-color;
+          transition-duration: .5s;
+      }
+
+      window#waybar.empty {
+          color: rgba(0,0,0,0);
+      }
+
+      .topbar {
+          border-bottom: 3px solid rgba(100, 114, 125, 1);
+      }
+
+      .bottombar {
+          border-top: 3px solid rgba(100, 114, 125, 1);
       }
 
       #workspaces {
-          border-radius: 1rem;
+          /*border-radius: 1rem;*/
           background-color: @surface0;
-          margin-top: 1rem;
-          margin: 3px 3px 0px 3px;
+          /*margin-top: 1rem;
+          margin: 3px 3px 0px 3px;*/
       }
 
       #workspaces button {
-          color: @pink;
-          border-radius: 1rem;
-          padding-left: 6px;
-          margin: 5px 0;
-          box-shadow: inset 0 -3px transparent;
-          transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
+          padding: 0 5px;
           background-color: transparent;
+          color: #ffffff;
       }
 
       #workspaces button.active {
           color: @flamingo;
-          border-radius: 1rem;
+          /*border-radius: 1rem;*/
+      }
+
+      #workspaces button.focused {
+          background-color: #64727D;
+          box-shadow: inset 0 3px #ffffff;
+      }
+
+      #workspaces button.urgent {
+          background-color: #eb4d4b;
       }
 
       #workspaces button:hover {
-          color: @rosewater;
-          border-radius: 1rem;
+          background: rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 3px #ffffff;
       }
 
-      #tray,
-      #network,
       #backlight,
-      #clock,
+      #power-profiles-daemon,
       #battery,
-      #pulseaudio,
+      #battery.bat1,
+      #battery.bat2,
+      #clock,
+      #cpu,
+      #custom-mail,
       #custom-lock,
-      #custom-power {
+      #custom-power
+      #custom-poweroff,
+      #custom-weather,
+      #disk,
+      #idle_inhibitor,
+      #memory,
+      #mode,
+      #network,
+      #network.vpn,
+      #network.wifi,
+      #network.ethernet,
+      #network.disconnected,
+      #pulseaudio,
+      #taskbar,
+      #temperature,
+      #tray {
+          padding: 0 6px;
+          margin: 0 0px;
+          color: #ffffff;
           background-color: @surface0;
-          margin: 3px 3px 0px 3px;
+          /*margin: 3px 3px 0px 3px;
           padding: 5px 5px 5px 5px;
-          border-radius: 1rem;
+          border-radius: 1rem;*/
+      }
+
+      @keyframes blink {
+          to {
+              background-color: #ffffff;
+              color: #000000;
+          }
+      }
+
+      #mode {
+          background-color: #64727D;
+          border-top: 3px solid #ffffff;
       }
 
       #clock {
@@ -181,6 +237,16 @@
 
       #battery.warning:not(.charging) {
           color: @red;
+      }
+
+      #battery.critical:not(.charging) {
+          background-color: #f53c3c;
+          color: #ffffff;
+          animation-name: blink;
+          animation-duration: 0.5s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
       }
 
       #network {
@@ -200,9 +266,7 @@
       }
 
       #custom-power {
-          border-radius: 1rem;
           color: @red;
-          margin-bottom: 1rem;
       }
 
       #tray {
@@ -216,6 +280,20 @@
 
       tooltip label {
           color: @text;
+      }
+
+      #temperature.critical {
+          background-color: #eb4d4b;
+      }
+
+      #taskbar button:hover {
+          background: rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0 3px #ffffff;
+      }
+
+      #taskbar button.active {
+          background-color: #64727D;
+          box-shadow: inset 0 3px #ffffff;
       }
     '';
   };

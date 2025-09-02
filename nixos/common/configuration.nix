@@ -26,11 +26,13 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
+    # You can also split up your configuration and import pieces of it here:
+    # ./users.nix
+
     # Hyprland
     ./hyprland.nix
 
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
+    # Python
     ./python.nix
 
     # Theme
@@ -41,6 +43,9 @@
 
     # Systemd services
     ./systemd-services.nix
+
+    # Sysadmin
+    ./sysadmin.nix
   ];
 
   nixpkgs = lib.mkDefault {
@@ -219,19 +224,22 @@
   # zsh tldr bat ffmpeg imagemagick ncdu ipcalc
   environment.systemPackages = with pkgs; [
     alejandra # Formatter for nix files
-    busybox
+    # busybox
+    coreutils # Provides basic GNU utilities
     curl
     dig
     dunst # Notification daemon
     ffmpeg-headless
     fish
-    freerdp3
+    # flameshot # using spectacle instead
     fzf
     git
     htop
     imagemagick
     ipcalc
     kdePackages.dolphin
+    kdePackages.spectacle
+    keepassxc
     #kitty # defined in hm
     #lazygit # defined in hm
     libressl # netcat
@@ -241,16 +249,15 @@
     ncdu
     neofetch
     networkmanager # my beloved <3
+    networkmanagerapplet # for waybar tray, nm-connection-editor
     #neovim # defined in hm
     # nix-index # using nix-index-database instead
     nix-output-monitor
     nss
     obsidian
-    openssh
     openvpn
+    pavucontrol # PulseAudio Volume Control, also works for PipeWire
     p7zip
-    rdesktop
-    tigervnc
     tldr
     tmux
     tor-browser
@@ -263,6 +270,7 @@
     wl-clipboard
     wofi
     zsh
+    cowsay
   ];
 
   # Hint electron apps to use wayland:

@@ -19,6 +19,9 @@
     # Wine
     ../common/wine.nix
 
+    # Virtualization
+    ../common/virtualization.nix
+
     # Aegisub and other video tools
     ../common/video-editing.nix
 
