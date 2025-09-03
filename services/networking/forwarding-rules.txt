@@ -34,3 +34,6 @@
 ## AutomapHostsOnResolve 1
 
 # onion            127.0.0.1:9053
+
+## AAU
+# aau.dk          172.18.21.2,172.18.21.34

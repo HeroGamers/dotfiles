@@ -12,6 +12,7 @@
       spacing = 4; # Gaps between modules (4px)
       # Choose the order of the modules
       modules-left = [
+        "custom/power"
         "hyprland/workspaces"
         # "sway/workspaces"
         # "sway/mode"
@@ -40,7 +41,6 @@
         "battery"
         "clock"
         "tray"
-        "custom/power"
       ];
       # Modules configuration
       # "sway/workspaces = {
@@ -62,7 +62,7 @@
       keyboard-state = {
         numlock = true;
         capslock = true;
-        format = "{name} {icon}";
+        format = "{icon} {name}";
         format-icons = {
           locked = "";
           unlocked = "";
@@ -192,7 +192,7 @@
       "network#wifi" = {
           interface = "wlp*";
           format-ethernet = "";
-          format-wifi = " {essid} ({signalStrength}%)";
+          format-wifi = "  {essid} ({signalStrength}%)";
           format-linked = "";
           format-disconnected = "";
           tooltip-format = "{ifname}: {ipaddr}/{cidr}";

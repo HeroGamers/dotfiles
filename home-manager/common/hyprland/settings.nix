@@ -31,7 +31,7 @@
     exec-once = [
       #"hyprlock"
       "waybar"
-      "dunst"
+      "dunst" # notification daemon
       #"systemctl --user start plasma-polkit-agent"
       #"${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
     ];
@@ -201,6 +201,16 @@
 
     # Example windowrule v1
     # windowrule = float, ^(kitty)$
+
+    windowrule = [
+      # https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
+      "opacity 0.0 override, class:^(xwaylandvideobridge)$"
+      "noanim, class:^(xwaylandvideobridge)$"
+      "noinitialfocus, class:^(xwaylandvideobridge)$"
+      "maxsize 1 1, class:^(xwaylandvideobridge)$"
+      "noblur, class:^(xwaylandvideobridge)$"
+      "nofocus, class:^(xwaylandvideobridge)$"
+    ];
 
     # Example windowrule v2
     # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$

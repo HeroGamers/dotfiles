@@ -32,6 +32,9 @@
     # Hyprland
     ./hyprland.nix
 
+    # Walker
+    ./walker.nix
+
     # Python
     ./python.nix
 
@@ -240,10 +243,12 @@
     ipcalc
     kdePackages.dolphin
     kdePackages.spectacle
-    keepassxc
+    kdePackages.xwaylandvideobridge
+    keepassxc # also used for keyring secret service
     #kitty # defined in hm
     #lazygit # defined in hm
     libressl # netcat
+    libsecret # for modifying secrets in keyring secret service
     macchanger
     #mpv # defined in hm
     nasm

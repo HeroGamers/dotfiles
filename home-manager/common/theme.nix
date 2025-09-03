@@ -116,19 +116,20 @@
   programs.waybar = {
     # Inspired/yeeted from https://github.com/rubyowo/dotfiles/blob/nixos/users/rei/confs/waybar/style.css
     # and https://github.com/qoheniac/config/blob/main/waybar/style.css
+    # and https://github.com/d00m1k/SimpleBlueColorWaybar/blob/main/style.css
     style = ''
       * {
           border: none;
           border-radius: 0;
-          font-family: "JetBrainsMono Nerd Font", "Clear Sans", "Font Awesome 6 Free Solid", monospace;
+          font-family: "JetBrainsMono Nerd Font", "Clear Sans", "Fira Sans Semibold", "Font Awesome 6 Free Solid", FontAwesome, Roboto, monospace;
           font-size: 12px;
           min-height: 0;
+          transition: background-color .3s ease-out;
       }
 
       window#waybar {
-          /*background: transparent;*/
-          background-color: rgba(43, 48, 59, 1);
-          color: #ffffff;
+          background: rgba(26, 27, 38, 0.75);
+          color: #c0caf5;
           transition-property: background-color;
           transition-duration: .5s;
       }
@@ -146,7 +147,7 @@
       }
 
       #workspaces {
-          /*border-radius: 1rem;*/
+          border-radius: 1rem;
           background-color: @surface0;
           /*margin-top: 1rem;
           margin: 3px 3px 0px 3px;*/
@@ -154,18 +155,24 @@
 
       #workspaces button {
           padding: 0 5px;
+          background: transparent;
           background-color: transparent;
-          color: #ffffff;
+          color: #c0caf5;
+
+          font-weight: 900;
+          font-size: 13pt;
+          border:none;
+          border-radius: 15px;
       }
 
       #workspaces button.active {
           color: @flamingo;
-          /*border-radius: 1rem;*/
+          background: #13131d;
       }
 
       #workspaces button.focused {
           background-color: #64727D;
-          box-shadow: inset 0 3px #ffffff;
+          box-shadow: none;
       }
 
       #workspaces button.urgent {
@@ -174,7 +181,8 @@
 
       #workspaces button:hover {
           background: rgba(0, 0, 0, 0.2);
-          box-shadow: inset 0 3px #ffffff;
+          box-shadow: none;
+          color: #cdd6f4;
       }
 
       #backlight,
@@ -201,14 +209,66 @@
       #pulseaudio,
       #taskbar,
       #temperature,
-      #tray {
+      #tray,
+      #wireplumber,
+      #custom-media,
+      #scratchpad,
+      #language,
+      #mpd {
           padding: 0 6px;
           margin: 0 0px;
           color: #ffffff;
-          background-color: @surface0;
-          /*margin: 3px 3px 0px 3px;
-          padding: 5px 5px 5px 5px;
-          border-radius: 1rem;*/
+          border-radius: 15px;
+          /*background-color: rgba(0, 0, 8, .7);*/
+      }
+
+      #backlight:hover,
+      #power-profiles-daemon:hover,
+      #battery:hover,
+      #battery.bat1:hover,
+      #battery.bat2:hover,
+      #clock:hover,
+      #cpu:hover,
+      #custom-mail:hover,
+      #custom-lock:hover,
+      #custom-power
+      #custom-poweroff:hover,
+      #custom-weather:hover,
+      #disk:hover,
+      #idle_inhibitor:hover,
+      #memory:hover,
+      #mode:hover,
+      #network:hover,
+      #network.vpn:hover,
+      #network.wifi:hover,
+      #network.ethernet:hover,
+      #network.disconnected:hover,
+      #pulseaudio:hover,
+      #taskbar:hover,
+      #temperature:hover,
+      #tray:hover,
+      #wireplumber:hover,
+      #custom-media:hover,
+      #scratchpad:hover,
+      #language:hover,
+      #mpd:hover {
+          background: rgba(26, 27, 38, 0.9);
+      }
+
+      .modules-left,
+      .modules-center,
+      .modules-right
+      {
+          background: @surface0;
+          margin: 5px 10px;
+          padding: 0 5px;
+          border-radius: 15px;
+      }
+      .modules-left {
+          padding: 0;
+      }
+      .modules-center {
+          padding: 0 10px;
       }
 
       @keyframes blink {
@@ -270,7 +330,7 @@
       }
 
       #tray {
-          border-radius: 1rem;
+          /*border-radius: 1rem;*/
       }
 
       tooltip {

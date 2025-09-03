@@ -9,7 +9,8 @@
         "$mod, M, exit,"
         "$mod, E, exec, dolphin"
         "$mod, V, togglefloating,"
-        "$mod, R, exec, wofi --show drun"
+        "$mod, R, exec, wofi --show drun" # launch wofi
+        "$mod, space, exec, walker" # launch walker
         "$mod, P, pseudo," # dwindle
         "$mod, J, togglesplit," # dwindle
 

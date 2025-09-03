@@ -40,6 +40,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Walker app launcher
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hackpkgs
     hackpkgs = {
       # url = "git+https://github.com/HeroGamers/hackpkgs";
