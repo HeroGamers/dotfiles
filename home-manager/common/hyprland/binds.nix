@@ -32,6 +32,28 @@
         # Scroll through existing workspaces with mainMod + scroll
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
+
+        # Keyboard backlight - not needed on ThinkPad - the BIOS does it when pressing FN + Space
+        # ", XF86MonBrightnessUp, exec, brightnessctl -d *::kbd_backlight set +33%"
+        # ", XF86MonBrightnessDown, exec, brightnessctl -d *::kbd_backlight set 33%-"
+
+        # Monitor backlight
+        ", XF86MonBrightnessUp, exec, brightnessctl set +10%"
+        ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
+
+        # Volume and Media Control
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+" # To raise the volume, with a limit of 150%
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        # ", XF86AudioLowerVolume, exec, pamixer -d 5"
+        # ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+        # ", XF86AudioMicMute, exec, pamixer --default-source -m"
+        # ", XF86AudioMute, exec, pamixer -t"
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioPause, exec, playerctl play-pause"
+        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPrev, exec, playerctl previous"
       ]
       # Switch workspaces with mod + [0-9]
       # Move active window to a workspace with mod + SHIFT + [0-9]

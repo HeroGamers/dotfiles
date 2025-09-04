@@ -228,7 +228,7 @@
   environment.systemPackages = with pkgs; [
     alejandra # Formatter for nix files
     # busybox
-    brightnessctl
+    brightnessctl # Backlight control
     coreutils # Provides basic GNU utilities
     curl
     dig
@@ -263,6 +263,7 @@
     obsidian
     openvpn
     pavucontrol # PulseAudio Volume Control, also works for PipeWire
+    playerctl # CLI media player controller
     p7zip
     tldr
     tmux
@@ -270,6 +271,7 @@
     unrar
     vlc
     vscode
+    wev
     wget
     whois
     wireguard-tools
