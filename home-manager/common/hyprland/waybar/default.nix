@@ -3,6 +3,10 @@
   lib,
   ...
 }: {
+  imports = [
+    ./style.nix
+  ];
+
   programs.waybar.settings = {
     mainBar = {
       # "layer = "top"; # Waybar at top layer

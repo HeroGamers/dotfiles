@@ -61,8 +61,8 @@
       border_size = 2;
 
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-      "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-      "col.inactive_border" = "rgba(595959aa)";
+      "col.active_border" = "$pink $maroon 45deg";
+      "col.inactive_border" = "$flamingo";
 
       # Set to true enable resizing windows by clicking and dragging on borders and gaps
       resize_on_border = true;
@@ -85,7 +85,7 @@
         enabled = true;
         range = 4;
         render_power = 3;
-        color = "rgba(1a1a1aee)";
+        color = "$base";
         #ignore_window = true;
         #offset = "0 15";
         #scale = 0.97;
@@ -242,7 +242,7 @@
       hyprexpo = {
         columns = 3;
         gap_size = 4;
-        bg_col = "rgb(000000)";
+        bg_col = "$crust";
 
         enable_gesture = true;
         gesture_distance = 300;
