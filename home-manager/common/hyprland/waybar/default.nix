@@ -214,13 +214,13 @@
         format = "{icon} {volume}%{format_source}";
         format-bluetooth = "{icon} {volume}%{format_source}";
         format-bluetooth-muted = " {icon}{format_source}";
-        format-muted = " {format_source}";
+        format-muted = "󰝟 {format_source}";
         format-source = "  {volume}%";
-        format-source-muted = "";
+        format-source-muted = " ";
         format-icons = {
           headphone = "";
-          # hands-free = "";
-          # headset = "";
+          hands-free = "";
+          headset = "󰋎";
           phone = "";
           portable = "";
           car = "";
@@ -244,14 +244,7 @@
       "custom/power" = {
         format = "⏻ ";
         tooltip = false;
-        menu = "on-click";
-        menu-file = "$HOME/.config/waybar/power_menu.xml"; # Menu file in resources folder
-        menu-actions = {
-          shutdown = "shutdown";
-          reboot = "reboot";
-          suspend = "systemctl suspend";
-          hibernate = "systemctl hibernate";
-        };
+        on-click = "wlogout";
       };
     };
   };

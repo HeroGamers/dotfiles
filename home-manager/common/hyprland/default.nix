@@ -44,10 +44,11 @@
     # pkgs.hyprlandPlugins.<plugin>
     # From Flake:
     # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.<plugin>
-    plugins = with inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}; [
-      hyprbars
-      hyprexpo
-      #hyprlock
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+      pkgs.hyprlock
+      pkgs.hypridle
     ];
   };
 
@@ -57,10 +58,79 @@
     };
     wlogout = {
       enable = true;
+
+      # Hyprland (UWSM) with hyprlock
+      layout = [
+        {
+          label = "lock";
+          # action = "loginctl lock-session";
+          action = "hyprlock";
+          text = "Lock";
+          keybind = "l";
+        }
+        {
+          label = "hibernate";
+          action = "systemctl hibernate";
+          text = "Hibernate";
+          keybind = "h";
+        }
+        {
+          label = "logout";
+          # action = "loginctl terminate-user $USER";
+          action = "hyprctl dispatch exit";
+          text = "Logout";
+          keybind = "e";
+        }
+        {
+          label = "shutdown";
+          action = "systemctl poweroff";
+          text = "Shutdown";
+          keybind = "s";
+        }
+        {
+          label = "suspend";
+          action = "systemctl suspend";
+          text = "Suspend";
+          keybind = "u";
+        }
+        {
+          label = "reboot";
+          action = "systemctl reboot";
+          text = "Reboot";
+          keybind = "r";
+        }
+      ];
     };
-    # hyprlock = {
-    #     enable = true;
-    # };
+    hyprlock = {
+      enable = true;
+    };
+  };
+
+  services = {
+    hypridle = {
+      enable = true;
+
+      settings = {
+        general = {
+          before_sleep_cmd = "hyprlock";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+          ignore_dbus_inhibit = false;
+          lock_cmd = "hyprlock";
+        };
+
+        listener = [
+          {
+            timeout = 900;
+            on-timeout = "hyprlock";
+          }
+          {
+            timeout = 1200;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+        ];
+      };
+    };
   };
 
   # Enable gtk

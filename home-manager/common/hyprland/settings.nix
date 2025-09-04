@@ -29,9 +29,10 @@
     # exec-once = nm-applet &
     # exec-once = waybar & hyprpaper & firefox
     exec-once = [
-      #"hyprlock"
-      "waybar"
       "dunst" # notification daemon
+      "waybar & hypridle &"
+      "kitty"
+      "firefox"
       #"systemctl --user start plasma-polkit-agent"
       #"${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
     ];
@@ -155,6 +156,10 @@
 
       # disable dragging animation
       #animate_mouse_windowdragging = false;
+
+      # dpms
+      mouse_move_enables_dpms = true;
+      key_press_enables_dpms = true;
 
       # enable variable refresh rate (effective depending on hardware)
       #vrr = 1;

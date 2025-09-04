@@ -15,7 +15,7 @@
         "$mod, J, togglesplit," # dwindle
 
         # lock screen
-        #"$mod, L, exec, pgrep hyprlock || hyprlock"
+        "$mod, L, exec, pgrep hyprlock || hyprlock"
 
         # Move focus with mod + arrow keys
         "$mod, left, movefocus, l"

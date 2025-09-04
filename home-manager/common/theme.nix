@@ -107,8 +107,22 @@
       flavor = "${config.catppuccin.flavor}";
     };
 
+    wlogout = {
+      enable = true;
+
+      accent = "${config.catppuccin.accent}";
+      flavor = "${config.catppuccin.flavor}";
+    };
+
     # Also enable for hyprland
     hyprland = {
+      enable = true;
+
+      accent = "${config.catppuccin.accent}";
+      flavor = "${config.catppuccin.flavor}";
+    };
+
+    hyprlock = {
       enable = true;
 
       accent = "${config.catppuccin.accent}";
