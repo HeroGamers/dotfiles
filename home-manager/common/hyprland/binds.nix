@@ -16,6 +16,8 @@
 
         # lock screen
         "$mod, L, exec, pgrep hyprlock || hyprlock"
+        # CTRL + ALT + DEL for wlogout
+        "CONTROL_ALT, Delete, exec, wlogout"
 
         # Move focus with mod + arrow keys
         "$mod, left, movefocus, l"
