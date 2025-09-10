@@ -193,7 +193,7 @@
     # touchpad gestures
     # https://wiki.hyprland.org/Configuring/Variables/#gestures
     gestures = {
-      workspace_swipe = true;
+      workspace_swipe_touch = true;
       workspace_swipe_forever = true;
     };
 

@@ -103,8 +103,11 @@
     };
 
     vscode = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
+      profiles.default = {
+        enable = true;
+
+        flavor = "${config.catppuccin.flavor}";
+      };
     };
 
     wlogout = {
