@@ -3,7 +3,12 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  kali_ferrofluid_wallpaper = pkgs.fetchurl {
+    url = "https://gitlab.com/kalilinux/packages/kali-wallpapers/-/raw/kali/master/2024/backgrounds/kali/kali-ferrofluid-16x9.jpg";
+    hash = "sha256-LyqagIeQAMDpyFuUYxxip3R1rVQHXXI50dQBoddY9os=";
+  };
+in {
   imports = [
     ./settings.nix
     ./binds.nix
@@ -120,14 +125,30 @@
 
         listener = [
           {
-            timeout = 5*60;
+            timeout = 5 * 60;
             on-timeout = "hyprlock";
           }
           {
-            timeout = 15*60;
+            timeout = 15 * 60;
             on-timeout = "hyprctl dispatch dpms off";
             on-resume = "hyprctl dispatch dpms on";
           }
+        ];
+      };
+    };
+
+    hyprpaper = {
+      enable = true;
+
+      settings = {
+        # ipc = "on";
+        # splash = false;
+        # splash_offset = 2.0;
+
+        preload = ["${kali_ferrofluid_wallpaper}"];
+
+        wallpaper = [
+          ", ${kali_ferrofluid_wallpaper}"
         ];
       };
     };

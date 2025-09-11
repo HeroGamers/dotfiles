@@ -175,6 +175,7 @@
   # Enable bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = true; # enables the Blueman manager applet (tray icon, pairing, etc.)
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput = {
@@ -228,6 +229,7 @@
   environment.systemPackages = with pkgs; [
     alejandra # Formatter for nix files
     # busybox
+    # blueman # Bluetooth manager, primarily for the tray icon - done with service instead
     brightnessctl # Backlight control
     coreutils # Provides basic GNU utilities
     curl

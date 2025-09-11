@@ -30,9 +30,15 @@
     # exec-once = waybar & hyprpaper & firefox
     exec-once = [
       "dunst" # notification daemon
-      "waybar & hypridle &"
-      "kitty"
-      "firefox"
+      "hypridle" # idle management
+      "waybar" # status bar
+      "hyprpaper" # wallpaper manager
+      "kitty" # terminal
+      "firefox" # web browser
+
+      # system tray stuff
+      "nm-applet" # network manager applet
+      "blueman-applet" # bluetooth manager applet
       #"systemctl --user start plasma-polkit-agent"
       #"${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
     ];
@@ -114,25 +120,28 @@
     # https://wiki.hyprland.org/Configuring/Variables/#animations
     animations = {
       enabled = true;
-
-      # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-      bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-
-      animation = [
-        #"border, 1, 2, default"
-        #"fade, 1, 4, default"
-        #"windows, 1, 3, default, popin 80%"
-        #"workspaces, 1, 2, default, slide"
-
-        # Default config
-        "windows, 1, 7, myBezier"
-        "windowsOut, 1, 7, default, popin 80%"
-        "border, 1, 10, default"
-        "borderangle, 1, 8, default"
-        "fade, 1, 7, default"
-        "workspaces, 1, 6, default"
-      ];
     };
+
+    # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+    # https://wiki.hypr.land/Configuring/Animations/#curves
+    bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+
+    animation = [
+      #"border, 1, 2, default"
+      #"fade, 1, 4, default"
+      #"windows, 1, 3, default, popin 80%"
+      #"workspaces, 1, 2, default, slide"
+
+      # Default config
+      "windows, 1, 4, default, slide"
+      "workspaces, 1,5, default, slide"
+      #"windows, 1, 7, myBezier"
+      "windowsOut, 1, 7, default, popin 80%"
+      "border, 1, 10, default"
+      "borderangle, 1, 8, default"
+      "fade, 1, 7, default"
+      #"workspaces, 1, 6, default"
+    ];
 
     # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
     dwindle = {
@@ -190,12 +199,33 @@
       };
     };
 
-    # touchpad gestures
+    # gestures (touchscreen + workspace settings)
     # https://wiki.hyprland.org/Configuring/Variables/#gestures
     gestures = {
-      workspace_swipe_touch = true;
+      # workspace_swipe_touch = true;  # this is a touchscreen not touchpad
       workspace_swipe_forever = true;
     };
+
+    # touchpad gestures
+    # gesture = fingers, direction, action, options
+    # https://wiki.hypr.land/Configuring/Gestures/
+    gesture = [
+      # 3 finger gestures
+      # Swipe 3 fingers horizontally to switch workspace
+      "3, horizontal, workspace"
+      # Swipe 3 fingers down to launch kitty
+      "3, down, dispatcher, exec, kitty"
+
+      # 4 finger gestures
+      "4, left, move, l"
+      "4, right, move, r"
+      "4, down, move, d"
+      "4, up, move, u"
+
+      # pinches
+      "3, pinch, float"
+      "4, pinch, fullscreen"
+    ];
 
     ##############################
     ### WINDOWS AND WORKSPACES ###
@@ -215,6 +245,9 @@
       "maxsize 1 1, class:^(xwaylandvideobridge)$"
       "noblur, class:^(xwaylandvideobridge)$"
       "nofocus, class:^(xwaylandvideobridge)$"
+
+      # Kitty opacity
+      "opacity 0.8 0.8, class:kitty"
     ];
 
     # Example windowrule v2
@@ -222,6 +255,11 @@
 
     windowrulev2 = [
       "suppressevent maximize, class:.*" # You'll probably like this.
+    ];
+
+    layerrule = [
+      "animation popin, wofi"
+      "animation slide, waybar"
     ];
 
     # group = {
