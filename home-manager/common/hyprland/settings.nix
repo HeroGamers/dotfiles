@@ -255,6 +255,7 @@
 
     windowrulev2 = [
       "suppressevent maximize, class:.*" # You'll probably like this.
+      "plugin:hyprbars:nobar, ^floating:0" # Hide bar on non-floating windows
     ];
 
     layerrule = [
@@ -279,7 +280,18 @@
     plugin = {
       hyprbars = {
         bar_height = 20;
+        bar_color = "rgb(363a4f)"; # catppuccin macchiato surface0
+        col.text = "rgb(cad3f5)"; # catppuccin macchiato text
+        bar_text_size = 10;
+        bar_text_font = "Jetbrains Mono Nerd Font Mono Bold";
+        bar_button_padding = 10;
+        bar_padding = 10;
         bar_precedence_over_border = true;
+        hyprbars-button = [
+          "rgb(ed8796), 20, , hyprctl dispatch killactive" # catppuccin macchiato red
+          "rgb(f5a97f), 20, , hyprctl dispatch fullscreen 2" # catppuccin macchiato peach
+          "rgb(8aadf4), 20, , hyprctl dispatch togglefloating" # catppuccin macchiato blue
+        ];
       };
 
       hyprexpo = {
