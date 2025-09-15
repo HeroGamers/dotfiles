@@ -49,6 +49,9 @@
 
     # Sysadmin
     ./sysadmin.nix
+
+    # Office work (word processing, spreadsheets, presentations, etc.)
+    ./office.nix
   ];
 
   nixpkgs = lib.mkDefault {
