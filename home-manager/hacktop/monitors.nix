@@ -2,10 +2,14 @@
   # See https://wiki.hyprland.org/Configuring/Monitors/
   wayland.windowManager.hyprland.settings = {
     monitor = [
+      # Primary (Built-in) Monitor
+      "eDP-1,preferred,auto,1"
       # Docking Station
-      "desc:Philips Consumer Electronics Company PHL 275E2F UHB2247007016, preferred, 0x0, 1"
-      "desc:Philips Consumer Electronics Company PHL 275E2F UHB2247007014, preferred, 2560x0, 1"
-      "desc:Philips Consumer Electronics Company PHL 275E2F UHB2247007017, preferred, 5120x0, 1"
+      "desc:Philips Consumer Electronics Company PHL 275E2F UHB2247007016, preferred, auto-right, 1"
+      "desc:Philips Consumer Electronics Company PHL 275E2F UHB2247007014, preferred, auto-right, 1"
+      "desc:Philips Consumer Electronics Company PHL 275E2F UHB2247007017, preferred, auto-right, 1"
+      # Catch-all
+      ", preferred, auto, 1"
     ];
   };
 }

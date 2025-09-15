@@ -69,7 +69,7 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
       "col.active_border" = "$pink $maroon 45deg";
-      "col.inactive_border" = "$flamingo";
+      "col.inactive_border" = "$surface2";
 
       # Set to true enable resizing windows by clicking and dragging on borders and gaps
       resize_on_border = true;
@@ -261,6 +261,8 @@
     layerrule = [
       "animation popin, wofi"
       "animation slide, waybar"
+      "animation popin, walker"
+      "dimaround, walker"
     ];
 
     # group = {

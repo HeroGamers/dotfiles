@@ -13,21 +13,20 @@
     enable = true;
     runAsService = true;
 
-    # All options from the config.json can be used here.
+    # All options from the config.toml can be used here.
     # config = {
-    #   search.placeholder = "Example";
-    #   ui.fullscreen = true;
-    #   list = {
-    #     height = 200;
-    #   };
-    #   websearch.prefix = "?";
-    #   switcher.prefix = "/";
+    #   placeholders."default".input = "Example";
+    #   providers.prefixes = [
+    #     {provider = "websearch"; prefix = "+";}
+    #     {provider = "providerlist"; prefix = "_";}
+    #   ];
+    #   keybinds.quick_activate = ["F1" "F2" "F3"];
     # };
 
     # If this is not set the default styling is used.
     # theme.style = ''
     #   * {
-    #   color: #dcd7ba;
+    #     color: #dcd7ba;
     #   }
     # '';
   };
