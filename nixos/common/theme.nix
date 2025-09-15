@@ -17,6 +17,7 @@
 
   environment.systemPackages = with pkgs; [
     kdePackages.qtstyleplugin-kvantum
+    libsForQt5.qtstyleplugin-kvantum
     (catppuccin-kde.override {
       accents = ["${config.catppuccin.accent}" "pink"];
       flavour = ["${config.catppuccin.flavor}" "macchiato"];

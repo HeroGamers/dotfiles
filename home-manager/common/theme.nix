@@ -141,6 +141,7 @@
   qt = {
     enable = true;
     platformTheme.name = "kvantum";
+    # platformTheme.name = "qt6ct"; # `qt.platformTheme.name` must be set to `"kvantum"` to use `qt.style.catppuccin`
 
     style = {
       name = "kvantum";

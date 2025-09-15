@@ -192,7 +192,7 @@
       initialPassword = "HelloWorld!";
       isNormalUser = true;
       description = "Hero";
-      extraGroups = ["networkmanager" "wheel" "docker" "dialout" ];
+      extraGroups = ["networkmanager" "wheel" "docker" "dialout" "wireshark"];
       packages = with pkgs; [
         # kdePackages.kate
         # thunderbird
@@ -237,20 +237,22 @@
     dunst # Notification daemon
     ffmpeg-headless
     fish
-    # flameshot # using spectacle instead
+    flameshot # using spectacle instead
     fzf
     git
     htop
     imagemagick
     ipcalc
     kdePackages.dolphin
-    kdePackages.spectacle
+    kdePackages.qt6ct # Qt6 Configuration Tool
+    # kdePackages.spectacle # only works in KDE (needs KWin) :c
     kdePackages.xwaylandvideobridge
     keepassxc # also used for keyring secret service
     #kitty # defined in hm
     #lazygit # defined in hm
     libressl # netcat
     libsecret # for modifying secrets in keyring secret service
+    # libsForQt5.qt5ct # Qt5 Configuration Tool
     macchanger
     #mpv # defined in hm
     nasm

@@ -54,6 +54,12 @@
     wstunnel
   ];
 
+  programs.wireshark = {
+    enable = true;
+    dumpcap.enable = true;
+    usbmon.enable = true;
+  };
+
   # Prevent GC of IDA Pro
   # system.extraDependencies = [
   #   ida-pro.src
