@@ -197,7 +197,10 @@
       initialPassword = "HelloWorld!";
       isNormalUser = true;
       description = "Hero";
-      extraGroups = ["networkmanager" "wheel" "docker" "dialout" "wireshark"];
+      extraGroups = [
+        "networkmanager" "wheel" "docker" "dialout" "wireshark"
+        "input" # for reading udev input devices
+      ];
       packages = with pkgs; [
         # kdePackages.kate
         # thunderbird
