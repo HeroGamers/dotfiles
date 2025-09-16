@@ -240,9 +240,9 @@
     dunst # Notification daemon
     ffmpeg-headless
     fish
-    flameshot # using spectacle instead
     fzf
     git
+    grim # Screenshot utility for Wayland
     htop
     imagemagick
     ipcalc
@@ -272,6 +272,7 @@
     pavucontrol # PulseAudio Volume Control, also works for PipeWire
     playerctl # CLI media player controller
     p7zip
+    slurp # Select region utility for Wayland
     tldr
     tmux
     tor-browser

@@ -26,6 +26,8 @@
         "$mod, down, movefocus, d"
 
         #", Print, exec, grimblast copy area"
+        # ", Print, exec, grim -g \"$(slurp)\" - | wl-copy" # grim + slurp + wl-copy to clipboard
+        ", Print, exec, XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway QT_QPA_PLATFORM=wayland flameshot gui" # flameshot gui, with wayland vars
 
         # Example special workspace (scratchpad)
         #"$mod, S, togglespecialworkspace, magic"

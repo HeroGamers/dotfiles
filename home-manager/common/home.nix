@@ -29,6 +29,9 @@
 
     # Theme
     ./theme.nix
+
+    # Screencapture
+    ./screencapture.nix
   ];
 
   # Set your username

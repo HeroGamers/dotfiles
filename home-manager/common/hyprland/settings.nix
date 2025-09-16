@@ -234,10 +234,10 @@
     # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
     # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
 
-    # Example windowrule v1
-    # windowrule = float, ^(kitty)$
-
     windowrule = [
+      "suppressevent maximize, class:.*" # You'll probably like this.
+      "plugin:hyprbars:nobar, ^floating:0" # Hide bar on non-floating windows
+
       # https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
       "opacity 0.0 override, class:^(xwaylandvideobridge)$"
       "noanim, class:^(xwaylandvideobridge)$"
@@ -248,14 +248,13 @@
 
       # Kitty opacity
       "opacity 0.8 0.8, class:kitty"
-    ];
 
-    # Example windowrule v2
-    # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
-
-    windowrulev2 = [
-      "suppressevent maximize, class:.*" # You'll probably like this.
-      "plugin:hyprbars:nobar, ^floating:0" # Hide bar on non-floating windows
+      # flameshot multi-display fix: https://ryanwise.me/blog/flameshot-on-hyprland/
+      "move 0 0,class:(flameshot),title:(flameshot)"
+      "pin,class:(flameshot),title:(flameshot)"
+      "fullscreenstate,class:(flameshot),title:(flameshot)"
+      "float,class:(flameshot),title:(flameshot)"
+      "noanim,class:(flameshot),title:(flameshot)" # disable animations for flameshot
     ];
 
     layerrule = [
