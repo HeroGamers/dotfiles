@@ -18,8 +18,10 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
 
-    # Use the hyprland from the flake
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
+    # ref: https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#using-the-home-manager-module-with-nixos
+    package = null;
+    portalPackage = null;
 
     # Extra configuration lines to add to ~/.config/hypr/hyprland.conf.
     # extraConfig = ''

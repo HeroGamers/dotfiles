@@ -41,10 +41,13 @@ in {
     package32 = pkgs-unstable.pkgsi686Linux.mesa;
   };
 
-  # Screensharing support - should be default in Hyprland anyway, so maybe not enable this?
+  # Screensharing support
   # https://wiki.nixos.org/wiki/Hyprland#Screensharing
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
-  # };
+  xdg.portal = {
+    enable = true;
+    # extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+    extraPortals = [
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
+     ];
+  };
 }
