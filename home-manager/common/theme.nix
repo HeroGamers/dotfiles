@@ -66,6 +66,11 @@
       flavor = "${config.catppuccin.flavor}";
     };
 
+    zellij = {
+      enable = true;
+      flavor = "${config.catppuccin.flavor}";
+    };
+
     zsh-syntax-highlighting = {
       enable = true;
       flavor = "${config.catppuccin.flavor}";

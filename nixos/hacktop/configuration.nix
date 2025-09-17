@@ -58,5 +58,6 @@
 
   environment.systemPackages = with pkgs; [
     discord-canary
+    signal-desktop
   ];
 }

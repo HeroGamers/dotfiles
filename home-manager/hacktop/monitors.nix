@@ -8,8 +8,6 @@
       "desc:Philips Consumer Electronics Company PHL 275E2F UHB2247007016, preferred, auto-right, 1"
       "desc:Philips Consumer Electronics Company PHL 275E2F UHB2247007014, preferred, auto-right, 1"
       "desc:Philips Consumer Electronics Company PHL 275E2F UHB2247007017, preferred, auto-right, 1"
-      # Catch-all
-      ", preferred, auto, 1"
     ];
   };
 }

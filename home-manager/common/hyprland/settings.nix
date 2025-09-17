@@ -15,7 +15,8 @@
 
     # See https://wiki.hyprland.org/Configuring/Monitors/
     monitor = [
-      ",preferred,auto,auto"
+      # Catch-all
+      ", preferred, auto, 1"
     ];
 
     #################

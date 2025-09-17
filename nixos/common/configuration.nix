@@ -251,7 +251,11 @@
     htop
     imagemagick
     ipcalc
-    kdePackages.dolphin
+    kdePackages.dolphin # File manager
+    kdePackages.kio-fuse # to mount remote filesystems via FUSE
+    kdePackages.kio-extras # extra protocols support (sftp, fish and more)
+    kdePackages.plasma-workspace # for icons and XDG menu
+    kdePackages.qtsvg # Qt SVG module
     kdePackages.qt6ct # Qt6 Configuration Tool
     # kdePackages.spectacle # only works in KDE (needs KWin) :c
     kdePackages.xwaylandvideobridge
@@ -262,6 +266,7 @@
     libsecret # for modifying secrets in keyring secret service
     # libsForQt5.qt5ct # Qt5 Configuration Tool
     macchanger
+    magic-wormhole # file transfer tool
     #mpv # defined in hm
     nasm
     ncdu
@@ -284,6 +289,7 @@
     unrar
     vlc
     vscode
+    yazi # TUI file manager
     wev
     wget
     whois

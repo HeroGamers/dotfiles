@@ -23,4 +23,9 @@
                  set -g @catppuccin_date_time "%H:%M"
     '';
   };
+
+  programs.zellij = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }

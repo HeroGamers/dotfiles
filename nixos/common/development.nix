@@ -18,13 +18,15 @@
     cmake
     # gnumake
     # ninja
-    # gdb
+    # gdb  # use Pwndbg instead
+    gradle # Gradle build tool for Java projects
     # ant
-    # maven
+    maven # Apache Maven for Java projects
     # nodejs-10_x
+    jdk # newest LTS Java JDK
     # jekyll
     gcc
-    rustup
+    rustup # Rust toolchain installer
     llvm
     # lld
     # lldb

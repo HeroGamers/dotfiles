@@ -48,6 +48,10 @@ in {
     # extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
     extraPortals = [
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
-     ];
+      # pkgs.kdePackages.xdg-desktop-portal-kde # already added when using KDE
+    ];
   };
+
+  # Fix unpopulated MIME menus in dolphin
+  environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 }

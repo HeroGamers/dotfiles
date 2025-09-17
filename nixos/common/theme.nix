@@ -3,11 +3,38 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  sddm_wallpaper = pkgs.fetchurl {
+    url = "https://w.wallhaven.cc/full/6l/wallhaven-6lkyeq.png";
+    hash = "sha256-YRcxOcDVHaEZNgQ+suCitgy2WSZIq0tH6T8sOB7J4EU=";
+  };
+in {
   imports = [
     # Import Catpuccin
     inputs.catppuccin.nixosModules.catppuccin
   ];
+
+  catppuccin = {
+    enable = true;
+
+    accent = "pink";
+    flavor = "macchiato";
+
+    tty = {
+      enable = true;
+
+      flavor = "${config.catppuccin.flavor}";
+    };
+
+    sddm = {
+      enable = true;
+
+      accent = "${config.catppuccin.accent}";
+      flavor = "${config.catppuccin.flavor}";
+
+      background = "${sddm_wallpaper}";
+    };
+  };
 
   # Enable cache for the catppuccin flake
   nix.settings = {
