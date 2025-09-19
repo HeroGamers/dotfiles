@@ -14,8 +14,8 @@
         "$mod, P, pseudo," # dwindle
         "$mod, J, togglesplit," # dwindle
 
-        # lock screen
-        "$mod, L, exec, pgrep hyprlock || hyprlock"
+        # lock screen (CTRL + ALT + L, $mod + L is taken for vim switching)
+        "CONTROL_ALT, L, exec, pgrep hyprlock || hyprlock"
         # CTRL + ALT + DEL for wlogout
         "CONTROL_ALT, Delete, exec, wlogout"
 
