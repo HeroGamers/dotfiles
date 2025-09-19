@@ -24,6 +24,11 @@
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
+        # And with mod + HJKL
+        "$mod, H, movefocus, l"
+        "$mod, L, movefocus, r"
+        "$mod, K, movefocus, u"
+        "$mod, J, movefocus, d"
 
         #", Print, exec, grimblast copy area"
         # ", Print, exec, grim -g \"$(slurp)\" - | wl-copy" # grim + slurp + wl-copy to clipboard

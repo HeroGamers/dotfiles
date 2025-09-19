@@ -3,7 +3,16 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  kali_ferrofluid_wallpaper = pkgs.fetchurl {
+    url = "https://gitlab.com/kalilinux/packages/kali-wallpapers/-/raw/kali/master/2024/backgrounds/kali/kali-ferrofluid-16x9.jpg";
+    hash = "sha256-LyqagIeQAMDpyFuUYxxip3R1rVQHXXI50dQBoddY9os=";
+  };
+  lock_wallpaper = pkgs.fetchurl {
+    url = "https://w.wallhaven.cc/full/6l/wallhaven-6lkyeq.png";
+    hash = "sha256-YRcxOcDVHaEZNgQ+suCitgy2WSZIq0tH6T8sOB7J4EU=";
+  };
+in {
   imports = [
     # Import Catpuccin
     inputs.catppuccin.homeModules.catppuccin
@@ -150,6 +159,32 @@
 
     style = {
       name = "kvantum";
+    };
+  };
+
+  programs = {
+    hyprlock = {
+      settings = {
+        background = [
+          {
+            path = "${lock_wallpaper}";
+            blur_passes = 2;
+            blur_size = 4;
+          }
+        ];
+      };
+    };
+  };
+
+  services = {
+    hyprpaper = {
+      settings = {
+        preload = ["${kali_ferrofluid_wallpaper}"];
+
+        wallpaper = [
+          ", ${kali_ferrofluid_wallpaper}"
+        ];
+      };
     };
   };
 

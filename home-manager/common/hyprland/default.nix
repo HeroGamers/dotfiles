@@ -3,12 +3,7 @@
   pkgs,
   lib,
   ...
-}: let
-  kali_ferrofluid_wallpaper = pkgs.fetchurl {
-    url = "https://gitlab.com/kalilinux/packages/kali-wallpapers/-/raw/kali/master/2024/backgrounds/kali/kali-ferrofluid-16x9.jpg";
-    hash = "sha256-LyqagIeQAMDpyFuUYxxip3R1rVQHXXI50dQBoddY9os=";
-  };
-in {
+}: {
   imports = [
     ./settings.nix
     ./binds.nix
@@ -110,6 +105,8 @@ in {
     };
     hyprlock = {
       enable = true;
+
+      # Background handled in theme.nix
     };
   };
 
@@ -147,11 +144,7 @@ in {
         # splash = false;
         # splash_offset = 2.0;
 
-        preload = ["${kali_ferrofluid_wallpaper}"];
-
-        wallpaper = [
-          ", ${kali_ferrofluid_wallpaper}"
-        ];
+        # Wallpaper handled in theme.nix
       };
     };
   };

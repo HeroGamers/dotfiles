@@ -5,8 +5,8 @@
   ...
 }: let
   sddm_wallpaper = pkgs.fetchurl {
-    url = "https://w.wallhaven.cc/full/6l/wallhaven-6lkyeq.png";
-    hash = "sha256-YRcxOcDVHaEZNgQ+suCitgy2WSZIq0tH6T8sOB7J4EU=";
+    url = "https://w.wallhaven.cc/full/ex/wallhaven-exkqk8.jpg";
+    hash = "sha256-HATmU/6OrfgeoPIeUca/QFk3lzKD9NcpJenXQjMgMlU=";
   };
 in {
   imports = [
