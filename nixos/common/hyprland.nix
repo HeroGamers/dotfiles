@@ -54,4 +54,9 @@ in {
 
   # Fix unpopulated MIME menus in dolphin
   environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+
+
+  environment.systemPackages = [
+    pkgs.nwg-displays
+  ];
 }

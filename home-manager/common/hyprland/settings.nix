@@ -18,6 +18,10 @@
       # Catch-all
       ", preferred, auto, 1"
     ];
+    source = [
+      "~/.config/hypr/monitors.conf" # Use nwg-displays to manage monitors, saves config here
+      "~/.config/hypr/workspaces.conf" # nwg-displays to manage default workspaces and binding workspaces to monitors, saves config here
+    ];
 
     #################
     ### AUTOSTART ###
