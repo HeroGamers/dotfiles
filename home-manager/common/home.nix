@@ -65,6 +65,12 @@
   };
   # home.packages = with pkgs; [ steam ];
 
+  services = lib.mkDefault {
+    dunst = {
+      enable = true;
+    };
+  };
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 

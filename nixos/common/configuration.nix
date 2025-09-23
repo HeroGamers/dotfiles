@@ -242,7 +242,7 @@
     coreutils # Provides basic GNU utilities
     curl
     dig
-    dunst # Notification daemon
+    # dunst # defined in HM
     ffmpeg-headless
     fish
     fzf

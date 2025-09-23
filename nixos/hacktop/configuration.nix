@@ -31,6 +31,9 @@
     # Games
     ../common/games.nix
 
+    # GRUB
+    # ../common/grub.nix
+
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
