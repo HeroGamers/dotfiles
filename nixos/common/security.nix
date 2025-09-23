@@ -38,6 +38,7 @@
     one_gadget
     patchelf
     powershell
+    proxmark3
     pwndbg
     pwninit
     pwntools

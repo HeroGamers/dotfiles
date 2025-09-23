@@ -124,6 +124,13 @@ in {
       };
     };
 
+    yazi = {
+      enable = true;
+
+      accent = "${config.catppuccin.accent}";
+      flavor = "${config.catppuccin.flavor}";
+    };
+
     wlogout = {
       enable = true;
 

@@ -14,8 +14,8 @@
         "$mod, P, pseudo," # dwindle
         "$mod, J, togglesplit," # dwindle
 
-        # lock screen (CTRL + ALT + L, $mod + L is taken for vim switching)
-        "CONTROL_ALT, L, exec, pgrep hyprlock || hyprlock"
+        # lock screen
+        "$mod, L, exec, pgrep hyprlock || hyprlock"
         # CTRL + ALT + DEL for wlogout
         "CONTROL_ALT, Delete, exec, wlogout"
 
@@ -24,11 +24,11 @@
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
-        # And with mod + HJKL
-        "$mod, H, movefocus, l"
-        "$mod, L, movefocus, r"
-        "$mod, K, movefocus, u"
-        "$mod, J, movefocus, d"
+        # And with SUPER + SHIFT + HJKL
+        "SUPER_SHIFT, H, movefocus, l" 
+        "SUPER_SHIFT, L, movefocus, r" # $mod + l is used to lock the screen
+        "SUPER_SHIFT, K, movefocus, u"
+        "SUPER_SHIFT, J, movefocus, d"
 
         #", Print, exec, grimblast copy area"
         # ", Print, exec, grim -g \"$(slurp)\" - | wl-copy" # grim + slurp + wl-copy to clipboard
