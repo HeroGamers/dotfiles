@@ -68,6 +68,7 @@
       # Hackpkgs and pwndbg
       (final: prev: {
         inherit (inputs.hackpkgs.packages.${final.system}) ida-pro;
+        # inherit (inputs.hackpkgs.packages.${final.system}) mstrings;  # TODO: wait for next flake update
         inherit (inputs.pwndbg.packages.${final.system}) pwndbg;
         #   hi = final.hello.overrideAttrs (oldAttrs: {
         #     patches = [ ./change-hello-to-hi.patch ];
@@ -268,8 +269,8 @@
     macchanger
     magic-wormhole # file transfer tool
     #mpv # defined in hm
-    nasm
-    ncdu
+    nasm # Netwide Assembler, for assembly programming
+    ncdu # NCurses Disk Usage
     neofetch
     networkmanager # my beloved <3
     networkmanagerapplet # for waybar tray, nm-connection-editor

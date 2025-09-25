@@ -37,6 +37,11 @@ in {
     accent = "pink";
     flavor = "macchiato";
 
+    btop = {
+      enable = true;
+      flavor = "${config.catppuccin.flavor}";
+    };
+
     cursors = {
       enable = true;
 

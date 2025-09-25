@@ -23,6 +23,7 @@
     ffuf
     firewalk
     foremost
+    gdb
     ghidra
     hashcat
     hping
@@ -32,6 +33,7 @@
     metasploit
     mimikatz
     mitmproxy
+    # mstrings
     netexec
     net-snmp
     nmap
@@ -39,7 +41,7 @@
     patchelf
     powershell
     proxmark3
-    pwndbg
+    pwndbg # TODO: fix gdbserver in pwntools to work with pwndbg
     pwninit
     pwntools
     samba

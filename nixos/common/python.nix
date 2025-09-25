@@ -7,6 +7,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     uv
+    # Python does NOT like having packages defined in multiple places
     (python3.withPackages (python-pkgs: [
       python-pkgs.aiofiles
       python-pkgs.aiohttp
@@ -37,6 +38,7 @@
       python-pkgs.pycryptodome
       python-pkgs.pyelftools
       python-pkgs.ropgadget
+      python-pkgs.ropper
       python-pkgs.z3-solver
     ]))
   ];
