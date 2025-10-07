@@ -24,11 +24,16 @@
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
-        # And with SUPER + SHIFT + HJKL
-        "SUPER_SHIFT, H, movefocus, l" 
-        "SUPER_SHIFT, L, movefocus, r" # $mod + l is used to lock the screen
-        "SUPER_SHIFT, K, movefocus, u"
-        "SUPER_SHIFT, J, movefocus, d"
+        # Resize window with SUPER + ALT + arrow keys
+        "SUPER_ALT, left, resizeactive, -10 0"
+        "SUPER_ALT, right, resizeactive, 10 0"
+        "SUPER_ALT, up, resizeactive, 0 -10"
+        "SUPER_ALT, down, resizeactive, 0 10"
+        # Move window with SUPER + SHIFT + HJKL
+        "SUPER_SHIFT, H, movewindow, l" 
+        "SUPER_SHIFT, L, movewindow, r" # $mod + l is used to lock the screen
+        "SUPER_SHIFT, K, movewindow, u"
+        "SUPER_SHIFT, J, movewindow, d"
 
         #", Print, exec, grimblast copy area"
         # ", Print, exec, grim -g \"$(slurp)\" - | wl-copy" # grim + slurp + wl-copy to clipboard
@@ -41,6 +46,9 @@
         # Scroll through existing workspaces with mainMod + scroll
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
+        # Move workspace to other monitor
+        "$mod SHIFT, LEFT, movecurrentworkspacetomonitor, +1"
+        "$mod SHIFT, RIGHT, movecurrentworkspacetomonitor, -1"
 
         # Keyboard backlight - not needed on ThinkPad - the BIOS does it when pressing FN + Space
         # ", XF86MonBrightnessUp, exec, brightnessctl -d *::kbd_backlight set +33%"

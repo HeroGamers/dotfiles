@@ -68,7 +68,7 @@
       # Hackpkgs and pwndbg
       (final: prev: {
         inherit (inputs.hackpkgs.packages.${final.system}) ida-pro;
-        # inherit (inputs.hackpkgs.packages.${final.system}) mstrings;  # TODO: wait for next flake update
+        inherit (inputs.hackpkgs.packages.${final.system}) mstrings;
         inherit (inputs.pwndbg.packages.${final.system}) pwndbg;
         #   hi = final.hello.overrideAttrs (oldAttrs: {
         #     patches = [ ./change-hello-to-hi.patch ];
@@ -199,7 +199,11 @@
       isNormalUser = true;
       description = "Hero";
       extraGroups = [
-        "networkmanager" "wheel" "docker" "dialout" "wireshark"
+        "networkmanager"
+        "wheel"
+        "docker"
+        "dialout"
+        "wireshark"
         "input" # for reading udev input devices
       ];
       packages = with pkgs; [
@@ -251,6 +255,7 @@
     grim # Screenshot utility for Wayland
     htop
     imagemagick
+    iodine
     ipcalc
     kdePackages.dolphin # File manager
     kdePackages.kio-fuse # to mount remote filesystems via FUSE
@@ -393,6 +398,11 @@
       enable = true;
       # Disable DNS over DHCP
       dns = "none";
+
+      plugins = [
+        pkgs.networkmanager-iodine # for DNS tunneling with iodine
+        pkgs.networkmanager-openvpn # for OpenVPN support in NetworkManager
+      ];
     };
 
     # Use local nameservers

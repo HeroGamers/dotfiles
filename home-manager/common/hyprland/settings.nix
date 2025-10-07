@@ -42,8 +42,8 @@
       "firefox" # web browser
 
       # system tray stuff
-      "nm-applet" # network manager applet
       "blueman-applet" # bluetooth manager applet
+      "sleep 1 && nm-applet" # network manager applet, wait for a second to allow KeePassXC to start first
       #"systemctl --user start plasma-polkit-agent"
       #"${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
     ];
@@ -199,7 +199,7 @@
       #accel_profile = "flat";
 
       touchpad = {
-        natural_scroll = false;
+        natural_scroll = true;
         #scroll_factor = 0.1;
       };
     };

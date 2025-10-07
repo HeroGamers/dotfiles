@@ -33,7 +33,7 @@
     metasploit
     mimikatz
     mitmproxy
-    # mstrings
+    mstrings
     netexec
     net-snmp
     nmap
