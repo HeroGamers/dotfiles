@@ -16,6 +16,7 @@
     apktool
     arsenal
     autopsy
+    binaryninja-personal
     binutils
     binwalk
     bloodhound

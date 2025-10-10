@@ -67,6 +67,7 @@
 
       # Hackpkgs and pwndbg
       (final: prev: {
+        inherit (inputs.hackpkgs.packages.${final.system}) binaryninja-personal;
         inherit (inputs.hackpkgs.packages.${final.system}) ida-pro;
         inherit (inputs.hackpkgs.packages.${final.system}) mstrings;
         inherit (inputs.pwndbg.packages.${final.system}) pwndbg;

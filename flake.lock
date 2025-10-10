@@ -135,11 +135,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758714383,
-        "narHash": "sha256-2Grgs7N7m9TbpA6UaTPJ1OpD39vrmi2vT9ZZ43wnd3Y=",
+        "lastModified": 1760081285,
+        "narHash": "sha256-/tsxxGnE/D0FgFSEVDkQyn0GXFiN9s50R0QoKgU9G3A=",
         "ref": "refs/heads/master",
-        "rev": "0dedd67c9b453547697757430d7400e690645063",
-        "revCount": 10,
+        "rev": "61f4e1022b4c6797d0787dc3877930440fd76f8c",
+        "revCount": 11,
         "type": "git",
         "url": "ssh://git@github.com/HeroGamers/hackpkgs"
       },

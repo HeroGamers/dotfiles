@@ -12,6 +12,10 @@
     url = "https://w.wallhaven.cc/full/6l/wallhaven-6lkyeq.png";
     hash = "sha256-YRcxOcDVHaEZNgQ+suCitgy2WSZIq0tH6T8sOB7J4EU=";
   };
+  catppuccin_binaryninja_theme = pkgs.fetchurl {
+    url = "https://github.com/catppuccin/binary-ninja/raw/d2a7dcd2b97c4170b93df2dfeba7c11dae5b9779/themes/catppuccin-macchiato.bntheme";
+    hash = "sha256-7Yo8fFiWa8DXu0fQ5dzIQDaRdqBPaHqoE0sNg5fMgfE=";
+  };
 in {
   imports = [
     # Import Catpuccin
@@ -162,6 +166,11 @@ in {
       enable = true;
       flavor = "${config.catppuccin.flavor}";
     };
+  };
+
+  # Manual catppuccin themes
+  home.file = {
+    ".binaryninja/themes/catppuccin-macchiato.bntheme".source = "${catppuccin_binaryninja_theme}";
   };
 
   qt = {
