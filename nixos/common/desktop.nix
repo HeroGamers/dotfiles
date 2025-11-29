@@ -34,7 +34,7 @@
 
   # Bootloader
   boot.loader = lib.mkDefault {
-    systemd-boot.enable = true;
+    systemd-boot.enable = lib.mkDefault true;
     efi.canTouchEfiVariables = true;
   };
 

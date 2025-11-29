@@ -10,7 +10,7 @@
   ];
 
   boot.loader = {
-    systemd-boot.enable = false;
+    systemd-boot.enable = lib.mkForce false;
     grub = {
       enable = true;
       device = "nodev";
@@ -24,6 +24,13 @@
         background = "background_options/1.8  - [Classic Minecraft].png";
         boot-options-count = 4;
       };
+    };
+  };
+
+  # Disable catppuccin grub theme if enabled elsewhere
+  catppuccin = {
+    grub = {
+      enable = lib.mkForce false;
     };
   };
 }

@@ -496,6 +496,26 @@
         "type": "github"
       }
     },
+    "minegrub-theme": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762539883,
+        "narHash": "sha256-GvlAAIpM/iZtl/EtI+LTzEsQ2qlUkex9i4xRUZXmadM=",
+        "owner": "Lxtharia",
+        "repo": "minegrub-theme",
+        "rev": "2fa2012472fbfcfea17b82655dd27456fa507ee7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Lxtharia",
+        "repo": "minegrub-theme",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -730,6 +750,7 @@
         "home-manager-stable": "home-manager-stable",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
+        "minegrub-theme": "minegrub-theme",
         "nix-index-database": "nix-index-database",
         "nix-shell-wrapper": "nix-shell-wrapper",
         "nixos-wsl": "nixos-wsl",
