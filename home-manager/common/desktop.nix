@@ -14,9 +14,6 @@
     # Walker
     ./walker.nix
 
-    # Theme
-    ./theme.nix
-
     # Screencapture
     ./screencapture.nix
   ];
@@ -25,7 +22,7 @@
     kitty.enable = true;
     mpv.enable = true;
   };
-  
+
   services = lib.mkDefault {
     dunst = {
       enable = true;

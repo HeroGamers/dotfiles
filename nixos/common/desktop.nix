@@ -16,9 +16,6 @@
     # Walker
     ./walker.nix
 
-    # Theme
-    ./theme.nix
-
     # Mobile tethering (iOS)
     ./mobile-tethering.nix
 

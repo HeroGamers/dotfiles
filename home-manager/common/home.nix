@@ -20,6 +20,9 @@
     # ./nvim.nix
     ./zsh.nix
     ./tmux.nix
+
+    # Theme
+    ./theme.nix
   ];
 
   # Set your username

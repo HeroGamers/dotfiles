@@ -31,6 +31,9 @@
 
     # Python
     ./python.nix
+
+    # Theme
+    ./theme.nix
   ];
 
   nixpkgs = lib.mkDefault {
