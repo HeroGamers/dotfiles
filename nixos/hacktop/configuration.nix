@@ -10,6 +10,9 @@
     # Import the common configuration
     ../common
 
+    # Import the desktop configuration
+    ../common/desktop.nix
+
     # Security
     ../common/security.nix
 

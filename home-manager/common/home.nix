@@ -16,22 +16,10 @@
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
 
-    # Hyprland
-    ./hyprland
-
-    # Walker
-    ./walker.nix
-
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ./zsh.nix
     ./tmux.nix
-
-    # Theme
-    ./theme.nix
-
-    # Screencapture
-    ./screencapture.nix
   ];
 
   # Set your username
@@ -60,21 +48,7 @@
     # Add stuff for your user as you see fit:
     btop.enable = true;
     neovim.enable = true;
-    kitty.enable = true;
-    mpv.enable = true;
     lazygit.enable = true;
   };
   # home.packages = with pkgs; [ steam ];
-
-  services = lib.mkDefault {
-    dunst = {
-      enable = true;
-    };
-  };
-
-  # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
-
-  # Wayland, X, etc. support for session vars
-  #systemd.user.sessionVariables = config.home-manager.users.hero.home.sessionVariables;
 }

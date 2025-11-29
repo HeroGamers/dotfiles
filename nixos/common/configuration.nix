@@ -29,29 +29,8 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
 
-    # Hyprland
-    ./hyprland.nix
-
-    # Walker
-    ./walker.nix
-
     # Python
     ./python.nix
-
-    # Theme
-    ./theme.nix
-
-    # Mobile tethering (iOS)
-    ./mobile-tethering.nix
-
-    # Systemd services
-    ./systemd-services.nix
-
-    # Sysadmin
-    ./sysadmin.nix
-
-    # Office work (word processing, spreadsheets, presentations, etc.)
-    ./office.nix
   ];
 
   nixpkgs = lib.mkDefault {
@@ -112,12 +91,6 @@
   environment.etc."nix/path/nixpkgs".source = inputs.nixpkgs;
   environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
 
-  # Bootloader.
-  boot.loader = lib.mkDefault {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
-
   # Set your time zone.
   time.timeZone = lib.mkDefault "Europe/Copenhagen";
 
@@ -135,61 +108,6 @@
       LC_PAPER = "da_DK.UTF-8";
       LC_TELEPHONE = "da_DK.UTF-8";
       LC_TIME = "da_DK.UTF-8";
-    };
-  };
-
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = lib.mkDefault true;
-
-  # Enable SDDM display manager - https://wiki.nixos.org/wiki/Wayland#Display_Managers
-  services.displayManager.sddm.enable = lib.mkDefault true;
-  # Enable the KDE Plasma Desktop Environment.
-  services.desktopManager.plasma6.enable = lib.mkDefault true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    xkb = lib.mkDefault {
-      layout = "dk";
-      variant = "winkeys";
-    };
-  };
-
-  # Configure console keymap
-  console.keyMap = lib.mkDefault "dk-latin1";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-
-    wireplumber.enable = true;
-  };
-
-  # Enable bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  services.blueman.enable = true; # enables the Blueman manager applet (tray icon, pairing, etc.)
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput = {
-    enable = true;
-    touchpad = {
-      clickMethod = "clickfinger";
-      tapping = false;
     };
   };
 
@@ -229,9 +147,6 @@
   # Comma, with nix-index-database
   programs.nix-index-database.comma.enable = true;
 
-  # Install firefox.
-  programs.firefox.enable = lib.mkDefault true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
@@ -244,7 +159,6 @@
     alejandra # Formatter for nix files
     # busybox
     # blueman # Bluetooth manager, primarily for the tray icon - done with service instead
-    brightnessctl # Backlight control
     coreutils # Provides basic GNU utilities
     curl
     dig
@@ -253,20 +167,10 @@
     fish
     fzf
     git
-    grim # Screenshot utility for Wayland
     htop
     imagemagick
     iodine
     ipcalc
-    kdePackages.dolphin # File manager
-    kdePackages.kio-fuse # to mount remote filesystems via FUSE
-    kdePackages.kio-extras # extra protocols support (sftp, fish and more)
-    kdePackages.plasma-workspace # for icons and XDG menu
-    kdePackages.qtsvg # Qt SVG module
-    kdePackages.qt6ct # Qt6 Configuration Tool
-    # kdePackages.spectacle # only works in KDE (needs KWin) :c
-    kdePackages.xwaylandvideobridge
-    keepassxc # also used for keyring secret service
     #kitty # defined in hm
     #lazygit # defined in hm
     libressl # netcat
@@ -278,37 +182,20 @@
     nasm # Netwide Assembler, for assembly programming
     ncdu # NCurses Disk Usage
     neofetch
-    networkmanager # my beloved <3
-    networkmanagerapplet # for waybar tray, nm-connection-editor
     #neovim # defined in hm
     # nix-index # using nix-index-database instead
     nix-output-monitor
     nss
-    obsidian
-    openvpn
-    pavucontrol # PulseAudio Volume Control, also works for PipeWire
-    playerctl # CLI media player controller
     p7zip
-    slurp # Select region utility for Wayland
     tldr
     tmux
-    tor-browser
     unrar
-    vlc
-    vscode
     yazi # TUI file manager
-    wev
     wget
     whois
-    wireguard-tools
-    wl-clipboard
-    wofi
     zsh
     cowsay
   ];
-
-  # Hint electron apps to use wayland:
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Set shell to zsh globally
   users.defaultUserShell = pkgs.zsh;
@@ -331,7 +218,7 @@
     ]);
 
   # SSH Agent
-  programs.ssh.startAgent = true;
+  programs.ssh.startAgent = lib.mkDefault true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -354,73 +241,4 @@
       PasswordAuthentication = false;
     };
   };
-
-  # DNS over HTTPS (DoH)
-  services.dnscrypt-proxy2 = {
-    enable = true;
-    settings = {
-      #ipv6_servers = true;
-      require_dnssec = true;
-      require_nolog = true;
-      require_nofilter = true;
-
-      sources.public-resolvers = {
-        urls = [
-          "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
-          "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
-        ];
-        cache_file = "/var/lib/dnscrypt-proxy2/public-resolvers.md";
-        minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
-      };
-
-      # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
-      server_names = ["cloudflare" "mullvad-doh"];
-
-      # Local network forwarding rules
-      # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-forwarding-rules.txt
-      forwarding_rules = "${../../services/networking/forwarding-rules.txt}";
-    };
-  };
-
-  systemd.services.dnscrypt-proxy2.serviceConfig = {
-    StateDirectory = "dnscrypt-proxy";
-  };
-
-  # Networking stuff
-  networking = lib.mkDefault {
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Configure network proxy if necessary
-    # proxy.default = "http://user:password@proxy:port/";
-    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    # Enable networking
-    networkmanager = {
-      enable = true;
-      # Disable DNS over DHCP
-      dns = "none";
-
-      plugins = [
-        pkgs.networkmanager-iodine # for DNS tunneling with iodine
-        pkgs.networkmanager-openvpn # for OpenVPN support in NetworkManager
-      ];
-    };
-
-    # Use local nameservers
-    nameservers = ["127.0.0.1" "::1"];
-
-    # If using dhcpcd:
-    dhcpcd.extraConfig = "nohook resolv.conf";
-
-    # Open ports in the firewall.
-    firewall = {
-      # Or disable the firewall altogether.
-      # enable = false;
-      allowedTCPPorts = [22];
-      allowedUDPPorts = [22];
-    };
-  };
-
-  # And disable resolvd
-  services.resolved.enable = lib.mkDefault false;
 }
