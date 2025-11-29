@@ -11,7 +11,7 @@
     ../common
 
     # Desktop-specific Home Manager config
-    ../common/desktop
+    ../common/desktop.nix
 
     # Security
     ../common/security.nix

@@ -17,6 +17,7 @@
     #nodejs
     cmake
     # gnumake
+    go
     # ninja
     # gdb  # use Pwndbg instead
     gradle # Gradle build tool for Java projects

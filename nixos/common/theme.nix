@@ -5,6 +5,7 @@
   ...
 }: let
   sddm_wallpaper = pkgs.fetchurl {
+    # https://www.monokuro.world/
     url = "https://w.wallhaven.cc/full/ex/wallhaven-exkqk8.jpg";
     hash = "sha256-HATmU/6OrfgeoPIeUca/QFk3lzKD9NcpJenXQjMgMlU=";
   };

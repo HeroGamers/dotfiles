@@ -21,6 +21,8 @@
     binwalk
     bloodhound
     burpsuite
+    capstone
+    detect-it-easy # diE - Windows executable analysis tool
     ffuf
     firewalk
     foremost
@@ -29,7 +31,9 @@
     hashcat
     hping
     ida-pro
+    imhex
     iodine
+    jadx # Dex to Java decompiler
     john
     metasploit
     mimikatz
@@ -56,6 +60,8 @@
     wordlists
     wpscan
     wstunnel
+    zeek
+    # zeekscript # TODO: re-add when updating flake, it is broken in current flake
   ];
 
   programs.wireshark = {

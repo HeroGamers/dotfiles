@@ -174,6 +174,7 @@
     imagemagick
     iodine
     ipcalc
+    jq
     #kitty # defined in hm
     #lazygit # defined in hm
     libressl # netcat
