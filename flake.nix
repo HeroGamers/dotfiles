@@ -10,6 +10,12 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
+    # WSL
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -82,6 +88,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixos-wsl,
     hackpkgs,
     home-manager,
     catppuccin,
@@ -126,6 +133,14 @@
         modules = [
           # Load config for this device
           ./nixos/hacktop
+        ];
+      };
+      hero-desktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          # Load config for this device
+          ./nixos/hero-desktop
         ];
       };
     };
