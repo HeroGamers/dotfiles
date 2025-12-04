@@ -56,6 +56,7 @@
       nmap
       one_gadget
       patchelf
+      pdfminer
       powershell
       proxmark3
       pwndbg # TODO: fix gdbserver in pwntools to work with pwndbg
