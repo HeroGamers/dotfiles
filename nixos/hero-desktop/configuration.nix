@@ -10,6 +10,12 @@
 
     # Import the common configuration
     ../common
+
+    # Security
+    ../common/security.nix
+
+    # Development
+    ../common/development.nix
   ];
 
   wsl.enable = true;
@@ -28,6 +34,9 @@
     # The user configurations
     users.hero = import ../../home-manager/hero-desktop;
   };
+
+  # Exclude certain security packages in WSL
+  custom.security.excludePackages = ["binaryninja-personal" "ida-pro"];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
