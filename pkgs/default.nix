@@ -3,4 +3,5 @@
 pkgs: {
   # example = pkgs.callPackage ./example { };
   peepdf = pkgs.callPackage ./peepdf {};
+  elastic-package = pkgs.callPackage ./elastic-package {};
 }
