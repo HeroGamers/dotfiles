@@ -143,6 +143,14 @@
           ./nixos/hero-desktop
         ];
       };
+      worktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          # Load config for this device
+          ./nixos/worktop
+        ];
+      };
     };
 
     # Standalone home-manager configuration entrypoint
