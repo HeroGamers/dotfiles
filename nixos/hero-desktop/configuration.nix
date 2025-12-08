@@ -16,17 +16,10 @@
 
     # Development
     ../common/development.nix
+
+    # WSL specific configuration
+    ../common/wsl.nix
   ];
-
-  wsl.enable = true;
-  wsl.defaultUser = "hero";
-  networking.hostName = "hero-desktop";
-
-  # Disable SSH agent in WSL (Windows handles this)
-  programs.ssh.startAgent = lib.mkForce false;
-
-  # Disable OpenSSH server in WSL
-  services.openssh.enable = lib.mkForce false;
 
   # make home-manager as a module of nixos
   # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
@@ -34,6 +27,14 @@
     # The user configurations
     users.hero = import ../../home-manager/hero-desktop;
   };
+
+  networking.hostName = "hero-desktop";
+
+  # Disable SSH agent in WSL (Windows handles this)
+  programs.ssh.startAgent = lib.mkForce false;
+
+  # Disable OpenSSH server in WSL
+  services.openssh.enable = lib.mkForce false;
 
   # Exclude certain security packages in WSL
   custom.security.excludePackages = ["binaryninja-personal" "ida-pro"];

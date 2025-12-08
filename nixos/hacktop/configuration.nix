@@ -54,6 +54,10 @@
   # Disable OpenSSH on the hacktop
   services.openssh.enable = false;
 
+  # Hacktop is using brtfs
+  # https://wiki.nixos.org/wiki/Docker/en#Docker_on_btrfs
+  virtualisation.docker.storageDriver = "btrfs";
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
