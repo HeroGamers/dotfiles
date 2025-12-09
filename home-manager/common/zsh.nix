@@ -74,25 +74,11 @@
       };
 
       plugins = with pkgs; [
-        {
-          file = "powerlevel10k.zsh-theme";
-          name = "powerlevel10k";
-          src = "${zsh-powerlevel10k}/share/zsh-powerlevel10k";
-        }
-        {
-          file = "p10k.zsh";
-          name = "powerlevel10k-config";
-          src = ./config/zsh/p10k;
-        }
+        # keep-sorted start block=yes
         {
           file = "F-Sy-H.plugin.zsh";
           name = "F-Sy-H";
           src = "${zsh-f-sy-h}/share/zsh/site-functions";
-        }
-        {
-          file = "zsh-autocomplete.plugin.zsh";
-          name = "zsh-autocomplete";
-          src = "${zsh-autocomplete}/share/zsh-autocomplete";
         }
         {
           file = "nix-zsh-completions.plugin.zsh";
@@ -100,23 +86,46 @@
           src = "${nix-zsh-completions}/share/zsh/plugins/nix";
         }
         {
+          file = "p10k.zsh";
+          name = "powerlevel10k-config";
+          src = ./config/zsh/p10k;
+        }
+        {
+          file = "powerlevel10k.zsh-theme";
+          name = "powerlevel10k";
+          src = "${zsh-powerlevel10k}/share/zsh-powerlevel10k";
+        }
+        {
+          file = "zsh-autocomplete.plugin.zsh";
+          name = "zsh-autocomplete";
+          src = "${zsh-autocomplete}/share/zsh-autocomplete";
+        }
+        {
           file = "zsh-autosuggestions.plugin.zsh";
           name = "zsh-autosuggestions";
           src = "${zsh-autocomplete}/share/zsh-autosuggestions";
         }
+        # keep-sorted end
       ];
 
       oh-my-zsh = {
         enable = true;
         plugins = [
-          "git"
+          # keep-sorted start
+
           "aliases"
+          "direnv"
           "docker"
           "docker-compose"
-          "pip"
+          "git"
           "node"
-          "direnv"
-        ]; # "zsh-autosuggestions" "zsh-autocomplete" "F-Sy-H" ];
+          "pip"
+          # "zsh-autosuggestions"
+          # "zsh-autocomplete"
+          # "F-Sy-H"
+
+          # keep-sorted end
+        ];
         #theme = "powerlevel10k/powerlevel10k";
       };
     };

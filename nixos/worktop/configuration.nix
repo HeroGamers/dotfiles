@@ -36,7 +36,9 @@
   services.openssh.enable = lib.mkForce false;
 
   environment.systemPackages = with pkgs; [
+    # keep-sorted start
     elastic-package # Elastic integrations development tool
+    # keep-sorted end
   ];
 
   # This value determines the NixOS release from which the default

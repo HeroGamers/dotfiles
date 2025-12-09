@@ -6,10 +6,12 @@
   virtualisation.vmware.host.enable = true;
 
   environment.systemPackages = with pkgs; [
+    # keep-sorted start
     freerdp
+    openssh
     rdesktop
     remmina # Remote desktop client
-    openssh
     tigervnc
+    # keep-sorted end
   ];
 }

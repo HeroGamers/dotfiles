@@ -6,7 +6,9 @@
   };
 
   environment.systemPackages = with pkgs; [
-    libimobiledevice
+    # keep-sorted start
     ifuse # to mount with ifuse
+    libimobiledevice
+    # keep-sorted end
   ];
 }

@@ -16,14 +16,18 @@
   ];
 
   programs = lib.mkDefault {
+    # keep-sorted start
     kitty.enable = true;
     mpv.enable = true;
+    # keep-sorted end
   };
 
   services = lib.mkDefault {
+    # keep-sorted start
     dunst = {
       enable = true;
     };
+    # keep-sorted end
   };
 
   # Nicely reload system units when changing configs

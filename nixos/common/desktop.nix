@@ -95,14 +95,15 @@
 
   # Desktop-specific packages
   environment.systemPackages = with pkgs; [
+    # keep-sorted start
     brightnessctl # Backlight control
     grim # Screenshot utility for Wayland
     kdePackages.dolphin # File manager
-    kdePackages.kio-fuse # to mount remote filesystems via FUSE
     kdePackages.kio-extras # extra protocols support (sftp, fish and more)
+    kdePackages.kio-fuse # to mount remote filesystems via FUSE
     kdePackages.plasma-workspace # for icons and XDG menu
-    kdePackages.qtsvg # Qt SVG module
     kdePackages.qt6ct # Qt6 Configuration Tool
+    kdePackages.qtsvg # Qt SVG module
     # kdePackages.spectacle # only works in KDE (needs KWin) :c
     # kdePackages.xwaylandvideobridge # was removed on 1d584e3a90dc2154eba1edbd57e1dfc754e31697, dunno if this breaks Hyprland screen sharing
     keepassxc # also used for keyring secret service
@@ -120,6 +121,7 @@
     wireguard-tools
     wl-clipboard
     wofi
+    # keep-sorted end
   ];
 
   # Hint electron apps to use wayland:

@@ -10,13 +10,11 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
-    # WSL
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,25 +27,22 @@
     # https://github.com/nix-systems/nix-systems
     systems.url = "github:nix-systems/default";
 
-    # Flake utils - purely for setting inputs.flake-utils.follows for other flakes
+    # purely for setting inputs.flake-utils.follows for other flakes
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
 
-    # Treefmt
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # keep-sorted start block=yes
 
-    # Catppuccin
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Hyprland
+    hackpkgs = {
+      url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,58 +52,49 @@
       inputs.hyprland.follows = "hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Walker app launcher
-    walker = {
-      url = "github:abenz1267/walker";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     minegrub-theme = {
       url = "github:Lxtharia/minegrub-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Hackpkgs
-    hackpkgs = {
-      # url = "git+https://github.com/HeroGamers/hackpkgs";
-      # url = "github:HeroGamers/hackpkgs";
-      url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # pwndbg
-    pwndbg = {
-      url = "github:pwndbg/pwndbg";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # nix-index-database
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # nix-shell wrapper
     nix-shell-wrapper = {
       url = "github:NixenBiksen/nix-shell-wrapper";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    pwndbg = {
+      url = "github:pwndbg/pwndbg";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    # keep-sorted end
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      nixos-wsl,
-      hackpkgs,
       home-manager,
+      # keep-sorted start
       catppuccin,
+      hackpkgs,
       hyprland,
       hyprland-plugins,
+      nixos-wsl,
       systems,
       treefmt-nix,
+      # keep-sorted end
       ...
     }@inputs:
     let
@@ -146,6 +132,8 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#hostname'
       nixosConfigurations = {
+        # keep-sorted start block=yes
+
         hacktop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
@@ -169,11 +157,15 @@
             ./nixos/worktop
           ];
         };
+
+        # keep-sorted end
       };
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#username@hostname'
       homeConfigurations = {
+        # keep-sorted start block=yes
+
         # Replace with username@hostname
         "hero@nothing" = home-manager.lib.homeManagerConfiguration {
           # Home-manager requires 'pkgs' instance
@@ -183,6 +175,8 @@
             ./home-manager/hacktop
           ];
         };
+
+        # keep-sorted end
       };
     };
 }

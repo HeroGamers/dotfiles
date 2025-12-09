@@ -26,6 +26,7 @@
         (
           with pkgs;
           [
+            # keep-sorted start
             aircrack-ng
             apktool
             arsenal
@@ -53,8 +54,8 @@
             mimikatz
             mitmproxy
             mstrings
-            netexec
             net-snmp
+            netexec
             nmap
             one_gadget
             patchelf
@@ -77,6 +78,7 @@
             wstunnel
             zeek
             zeekscript
+            # keep-sorted end
           ]
         );
 

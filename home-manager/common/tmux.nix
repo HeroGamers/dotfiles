@@ -10,8 +10,10 @@
     terminal = "tmux-256color";
     historyLimit = 100000;
     plugins = with pkgs; [
+      # keep-sorted start
       tmuxPlugins.better-mouse-mode
       tmuxPlugins.catppuccin
+      # keep-sorted end
     ];
     extraConfig = ''
       # used for less common options, intelligently combines if defined in multiple places.

@@ -6,8 +6,10 @@
   programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
+    # keep-sorted start
     # factorio-space-age
     mindustry
+    # keep-sorted end
   ];
 
   # Xbox controller support

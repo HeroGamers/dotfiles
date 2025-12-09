@@ -48,9 +48,14 @@
     home-manager.enable = true;
 
     # Add stuff for your user as you see fit:
+
+    # keep-sorted start
+
     btop.enable = true;
-    neovim.enable = true;
     lazygit.enable = true;
+    neovim.enable = true;
+
+    # keep-sorted end
   };
   # home.packages = with pkgs; [ steam ];
 }

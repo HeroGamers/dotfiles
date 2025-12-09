@@ -2,6 +2,10 @@
 # You can build them using 'nix build .#example'
 pkgs: {
   # example = pkgs.callPackage ./example { };
+  # keep-sorted start
+
   # peepdf = pkgs.callPackage ./peepdf { };
   elastic-package = pkgs.callPackage ./elastic-package { };
+
+  # keep-sorted end
 }

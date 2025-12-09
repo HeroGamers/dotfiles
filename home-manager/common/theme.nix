@@ -28,11 +28,13 @@ in
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    nerd-fonts.meslo-lg
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.fira-code
+    # keep-sorted start
     nerd-fonts.droid-sans-mono
     nerd-fonts.fantasque-sans-mono
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.meslo-lg
+    # keep-sorted end
   ];
 
   # Catpuccin options
@@ -43,90 +45,64 @@ in
     accent = "pink";
     flavor = "macchiato";
 
+    # keep-sorted start block=yes
+
     btop = {
       enable = true;
       flavor = "${config.catppuccin.flavor}";
     };
-
     cursors = {
       enable = true;
 
       accent = "${config.catppuccin.accent}";
       flavor = "${config.catppuccin.flavor}";
     };
+    dunst = {
+      enable = true;
+      flavor = "${config.catppuccin.flavor}";
+    };
+    hyprland = {
+      enable = true;
 
-    # `gtk.catppuccin.enable` and `gtk.catppuccin.gnomeShellTheme` are deprecated and will be removed in a future release.
-    # The upstream port has been archived and support will no longer be provided.
-    # Please see https://github.com/catppuccin/gtk/issues/262
-    # gtk = {
-    #     enable = true;
+      accent = "${config.catppuccin.accent}";
+      flavor = "${config.catppuccin.flavor}";
+    };
+    hyprlock = {
+      enable = true;
 
-    #     catppuccin = {
-    #         enable = true;
-
-    #         accent = "${config.catppuccin.accent}";
-    #         flavor = "${config.catppuccin.flavor}";
-    #     };
-    # };
-
+      accent = "${config.catppuccin.accent}";
+      flavor = "${config.catppuccin.flavor}";
+    };
+    kitty = {
+      enable = true;
+      flavor = "${config.catppuccin.flavor}";
+    };
     kvantum = {
       enable = true;
 
       accent = "${config.catppuccin.accent}";
       flavor = "${config.catppuccin.flavor}";
     };
-
-    nvim = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
-
-    tmux = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
-
-    zellij = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
-
-    zsh-syntax-highlighting = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
-
-    kitty = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
-
-    mpv = {
-      enable = true;
-
-      accent = "${config.catppuccin.accent}";
-      flavor = "${config.catppuccin.flavor}";
-    };
-
     lazygit = {
       enable = true;
 
       accent = "${config.catppuccin.accent}";
       flavor = "${config.catppuccin.flavor}";
     };
+    mpv = {
+      enable = true;
 
-    # firefox = {
-    #   enable = true;
-
-    #   accent = "${config.catppuccin.accent}";
-    #   flavor = "${config.catppuccin.flavor}";
-    # };
-
-    dunst = {
+      accent = "${config.catppuccin.accent}";
+      flavor = "${config.catppuccin.flavor}";
+    };
+    nvim = {
       enable = true;
       flavor = "${config.catppuccin.flavor}";
     };
-
+    tmux = {
+      enable = true;
+      flavor = "${config.catppuccin.flavor}";
+    };
     vscode = {
       profiles.default = {
         enable = true;
@@ -134,40 +110,31 @@ in
         flavor = "${config.catppuccin.flavor}";
       };
     };
-
-    yazi = {
+    waybar = {
       enable = true;
-
-      accent = "${config.catppuccin.accent}";
       flavor = "${config.catppuccin.flavor}";
     };
-
     wlogout = {
       enable = true;
 
       accent = "${config.catppuccin.accent}";
       flavor = "${config.catppuccin.flavor}";
     };
-
-    # Also enable for hyprland
-    hyprland = {
+    yazi = {
       enable = true;
 
       accent = "${config.catppuccin.accent}";
       flavor = "${config.catppuccin.flavor}";
     };
-
-    hyprlock = {
-      enable = true;
-
-      accent = "${config.catppuccin.accent}";
-      flavor = "${config.catppuccin.flavor}";
-    };
-
-    waybar = {
+    zellij = {
       enable = true;
       flavor = "${config.catppuccin.flavor}";
     };
+    zsh-syntax-highlighting = {
+      enable = true;
+      flavor = "${config.catppuccin.flavor}";
+    };
+    # keep-sorted end
   };
 
   # Manual catppuccin themes

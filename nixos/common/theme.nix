@@ -23,11 +23,7 @@ in
     accent = "pink";
     flavor = "macchiato";
 
-    tty = {
-      enable = true;
-
-      flavor = "${config.catppuccin.flavor}";
-    };
+    # keep-sorted start block=yes
 
     sddm = {
       enable = true;
@@ -37,6 +33,13 @@ in
 
       background = "${sddm_wallpaper}";
     };
+    tty = {
+      enable = true;
+
+      flavor = "${config.catppuccin.flavor}";
+    };
+
+    # keep-sorted end
   };
 
   # Enable cache for the catppuccin flake

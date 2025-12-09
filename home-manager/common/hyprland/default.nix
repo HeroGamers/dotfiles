@@ -47,10 +47,12 @@
     # From Flake:
     # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.<plugin>
     plugins = [
+      # keep-sorted start
       inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
       inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
-      pkgs.hyprlock
       pkgs.hypridle
+      pkgs.hyprlock
+      # keep-sorted end
     ];
   };
 

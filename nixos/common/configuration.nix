@@ -132,12 +132,14 @@
       isNormalUser = true;
       description = "Hero";
       extraGroups = [
+        # keep-sorted start
+        "dialout"
+        "docker"
+        "input" # for reading udev input devices
         "networkmanager"
         "wheel"
-        "docker"
-        "dialout"
         "wireshark"
-        "input" # for reading udev input devices
+        # keep-sorted end
       ];
       # packages = with pkgs; [
       #   kdePackages.kate
@@ -170,10 +172,13 @@
   # ruby-full netcat-traditional autoconf libtool automake zsh-autosuggestions zsh-syntax-highlighting
   # zsh tldr bat ffmpeg imagemagick ncdu ipcalc
   environment.systemPackages = with pkgs; [
+    # keep-sorted start
+
     alejandra # A formatter for Nix files
     # busybox
     # blueman # Bluetooth manager, primarily for the tray icon - done with service instead
     coreutils # Provides basic GNU utilities
+    cowsay
     curl
     dig
     # dunst # defined in HM
@@ -186,18 +191,18 @@
     iodine
     ipcalc
     jq
-    #kitty # defined in hm
-    #lazygit # defined in hm
+    # kitty # defined in hm
+    # lazygit # defined in hm
     libressl # netcat
     libsecret # for modifying secrets in keyring secret service
     # libsForQt5.qt5ct # Qt5 Configuration Tool
     macchanger
     magic-wormhole # file transfer tool
-    #mpv # defined in hm
+    # mpv # defined in hm
     nasm # Netwide Assembler, for assembly programming
     ncdu # NCurses Disk Usage
     neofetch
-    #neovim # defined in hm
+    # neovim # defined in hm
     # nix-index # using nix-index-database instead
     nix-output-monitor
     nss
@@ -205,11 +210,12 @@
     tldr
     tmux
     unrar
-    yazi # TUI file manager
     wget
     whois
+    yazi # TUI file manager
     zsh
-    cowsay
+
+    # keep-sorted end
   ];
 
   # Set shell to zsh globally

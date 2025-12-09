@@ -4,14 +4,10 @@
 }:
 {
   environment.systemPackages = with pkgs; [
+    # keep-sorted start
     aegisub
     kdePackages.kdenlive
     mkvtoolnix
-    #(aegisub.override {
-    #    #useBundledLuaJIT = true;
-    #    #luajit = (luajit.withPackages(ps: with ps; [
-    #    #    moonscript
-    #    #]));
-    #})
+    # keep-sorted end
   ];
 }

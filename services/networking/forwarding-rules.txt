@@ -35,5 +35,8 @@
 
 # onion            127.0.0.1:9053
 
-## AAU
+# keep-sorted start
+
 # aau.dk          172.18.21.2,172.18.21.34
+
+# keep-sorted end

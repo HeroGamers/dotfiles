@@ -42,8 +42,10 @@
 
   # Exclude certain security packages in WSL
   custom.security.excludePackages = [
+    # keep-sorted start
     "binaryninja-personal"
     "ida-pro"
+    # keep-sorted end
   ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,

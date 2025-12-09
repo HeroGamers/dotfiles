@@ -9,29 +9,31 @@
   };
 
   environment.systemPackages = with pkgs; [
-    docker
-    #electron
-    #nodejs
+    # keep-sorted start
+    # electron
+    # nodejs
     cmake
+    docker
+    # jekyll
+    gcc
     # gnumake
     go
     # ninja
     # gdb  # use Pwndbg instead
     gradle # Gradle build tool for Java projects
+    # nodejs-10_x
+    jdk # newest LTS Java JDK
     keep-sorted # Tool to keep lists sorted
+    llvm
     # ant
     maven # Apache Maven for Java projects
     nixd # Nix language server
-    # nodejs-10_x
-    jdk # newest LTS Java JDK
-    # jekyll
-    gcc
+    nixfmt # nix formatter as defined by RFC 0166, prev. nixfmt-rfc-style
+    nixfmt-tree # treefmt nix formatter
     rustup # Rust toolchain installer
-    llvm
     # lld
     # lldb
     yamlfmt
-    nixfmt # nix formatter as defined by RFC 0166, prev. nixfmt-rfc-style
-    nixfmt-tree # treefmt nix formatter
+    # keep-sorted end
   ];
 }
