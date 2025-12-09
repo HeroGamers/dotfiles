@@ -107,7 +107,7 @@
     kdePackages.qtsvg # Qt SVG module
     kdePackages.qt6ct # Qt6 Configuration Tool
     # kdePackages.spectacle # only works in KDE (needs KWin) :c
-    kdePackages.xwaylandvideobridge
+    # kdePackages.xwaylandvideobridge # was removed on 1d584e3a90dc2154eba1edbd57e1dfc754e31697, dunno if this breaks Hyprland screen sharing
     keepassxc # also used for keyring secret service
     networkmanager # my beloved <3
     networkmanagerapplet # for waybar tray, nm-connection-editor

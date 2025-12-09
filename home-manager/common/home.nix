@@ -42,8 +42,10 @@
     # Emable git and put git config
     git = {
       enable = true;
-      userName = "Marcus Sand";
-      userEmail = "hero@herogamers.dev";
+      settings = {
+        user.name = "Marcus Sand";
+        user.email = "hero@herogamers.dev";
+      };
     };
     # Let home Manager install and manage itself.
     home-manager.enable = true;

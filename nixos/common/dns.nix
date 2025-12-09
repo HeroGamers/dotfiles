@@ -8,7 +8,7 @@
   ...
 }: {
   # DNS over HTTPS (DoH)
-  services.dnscrypt-proxy2 = {
+  services.dnscrypt-proxy = {
     enable = true;
     settings = {
       #ipv6_servers = true;
@@ -21,7 +21,7 @@
           "https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md"
           "https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md"
         ];
-        cache_file = "/var/lib/dnscrypt-proxy2/public-resolvers.md";
+        cache_file = "/var/lib/dnscrypt-proxy/public-resolvers.md";
         minisign_key = "RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3";
       };
 
@@ -34,7 +34,7 @@
     };
   };
 
-  systemd.services.dnscrypt-proxy2.serviceConfig = {
+  systemd.services.dnscrypt-proxy.serviceConfig = {
     StateDirectory = "dnscrypt-proxy";
   };
 
@@ -54,6 +54,6 @@
     dhcpcd.extraConfig = "nohook resolv.conf";
   };
 
-  # Disable resolvd (using dnscrypt-proxy2 instead)
+  # Disable resolvd (using dnscrypt-proxy instead)
   services.resolved.enable = lib.mkDefault false;
 }

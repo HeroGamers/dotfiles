@@ -49,10 +49,10 @@
 
       # Hackpkgs and pwndbg
       (final: prev: {
-        inherit (inputs.hackpkgs.packages.${final.system}) binaryninja-personal;
-        inherit (inputs.hackpkgs.packages.${final.system}) ida-pro;
-        inherit (inputs.hackpkgs.packages.${final.system}) mstrings;
-        inherit (inputs.pwndbg.packages.${final.system}) pwndbg;
+        inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) binaryninja-personal;
+        inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) ida-pro;
+        inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) mstrings;
+        inherit (inputs.pwndbg.packages.${final.stdenv.hostPlatform.system}) pwndbg;
         #   hi = final.hello.overrideAttrs (oldAttrs: {
         #     patches = [ ./change-hello-to-hi.patch ];
         #   });

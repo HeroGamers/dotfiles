@@ -7,8 +7,7 @@
   virtualisation.vmware.host.enable = true;
 
   environment.systemPackages = with pkgs; [
-    #freerdp
-    freerdp3
+    freerdp
     rdesktop
     remmina # Remote desktop client
     openssh
