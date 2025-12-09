@@ -22,6 +22,7 @@
     gradle # Gradle build tool for Java projects
     # ant
     maven # Apache Maven for Java projects
+    nixd # Nix language server
     # nodejs-10_x
     jdk # newest LTS Java JDK
     # jekyll
