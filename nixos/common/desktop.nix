@@ -2,7 +2,6 @@
 # This contains desktop-specific settings: display, audio, bluetooth, GUI apps, etc.
 {
   inputs,
-  outputs,
   lib,
   config,
   pkgs,

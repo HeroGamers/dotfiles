@@ -96,7 +96,6 @@
     hyprland-plugins,
     ...
   } @ inputs: let
-    inherit (self) outputs;
     # Supported systems for your flake packages, shell, etc.
     systems = [
       "aarch64-linux"
@@ -129,7 +128,7 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       hacktop = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs;};
         modules = [
           # Load config for this device
           ./nixos/hacktop
@@ -137,7 +136,7 @@
       };
       hero-desktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs;};
         modules = [
           # Load config for this device
           ./nixos/hero-desktop
@@ -145,7 +144,7 @@
       };
       worktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs;};
         modules = [
           # Load config for this device
           ./nixos/worktop
@@ -158,8 +157,9 @@
     homeConfigurations = {
       # Replace with your username@hostname
       "hero@nothing" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
+        # Home-manager requires 'pkgs' instance
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Replace x86_64-linux with your architecture
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home-manager/hacktop
         ];

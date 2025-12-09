@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   inputs,
-  outputs,
   lib,
   config,
   pkgs,
@@ -20,7 +19,7 @@
     inputs.nix-index-database.nixosModules.nix-index
 
     # If you want to use modules your own flake exports (from modules/nixos):
-    # outputs.nixosModules.example
+    # inputs.self.nixosModules.example
 
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -40,9 +39,9 @@
     # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
+      inputs.self.overlays.additions
+      inputs.self.overlays.modifications
+      inputs.self.overlays.unstable-packages
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -88,11 +87,15 @@
       trusted-public-keys = ["nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
     };
     # Opinionated: disable channels
-    channel.enable = false;
+    channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
 
     # Opinionated: make flake registry and nix path match flake inputs
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+
+    # this is set automatically by nixpkgs.lib.nixosSystem but might be required
+    # if one is not using that:
+    # nixpkgs.flake.source = nixpkgs;
   };
 
   # but NIX_PATH is still used by many useful tools, so we set it to the same value as the one used by this flake.
@@ -151,7 +154,7 @@
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs outputs;};
+    extraSpecialArgs = {inherit inputs;};
   };
 
   # Comma, with nix-index-database
