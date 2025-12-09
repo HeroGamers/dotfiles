@@ -74,7 +74,7 @@
       wpscan
       wstunnel
       zeek
-      # zeekscript # TODO: re-add when updating flake, it is broken in current flake
+      zeekscript
     ]);
 
     programs.wireshark = {

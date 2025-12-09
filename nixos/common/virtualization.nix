@@ -9,7 +9,7 @@
   environment.systemPackages = with pkgs; [
     # GNS3 Networking Simulator
     # gns3-gui
-    # gns3-server # broken on current nixpkgs, has been fixed, waiting for flake update
+    # gns3-server
     # Normal VM stuff
     qemu
     # virtualbox # not in cache, me no wanna compile it

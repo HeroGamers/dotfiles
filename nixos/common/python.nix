@@ -29,7 +29,7 @@
       python-pkgs.uvicorn
 
       # Security
-      #python-pkgs.angr # currently broken on nixpkgs
+      python-pkgs.angr
       python-pkgs.capstone
       python-pkgs.gmpy2
       python-pkgs.mitmproxy
