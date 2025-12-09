@@ -1,11 +1,8 @@
 # Desktop configuration for physical/baremetal NixOS installations
 # This contains desktop-specific settings: display, audio, bluetooth, GUI apps, etc.
 {
-  inputs,
   lib,
-  config,
   pkgs,
-  options,
   ...
 }:
 {

@@ -4,12 +4,7 @@
 
 {
   inputs,
-  config,
   lib,
-  pkgs,
-  home-manager,
-  options,
-  nixpkgs,
   ...
 }:
 

@@ -1,2 +1,3 @@
-# dotfiles
+# dotfiles [nix edition]
+
 Configuration files

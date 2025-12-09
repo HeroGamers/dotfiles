@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   # System-level services
   # systemd.services.powerprofile = {

@@ -6,9 +6,7 @@
   lib,
   config,
   pkgs,
-  home-manager,
   options,
-  nixpkgs,
   ...
 }:
 {
@@ -141,10 +139,10 @@
         "wireshark"
         "input" # for reading udev input devices
       ];
-      packages = with pkgs; [
-        # kdePackages.kate
-        # thunderbird
-      ];
+      # packages = with pkgs; [
+      #   kdePackages.kate
+      #   thunderbird
+      # ];
       openssh.authorizedKeys.keys = [
         # TODO: Add authorized SSH keys
       ];
@@ -228,13 +226,12 @@
   ## If needed, you can add missing libraries here. nix-index-database is your friend to
   ## find the name of the package from the error message:
   ## https://github.com/nix-community/nix-index-database
-  programs.nix-ld.libraries =
-    options.programs.nix-ld.libraries.default
-    ++ (with pkgs; [
-      # Electron stuff
-      # nix-alien-find-libs ./node_modules/electron/dist/electron
-      # alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out xorg.libX11.out xorg.libXScrnSaver.out xorg.libXcomposite.out xorg.libXcursor.out xorg.libXdamage.out xorg.libXext.out xorg.libXfixes.out xorg.libXi.out xorg.libXrandr.out xorg.libXrender.out xorg.libXtst.out xorg.libxcb.out
-    ]);
+  programs.nix-ld.libraries = options.programs.nix-ld.libraries.default;
+  # ++ (with pkgs; [
+  #   # Electron stuff
+  #   # nix-alien-find-libs ./node_modules/electron/dist/electron
+  #   alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out xorg.libX11.out xorg.libXScrnSaver.out xorg.libXcomposite.out xorg.libXcursor.out xorg.libXdamage.out xorg.libXext.out xorg.libXfixes.out xorg.libXi.out xorg.libXrandr.out xorg.libXrender.out xorg.libXtst.out xorg.libxcb.out
+  # ]);
 
   # SSH Agent
   programs.ssh.startAgent = lib.mkDefault true;
