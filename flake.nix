@@ -26,8 +26,20 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    # Flake utils
-    flake-utils.url = "github:numtide/flake-utils";
+    # https://github.com/nix-systems/nix-systems
+    systems.url = "github:nix-systems/default";
+
+    # Flake utils - purely for setting inputs.flake-utils.follows for other flakes
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
+
+    # Treefmt
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Catppuccin
     catppuccin = {
@@ -95,30 +107,34 @@
       catppuccin,
       hyprland,
       hyprland-plugins,
+      systems,
+      treefmt-nix,
       ...
     }@inputs:
     let
-      # Supported systems for your flake packages, shell, etc.
-      systems = [
-        "aarch64-linux"
-        "i686-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
       # This is a function that generates an attribute by calling a function you
       # pass to it, with each system as an argument
-      forAllSystems = nixpkgs.lib.genAttrs systems;
+      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+
+      # Eval treefmt modules from ./treefmt.nix
+      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     {
-      # Your custom packages
+      # Custom packages
       # Accessible through 'nix build', 'nix shell', etc
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      # Formatter for your nix files, available through 'nix fmt'
-      # Options include: 'alejandra', 'nixfmt', 'nixfmt-tree'
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+      packages = eachSystem (
+        pkgs: import ./pkgs nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}
+      );
 
-      # Your custom packages and modifications, exported as overlays
+      # Formatter for nix files, available through 'nix fmt'
+      # Options include: 'alejandra', 'nixfmt', 'nixfmt-tree'
+      formatter = eachSystem (pkgs: treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper);
+      # for `nix flake check`
+      checks = eachSystem (pkgs: {
+        formatting = treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.check self;
+      });
+
+      # Custom packages and modifications, exported as overlays
       overlays = import ./overlays { inherit inputs; };
       # Reusable nixos modules you might want to export
       # These are usually stuff you would upstream into nixpkgs
@@ -128,7 +144,7 @@
       homeManagerModules = import ./modules/home-manager;
 
       # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
+      # Available through 'nixos-rebuild --flake .#hostname'
       nixosConfigurations = {
         hacktop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
@@ -156,12 +172,12 @@
       };
 
       # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
+      # Available through 'home-manager --flake .#username@hostname'
       homeConfigurations = {
-        # Replace with your username@hostname
+        # Replace with username@hostname
         "hero@nothing" = home-manager.lib.homeManagerConfiguration {
           # Home-manager requires 'pkgs' instance
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Replace x86_64-linux with your architecture
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Replace x86_64-linux with architecture
           extraSpecialArgs = { inherit inputs; };
           modules = [
             ./home-manager/hacktop
