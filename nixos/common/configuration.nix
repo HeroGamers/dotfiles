@@ -4,7 +4,6 @@
 {
   inputs,
   lib,
-  config,
   pkgs,
   options,
   ...
@@ -76,9 +75,10 @@
         experimental-features = "nix-command flakes";
         # Opinionated: disable global registry
         # flake-registry = "";
+
         # Workaround for https://github.com/NixOS/nix/issues/9574
         # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
-        nix-path = lib.mkForce config.nix.nixPath; # lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
+        # nix-path = lib.mkForce config.nix.nixPath; # lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
 
         # Enable cache for nix-community
         substituters = [
