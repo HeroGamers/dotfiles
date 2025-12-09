@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     aegisub
     kdePackages.kdenlive

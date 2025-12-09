@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   programs.tmux = {
     enable = true;
     clock24 = true;
@@ -14,7 +15,8 @@
       tmuxPlugins.better-mouse-mode
       tmuxPlugins.catppuccin
     ];
-    extraConfig = ''      # used for less common options, intelligently combines if defined in multiple places.
+    extraConfig = ''
+      # used for less common options, intelligently combines if defined in multiple places.
                  set -g status-right '#[fg=black,bg=color15] #{cpu_percentage}  %H:%M '
                  run-shell ${pkgs.tmuxPlugins.cpu}/share/tmux-plugins/cpu/cpu.tmux
                  set -g @catppuccin_flavour 'frappe'

@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # See https://wiki.hyprland.org/Configuring/Monitors/
   # wayland.windowManager.hyprland.settings = {
   #   monitor = [

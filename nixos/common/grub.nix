@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     # Import minegrub theme
     inputs.minegrub-theme.nixosModules.default

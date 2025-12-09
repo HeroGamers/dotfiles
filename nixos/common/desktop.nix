@@ -7,7 +7,8 @@
   pkgs,
   options,
   ...
-}: {
+}:
+{
   imports = [
     # Hyprland
     ./hyprland.nix
@@ -149,8 +150,8 @@
     firewall = {
       # Or disable the firewall altogether.
       # enable = false;
-      allowedTCPPorts = [22];
-      allowedUDPPorts = [22];
+      allowedTCPPorts = [ 22 ];
+      allowedUDPPorts = [ 22 ];
     };
   };
 }

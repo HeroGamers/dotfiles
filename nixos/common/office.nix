@@ -1,7 +1,8 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   environment.systemPackages = [
     pkgs.libreoffice-qt # Qt based LibreOffice
     pkgs.pdftk

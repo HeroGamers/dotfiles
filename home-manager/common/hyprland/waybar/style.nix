@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   # Inspired/yeeted from https://github.com/rubyowo/dotfiles/blob/nixos/users/rei/confs/waybar/style.css
   # and https://github.com/qoheniac/config/blob/main/waybar/style.css
   # and https://github.com/d00m1k/SimpleBlueColorWaybar/blob/main/style.css

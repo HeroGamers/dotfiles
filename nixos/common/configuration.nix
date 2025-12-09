@@ -10,7 +10,8 @@
   options,
   nixpkgs,
   ...
-}: {
+}:
+{
   imports = [
     # Import Home Manager
     inputs.home-manager.nixosModules.home-manager
@@ -67,36 +68,38 @@
     };
   };
 
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Opinionated: disable global registry
-      # flake-registry = "";
-      # Workaround for https://github.com/NixOS/nix/issues/9574
-      # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
-      nix-path = lib.mkForce config.nix.nixPath; # lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      settings = {
+        # Enable flakes and new 'nix' command
+        experimental-features = "nix-command flakes";
+        # Opinionated: disable global registry
+        # flake-registry = "";
+        # Workaround for https://github.com/NixOS/nix/issues/9574
+        # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
+        nix-path = lib.mkForce config.nix.nixPath; # lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
 
-      # Enable cache for nix-community
-      substituters = [
-        # "https://cache.nixos.org/" # already included by default
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = ["nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
+        # Enable cache for nix-community
+        substituters = [
+          # "https://cache.nixos.org/" # already included by default
+          "https://nix-community.cachix.org"
+        ];
+        trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+      };
+      # Opinionated: disable channels
+      channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
+
+      # Opinionated: make flake registry and nix path match flake inputs
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+
+      # this is set automatically by nixpkgs.lib.nixosSystem but might be required
+      # if one is not using that:
+      # nixpkgs.flake.source = nixpkgs;
     };
-    # Opinionated: disable channels
-    channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
-
-    # Opinionated: make flake registry and nix path match flake inputs
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-
-    # this is set automatically by nixpkgs.lib.nixosSystem but might be required
-    # if one is not using that:
-    # nixpkgs.flake.source = nixpkgs;
-  };
 
   # but NIX_PATH is still used by many useful tools, so we set it to the same value as the one used by this flake.
   # Make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
@@ -154,7 +157,7 @@
     backupFileExtension = "backup";
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {inherit inputs;};
+    extraSpecialArgs = { inherit inputs; };
   };
 
   # Comma, with nix-index-database
@@ -216,9 +219,9 @@
   # Set shell to zsh globally
   users.defaultUserShell = pkgs.zsh;
   users.users.hero.shell = pkgs.zsh;
-  environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = [ "/share/zsh" ];
 
   # Enable LD
   programs.nix-ld.enable = true;

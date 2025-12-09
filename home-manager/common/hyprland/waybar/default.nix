@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./style.nix
   ];
@@ -141,12 +142,28 @@
         # "hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
         critical-threshold = 80;
         format = "{icon} {temperatureC}°C";
-        format-icons = ["" "" "" "" ""];
+        format-icons = [
+          ""
+          ""
+          ""
+          ""
+          ""
+        ];
       };
       backlight = {
         # "device = "acpi_video1";
         format = "{icon} {percent}%";
-        format-icons = ["" "" "" "" "" "" "" "" ""];
+        format-icons = [
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
+          ""
+        ];
       };
       battery = {
         states = {
@@ -163,7 +180,13 @@
         format-alt = "{icon} {time}";
         # "format-good = ""; # An empty format will hide the module
         # "format-full = "";
-        format-icons = ["" "" "" "" ""];
+        format-icons = [
+          ""
+          ""
+          ""
+          ""
+          ""
+        ];
       };
       power-profiles-daemon = {
         format = "{icon}";
@@ -177,37 +200,37 @@
         };
       };
       "network#disconnected" = {
-          tooltip-format = "No connection!";
-          format-ethernet = "";
-          format-wifi = "";
-          format-linked = "";
-          format-disconnected = "";
-          on-click = "nm-connection-editor";
+        tooltip-format = "No connection!";
+        format-ethernet = "";
+        format-wifi = "";
+        format-linked = "";
+        format-disconnected = "";
+        on-click = "nm-connection-editor";
       };
       "network#ethernet" = {
-          interface = "enp*";
-          format-ethernet = "";
-          format-wifi = "";
-          format-linked = "";
-          format-disconnected = "";
-          tooltip-format = "{ifname}: {ipaddr}/{cidr}";
-          on-click = "nm-connection-editor";
+        interface = "enp*";
+        format-ethernet = "";
+        format-wifi = "";
+        format-linked = "";
+        format-disconnected = "";
+        tooltip-format = "{ifname}: {ipaddr}/{cidr}";
+        on-click = "nm-connection-editor";
       };
       "network#wifi" = {
-          interface = "wlp*";
-          format-ethernet = "";
-          format-wifi = "  {essid} ({signalStrength}%)";
-          format-linked = "";
-          format-disconnected = "";
-          tooltip-format = "{ifname}: {ipaddr}/{cidr}";
-          on-click = "nm-connection-editor";
+        interface = "wlp*";
+        format-ethernet = "";
+        format-wifi = "  {essid} ({signalStrength}%)";
+        format-linked = "";
+        format-disconnected = "";
+        tooltip-format = "{ifname}: {ipaddr}/{cidr}";
+        on-click = "nm-connection-editor";
       };
       "network#vpn" = {
-          interface = "tun0";
-          format = "";
-          format-disconnected = "";
-          tooltip-format = "{ifname}: {ipaddr}/{cidr}";
-          on-click = "nm-connection-editor";
+        interface = "tun0";
+        format = "";
+        format-disconnected = "";
+        tooltip-format = "{ifname}: {ipaddr}/{cidr}";
+        on-click = "nm-connection-editor";
       };
       pulseaudio = {
         scroll-step = 1;
@@ -224,7 +247,11 @@
           phone = "";
           portable = "";
           car = "";
-          default = ["" "" ""];
+          default = [
+            ""
+            ""
+            ""
+          ];
         };
         on-click = "pavucontrol";
       };

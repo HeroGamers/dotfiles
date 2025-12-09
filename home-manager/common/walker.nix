@@ -3,7 +3,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     # Import Walker
     inputs.walker.homeManagerModules.default

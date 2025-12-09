@@ -5,7 +5,8 @@
   pkgs,
   options,
   ...
-}: {
+}:
+{
   # DNS over HTTPS (DoH)
   services.dnscrypt-proxy = {
     enable = true;
@@ -25,7 +26,10 @@
       };
 
       # You can choose a specific set of servers from https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md
-      server_names = ["cloudflare" "mullvad-doh"];
+      server_names = [
+        "cloudflare"
+        "mullvad-doh"
+      ];
 
       # Local network forwarding rules
       # https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/dnscrypt-proxy/example-forwarding-rules.txt
@@ -47,7 +51,10 @@
     };
 
     # Use local nameservers
-    nameservers = ["127.0.0.1" "::1"];
+    nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
 
     # If using dhcpcd:
     dhcpcd.extraConfig = "nohook resolv.conf";

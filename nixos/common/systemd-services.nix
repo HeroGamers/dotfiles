@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # System-level services
   # systemd.services.powerprofile = {
   #     enable = true;
@@ -19,8 +20,8 @@
   systemd.services.initScript = {
     enable = true;
 
-    wantedBy = ["graphical-session.target"];
-    partOf = ["graphical-session.target"];
+    wantedBy = [ "graphical-session.target" ];
+    partOf = [ "graphical-session.target" ];
 
     # wl-paste is a "hack" for stopping the touchpad from pasting when using it
     script = ''
