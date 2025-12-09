@@ -79,6 +79,13 @@
       # Workaround for https://github.com/NixOS/nix/issues/9574
       # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
       nix-path = lib.mkForce config.nix.nixPath; # lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
+
+      # Enable cache for nix-community
+      substituters = [
+        # "https://cache.nixos.org/" # already included by default
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = ["nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
     };
     # Opinionated: disable channels
     channel.enable = false;
