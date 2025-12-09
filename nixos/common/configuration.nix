@@ -169,7 +169,7 @@
   # ruby-full netcat-traditional autoconf libtool automake zsh-autosuggestions zsh-syntax-highlighting
   # zsh tldr bat ffmpeg imagemagick ncdu ipcalc
   environment.systemPackages = with pkgs; [
-    alejandra # Formatter for nix files
+    alejandra # A formatter for Nix files
     # busybox
     # blueman # Bluetooth manager, primarily for the tray icon - done with service instead
     coreutils # Provides basic GNU utilities
@@ -197,6 +197,8 @@
     ncdu # NCurses Disk Usage
     neofetch
     #neovim # defined in hm
+    nixfmt # nix formatter as defined by RFC 0166, prev. nixfmt-rfc-style
+    nixfmt-tree # treefmt nix formatter
     # nix-index # using nix-index-database instead
     nix-output-monitor
     nss
