@@ -18,6 +18,7 @@
     # ninja
     # gdb  # use Pwndbg instead
     gradle # Gradle build tool for Java projects
+    keep-sorted # Tool to keep lists sorted
     # ant
     maven # Apache Maven for Java projects
     nixd # Nix language server
@@ -29,5 +30,8 @@
     llvm
     # lld
     # lldb
+    yamlfmt
+    nixfmt # nix formatter as defined by RFC 0166, prev. nixfmt-rfc-style
+    nixfmt-tree # treefmt nix formatter
   ];
 }

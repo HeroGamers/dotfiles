@@ -198,8 +198,6 @@
     ncdu # NCurses Disk Usage
     neofetch
     #neovim # defined in hm
-    nixfmt # nix formatter as defined by RFC 0166, prev. nixfmt-rfc-style
-    nixfmt-tree # treefmt nix formatter
     # nix-index # using nix-index-database instead
     nix-output-monitor
     nss
