@@ -8,6 +8,7 @@
     inputs.walker.homeManagerModules.default
   ];
 
+  # TODO: fix walker, when typing to open app, notif: "Could not acquire lock on '/run/user/1000/uwsm-app.lock'"
   programs.walker = {
     enable = true;
     runAsService = true;

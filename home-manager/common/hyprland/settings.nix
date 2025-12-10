@@ -1,7 +1,4 @@
-{
-  ...
-}:
-{
+{...}: {
   # Inspired/yoinked a lot by https://github.com/fufexan/dotfiles
   wayland.windowManager.hyprland.settings = {
     # See https://wiki.hyprland.org/Configuring/Keywords/
@@ -238,33 +235,33 @@
     # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
 
     windowrule = [
-      "suppressevent maximize, class:.*" # You'll probably like this.
-      "plugin:hyprbars:nobar, ^floating:0" # Hide bar on non-floating windows
+      "match:class .*, suppress_event maximize" # You'll probably like this. (what this do)
+      "match:float 0, hyprbars:no_bar on" # Hide bar on non-floating windows
 
       # https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
-      "opacity 0.0 override, class:^(xwaylandvideobridge)$"
-      "noanim, class:^(xwaylandvideobridge)$"
-      "noinitialfocus, class:^(xwaylandvideobridge)$"
-      "maxsize 1 1, class:^(xwaylandvideobridge)$"
-      "noblur, class:^(xwaylandvideobridge)$"
-      "nofocus, class:^(xwaylandvideobridge)$"
+      "match:class ^(xwaylandvideobridge)$, opacity 0.0 override"
+      "match:class ^(xwaylandvideobridge)$, no_anim on"
+      "match:class ^(xwaylandvideobridge)$, no_initial_focus on"
+      "match:class ^(xwaylandvideobridge)$, max_size 1 1"
+      "match:class ^(xwaylandvideobridge)$, no_blur on"
+      "match:class ^(xwaylandvideobridge)$, no_focus on"
 
       # Kitty opacity
-      "opacity 0.8 0.8, class:kitty"
+      "match:class kitty, opacity 0.8 0.8"
 
       # flameshot multi-display fix: https://ryanwise.me/blog/flameshot-on-hyprland/
-      "move 0 0,class:(flameshot),title:(flameshot)"
-      "pin,class:(flameshot),title:(flameshot)"
-      "fullscreenstate,class:(flameshot),title:(flameshot)"
-      "float,class:(flameshot),title:(flameshot)"
-      "noanim,class:(flameshot),title:(flameshot)" # disable animations for flameshot
+      "match:class (flameshot), match:title (flameshot), move 0 0"
+      "match:class (flameshot), match:title (flameshot), pin on"
+      "match:class (flameshot), match:title (flameshot), fullscreen_state 0 0"
+      "match:class (flameshot), match:title (flameshot), float on"
+      "match:class (flameshot), match:title (flameshot), no_anim on" # disable animations for flameshot
     ];
 
     layerrule = [
-      "animation popin, wofi"
-      "animation slide, waybar"
-      "animation popin, walker"
-      "dimaround, walker"
+      "match:namespace wofi, animation popin"
+      "match:namespace waybar, animation slide"
+      "match:namespace walker, animation popin"
+      "match:namespace walker, dim_around on"
     ];
 
     # group = {
