@@ -24,14 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    # https://flake.parts/
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     # https://github.com/nix-systems/nix-systems
     systems.url = "github:nix-systems/default";
-
-    # purely for setting inputs.flake-utils.follows for other flakes
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
 
     # keep-sorted start block=yes
 
@@ -44,7 +41,7 @@
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
     };
     minegrub-theme = {
       url = "github:Lxtharia/minegrub-theme";
@@ -57,7 +54,6 @@
     nix-shell-wrapper = {
       url = "github:NixenBiksen/nix-shell-wrapper";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
     pwndbg.url = "github:pwndbg/pwndbg"; # Has binary cache
     treefmt-nix = {
@@ -70,101 +66,67 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      # keep-sorted start
-      catppuccin,
-      hackpkgs,
-      hyprland,
-      hyprland-plugins,
-      nixos-wsl,
-      systems,
-      treefmt-nix,
-      # keep-sorted end
-      ...
-    }@inputs:
-    let
-      # This is a function that generates an attribute by calling a function you
-      # pass to it, with each system as an argument
-      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = import inputs.systems;
 
-      # Eval treefmt modules from ./treefmt.nix
-      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
-    in
-    {
-      # Custom packages
-      # Accessible through 'nix build', 'nix shell', etc
-      packages = eachSystem (
-        pkgs: import ./pkgs nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}
-      );
+      imports = [ inputs.treefmt-nix.flakeModule ];
 
-      # Formatter for nix files, available through 'nix fmt'
-      # Options include: 'alejandra', 'nixfmt', 'nixfmt-tree'
-      formatter = eachSystem (pkgs: treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.wrapper);
-      # for `nix flake check`
-      checks = eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.stdenv.hostPlatform.system}.config.build.check self;
-      });
+      perSystem =
+        { pkgs, ... }:
+        {
+          packages = import ./pkgs pkgs;
 
-      # Custom packages and modifications, exported as overlays
-      overlays = import ./overlays { inherit inputs; };
-      # Reusable nixos modules you might want to export
-      # These are usually stuff you would upstream into nixpkgs
-      nixosModules = import ./modules/nixos;
-      # Reusable home-manager modules you might want to export
-      # These are usually stuff you would upstream into home-manager
-      homeManagerModules = import ./modules/home-manager;
-
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#hostname'
-      nixosConfigurations = {
-        # keep-sorted start block=yes
-
-        hacktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            # Load config for this device
-            ./nixos/hacktop
-          ];
-        };
-        hero-desktop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            # Load config for this device
-            ./nixos/hero-desktop
-          ];
-        };
-        worktop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            # Load config for this device
-            ./nixos/worktop
-          ];
+          treefmt = (import ./treefmt.nix) { inherit pkgs; };
         };
 
-        # keep-sorted end
-      };
+      flake = {
+        overlays = import ./overlays { inherit inputs; };
 
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#username@hostname'
-      homeConfigurations = {
-        # keep-sorted start block=yes
+        nixosModules = import ./modules/nixos;
 
-        # Replace with username@hostname
-        "hero@nothing" = home-manager.lib.homeManagerConfiguration {
-          # Home-manager requires 'pkgs' instance
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Replace x86_64-linux with architecture
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./home-manager/hacktop
-          ];
+        homeManagerModules = import ./modules/home-manager;
+
+        nixosConfigurations = {
+          # keep-sorted start block=yes
+
+          hacktop = inputs.nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./nixos/hacktop
+            ];
+          };
+          hero-desktop = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./nixos/hero-desktop
+            ];
+          };
+          worktop = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./nixos/worktop
+            ];
+          };
+
+          # keep-sorted end
         };
 
-        # keep-sorted end
+        homeConfigurations = {
+          # keep-sorted start block=yes
+
+          "hero@nothing" = inputs.home-manager.lib.homeManagerConfiguration {
+            pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+            extraSpecialArgs = { inherit inputs; };
+            modules = [
+              ./home-manager/hacktop
+            ];
+          };
+
+          # keep-sorted end
+        };
       };
     };
 }
