@@ -8,18 +8,16 @@
 }:
 buildGoModule rec {
   pname = "elastic-package";
-  # 0.116.0+ requires Go 1.25.3, which I don't have in my nixpkgs yet
-  version = "0.115.0";
+  version = "0.117.1";
 
   src = fetchFromGitHub {
     owner = "elastic";
     repo = "elastic-package";
     rev = "v${version}";
-    # sha256 = "sha256-RHCtYmaxhSbiSccbID/dhBWJ9E5lSeo9DSfLz+5dYwA=";  # for 0.117.1
-    sha256 = "sha256-+CMnhLT4h2/o956OpHxDuSl2DTmLCqM+awaSQW0k5w8=";
+    sha256 = "sha256-RHCtYmaxhSbiSccbID/dhBWJ9E5lSeo9DSfLz+5dYwA=";
   };
 
-  vendorHash = "sha256-yTHemK2ptLRkmbUgMGSmHa3O2bWgXNx8VBCwhmB9Q1A=";
+  vendorHash = "sha256-25KEYWqZ+0htGeOsNmYhH/+G7EnOHPmB3Kg6W0nHltI=";
 
   ldflags = [
     "-s"
