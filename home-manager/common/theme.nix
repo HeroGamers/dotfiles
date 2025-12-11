@@ -41,6 +41,7 @@ in
   # https://nix.catppuccin.com/options/home-manager-options.html
   catppuccin = {
     enable = true;
+    cache.enable = true;
 
     accent = "pink";
     flavor = "macchiato";

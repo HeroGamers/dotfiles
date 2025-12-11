@@ -35,18 +35,12 @@
 
     # keep-sorted start block=yes
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    catppuccin.url = "github:catppuccin/nix"; # Has binary cache
     hackpkgs = {
       url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hyprland.url = "github:hyprwm/Hyprland"; # Has binary cache
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -65,18 +59,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
-    pwndbg = {
-      url = "github:pwndbg/pwndbg";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    pwndbg.url = "github:pwndbg/pwndbg"; # Has binary cache
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    walker = {
-      url = "github:abenz1267/walker";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    walker.url = "github:abenz1267/walker"; # Has binary cache
 
     # keep-sorted end
   };

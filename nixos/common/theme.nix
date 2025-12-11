@@ -19,6 +19,7 @@ in
 
   catppuccin = {
     enable = true;
+    cache.enable = true;
 
     accent = "pink";
     flavor = "macchiato";
