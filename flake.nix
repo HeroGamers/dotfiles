@@ -2,19 +2,12 @@
   description = "Hero's config";
 
   inputs = {
-    # Nixpkgs
+    # Core Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,24 +17,24 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    # https://flake.parts/
+    # Flake Utilities
     flake-parts.url = "github:hercules-ci/flake-parts";
-
-    # https://github.com/nix-systems/nix-systems
     systems.url = "github:nix-systems/default";
 
-    # keep-sorted start block=yes
-
-    catppuccin.url = "github:catppuccin/nix"; # Has binary cache
-    hackpkgs = {
-      url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Hyprland Ecosystem
     hyprland.url = "github:hyprwm/Hyprland"; # Has binary cache
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
       inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
+
+    # Tools and Utilities
+    # keep-sorted start block=yes
+    catppuccin.url = "github:catppuccin/nix"; # Has binary cache
+    hackpkgs = {
+      url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     minegrub-theme = {
       url = "github:Lxtharia/minegrub-theme";
@@ -61,8 +54,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     walker.url = "github:abenz1267/walker"; # Has binary cache
-
     # keep-sorted end
+
+    # WSL
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
