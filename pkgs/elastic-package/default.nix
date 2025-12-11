@@ -9,6 +9,7 @@
 buildGoModule rec {
   pname = "elastic-package";
   version = "0.117.1";
+  commitHash = "b985976";
 
   src = fetchFromGitHub {
     owner = "elastic";
@@ -22,6 +23,9 @@ buildGoModule rec {
   ldflags = [
     "-s"
     "-w"
+    # https://github.com/elastic/elastic-package/blob/main/Makefile#L8
+    "-X=github.com/elastic/elastic-package/internal/version.CommitHash=${commitHash}"
+    "-X=github.com/elastic/elastic-package/internal/version.BuildTime=0"
     "-X=github.com/elastic/elastic-package/internal/version.Tag=v${version}"
   ];
 
