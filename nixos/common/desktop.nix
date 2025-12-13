@@ -124,8 +124,14 @@
     # keep-sorted end
   ];
 
-  # Hint electron apps to use wayland:
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  
+  environment.sessionVariables = {
+    # Hint electron apps to use wayland:
+    # https://wiki.nixos.org/wiki/Hyprland#Electron_applications_defaulting_to_X11_rather_than_Wayland
+    NIXOS_OZONE_WL = "1";
+    # Set GSK_RENDERER to "cairo" for better performance with Wayland apps using GTK4 (NVIDIA GPU)
+    GSK_RENDERER = "cairo";
+  };
 
   # Networking stuff
   networking = lib.mkDefault {

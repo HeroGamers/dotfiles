@@ -210,6 +210,7 @@
     tldr
     tmux
     unrar
+    uwsm
     wget
     whois
     yazi # TUI file manager

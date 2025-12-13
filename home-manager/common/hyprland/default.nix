@@ -37,6 +37,7 @@
     #     "systemctl --user start hyprland-session.target"
     #   ];
     # };
+    systemd.enable = false;
 
     # Enable xwayland (default true tho)
     xwayland.enable = true;
