@@ -4,8 +4,9 @@ pkgs: {
   # example = pkgs.callPackage ./example { };
   # keep-sorted start
 
-  # peepdf = pkgs.callPackage ./peepdf { };
+  binwalk2 = pkgs.callPackage ./binwalk2 { };
   elastic-package = pkgs.callPackage ./elastic-package { };
+  # peepdf = pkgs.callPackage ./peepdf { };
 
   # keep-sorted end
 }

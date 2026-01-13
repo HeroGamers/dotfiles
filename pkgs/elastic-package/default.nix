@@ -50,7 +50,7 @@ buildGoModule rec {
     mainProgram = "elastic-package";
     homepage = "https://github.com/elastic/elastic-package";
     license = licenses.unfree;
-    maintainers = with maintainers; [ hero ];
+    maintainers = [ maintainers.hero ];
     platforms = platforms.linux;
   };
 }
