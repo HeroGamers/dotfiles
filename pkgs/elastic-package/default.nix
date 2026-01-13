@@ -6,19 +6,21 @@
   installShellFiles,
   writableTmpDirAsHomeHook,
 }:
+let
+  commitHash = "816ceec";
+in
 buildGoModule rec {
   pname = "elastic-package";
-  version = "0.117.1";
-  commitHash = "b985976";
+  version = "0.118.0";
 
   src = fetchFromGitHub {
     owner = "elastic";
     repo = "elastic-package";
-    rev = "v${version}";
-    sha256 = "sha256-RHCtYmaxhSbiSccbID/dhBWJ9E5lSeo9DSfLz+5dYwA=";
+    tag = "v${version}";
+    sha256 = "sha256-QEkeMtuDhyeMQws7I8hUvB1YRU6EshtmfzU5ZnOPGjg=";
   };
 
-  vendorHash = "sha256-25KEYWqZ+0htGeOsNmYhH/+G7EnOHPmB3Kg6W0nHltI=";
+  vendorHash = "sha256-B1G1EUYIXqf49HEXUv/nfaBnulJqi/ei3I9xOJ++T10=";
 
   ldflags = [
     "-s"
@@ -48,7 +50,7 @@ buildGoModule rec {
     mainProgram = "elastic-package";
     homepage = "https://github.com/elastic/elastic-package";
     license = licenses.unfree;
-    maintainers = with maintainers; [ herogamers ];
+    maintainers = with maintainers; [ hero ];
     platforms = platforms.linux;
   };
 }
