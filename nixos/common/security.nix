@@ -34,6 +34,7 @@
             binaryninja-personal
             binutils
             binwalk
+            binwalk2
             bloodhound
             burpsuite
             capstone
