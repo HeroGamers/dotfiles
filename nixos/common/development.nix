@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   # Enable docker
   virtualisation.docker = {
     enable = true;
@@ -11,7 +7,7 @@
   environment.systemPackages = with pkgs; [
     # keep-sorted start
     # electron
-    # nodejs
+    nodejs
     cmake
     docker
     # jekyll

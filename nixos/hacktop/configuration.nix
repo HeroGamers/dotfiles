@@ -13,6 +13,9 @@
     # Security
     ../common/security.nix
 
+    # Nvidia GPU
+    ../common/nvidia.nix
+
     # Development
     ../common/development.nix
 
