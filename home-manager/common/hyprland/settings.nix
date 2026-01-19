@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   # Inspired/yoinked a lot by https://github.com/fufexan/dotfiles
   wayland.windowManager.hyprland.settings = {
     # See https://wiki.hyprland.org/Configuring/Keywords/
@@ -216,6 +215,8 @@
       "3, horizontal, workspace"
       # Swipe 3 fingers down to launch kitty
       "3, down, dispatcher, exec, kitty"
+      # Swipe 3 fingers up to launch hyprexpo
+      "3, up, dispatcher, hyprexpo:expo, toggle"
 
       # 4 finger gestures
       "4, left, move, l"
@@ -300,10 +301,9 @@
         columns = 3;
         gap_size = 4;
         bg_col = "$crust";
+        workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
 
-        enable_gesture = true;
-        gesture_distance = 300;
-        gesture_positive = false;
+        gesture_distance = 300; # how far is the "max" for the gesture
       };
     };
   };

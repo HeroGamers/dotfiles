@@ -62,7 +62,7 @@
 
       shellAliases = {
         ll = "ls -l";
-        update = "sudo sh -c 'nixos-rebuild switch --log-format internal-json -v |& nom --json'";
+        update = "sudo bash -c 'nixos-rebuild switch --log-format internal-json -v |& nom --json'";
         vim = "nvim";
         lg = "lazygit";
         ns = "nix_shell_wrapper";
