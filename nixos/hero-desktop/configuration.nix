@@ -34,9 +34,6 @@
 
   networking.hostName = "hero-desktop";
 
-  # Disable SSH agent in WSL (Windows handles this)
-  programs.ssh.startAgent = lib.mkForce false;
-
   # Disable OpenSSH server in WSL
   services.openssh.enable = lib.mkForce false;
 
