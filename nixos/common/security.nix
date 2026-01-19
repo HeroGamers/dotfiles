@@ -40,7 +40,7 @@
             capstone
             detect-it-easy # diE - Windows executable analysis tool
             ffuf
-            firewalk
+            # firewalk  # broken derivation: https://github.com/NixOS/nixpkgs/issues/481763
             foremost
             gdb
             ghidra
