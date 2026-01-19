@@ -3,8 +3,7 @@
   pkgs,
   config,
   ...
-}:
-let
+}: let
   kali_ferrofluid_wallpaper = pkgs.fetchurl {
     url = "https://gitlab.com/kalilinux/packages/kali-wallpapers/-/raw/kali/master/2024/backgrounds/kali/kali-ferrofluid-16x9.jpg";
     hash = "sha256-LyqagIeQAMDpyFuUYxxip3R1rVQHXXI50dQBoddY9os=";
@@ -17,8 +16,7 @@ let
     url = "https://github.com/catppuccin/binary-ninja/raw/d2a7dcd2b97c4170b93df2dfeba7c11dae5b9779/themes/catppuccin-macchiato.bntheme";
     hash = "sha256-7Yo8fFiWa8DXu0fQ5dzIQDaRdqBPaHqoE0sNg5fMgfE=";
   };
-in
-{
+in {
   imports = [
     # Import Catpuccin
     inputs.catppuccin.homeModules.catppuccin
@@ -170,10 +168,12 @@ in
   services = {
     hyprpaper = {
       settings = {
-        preload = [ "${kali_ferrofluid_wallpaper}" ];
-
         wallpaper = [
-          ", ${kali_ferrofluid_wallpaper}"
+          # Fallback wallpaper
+          {
+            monitor = "";
+            path = "${kali_ferrofluid_wallpaper}";
+          }
         ];
       };
     };

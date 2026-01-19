@@ -143,9 +143,7 @@
       enable = true;
 
       settings = {
-        # ipc = "on";
         # splash = false;
-        # splash_offset = 2.0;
 
         # Wallpaper handled in theme.nix
       };

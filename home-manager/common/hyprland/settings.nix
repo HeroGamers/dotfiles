@@ -27,12 +27,11 @@
 
     # exec-once = $terminal
     # exec-once = nm-applet &
-    # exec-once = waybar & hyprpaper & firefox
+    # exec-once = waybar & firefox
     exec-once = [
       "dunst" # notification daemon
       "hypridle" # idle management
       "waybar" # status bar
-      "hyprpaper" # wallpaper manager
       "kitty" # terminal
       "firefox" # web browser
 
