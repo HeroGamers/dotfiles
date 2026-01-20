@@ -116,7 +116,7 @@
     slurp # Select region utility for Wayland
     tor-browser
     vlc
-    vscode
+    # vscode # Managed in home-manager
     wev
     wireguard-tools
     wl-clipboard

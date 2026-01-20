@@ -19,6 +19,7 @@
     # keep-sorted start
     kitty.enable = true;
     mpv.enable = true;
+    vscode.enable = true;
     # keep-sorted end
   };
 

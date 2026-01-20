@@ -9,6 +9,9 @@
     # Desktop-specific Home Manager config
     ../common/desktop.nix
 
+    # Development tools and settings
+    ../common/development.nix
+
     # Security
     ../common/security.nix
 

@@ -1,0 +1,44 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+	// Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+	// List of extensions which should be recommended for users of this workspace.
+	"recommendations": [
+		// Theme
+		"Catppuccin.catppuccin-vsc",
+		"Catppuccin.catppuccin-vsc-icons",
+		// Programming languages and tools
+		"ms-python.python", // Python LSP
+		"ms-python.vscode-pylance", // Python LSP
+		"ms-python.debugpy", // Python Debugger
+		"ms-vscode.cpptools", // C/C++ LSP
+		"ms-vscode.cmake-tools", // CMake support
+		"golang.go", // Go LSP
+		"jnoortheen.nix-ide", // Nix LSP
+		"svelte.svelte-vscode", // Svelte LSP
+		"myriad-dreamin.tinymist", // Typst engine
+		"rust-lang.rust-analyzer", // Rust LSP
+		"tamasfe.even-better-toml", // TOML support
+		"redhat.vscode-yaml", // YAML support
+		"yzhang.markdown-all-in-one", // Markdown support
+		"bierner.markdown-preview-github-styles", // GitHub Markdown styles
+		"DavidAnson.vscode-markdownlint", // Markdown linting
+		"charliermarsh.ruff", // Python linter
+		"syler.sass-indented", // Sass support
+		"sibiraj-s.vscode-scss-formatter", // SCSS formatter
+		"dbaeumer.vscode-eslint", // JavaScript/TypeScript linter
+		"mechatroner.rainbow-csv", // CSV support
+		"ms-vscode.PowerShell", // PowerShell support
+		"wholroyd.jinja", // Jinja support
+		"bradlc.vscode-tailwindcss", // Tailwind CSS support
+		"redhat.vscode-xml", // XML support
+		"ms-azuretools.vscode-docker", // Docker support
+		// Utilities
+		"ms-azuretools.vscode-containers", // Container support
+		"WakaTime.vscode-wakatime", // WakaTime integration
+		"vscodevim.vim", // Vim emulation
+		"ms-vscode-remote.remote-ssh", // Remote SSH
+		"gencer.html-slim-scss-css-class-completion",
+	],
+	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+	"unwantedRecommendations": []
+}
