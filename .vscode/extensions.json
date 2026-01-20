@@ -8,7 +8,7 @@
 		"Catppuccin.catppuccin-vsc-icons",
 		// Programming languages and tools
 		"ms-python.python", // Python LSP
-		"ms-python.vscode-pylance", // Python LSP
+		"astral-sh.ty", // Python LSP
 		"ms-python.debugpy", // Python Debugger
 		"ms-vscode.cpptools", // C/C++ LSP
 		"ms-vscode.cmake-tools", // CMake support

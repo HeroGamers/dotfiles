@@ -13,6 +13,7 @@
           jnoortheen.nix-ide # Nix LSP
           ms-python.python # Python LSP
           ms-python.vscode-pylance # Python LSP
+          # astral-sh.ty # Python type checking, pylance alternative
           ms-python.debugpy # Python Debugger
           ms-vscode.cpptools # C/C++ LSP
           ms-vscode.cmake-tools # CMake support
