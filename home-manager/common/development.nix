@@ -1,13 +1,8 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   programs = {
     # keep-sorted start
     vscode = {
-      profiles.default.extensions =
-        with pkgs.vscode-extensions;
+      profiles.default.extensions = with pkgs.vscode-extensions;
         [
           # keep-sorted start
           jnoortheen.nix-ide # Nix LSP
@@ -40,10 +35,18 @@
           ms-azuretools.vscode-containers # Container support
           ms-vscode-remote.remote-ssh # Remote SSH
           wakatime.vscode-wakatime # WakaTime integration
-          vscodevim.vim # Vim emulation
+          # vscodevim.vim # Vim emulation
+          ms-vscode.makefile-tools # Makefile support
+          jebbs.plantuml # PlantUML support
+          esbenp.prettier-vscode # Prettier code formatter
+          # adrieankhisbe.vscode-ndjson # NDJSON support
+          formulahendry.code-runner
+          usernamehw.errorlens
+          github.copilot
+          github.copilot-chat
           # keep-sorted end
         ]
-        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [ ];
+        ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [];
     };
     # keep-sorted end
   };

@@ -32,12 +32,20 @@
 		"bradlc.vscode-tailwindcss", // Tailwind CSS support
 		"redhat.vscode-xml", // XML support
 		"ms-azuretools.vscode-docker", // Docker support
+		"gencer.html-slim-scss-css-class-completion", // HTML/CSS class completion
+		"ms-vscode.makefile-tools", // Makefile support
+		"jebbs.plantuml", // PlantUML support
+		"esbenp.prettier-vscode", // Prettier code formatter
+		"adrieankhisbe.vscode-ndjson", // NDJSON support
 		// Utilities
 		"ms-azuretools.vscode-containers", // Container support
 		"WakaTime.vscode-wakatime", // WakaTime integration
-		"vscodevim.vim", // Vim emulation
+		// "vscodevim.vim", // Vim emulation
 		"ms-vscode-remote.remote-ssh", // Remote SSH
-		"gencer.html-slim-scss-css-class-completion",
+		"formulahendry.code-runner",
+		"usernamehw.errorlens",
+		"github.copilot",
+		"github.copilot-chat",
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": []
