@@ -32,8 +32,8 @@
       "dunst" # notification daemon
       "hypridle" # idle management
       "waybar" # status bar
-      "kitty" # terminal
-      "firefox" # web browser
+      "[workspace 1 silent] kitty" # terminal
+      "[workspace 2 silent] firefox" # web browser
 
       # system tray stuff
       "blueman-applet" # bluetooth manager applet
