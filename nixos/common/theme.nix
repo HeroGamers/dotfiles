@@ -3,15 +3,13 @@
   pkgs,
   config,
   ...
-}:
-let
+}: let
   sddm_wallpaper = pkgs.fetchurl {
     # https://www.monokuro.world/
     url = "https://w.wallhaven.cc/full/ex/wallhaven-exkqk8.jpg";
     hash = "sha256-HATmU/6OrfgeoPIeUca/QFk3lzKD9NcpJenXQjMgMlU=";
   };
-in
-{
+in {
   imports = [
     # Import Catpuccin
     inputs.catppuccin.nixosModules.catppuccin
@@ -43,10 +41,55 @@ in
     # keep-sorted end
   };
 
+  gtk = {
+    font = {
+      name = "Roboto";
+      size = 10;
+      package = pkgs.roboto;
+    };
+
+    theme = {
+      # IMPORTANT: must match the directory inside share/themes
+      name = "Catppuccin-GTK-Pink-Dark-Compact-Macchiato";
+      package = pkgs.magnetic-catppuccin-gtk.override {
+        size = "compact";
+        accent = [config.catppuccin.accent];
+        tweaks = [config.catppuccin.flavor];
+      };
+    };
+
+    # gtk4.extraConfig = {
+    #   gtk-xft-antialias = 1;
+    #   gtk-xft-hinting = 1;
+    #   gtk-xft-hintstyle = "hintslight";
+    #   gtk-xft-rgba = "rgb";
+    #   gtk-enable-event-sounds = 0;
+    #   gtk-enable-input-feedback-sounds = 0;
+    # };
+
+    # gtk3.extraConfig = {
+    #   gtk-xft-antialias = 1;
+    #   gtk-xft-hinting = 1;
+    #   gtk-xft-hintstyle = "hintslight";
+    #   gtk-xft-rgba = "rgb";
+    #   gtk-enable-event-sounds = 0;
+    #   gtk-enable-input-feedback-sounds = 0;
+    # };
+
+    # gtk2.extraConfig = ''
+    #   gtk-xft-antialias=1
+    #   gtk-xft-hinting=1
+    #   gtk-xft-hintstyle="hintslight"
+    #   gtk-xft-rgba="rgb"
+    #   gtk-enable-event-sounds=0
+    #   gtk-enable-input-feedback-sounds=0
+    # '';
+  };
+
   # Enable cache for the catppuccin flake
   nix.settings = {
-    substituters = [ "https://catppuccin.cachix.org" ];
-    trusted-public-keys = [ "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU=" ];
+    substituters = ["https://catppuccin.cachix.org"];
+    trusted-public-keys = ["catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="];
   };
 
   environment.systemPackages = with pkgs; [
