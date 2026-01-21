@@ -1,9 +1,16 @@
-{...}: {
+{ ... }:
+{
   # Enable cache for Cuda
   # https://wiki.nixos.org/wiki/CUDA#Setting_up_CUDA_Binary_Cache
   nix.settings = {
-    substituters = ["https://cache.nixos-cuda.org" "https://cuda-maintainers.cachix.org"];
-    trusted-public-keys = ["cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="];
+    substituters = [
+      "https://cache.nixos-cuda.org"
+      "https://cuda-maintainers.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+    ];
   };
 
   nixpkgs.config = {
@@ -12,7 +19,7 @@
     cudaVersion = "12";
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     open = false;

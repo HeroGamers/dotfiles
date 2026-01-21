@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Enable docker
   virtualisation.docker = {
     enable = true;
@@ -6,8 +7,6 @@
 
   environment.systemPackages = with pkgs; [
     # keep-sorted start
-    # electron
-    nodejs
     cmake
     docker
     # jekyll
@@ -26,6 +25,8 @@
     nixd # Nix language server
     nixfmt # nix formatter as defined by RFC 0166, prev. nixfmt-rfc-style
     nixfmt-tree # treefmt nix formatter
+    # electron
+    nodejs
     rustup # Rust toolchain installer
     # lld
     # lldb

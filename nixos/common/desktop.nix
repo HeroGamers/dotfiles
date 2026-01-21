@@ -124,7 +124,6 @@
     # keep-sorted end
   ];
 
-  
   environment.sessionVariables = {
     # Hint electron apps to use wayland:
     # https://wiki.nixos.org/wiki/Hyprland#Electron_applications_defaulting_to_X11_rather_than_Wayland
