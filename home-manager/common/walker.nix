@@ -1,17 +1,23 @@
-{
-  inputs,
-  ...
-}:
-{
+{inputs, ...}: {
   imports = [
     # Import Walker
     inputs.walker.homeManagerModules.default
   ];
 
-  # TODO: fix walker, when typing to open app, notif: "Could not acquire lock on '/run/user/1000/uwsm-app.lock'"
   programs.walker = {
     enable = true;
     runAsService = true;
+
+    elephant = {
+      provider = {
+        desktopapplications = {
+          settings = {
+            # The default uwsm prefix, "uwsm-app --" broke on Hyprland for me lol
+            launch_prefix = "uwsm app --";
+          };
+        };
+      };
+    };
 
     # All options from the config.toml can be used here.
     # config = {
