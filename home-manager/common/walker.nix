@@ -1,4 +1,5 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   imports = [
     # Import Walker
     inputs.walker.homeManagerModules.default
