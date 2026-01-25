@@ -3,7 +3,7 @@
 
   programs = lib.mkDefault {
     # keep-sorted start
-    vscode.enable = true;
+    vscode.enable = false;
     # keep-sorted end
   };
 
