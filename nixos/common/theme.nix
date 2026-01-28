@@ -44,19 +44,19 @@ in
   };
 
   # gtk = {
-  #   # font = {
-  #   #   name = "Roboto";
-  #   #   size = 10;
-  #   #   package = pkgs.roboto;
-  #   # };
+  #   font = {
+  #     name = "Roboto";
+  #     size = 10;
+  #     package = pkgs.roboto;
+  #   };
 
   #   theme = {
   #     # IMPORTANT: must match the directory inside share/themes
   #     name = "Catppuccin-GTK-Pink-Dark-Compact-Macchiato";
   #     package = pkgs.magnetic-catppuccin-gtk.override {
   #       size = "compact";
-  #       accent = [config.catppuccin.accent];
-  #       tweaks = [config.catppuccin.flavor];
+  #       accent = [ config.catppuccin.accent ];
+  #       tweaks = [ config.catppuccin.flavor ];
   #     };
   #   };
 
