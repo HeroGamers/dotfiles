@@ -18,6 +18,8 @@
     gradle # Gradle build tool for Java projects
     # nodejs-10_x
     jdk # newest LTS Java JDK
+    just
+    just-lsp
     keep-sorted # Tool to keep lists sorted
     llvm
     # ant

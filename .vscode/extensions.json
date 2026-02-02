@@ -45,7 +45,8 @@
 		"formulahendry.code-runner",
 		"usernamehw.errorlens",
 		"github.copilot",
-		"github.copilot-chat"
+		"github.copilot-chat",
+		"nefrob.vscode-just-syntax"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": []
