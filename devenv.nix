@@ -7,6 +7,11 @@
   # https://devenv.sh/languages/
   languages.nix.enable = true;
 
+  devcontainer = {
+    enable = true;
+    settings.customizations.vscode.extensions = [ "jnoortheen.nix-ide" ];
+  };
+
   # https://devenv.sh/scripts/
   scripts = {
     # https://nix.dev/manual/nix/latest/package-management/garbage-collection
