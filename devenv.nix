@@ -1,0 +1,30 @@
+{ pkgs, ... }:
+
+{
+  # https://devenv.sh/packages/
+  packages = [ pkgs.git ];
+
+  # https://devenv.sh/languages/
+  languages.nix.enable = true;
+
+  # https://devenv.sh/scripts/
+  scripts = {
+    # https://nix.dev/manual/nix/latest/package-management/garbage-collection
+    gc.exec = ''
+      nix-collect-garbage --delete-older-than 7d
+    '';
+    update.exec = ''
+      sudo bash -c 'nixos-rebuild switch --log-format internal-json -v |& nom --json'
+    '';
+  };
+
+  # https://devenv.sh/basics/
+  enterShell = ''
+    echo Welcome to the dotfiles development environment!
+  '';
+
+  # https://devenv.sh/git-hooks/
+  git-hooks.hooks.nixfmt.enable = true;
+
+  # See full reference at https://devenv.sh/reference/options/
+}
