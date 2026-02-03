@@ -202,6 +202,7 @@
     nasm # Netwide Assembler, for assembly programming
     ncdu # NCurses Disk Usage
     neofetch
+    net-tools
     # neovim # defined in hm
     # nix-index # using nix-index-database instead
     nix-output-monitor
