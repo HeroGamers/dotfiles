@@ -1,8 +1,10 @@
 { pkgs, ... }:
-
 {
   # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = [
+    pkgs.git
+    pkgs.nix-output-monitor
+  ];
 
   # https://devenv.sh/languages/
   languages.nix.enable = true;
