@@ -32,6 +32,10 @@
     # Tools and Utilities
     # keep-sorted start block=yes
     catppuccin.url = "github:catppuccin/nix"; # Has binary cache
+    ctf-man = {
+      url = "github:WilliamBenEmbarek/ctf-man";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hackpkgs = {
       url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
       inputs.nixpkgs.follows = "nixpkgs";

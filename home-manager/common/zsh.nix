@@ -44,8 +44,59 @@
         # Define a function to use nix-shell-wrapper
         function nix_shell_wrapper() {
             history -a # Save command history before starting the shell
-            ${inputs.nix-shell-wrapper.packages.x86_64-linux.default}/bin/nix-shell-wrapper "$@"
+            ${
+              inputs.nix-shell-wrapper.packages.${pkgs.stdenv.hostPlatform.system}.default
+            }/bin/nix-shell-wrapper "$@"
             history -r # Reload command history after exiting the shell
+        }
+
+        function ctf() {
+            local output exit_code path temp_file
+
+            # Temp file for navigation path
+            temp_file="${"TMPDIR:-/tmp"}/ctf-man.path"
+
+            # No arguments = TUI mode, run directly to preserve TTY
+            if [ $# -eq 0 ]; then
+                "${inputs.ctf-man.packages.${pkgs.stdenv.hostPlatform.system}.ctf-man}/bin/ctf-man"
+                exit_code=$?
+
+                # Check if navigation path was written to temp file
+                if [ $exit_code -eq 0 ] && [ -f "$temp_file" ]; then
+                    path=$(cat "$temp_file")
+                    rm -f "$temp_file"
+
+                    if [ -d "$path" ]; then
+                        cd "$path" || return 1
+                    fi
+                fi
+
+                return $exit_code
+            fi
+
+            # CLI mode - capture output for error handling
+            output=$("${
+              inputs.ctf-man.packages.${pkgs.stdenv.hostPlatform.system}.ctf-man
+            }/bin/ctf-man" "$@" 2>&1)
+            exit_code=$?
+
+            if [ $exit_code -eq 0 ]; then
+                # Check temp file for navigation path
+                if [ -f "$temp_file" ]; then
+                    path=$(cat "$temp_file")
+                    rm -f "$temp_file"
+
+                    if [ -d "$path" ]; then
+                        echo "Created and entering: $path"
+                        cd "$path" || return 1
+                    fi
+                else
+                    printf '%s\n' "$output"
+                fi
+            else
+                printf '%s\n' "$output" >&2
+                return $exit_code
+            fi
         }
       '';
     in

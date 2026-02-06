@@ -44,12 +44,13 @@
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
-      # Hackpkgs and pwndbg
+      # Hackpkgs, pwndbg, etc.
       (final: prev: {
         inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) binaryninja-personal;
         inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) ida-pro;
         inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) mstrings;
         inherit (inputs.pwndbg.packages.${final.stdenv.hostPlatform.system}) pwndbg;
+        inherit (inputs.ctf-man.packages.${final.stdenv.hostPlatform.system}) ctf-man;
         #   hi = final.hello.overrideAttrs (oldAttrs: {
         #     patches = [ ./change-hello-to-hi.patch ];
         #   });

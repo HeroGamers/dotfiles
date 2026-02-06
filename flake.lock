@@ -51,6 +51,26 @@
         "type": "github"
       }
     },
+    "ctf-man": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769599827,
+        "narHash": "sha256-9J/BR1MXNL3S5I3HAUwbyIQ7jsMpIS0xhWFeAZdy+cc=",
+        "owner": "WilliamBenEmbarek",
+        "repo": "ctf-man",
+        "rev": "351e6428ed744d0040d82de8d28653d471c13322",
+        "type": "github"
+      },
+      "original": {
+        "owner": "WilliamBenEmbarek",
+        "repo": "ctf-man",
+        "type": "github"
+      }
+    },
     "elephant": {
       "inputs": {
         "nixpkgs": [
@@ -882,6 +902,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "ctf-man": "ctf-man",
         "flake-parts": "flake-parts",
         "hackpkgs": "hackpkgs",
         "home-manager": "home-manager",
