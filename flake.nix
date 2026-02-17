@@ -48,6 +48,12 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-minecraft = {
+      # For nixos/common/gameservers/minecraft-gtnh.nix
+      url = "github:Infinidoge/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
     nix-shell-wrapper = {
       url = "github:NixenBiksen/nix-shell-wrapper";
       inputs.nixpkgs.follows = "nixpkgs";
