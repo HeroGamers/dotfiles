@@ -39,6 +39,16 @@
     # keep-sorted end
   ];
 
+  # Avoid Docker network conflicts
+  virtualisation.docker.daemon.settings = {
+    default-address-pools = [
+      {
+        base = "172.27.0.0/16";
+        size = 24;
+      }
+    ];
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It's perfectly fine and recommended to leave
