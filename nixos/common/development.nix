@@ -7,6 +7,7 @@
 
   environment.systemPackages = with pkgs; [
     # keep-sorted start
+    antigravity
     cmake
     devenv
     docker
