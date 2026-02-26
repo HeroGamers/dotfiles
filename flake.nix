@@ -36,6 +36,14 @@
       url = "github:WilliamBenEmbarek/ctf-man";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     hackpkgs = {
       url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,6 +67,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pwndbg.url = "github:pwndbg/pwndbg"; # Has binary cache
+    # quickshell = {
+    #   # Only needed for DMS when not using the DMS flake
+    #   url = "git+https://git.outfoxxed.me/quickshell/quickshell";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";

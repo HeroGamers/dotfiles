@@ -30,9 +30,9 @@
     # exec-once = nm-applet &
     # exec-once = waybar & firefox
     exec-once = [
-      "dunst" # notification daemon
-      "hypridle" # idle management
-      "waybar" # status bar
+      # dunst removed — DMS has a built-in notification daemon
+      # "hypridle" # idle management — replaced by DMS built-in idle inhibitor
+      # "waybar" # status bar - replaced with DMS
       "[workspace 1 silent] kitty" # terminal
       "[workspace 2 silent] firefox" # web browser
 
@@ -52,6 +52,12 @@
       #"QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
       "XCURSOR_SIZE,24"
       "HYPRCURSOR_SIZE,24"
+      # https://danklinux.com/docs/dankmaterialshell/compositors#environment-variables-1
+      # https://danklinux.com/docs/dankmaterialshell/application-themes#qt-applications
+      # "QT_QPA_PLATFORM,wayland"
+      # "ELECTRON_OZONE_PLATFORM_HINT,auto"
+      # "QT_QPA_PLATFORMTHEME,gtk3"
+      # "QT_QPA_PLATFORMTHEME_QT6,gtk3"
     ];
 
     #####################
@@ -161,7 +167,8 @@
       #disable_autoreload = true;
 
       force_default_wallpaper = -1; # Set to 0 or 1 to disable the anime mascot wallpapers
-      disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background. :(
+      disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. :(
+      disable_splash_rendering = true;
 
       # disable dragging animation
       #animate_mouse_windowdragging = false;
@@ -251,6 +258,28 @@
       # Kitty opacity
       "match:class kitty, opacity 0.8 0.8"
 
+      # DMS - https://danklinux.com/docs/dankmaterialshell/compositors#window-rules-1
+      "match:class ^(org.quickshell)$, float on"
+
+      # Floating windows
+      "match:class ^(gnome-calculator)$, float on"
+      "match:class ^(blueman-manager)$, float on"
+      "match:class ^(org\.gnome\.Nautilus)$, float on"
+
+      # # Opacity for inactive windows
+      # windowrulev2 = opacity 0.9 0.9, floating:0, focus:0
+
+      # # GNOME apps
+      # windowrulev2 = rounding 12, class:^(org\.gnome\.)
+      # windowrulev2 = noborder, class:^(org\.gnome\.)
+
+      # # Terminal apps - no borders
+      # windowrulev2 = noborder, class:^(org\.wezfurlong\.wezterm)$
+      # windowrulev2 = noborder, class:^(Alacritty)$
+      # windowrulev2 = noborder, class:^(zen)$
+      # windowrulev2 = noborder, class:^(com\.mitchellh\.ghostty)$
+      # windowrulev2 = noborder, class:^(kitty)$
+
       # flameshot multi-display fix: https://ryanwise.me/blog/flameshot-on-hyprland/
       "match:class (flameshot), match:title (flameshot), move 0 0"
       "match:class (flameshot), match:title (flameshot), pin on"
@@ -264,6 +293,8 @@
       "match:namespace waybar, animation slide"
       "match:namespace walker, animation popin"
       "match:namespace walker, dim_around on"
+      # https://danklinux.com/docs/dankmaterialshell/compositors#layer-rules-1
+      "match:namespace ^(dms)$, no_anim on" # no animations for DMS
     ];
 
     # group = {

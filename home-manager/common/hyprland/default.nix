@@ -7,7 +7,8 @@
   imports = [
     ./settings.nix
     ./binds.nix
-    ./waybar
+    ./dms
+    # ./waybar
   ];
 
   wayland.windowManager.hyprland = {
@@ -58,9 +59,6 @@
   };
 
   programs = {
-    waybar = {
-      enable = true;
-    };
     wlogout = {
       enable = true;
 
@@ -113,42 +111,23 @@
     };
   };
 
-  services = {
-    hypridle = {
-      enable = true;
-
-      settings = {
-        general = {
-          before_sleep_cmd = "hyprlock";
-          after_sleep_cmd = "hyprctl dispatch dpms on";
-          ignore_dbus_inhibit = false;
-          lock_cmd = "hyprlock";
-        };
-
-        listener = [
-          {
-            timeout = 5 * 60;
-            on-timeout = "hyprlock";
-          }
-          {
-            timeout = 15 * 60;
-            on-timeout = "hyprctl dispatch dpms off";
-            on-resume = "hyprctl dispatch dpms on";
-          }
-        ];
-      };
-    };
-
-    hyprpaper = {
-      enable = true;
-
-      settings = {
-        # splash = false;
-
-        # Wallpaper handled in theme.nix
-      };
-    };
-  };
+  # services.hypridle is disabled — DMS has a built-in idle inhibitor
+  # Re-enable if you want hypridle back:
+  # services.hypridle = {
+  #   enable = true;
+  #   settings = {
+  #     general = {
+  #       before_sleep_cmd = "hyprlock";
+  #       after_sleep_cmd = "hyprctl dispatch dpms on";
+  #       ignore_dbus_inhibit = false;
+  #       lock_cmd = "hyprlock";
+  #     };
+  #     listener = [
+  #       { timeout = 5 * 60;  on-timeout = "hyprlock"; }
+  #       { timeout = 15 * 60; on-timeout = "hyprctl dispatch dpms off"; on-resume = "hyprctl dispatch dpms on"; }
+  #     ];
+  #   };
+  # };
 
   # Enable gtk
   gtk.enable = true;

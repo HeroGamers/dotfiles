@@ -126,7 +126,7 @@
       LC_NUMERIC = "da_DK.UTF-8";
       LC_PAPER = "da_DK.UTF-8";
       LC_TELEPHONE = "da_DK.UTF-8";
-      LC_TIME = "da_DK.UTF-8";
+      LC_TIME = "en_DK.UTF-8"; # English dates/times with EU conventions (24h, ISO week)
     };
   };
 

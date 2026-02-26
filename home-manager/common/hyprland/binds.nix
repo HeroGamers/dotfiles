@@ -4,18 +4,32 @@
     bind = [
       # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
       "$mod, Q, exec, kitty"
-      "$mod, F, exec, firefox"
+      "$mod, B, exec, firefox"
       "$mod, C, killactive,"
-      "$mod, M, exit,"
+      # "$mod, M, exit,"
       "$mod, E, exec, dolphin"
-      "$mod, V, togglefloating,"
+      "$mod, F, togglefloating,"
       "$mod, R, exec, wofi --show drun" # launch wofi
-      "$mod, space, exec, walker" # launch walker
+      "$mod, W, exec, walker" # launch walker
       "$mod, P, pseudo," # dwindle
       "$mod, J, togglesplit," # dwindle
 
+      # Application Launchers - DMS
+      # https://danklinux.com/docs/dankmaterialshell/compositors#dms-keybindings-1
+      "$mod, space, exec, dms ipc call spotlight toggle"
+      "$mod, V, exec, dms ipc call clipboard toggle"
+      "$mod, M, exec, dms ipc call processlist focusOrToggle"
+      "$mod, comma, exec, dms ipc call settings focusOrToggle"
+      "$mod, N, exec, dms ipc call notifications toggle"
+      "$mod, I, exec, dms ipc call idleInhibitor toggle"
+      "$mod, Y, exec, dms ipc call dankdash wallpaper"
+      "$mod, TAB, exec, dms ipc call hypr toggleOverview"
+
+      # Security
       # lock screen
+      "$mod ALT, L, exec, dms ipc call lock lock"
       "$mod, L, exec, pgrep hyprlock || hyprlock"
+
       # CTRL + ALT + DEL for wlogout
       "CONTROL_ALT, Delete, exec, wlogout"
 
@@ -49,28 +63,6 @@
       # Move workspace to other monitor
       "$mod SHIFT, LEFT, movecurrentworkspacetomonitor, +1"
       "$mod SHIFT, RIGHT, movecurrentworkspacetomonitor, -1"
-
-      # Keyboard backlight - not needed on ThinkPad - the BIOS does it when pressing FN + Space
-      # ", XF86MonBrightnessUp, exec, brightnessctl -d *::kbd_backlight set +33%"
-      # ", XF86MonBrightnessDown, exec, brightnessctl -d *::kbd_backlight set 33%-"
-
-      # Monitor backlight
-      ", XF86MonBrightnessUp, exec, brightnessctl set +10%"
-      ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
-
-      # Volume and Media Control
-      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+" # To raise the volume, with a limit of 150%
-      ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-      ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      # ", XF86AudioLowerVolume, exec, pamixer -d 5"
-      # ", XF86AudioRaiseVolume, exec, pamixer -i 5"
-      # ", XF86AudioMicMute, exec, pamixer --default-source -m"
-      # ", XF86AudioMute, exec, pamixer -t"
-      ", XF86AudioPlay, exec, playerctl play-pause"
-      ", XF86AudioPause, exec, playerctl play-pause"
-      ", XF86AudioNext, exec, playerctl next"
-      ", XF86AudioPrev, exec, playerctl previous"
     ]
     # Switch workspaces with mod + [0-9]
     # Move active window to a workspace with mod + SHIFT + [0-9]
@@ -101,6 +93,60 @@
       "$mod, mouse:272, movewindow"
       "$mod, mouse:273, resizewindow"
       #"$mod ALT, mouse:272, resizewindow"
+    ];
+
+    bindel = [
+      # Keyboard backlight - not needed on ThinkPad - the BIOS does it when pressing FN + Space
+      # ", XF86MonBrightnessUp, exec, brightnessctl -d *::kbd_backlight set +33%"
+      # ", XF86MonBrightnessDown, exec, brightnessctl -d *::kbd_backlight set 33%-"
+
+      # Monitor backlight - Without DMS
+      # ", XF86MonBrightnessUp, exec, brightnessctl set +10%"
+      # ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
+
+      # Brightness Controls - DMS
+      ", XF86MonBrightnessUp, exec, dms ipc call brightness increment 5 backlight:intel_backlight"
+      ", XF86MonBrightnessDown, exec, dms ipc call brightness decrement 5 backlight:intel_backlight"
+
+      # Volume and Media Control - without DMS
+      # ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      # ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+" # To raise the volume, with a limit of 150%
+
+      # Audio Controls - DMS
+      ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 3"
+      ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 3"
+
+      # Don't use
+      # ", XF86AudioLowerVolume, exec, pamixer -d 5"
+      # ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+    ];
+
+    bindl = [
+      # Audio Controls - without DMS
+      # ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      # ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
+      # Player Controls - without DMS
+      # ", XF86AudioPlay, exec, playerctl play-pause"
+      # ", XF86AudioPause, exec, playerctl play-pause"
+      # ", XF86AudioNext, exec, playerctl next"
+      # ", XF86AudioPrev, exec, playerctl previous"
+
+      # Audio Controls - DMS
+      # https://danklinux.com/docs/dankmaterialshell/keybinds-ipc#audio
+      ", XF86AudioMute, exec, dms ipc call audio mute"
+      ", XF86AudioMicMute, exec, dms ipc call audio micmute"
+
+      # Player Controls - DMS
+      # https://danklinux.com/docs/dankmaterialshell/keybinds-ipc#mpris
+      ", XF86AudioPlay, exec, dms ipc call mpris play"
+      ", XF86AudioPause, exec, dms ipc call mpris pause"
+      ", XF86AudioNext, exec, dms ipc call mpris next"
+      ", XF86AudioPrev, exec, dms ipc call mpris previous"
+
+      # Don't use
+      # ", XF86AudioMicMute, exec, pamixer --default-source -m"
+      # ", XF86AudioMute, exec, pamixer -t"
     ];
   };
 }

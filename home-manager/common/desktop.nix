@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}:
+{ lib, ... }:
 {
   # You can import other home-manager modules here
   imports = [
@@ -26,7 +23,7 @@
   services = lib.mkDefault {
     # keep-sorted start
     dunst = {
-      enable = true;
+      enable = false; # DMS has a built-in notification daemon
     };
     # keep-sorted end
   };

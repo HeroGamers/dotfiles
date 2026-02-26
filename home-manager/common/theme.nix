@@ -17,12 +17,19 @@ let
     url = "https://github.com/catppuccin/binary-ninja/raw/d2a7dcd2b97c4170b93df2dfeba7c11dae5b9779/themes/catppuccin-macchiato.bntheme";
     hash = "sha256-7Yo8fFiWa8DXu0fQ5dzIQDaRdqBPaHqoE0sNg5fMgfE=";
   };
+  user_avatar = pkgs.fetchurl {
+    url = "https://i.imgur.com/edxQRm5.png";
+    hash = "sha256-YURdAE1duVB9H0DdnRXJkYtvG3e1tr3Y6yivr0LP4K8=";
+  };
 in
 {
   imports = [
     # Import Catpuccin
     inputs.catppuccin.homeModules.catppuccin
   ];
+
+  # User avatar — DMS (and other apps, like AccountsService) read from ~/.face
+  home.file.".face".source = user_avatar;
 
   # Nerdfont
   fonts.fontconfig.enable = true;
@@ -58,10 +65,10 @@ in
       accent = "${config.catppuccin.accent}";
       flavor = "${config.catppuccin.flavor}";
     };
-    dunst = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
+    # dunst = {
+    #   enable = true;
+    #   flavor = "${config.catppuccin.flavor}";
+    # };
     hyprland = {
       enable = true;
 
