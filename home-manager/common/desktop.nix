@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
   # You can import other home-manager modules here
   imports = [
@@ -31,6 +31,7 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  # Wayland, X, etc. support for session vars
-  #systemd.user.sessionVariables = config.home-manager.users.hero.home.sessionVariables;
+  # Propagate home.sessionVariables into the systemd user environment.
+  # Required for UWSM: Hyprland runs as a systemd service and never sources ~/.profile.
+  systemd.user.sessionVariables = config.home.sessionVariables;
 }

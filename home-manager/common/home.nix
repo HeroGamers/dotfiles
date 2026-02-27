@@ -1,9 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  lib,
-  ...
-}:
+{ lib, ... }:
 {
   # You can import other home-manager modules here
   imports = [
@@ -27,11 +24,24 @@
     username = "hero";
     homeDirectory = "/home/hero";
 
-    # make stuff work on wayland
+    # Session variables — propagated to the systemd user environment via desktop.nix
+    # so they're available to UWSM/Hyprland and all launched apps, not just terminal sessions.
+    # Do NOT set these in hyprland.conf env = [] when using UWSM (set too late).
+    # https://wiki.hypr.land/Configuring/Environment-variables/
     sessionVariables = {
-      QT_QPA_PLATFORM = "wayland";
+      # Wayland backends
+      QT_QPA_PLATFORM = "wayland;xcb"; # wayland with xcb fallback
       SDL_VIDEODRIVER = "wayland";
       XDG_SESSION_TYPE = "wayland";
+      GDK_BACKEND = "wayland,x11,*"; # GTK: wayland, then x11, then any
+      # Not needed, we only set hyprbars on floating
+      # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # prevent double decorations with hyprbars
+      # Cursor - set by UWSM
+      # XCURSOR_SIZE = "24";
+      # HYPRCURSOR_SIZE = "24";
+      # Required for Java GUI apps (IntelliJ etc.) on tiling/compositing WMs
+      _JAVA_AWT_WM_NONREPARENTING = "1";
+      # Note: XDG_SESSION_TYPE, XCURSOR_SIZE, HYPRCURSOR_SIZE are managed by UWSM
     };
   };
 

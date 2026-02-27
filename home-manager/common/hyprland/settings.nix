@@ -47,18 +47,9 @@
     ### ENVIRONMENT VARIABLES ###
     #############################
 
-    # See https://wiki.hyprland.org/Configuring/Environment-variables/
-    env = [
-      #"QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-      "XCURSOR_SIZE,24"
-      "HYPRCURSOR_SIZE,24"
-      # https://danklinux.com/docs/dankmaterialshell/compositors#environment-variables-1
-      # https://danklinux.com/docs/dankmaterialshell/application-themes#qt-applications
-      # "QT_QPA_PLATFORM,wayland"
-      # "ELECTRON_OZONE_PLATFORM_HINT,auto"
-      # "QT_QPA_PLATFORMTHEME,gtk3"
-      # "QT_QPA_PLATFORMTHEME_QT6,gtk3"
-    ];
+    # env vars are NOT set here — using UWSM, which sources ~/.profile before Hyprland starts.
+    # Set env vars in home.sessionVariables (home-manager/common/home.nix) instead.
+    # https://wiki.hypr.land/Configuring/Environment-variables/
 
     #####################
     ### LOOK AND FEEL ###
