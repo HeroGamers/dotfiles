@@ -1,1 +1,12 @@
-/nix/store/4vga2igmysf4b7rq04rpvdnbnl1j9gmv-devcontainer.json
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "jnoortheen.nix-ide"
+      ]
+    }
+  },
+  "image": "ghcr.io/cachix/devenv/devcontainer:latest",
+  "overrideCommand": false,
+  "updateContentCommand": "devenv test"
+}
