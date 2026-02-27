@@ -34,7 +34,6 @@
 
   environment.systemPackages = with pkgs; [
     # keep-sorted start
-    ctf-man
     elastic-package # Elastic integrations development tool
     # keep-sorted end
   ];

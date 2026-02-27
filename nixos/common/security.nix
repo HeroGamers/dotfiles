@@ -38,6 +38,7 @@
             bloodhound
             burpsuite
             capstone
+            ctf-dl
             ctf-man
             detect-it-easy # diE - Windows executable analysis tool
             ffuf

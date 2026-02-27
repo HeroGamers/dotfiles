@@ -51,6 +51,26 @@
         "type": "github"
       }
     },
+    "ctf-dl": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772138964,
+        "narHash": "sha256-QrNBDy2i+2UZzmsRQ2jRcWW+k0Vkk8OIfLHED/tOgZo=",
+        "ref": "refs/heads/master",
+        "rev": "abd99519e1012a2c6aeacf3a107b95bb00f502b0",
+        "revCount": 21,
+        "type": "git",
+        "url": "ssh://git@github.com/HeroGamers/ctf-dl"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/HeroGamers/ctf-dl"
+      }
+    },
     "ctf-man": {
       "inputs": {
         "nixpkgs": [
@@ -58,15 +78,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1769599827,
-        "narHash": "sha256-9J/BR1MXNL3S5I3HAUwbyIQ7jsMpIS0xhWFeAZdy+cc=",
-        "owner": "WilliamBenEmbarek",
+        "lastModified": 1772224113,
+        "narHash": "sha256-zPyboN6/BAPXjZAu8lu1BUQiRdW5MMokOTy0VTJ8r3M=",
+        "owner": "HeroGamers",
         "repo": "ctf-man",
-        "rev": "351e6428ed744d0040d82de8d28653d471c13322",
+        "rev": "975a79e954a3aa6400535ff98e6842710eb24160",
         "type": "github"
       },
       "original": {
-        "owner": "WilliamBenEmbarek",
+        "owner": "HeroGamers",
+        "ref": "feat/library",
         "repo": "ctf-man",
         "type": "github"
       }
@@ -1006,6 +1027,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "ctf-dl": "ctf-dl",
         "ctf-man": "ctf-man",
         "dms": "dms",
         "dms-plugin-registry": "dms-plugin-registry",

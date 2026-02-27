@@ -32,8 +32,12 @@
     # Tools and Utilities
     # keep-sorted start block=yes
     catppuccin.url = "github:catppuccin/nix"; # Has binary cache
+    ctf-dl = {
+      url = "git+ssh://git@github.com/HeroGamers/ctf-dl";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ctf-man = {
-      url = "github:WilliamBenEmbarek/ctf-man";
+      url = "github:HeroGamers/ctf-man/feat/library";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dms = {
