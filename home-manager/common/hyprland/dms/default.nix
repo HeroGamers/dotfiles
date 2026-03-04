@@ -8,6 +8,8 @@ let
   # Default config
   # https://github.com/AvengeMedia/DankMaterialShell/blob/master/quickshell/Common/SettingsData.qml
   # https://github.com/AvengeMedia/DankMaterialShell/blob/master/quickshell/Common/settings/SettingsStore.js
+  # https://raw.githubusercontent.com/AvengeMedia/DankMaterialShell/refs/heads/master/quickshell/Common/settings/SettingsSpec.js
+  # https://raw.githubusercontent.com/AvengeMedia/DankMaterialShell/refs/heads/master/quickshell/Common/settings/SessionSpec.js
   # DMS default bar widget lists (from SettingsSpec.js / SettingsData.qml defaults).
   # Defined here so we can append to them without re-typing the whole list.
   # Update these if you ever want to track upstream default changes explicitly.
@@ -156,6 +158,7 @@ in
           )
         ];
 
+      # Theming
       registryThemeVariants = {
         catppuccin = {
           dark = {
@@ -169,6 +172,10 @@ in
           };
         };
       };
+
+      # Font
+      fontFamily = "JetBrainsMono Nerd Font";
+      monoFontFamily = "JetBrainsMono Nerd Font Mono";
     };
   };
 

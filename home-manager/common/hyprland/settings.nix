@@ -236,16 +236,16 @@
 
     # Japanese numeral names for workspaces (displayed by DMS workspace switcher)
     workspace = [
-      "1, name:一"
-      "2, name:二"
-      "3, name:三"
-      "4, name:四"
-      "5, name:五"
-      "6, name:六"
-      "7, name:七"
-      "8, name:八"
-      "9, name:九"
-      "10, name:十"
+      "1, defaultName:一"
+      "2, defaultName:二"
+      "3, defaultName:三"
+      "4, defaultName:四"
+      "5, defaultName:五"
+      "6, defaultName:六"
+      "7, defaultName:七"
+      "8, defaultName:八"
+      "9, defaultName:九"
+      "10, defaultName:十"
     ];
 
     windowrule = [

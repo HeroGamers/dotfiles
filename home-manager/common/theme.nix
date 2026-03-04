@@ -41,6 +41,9 @@ in
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     nerd-fonts.meslo-lg
+    nerd-fonts.noto
+    noto-fonts-cjk-sans # For Chinese, Japanese and Korean characters - not included in Nerd Fonts
+    noto-fonts-color-emoji # For color emoji - not included in Nerd Fonts
     # keep-sorted end
   ];
 
