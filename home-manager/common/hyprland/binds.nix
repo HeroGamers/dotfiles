@@ -21,7 +21,7 @@
       "$mod, M, exec, dms ipc call processlist focusOrToggle"
       "$mod, comma, exec, dms ipc call settings focusOrToggle"
       "$mod, N, exec, dms ipc call notifications toggle"
-      "$mod, I, exec, dms ipc call idleInhibitor toggle"
+      "$mod, I, exec, dms ipc call inhibit toggle"
       "$mod, Y, exec, dms ipc call dankdash wallpaper"
       "$mod, TAB, exec, dms ipc call hypr toggleOverview"
 
