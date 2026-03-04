@@ -35,7 +35,7 @@ let
           gothCornerRadiusValue = 12;
           gothCornersEnabled = false;
           id = "default";
-          innerPadding = 4;
+          innerPadding = 0;
           leftWidgets = [
             "launcherButton"
             "workspaceSwitcher"
@@ -63,6 +63,7 @@ let
           transparency = 1;
           visible = true;
           widgetTransparency = 1;
+          widgetPadding = 12;
         }
       ];
     };
@@ -103,8 +104,9 @@ in
     # For example, dms://plugin/install/dankBatteryAlerts has the ID dankBatteryAlerts.
     plugins = {
       # Simply enable plugins by their ID (from the registry)
-      # dankBatteryAlerts.enable = true;
-      # dockerManager.enable = true;
+      dankBatteryAlerts.enable = true;
+      dockerManager.enable = true;
+      nixMonitor.enable = true;
     };
 
     # https://danklinux.com/docs/dankmaterialshell/nixos-flake#settings-home-manager-only

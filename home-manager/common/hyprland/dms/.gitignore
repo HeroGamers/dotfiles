@@ -1,4 +1,4 @@
-settings.json
-session.json
+settings*.json
+session*.json
 settings_convert.nix
 session_convert.nix
