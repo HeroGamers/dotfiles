@@ -160,6 +160,15 @@ in
     };
   };
 
+  # KDE apps (e.g. Dolphin) read widgetStyle from kdeglobals rather than QT_STYLE_OVERRIDE.
+  # home-manager's qt.style.name no longer reliably writes this, so we set it explicitly
+  # via kwriteconfig6 — the proper KDE tool that patches only this key, leaving the rest
+  # of kdeglobals (and Dolphin's own runtime settings) untouched.
+  # home.activation.setKvantumWidgetStyle = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  #   run ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 \
+  #     --file kdeglobals --group KDE --key widgetStyle kvantum
+  # '';
+
   programs = {
     hyprlock = {
       settings = {

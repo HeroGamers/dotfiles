@@ -234,6 +234,20 @@
     # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
     # See https://wiki.hyprland.org/Configuring/Workspace-Rules/ for workspace rules
 
+    # Japanese numeral names for workspaces (displayed by DMS workspace switcher)
+    workspace = [
+      "1, name:一"
+      "2, name:二"
+      "3, name:三"
+      "4, name:四"
+      "5, name:五"
+      "6, name:六"
+      "7, name:七"
+      "8, name:八"
+      "9, name:九"
+      "10, name:十"
+    ];
+
     windowrule = [
       "match:class .*, suppress_event maximize" # You'll probably like this. (what this do)
       "match:float 0, hyprbars:no_bar on" # Hide bar on non-floating windows

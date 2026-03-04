@@ -58,7 +58,8 @@ in
       # Path DMS uses after installing a registry theme
       customThemeFile = "${config.home.homeDirectory}/.config/DankMaterialShell/themes/catppuccin/theme.json";
       # Variant selections for multi-variant themes (flavor + accent per light/dark mode)
-      showWorkspaceIndex = true; # Show workspace numbers in the bar
+      showWorkspaceIndex = false; # Numeric index hidden — Japanese names shown instead
+      showWorkspaceName = true; # Show workspace names (Japanese numerals) in the bar
 
       registryThemeVariants = {
         catppuccin = {
