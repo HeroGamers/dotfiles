@@ -38,6 +38,7 @@
 
       # system tray stuff
       "blueman-applet" # bluetooth manager applet
+      "trayscale" # Tailscale tray icon
       "sleep 1 && nm-applet" # network manager applet, wait for a second to allow KeePassXC to start first
       #"systemctl --user start plasma-polkit-agent"
       #"${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"

@@ -90,6 +90,12 @@
     };
   };
 
+  # Enable Tailscale
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
   # Install firefox.
   programs.firefox.enable = lib.mkDefault true;
 
@@ -115,6 +121,7 @@
     playerctl # CLI media player controller
     slurp # Select region utility for Wayland
     tor-browser
+    trayscale # tray icon for Tailscale
     vlc
     # vscode # Managed in home-manager
     wev

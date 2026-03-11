@@ -106,7 +106,35 @@ in
       # Simply enable plugins by their ID (from the registry)
       dankBatteryAlerts.enable = true;
       dockerManager.enable = true;
-      nixMonitor.enable = true;
+      # nixMonitor = {
+      #   enable = true;
+      #   settings = {
+      #     rebuildCommand = [
+      #       "bash"
+      #       "-c"
+      #       "sudo bash -c 'nixos-rebuild switch --log-format internal-json -v |& nom --json"
+      #     ];
+
+      #     # Use sudo for garbage collection
+      #     gcCommand = [
+      #       "sh"
+      #       "-c"
+      #       "nix-collect-garbage -d 2>&1"
+      #     ];
+
+      #     storeSizeCommand = [
+      #       "sh"
+      #       "-c"
+      #       "du -sh /nix/store 2>/dev/null | cut -f1"
+      #     ];
+
+      #     generationsCommand = [
+      #       "sh"
+      #       "-c"
+      #       "nix-env --list-generations --profile /nix/var/nix/profiles/system 2>/dev/null | wc -l"
+      #     ];
+      #   };
+      # };
     };
 
     # https://danklinux.com/docs/dankmaterialshell/nixos-flake#settings-home-manager-only
@@ -150,12 +178,19 @@ in
           (
             defaultBar
             // {
-              rightWidgets = [ "idleInhibitor" ] ++ defaultBar.rightWidgets;
-              # (builtins.filter (w: w != "controlCenterButton") defaultBar.rightWidgets)
-              # ++ [
-              #   "idleInhibitor"
-              #   "controlCenterButton"
-              # ];
+              rightWidgets = [
+                "idleInhibitor"
+                # "nixMonitor"
+                "dockerManager"
+                "systemTray"
+                "clipboard"
+                "cpuTemp"
+                "cpuUsage"
+                "memUsage"
+                "notificationButton"
+                "battery"
+                "controlCenterButton"
+              ];
             }
           )
         ];
