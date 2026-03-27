@@ -44,7 +44,7 @@
 		"ms-vscode-remote.remote-ssh", // Remote SSH
 		"formulahendry.code-runner",
 		"usernamehw.errorlens",
-		"github.copilot",
+		// "github.copilot",
 		"github.copilot-chat",
 		"nefrob.vscode-just-syntax"
 	],
