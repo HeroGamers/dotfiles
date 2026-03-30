@@ -42,8 +42,9 @@
     # Enable networking
     networkmanager = {
       enable = true;
-      # Disable DNS over DHCP
-      dns = "none";
+      # We use split-DNS with systemd-resolved, so we need to tell NetworkManager to use systemd-resolved for DNS resolution
+      # This helps us avoid issues with WG interfaces and their defined DNS servers
+      dns = "systemd-resolved";
     };
 
     # Use local nameservers
@@ -51,11 +52,19 @@
       "127.0.0.1"
       "::1"
     ];
+    search = [ "~." ];
 
     # If using dhcpcd:
     dhcpcd.extraConfig = "nohook resolv.conf";
   };
 
-  # Disable resolvd (using dnscrypt-proxy instead)
-  services.resolved.enable = lib.mkDefault false;
+  # Use resolved for DNS resolution, with dnscrypt-proxy as the upstream resolver (split-DNS)
+  services.resolved = {
+    enable = true;
+    # changed to .settings.Resolve.*
+    # extraConfig = ''
+    #   DNS=127.0.0.1
+    #   Domains=~.
+    # '';
+  };
 }
