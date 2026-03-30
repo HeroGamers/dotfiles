@@ -39,4 +39,6 @@
 
 # aau.dk          172.18.21.2,172.18.21.34
 
+lab.intranet        10.67.0.1
+
 # keep-sorted end
