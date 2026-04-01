@@ -78,6 +78,11 @@
         # Opinionated: disable global registry
         # flake-registry = "";
 
+        trusted-users = [
+          "root"
+          "hero"
+        ];
+
         # Workaround for https://github.com/NixOS/nix/issues/9574
         # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
         # nix-path = lib.mkForce config.nix.nixPath; # lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
@@ -188,6 +193,7 @@
     curl
     dig
     # dunst # defined in HM
+    fastfetch
     ffmpeg-headless
     fish
     fzf
@@ -207,7 +213,7 @@
     # mpv # defined in hm
     nasm # Netwide Assembler, for assembly programming
     ncdu # NCurses Disk Usage
-    neofetch
+    # neofetch # deprecated
     net-tools
     # neovim # defined in hm
     # nix-index # using nix-index-database instead
@@ -242,7 +248,7 @@
   # ++ (with pkgs; [
   #   # Electron stuff
   #   # nix-alien-find-libs ./node_modules/electron/dist/electron
-  #   alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out xorg.libX11.out xorg.libXScrnSaver.out xorg.libXcomposite.out xorg.libXcursor.out xorg.libXdamage.out xorg.libXext.out xorg.libXfixes.out xorg.libXi.out xorg.libXrandr.out xorg.libXrender.out xorg.libXtst.out xorg.libxcb.out
+  #   alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out libx11.out libxscrnsaver.out libxcomposite.out libxcursor.out libxdamage.out libxext.out libxfixes.out libxi.out libxrandr.out libxrender.out libxtst.out libxcb.out
   # ]);
 
   # SSH Agent

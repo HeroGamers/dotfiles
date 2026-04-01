@@ -43,51 +43,6 @@ in
     # keep-sorted end
   };
 
-  # gtk = {
-  #   font = {
-  #     name = "Roboto";
-  #     size = 10;
-  #     package = pkgs.roboto;
-  #   };
-
-  #   theme = {
-  #     # IMPORTANT: must match the directory inside share/themes
-  #     name = "Catppuccin-GTK-Pink-Dark-Compact-Macchiato";
-  #     package = pkgs.magnetic-catppuccin-gtk.override {
-  #       size = "compact";
-  #       accent = [ config.catppuccin.accent ];
-  #       tweaks = [ config.catppuccin.flavor ];
-  #     };
-  #   };
-
-  #   # gtk4.extraConfig = {
-  #   #   gtk-xft-antialias = 1;
-  #   #   gtk-xft-hinting = 1;
-  #   #   gtk-xft-hintstyle = "hintslight";
-  #   #   gtk-xft-rgba = "rgb";
-  #   #   gtk-enable-event-sounds = 0;
-  #   #   gtk-enable-input-feedback-sounds = 0;
-  #   # };
-
-  #   # gtk3.extraConfig = {
-  #   #   gtk-xft-antialias = 1;
-  #   #   gtk-xft-hinting = 1;
-  #   #   gtk-xft-hintstyle = "hintslight";
-  #   #   gtk-xft-rgba = "rgb";
-  #   #   gtk-enable-event-sounds = 0;
-  #   #   gtk-enable-input-feedback-sounds = 0;
-  #   # };
-
-  #   # gtk2.extraConfig = ''
-  #   #   gtk-xft-antialias=1
-  #   #   gtk-xft-hinting=1
-  #   #   gtk-xft-hintstyle="hintslight"
-  #   #   gtk-xft-rgba="rgb"
-  #   #   gtk-enable-event-sounds=0
-  #   #   gtk-enable-input-feedback-sounds=0
-  #   # '';
-  # };
-
   # Enable cache for the catppuccin flake
   nix.settings = {
     substituters = [ "https://catppuccin.cachix.org" ];

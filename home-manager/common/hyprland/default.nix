@@ -48,10 +48,12 @@
     # pkgs.hyprlandPlugins.<plugin>
     # From Flake:
     # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.<plugin>
+    # TODO: https://github.com/hyprwm/hyprland-plugins/issues/637
+    # - Plugins haven't been updated to work with versions newer than 0.53.
     plugins = [
       # keep-sorted start
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
-      inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
+      # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+      # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
       pkgs.hypridle
       pkgs.hyprlock
       # keep-sorted end

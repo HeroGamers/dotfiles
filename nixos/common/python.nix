@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     # keep-sorted start
@@ -38,7 +35,7 @@
       # Security
       # keep-sorted start
 
-      python-pkgs.angr
+      # python-pkgs.angr # TODO: fix broken - https://github.com/NixOS/nixpkgs/issues/501379
       python-pkgs.capstone
       python-pkgs.gmpy2
       python-pkgs.mitmproxy
@@ -52,6 +49,5 @@
 
       # keep-sorted end
     ]))
-
   ];
 }

@@ -53,6 +53,8 @@
         user.name = "Marcus Sand";
         user.email = "hero@herogamers.dev";
       };
+      # evaluation warning: The default value of `programs.git.signing.format` has changed from `"openpgp"` to `null`.
+      signing.format = null;
     };
     # Let home Manager install and manage itself.
     home-manager.enable = true;

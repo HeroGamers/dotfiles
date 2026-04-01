@@ -215,7 +215,7 @@
       # Swipe 3 fingers down to launch kitty
       "3, down, dispatcher, exec, kitty"
       # Swipe 3 fingers up to launch hyprexpo
-      "3, up, dispatcher, hyprexpo:expo, toggle"
+      # "3, up, dispatcher, hyprexpo:expo, toggle"
 
       # 4 finger gestures
       "4, left, move, l"
@@ -318,30 +318,30 @@
     # debug.disable_logs = false;
 
     plugin = {
-      hyprbars = {
-        bar_height = 20;
-        bar_color = "rgb(363a4f)"; # catppuccin macchiato surface0
-        col.text = "rgb(cad3f5)"; # catppuccin macchiato text
-        bar_text_size = 10;
-        bar_text_font = "Jetbrains Mono Nerd Font Mono Bold";
-        bar_button_padding = 10;
-        bar_padding = 10;
-        bar_precedence_over_border = true;
-        hyprbars-button = [
-          "rgb(ed8796), 20, , hyprctl dispatch killactive" # catppuccin macchiato red
-          "rgb(f5a97f), 20, , hyprctl dispatch fullscreen 2" # catppuccin macchiato peach
-          "rgb(8aadf4), 20, , hyprctl dispatch togglefloating" # catppuccin macchiato blue
-        ];
-      };
+      # hyprbars = {
+      #   bar_height = 20;
+      #   bar_color = "rgb(363a4f)"; # catppuccin macchiato surface0
+      #   col.text = "rgb(cad3f5)"; # catppuccin macchiato text
+      #   bar_text_size = 10;
+      #   bar_text_font = "Jetbrains Mono Nerd Font Mono Bold";
+      #   bar_button_padding = 10;
+      #   bar_padding = 10;
+      #   bar_precedence_over_border = true;
+      #   hyprbars-button = [
+      #     "rgb(ed8796), 20, , hyprctl dispatch killactive" # catppuccin macchiato red
+      #     "rgb(f5a97f), 20, , hyprctl dispatch fullscreen 2" # catppuccin macchiato peach
+      #     "rgb(8aadf4), 20, , hyprctl dispatch togglefloating" # catppuccin macchiato blue
+      #   ];
+      # };
 
-      hyprexpo = {
-        columns = 3;
-        gap_size = 4;
-        bg_col = "$crust";
-        workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
+      # hyprexpo = {
+      #   columns = 3;
+      #   gap_size = 4;
+      #   bg_col = "$crust";
+      #   workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
 
-        gesture_distance = 300; # how far is the "max" for the gesture
-      };
+      #   gesture_distance = 300; # how far is the "max" for the gesture
+      # };
     };
   };
 }
