@@ -12,7 +12,7 @@
       "$mod, R, exec, wofi --show drun" # launch wofi
       "$mod, W, exec, walker" # launch walker
       "$mod, P, pseudo," # dwindle
-      "$mod, J, togglesplit," # dwindle
+      "$mod, J, layoutmsg, togglesplit," # dwindle
 
       # Application Launchers - DMS
       # https://danklinux.com/docs/dankmaterialshell/compositors#dms-keybindings-1

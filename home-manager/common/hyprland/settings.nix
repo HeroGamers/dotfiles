@@ -251,7 +251,7 @@
 
     windowrule = [
       "match:class .*, suppress_event maximize" # You'll probably like this. (what this do)
-      "match:float 0, hyprbars:no_bar on" # Hide bar on non-floating windows
+      # "match:float 0, hyprbars:no_bar on" # Hide bar on non-floating windows
 
       # https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
       "match:class ^(xwaylandvideobridge)$, opacity 0.0 override"
