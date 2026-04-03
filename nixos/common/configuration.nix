@@ -78,10 +78,15 @@
         # Opinionated: disable global registry
         # flake-registry = "";
 
+        # Set users who can use nix
         trusted-users = [
           "root"
           "hero"
         ];
+
+        # Automatically detect files in the store that have identical contents, and replace them with hard links to a single copy. This saves disk space.
+        # Also makes rebuilds slower, from what I can read.
+        auto-optimise-store = true;
 
         # Workaround for https://github.com/NixOS/nix/issues/9574
         # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
@@ -108,6 +113,18 @@
       # this is set automatically by nixpkgs.lib.nixosSystem but might be required
       # if one is not using that:
       # nixpkgs.flake.source = nixpkgs;
+
+      # Enable automatic optimization of the Nix store.
+      # https://wiki.nixos.org/wiki/Storage_optimization#Automatic
+      optimise.automatic = true; # although likely not needed when auto-optimise-store is enabled
+
+      # Enable automatic garbage collection of the Nix store.
+      # https://wiki.nixos.org/wiki/Storage_optimization#Automation
+      gc = {
+        automatic = true;
+        dates = "daily";
+        options = "--delete-older-than 7d";
+      };
     };
 
   # but NIX_PATH is still used by many useful tools, so we set it to the same value as the one used by this flake.
