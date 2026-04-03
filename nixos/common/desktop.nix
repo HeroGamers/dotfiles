@@ -119,6 +119,7 @@
     openvpn
     pavucontrol # PulseAudio Volume Control, also works for PipeWire
     playerctl # CLI media player controller
+    seahorse # GNOME Keyring GUI
     slurp # Select region utility for Wayland
     tor-browser
     trayscale # tray icon for Tailscale
@@ -165,4 +166,8 @@
       allowedUDPPorts = [ 22 ];
     };
   };
+
+  # PAM auto-decrypt GNOME Keyring on login
+  # https://wiki.nixos.org/wiki/Secret_Service#Auto-decrypt_on_login
+  security.pam.services.login.enableGnomeKeyring = lib.mkDefault true;
 }

@@ -30,18 +30,18 @@
     # exec-once = nm-applet &
     # exec-once = waybar & firefox
     exec-once = [
+      # system tray stuff
+      "nm-applet" # network manager applet
+      "blueman-applet" # bluetooth manager applet
+      "trayscale --hide-window" # Tailscale tray icon
+      #"systemctl --user start plasma-polkit-agent"
+      #"${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
+
       # dunst removed — DMS has a built-in notification daemon
       # "hypridle" # idle management — replaced by DMS built-in idle inhibitor
       # "waybar" # status bar - replaced with DMS
       "[workspace 1 silent] kitty" # terminal
       "[workspace 2 silent] firefox" # web browser
-
-      # system tray stuff
-      "blueman-applet" # bluetooth manager applet
-      "trayscale --hide-window" # Tailscale tray icon
-      "sleep 1 && nm-applet" # network manager applet, wait for a second to allow KeePassXC to start first
-      #"systemctl --user start plasma-polkit-agent"
-      #"${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1"
     ];
 
     #############################

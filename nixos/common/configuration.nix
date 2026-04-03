@@ -270,6 +270,10 @@
 
   # SSH Agent
   programs.ssh.startAgent = lib.mkDefault true;
+  # GNOME Keyring (Secret Service) Agent
+  services.gnome.gnome-keyring.enable = lib.mkDefault true;
+  # GNOME SSH Agent needs to be disabled to avoid conflicts with the built-in SSH agent
+  services.gnome.gcr-ssh-agent.enable = lib.mkDefault false;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
