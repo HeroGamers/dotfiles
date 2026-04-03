@@ -58,93 +58,27 @@ in
 
     # keep-sorted start block=yes
 
-    btop = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
-    cursors = {
-      enable = true;
-
-      accent = "${config.catppuccin.accent}";
-      flavor = "${config.catppuccin.flavor}";
-    };
-    # dunst = {
-    #   enable = true;
-    #   flavor = "${config.catppuccin.flavor}";
-    # };
-    hyprland = {
-      enable = true;
-
-      accent = "${config.catppuccin.accent}";
-      flavor = "${config.catppuccin.flavor}";
-    };
-    hyprlock = {
-      enable = true;
-
-      accent = "${config.catppuccin.accent}";
-      flavor = "${config.catppuccin.flavor}";
-    };
-    kitty = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
-    kvantum = {
-      enable = true;
-
-      accent = "${config.catppuccin.accent}";
-      flavor = "${config.catppuccin.flavor}";
-    };
-    lazygit = {
-      enable = true;
-
-      accent = "${config.catppuccin.accent}";
-      flavor = "${config.catppuccin.flavor}";
-    };
-    mpv = {
-      enable = true;
-
-      accent = "${config.catppuccin.accent}";
-      flavor = "${config.catppuccin.flavor}";
-    };
-    nvim = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
-    tmux = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
+    btop.enable = true;
+    cursors.enable = true;
+    # dunst.enable = true;
+    hyprland.enable = true;
+    hyprlock.enable = true;
+    kitty.enable = true;
+    kvantum.enable = true;
+    lazygit.enable = true;
+    mpv.enable = true;
+    nvim.enable = true;
+    tmux.enable = true;
     vscode = {
       profiles.default = {
         enable = true;
-
-        flavor = "${config.catppuccin.flavor}";
       };
     };
-    waybar = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
-    wlogout = {
-      enable = true;
-
-      accent = "${config.catppuccin.accent}";
-      flavor = "${config.catppuccin.flavor}";
-    };
-    yazi = {
-      enable = true;
-
-      accent = "${config.catppuccin.accent}";
-      flavor = "${config.catppuccin.flavor}";
-    };
-    zellij = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
-    zsh-syntax-highlighting = {
-      enable = true;
-      flavor = "${config.catppuccin.flavor}";
-    };
+    waybar.enable = true;
+    wlogout.enable = true;
+    yazi.enable = true;
+    zellij.enable = true;
+    zsh-syntax-highlighting.enable = true;
     # keep-sorted end
   };
 

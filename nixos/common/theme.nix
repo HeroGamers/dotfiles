@@ -29,16 +29,9 @@ in
     sddm = {
       enable = true;
 
-      accent = "${config.catppuccin.accent}";
-      flavor = "${config.catppuccin.flavor}";
-
       background = "${sddm_wallpaper}";
     };
-    tty = {
-      enable = true;
-
-      flavor = "${config.catppuccin.flavor}";
-    };
+    tty.enable = true;
 
     # keep-sorted end
   };
@@ -55,11 +48,9 @@ in
     (catppuccin-kde.override {
       accents = [
         "${config.catppuccin.accent}"
-        "pink"
       ];
       flavour = [
         "${config.catppuccin.flavor}"
-        "macchiato"
       ];
     })
   ];
