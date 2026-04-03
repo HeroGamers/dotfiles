@@ -1,4 +1,9 @@
-{ ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   # Enable cache for Cuda
   # https://wiki.nixos.org/wiki/CUDA#Setting_up_CUDA_Binary_Cache
@@ -16,18 +21,29 @@
   nixpkgs.config = {
     allowUnfree = true;
     cudaSupport = true;
-    cudaVersion = "12";
+    cudaVersion = "13";
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
+    # Use the production/stable driver
+    package = lib.mkDefault config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # Open-source kernel module
     open = false;
+
+    # https://wiki.nixos.org/wiki/NVIDIA#Wayland
+    modesetting.enable = true;
+
+    # Nvidia settings GUI (optional)
+    nvidiaSettings = true;
   };
 
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
+    enable32Bit = true; # For 32-bit OpenGL applications (like Steam, for some reason)
     # extraPackages = with pkgs; [
     #   # Required for modern Intel GPUs (Xe iGPU and ARC)
     #   # intel-media-driver # VA-API (iHD) userspace
@@ -39,4 +55,15 @@
     #   # libvdpau-va-gl       # Only if you must run VDPAU-only apps
     # ];
   };
+
+  environment.systemPackages = with pkgs; [
+    pciutils # For `lspci` to find the GPU bus IDs
+    mesa-demos # For testing OpenGL
+    vulkan-tools # For testing Vulkan
+
+    # For CUDA
+    cudaPackages.cuda_cudart
+    cudaPackages.cudnn
+    cudaPackages.cudatoolkit
+  ];
 }

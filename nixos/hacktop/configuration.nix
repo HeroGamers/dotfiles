@@ -13,6 +13,9 @@
     # Nvidia GPU
     ../common/nvidia.nix
 
+    # Nvidia PRIME settings for hybrid graphics
+    ./nvidia.nix
+
     # Development
     ../common/development.nix
 
