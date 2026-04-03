@@ -52,6 +52,13 @@
     # Set env vars in home.sessionVariables (home-manager/common/home.nix) instead.
     # https://wiki.hypr.land/Configuring/Environment-variables/
 
+    env = [
+      # Set qt6ct as the platform theme for better Qt6 theming support
+      # https://danklinux.com/docs/dankmaterialshell/application-themes?_highlight=theme#option-2-dedicated-qt-control-advanced
+      # "QT_QPA_PLATFORMTHEME,qt6ct"
+      # "QT_QPA_PLATFORMTHEME_QT6,qt6ct"
+    ];
+
     #####################
     ### LOOK AND FEEL ###
     #####################

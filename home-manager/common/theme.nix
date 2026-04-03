@@ -64,7 +64,10 @@ in
     hyprland.enable = true;
     hyprlock.enable = true;
     kitty.enable = true;
-    kvantum.enable = true;
+    kvantum = {
+      enable = true;
+      # assertStyle = false; # To use qt6ct
+    };
     lazygit.enable = true;
     mpv.enable = true;
     nvim.enable = true;
@@ -90,11 +93,33 @@ in
   qt = {
     enable = true;
     platformTheme.name = "kvantum";
-    # platformTheme.name = "qt6ct"; # `qt.platformTheme.name` must be set to `"kvantum"` to use `qt.style.catppuccin`
+    # platformTheme.name = "qt6ct";
 
     style = {
       name = "kvantum";
     };
+
+    # Okay, so, I finally found the fix to Dolphin and KDE - but it's cursed
+    # add the following to ~/.config/kdeglobals (or ~/.config/dolphinrc)
+    # Shoutout to https://www.reddit.com/r/hyprland/comments/1gobj8c/dolphin_file_manager_font_colors/ and https://danklinux.com/docs/dankmaterialshell/application-themes?_highlight=theme#dolphin-file-manager
+    # ```
+    # [UiSettings]
+    # ColorScheme=CatppuccinMacchiatoPink
+    # ```
+    # I might be able to use https://wiki.nixos.org/wiki/KDE#Plasma-Manager in the future
+    # Because, it seems that a lot of apps need to get access to write to the kdeglobals file, so making it read-only with HM might cause issues
+
+    # qt6ctSettings = {
+    #   Appearance = {
+    #     style = "kvantum";
+    #     icon_theme = "Papirus-Dark"; # breeze-dark
+    #     standard_dialogs = "xdgdesktopportal"; # default
+    #   };
+    #   Fonts = {
+    #     fixed = "\"DejaVuSansM Nerd Font Mono,12\""; # "NotoSans Nerd Font" or "Noto Sans"
+    #     general = "\"DejaVu Sans,12\""; # "NotoSans Nerd Font" or "Noto Sans"
+    #   };
+    # };
   };
 
   # KDE apps (e.g. Dolphin) read widgetStyle from kdeglobals rather than QT_STYLE_OVERRIDE.
