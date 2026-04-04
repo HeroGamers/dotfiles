@@ -42,6 +42,9 @@
       # "waybar" # status bar - replaced with DMS
       "[workspace 1 silent] kitty" # terminal
       "[workspace 2 silent] firefox" # web browser
+      "[workspace 9 silent] discord" # discord
+      "[workspace 9 silent] element" # matrix
+      "[workspace 10 silent] keepassxc" # password manager
     ];
 
     #############################
@@ -259,6 +262,9 @@
     windowrule = [
       "match:class .*, suppress_event maximize" # You'll probably like this. (what this do)
       # "match:float 0, hyprbars:no_bar on" # Hide bar on non-floating windows
+
+      # Workspace startup rules
+      "match:class ^(discord)$, workspace 9 silent" # Send Discord to workspace 9
 
       # https://wiki.hypr.land/Useful-Utilities/Screen-Sharing/#xwayland
       "match:class ^(xwaylandvideobridge)$, opacity 0.0 override"

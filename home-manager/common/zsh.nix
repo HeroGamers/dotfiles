@@ -22,6 +22,13 @@
     nix-direnv.enable = true;
   };
 
+  # Zellij
+  programs.zellij = {
+    enable = true;
+    enableZshIntegration = true;
+    exitShellOnExit = true;
+  };
+
   # Enable ZSH, oh-my-zsh and powerlevel10k
   programs.zsh =
     let
@@ -114,7 +121,8 @@
       shellAliases = {
         ll = "ls -l";
         update = "sudo bash -c 'nixos-rebuild switch --log-format internal-json -v |& nom --json'";
-        vim = "nvim";
+        # vi = "vim";
+        # vim = "nvim";
         lg = "lazygit";
         ns = "nix_shell_wrapper";
       };
@@ -163,7 +171,6 @@
         enable = true;
         plugins = [
           # keep-sorted start
-
           "aliases"
           "direnv"
           "docker"
@@ -171,10 +178,6 @@
           "git"
           "node"
           "pip"
-          # "zsh-autosuggestions"
-          # "zsh-autocomplete"
-          # "F-Sy-H"
-
           # keep-sorted end
         ];
         #theme = "powerlevel10k/powerlevel10k";

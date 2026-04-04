@@ -37,6 +37,9 @@
     # GRUB
     ../common/grub.nix
 
+    # Chat
+    ../common/chat.nix
+
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
@@ -57,11 +60,6 @@
   # Hacktop is using brtfs
   # https://wiki.nixos.org/wiki/Docker/en#Docker_on_btrfs
   virtualisation.docker.storageDriver = "btrfs";
-
-  environment.systemPackages = with pkgs; [
-    discord-canary
-    signal-desktop
-  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
