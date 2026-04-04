@@ -42,8 +42,8 @@
       # "waybar" # status bar - replaced with DMS
       "[workspace 1 silent] kitty" # terminal
       "[workspace 2 silent] firefox" # web browser
-      "[workspace 9 silent] discord" # discord
-      "[workspace 9 silent] element" # matrix
+      "[workspace 9 silent] discordcanary" # discord
+      "[workspace 9 silent] element-desktop --password-store=gnome-libsecret" # matrix
       "[workspace 10 silent] keepassxc" # password manager
     ];
 
