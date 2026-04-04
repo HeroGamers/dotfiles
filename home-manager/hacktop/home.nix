@@ -1,6 +1,4 @@
-{
-  ...
-}:
+{ ... }:
 {
   imports = [
     # Global common Home Manager config
@@ -14,6 +12,9 @@
 
     # Security
     ../common/security.nix
+
+    # Chat
+    ../common/chat.nix
 
     # Monitors on Hyprland
     ./monitors.nix

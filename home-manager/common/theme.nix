@@ -61,6 +61,7 @@ in
     btop.enable = true;
     cursors.enable = true;
     # dunst.enable = true;
+    element-desktop.enable = true;
     hyprland.enable = true;
     hyprlock.enable = true;
     kitty.enable = true;

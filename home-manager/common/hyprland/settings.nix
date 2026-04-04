@@ -44,6 +44,7 @@
       "[workspace 2 silent] firefox" # web browser
       "[workspace 9 silent] discordcanary" # discord
       "[workspace 9 silent] element-desktop --password-store=gnome-libsecret" # matrix
+      "[workspace 9 silent] signal-desktop --password-store=gnome-libsecret" # Signal
       "[workspace 10 silent] keepassxc" # password manager
     ];
 

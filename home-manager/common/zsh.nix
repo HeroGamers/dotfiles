@@ -125,6 +125,8 @@
         # vim = "nvim";
         lg = "lazygit";
         ns = "nix_shell_wrapper";
+        signal = "signal-desktop --password-store=gnome-libsecret";
+        element = "element-desktop --password-store=gnome-libsecret";
       };
 
       history = {
