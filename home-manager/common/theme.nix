@@ -67,7 +67,7 @@ in
     kitty.enable = true;
     kvantum = {
       enable = true;
-      # assertStyle = false; # To use qt6ct
+      assertStyle = false; # To use qt6ct
     };
     lazygit.enable = true;
     mpv.enable = true;
@@ -93,11 +93,18 @@ in
 
   qt = {
     enable = true;
-    platformTheme.name = "kvantum";
-    # platformTheme.name = "qt6ct";
+    # platformTheme.name = "kvantum";
+    platformTheme.name = "qt6ct";
 
+    # TODO: somehow figure out why, even when set to null, this still becomes "kvantum", which breaks some apps, like "drkonqi-coredump-gui":
+    # QQmlApplicationEngine failed to load component
+    # qrc:/main.qml:10:1: Type Kirigami.ApplicationWindow unavailable
+    # qrc:/qt/qml/org/kde/kirigami/controls/ApplicationWindow.qml:89:1: Type KC.AbstractApplicationWindow unavailable
+    # qrc:/qt/qml/org/kde/kirigami/controls/AbstractApplicationWindow.qml: module "qt6ct-style" is not installed
+    # ABORT ABORT
     style = {
-      name = "kvantum";
+      # name = "kvantum";
+      name = "qt6ct-style";
     };
 
     # Okay, so, I finally found the fix to Dolphin and KDE - but it's cursed
@@ -110,17 +117,19 @@ in
     # I might be able to use https://wiki.nixos.org/wiki/KDE#Plasma-Manager in the future
     # Because, it seems that a lot of apps need to get access to write to the kdeglobals file, so making it read-only with HM might cause issues
 
-    # qt6ctSettings = {
-    #   Appearance = {
-    #     style = "kvantum";
-    #     icon_theme = "Papirus-Dark"; # breeze-dark
-    #     standard_dialogs = "xdgdesktopportal"; # default
-    #   };
-    #   Fonts = {
-    #     fixed = "\"DejaVuSansM Nerd Font Mono,12\""; # "NotoSans Nerd Font" or "Noto Sans"
-    #     general = "\"DejaVu Sans,12\""; # "NotoSans Nerd Font" or "Noto Sans"
-    #   };
-    # };
+    qt6ctSettings = {
+      Appearance = {
+        style = "kvantum";
+        icon_theme = "breeze-dark"; # "Papirus-Dark";
+        standard_dialogs = "default"; # "xdgdesktopportal";
+        custom_palette = true;
+        color_scheme_path = "${config.home.homeDirectory}/.config/qt6ct/style-colors.conf";
+      };
+      Fonts = {
+        fixed = "\"NotoSansM Nerd Font Mono,12\"";
+        general = "\"NotoSans Nerd Font,12\"";
+      };
+    };
   };
 
   # KDE apps (e.g. Dolphin) read widgetStyle from kdeglobals rather than QT_STYLE_OVERRIDE.
