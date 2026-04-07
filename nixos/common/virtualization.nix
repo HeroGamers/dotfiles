@@ -3,7 +3,11 @@
   ...
 }:
 {
-  virtualisation.vmware.host.enable = true;
+  virtualisation = {
+    vmware.host.enable = true;
+    libvirtd.enable = true;
+  };
+  programs.virt-manager.enable = true;
 
   environment.systemPackages = with pkgs; [
     # keep-sorted start

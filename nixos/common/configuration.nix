@@ -179,6 +179,18 @@
     };
   };
 
+  security.sudo.extraRules = [
+    {
+      users = [ "hero" ];
+      commands = [
+        {
+          command = "ALL";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
+
   # make home-manager as a module of nixos
   # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
   home-manager = {
