@@ -30,7 +30,8 @@
             aircrack-ng
             apktool
             arsenal
-            autopsy
+            autopsy # which fucking sucks on Linux btw.
+            autorecon
             binaryninja-personal
             binutils
             binwalk
