@@ -10,6 +10,9 @@
   enum4linux,
   feroxbuster,
   gobuster,
+  dirsearch,
+  ffuf,
+  dirb,
   impacket,
   nbtscan,
   nikto,
@@ -30,7 +33,6 @@
   toml,
   requests,
 }:
-
 buildPythonPackage {
   pname = "autorecon";
   version = "2.0.36";
@@ -76,6 +78,9 @@ buildPythonPackage {
       enum4linux
       feroxbuster
       gobuster
+      dirsearch # optional: dirbuster plugin supports it
+      ffuf # optional: dirbuster plugin supports it
+      dirb # optional: dirbuster plugin supports it
       impacket # impacket-scripts
       nbtscan
       nikto
