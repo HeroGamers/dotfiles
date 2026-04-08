@@ -37,7 +37,9 @@
 
       # python-pkgs.angr # TODO: fix broken - https://github.com/NixOS/nixpkgs/issues/501379
       python-pkgs.capstone
+      # python-pkgs.dirsearch
       python-pkgs.gmpy2
+      python-pkgs.impacket
       python-pkgs.mitmproxy
       # python-pkgs.pwndbg # removed
       python-pkgs.pwntools
