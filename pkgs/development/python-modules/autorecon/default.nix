@@ -100,6 +100,6 @@ buildPythonPackage {
     description = "A multi-threaded network reconnaissance tool which performs automated enumeration of services";
     mainProgram = "autorecon";
     maintainers = [ maintainers.hero ];
-    license = licenses.gpl3;
+    license = licenses.gpl3Plus;
   };
 }

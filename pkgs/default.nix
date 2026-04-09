@@ -9,6 +9,7 @@ pkgs: {
   elastic-package = pkgs.callPackage ./by-name/el/elastic-package { };
   oscanner = pkgs.callPackage ./by-name/os/oscanner { };
   # peepdf = pkgs.callPackage ./by-name/pe/peepdf { };
+  sliver = pkgs.callPackage ./by-name/sl/sliver { };
   tnscmd10g = pkgs.callPackage ./by-name/tn/tnscmd10g { };
 
   # keep-sorted end

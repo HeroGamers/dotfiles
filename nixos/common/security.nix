@@ -54,6 +54,7 @@
             iodine
             jadx # Dex to Java decompiler
             john
+            ligolo-ng
             metasploit
             mimikatz
             mitmproxy
