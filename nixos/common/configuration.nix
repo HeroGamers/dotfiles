@@ -224,6 +224,7 @@
     # dunst # defined in HM
     fastfetch
     ffmpeg-headless
+    file
     fish
     fzf
     git
