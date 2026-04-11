@@ -62,4 +62,7 @@
 
 # lab.intranet        10.67.0.1
 
+# Captive Portals
+ruckus.cloud 1.1.1.1
+
 # keep-sorted end
