@@ -11,6 +11,7 @@ pkgs: {
   # peepdf = pkgs.callPackage ./by-name/pe/peepdf { };
   sliver = pkgs.callPackage ./by-name/sl/sliver { };
   tnscmd10g = pkgs.callPackage ./by-name/tn/tnscmd10g { };
+  velociraptor = pkgs.callPackage ./by-name/ve/velociraptor { };
 
   # keep-sorted end
 }
