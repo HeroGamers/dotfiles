@@ -254,6 +254,7 @@
     tmux
     unrar
     uwsm
+    vim # we use neovim, but vim has xxd which I use for hexdumps
     wget
     whois
     yazi # TUI file manager
