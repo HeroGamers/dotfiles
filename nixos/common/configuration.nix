@@ -215,6 +215,7 @@
     # keep-sorted start
 
     alejandra # A formatter for Nix files
+    aria2
     # busybox
     # blueman # Bluetooth manager, primarily for the tray icon - done with service instead
     coreutils # Provides basic GNU utilities
