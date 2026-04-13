@@ -3,6 +3,20 @@
   # Enable docker
   virtualisation.docker = {
     enable = true;
+
+    daemon.settings = {
+      # default-address-pools = [
+      #   {
+      #     base = "10.200.0.0/16";
+      #     size = 24;
+      #   }
+      # ];
+      dns = [
+        # "172.17.0.1"
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
+    };
   };
 
   environment.systemPackages = with pkgs; [

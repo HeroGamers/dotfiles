@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}:
+{ lib, ... }:
 {
   # DNS over HTTPS (DoH)
   services.dnscrypt-proxy = {
@@ -52,6 +49,7 @@
       "127.0.0.1"
       "::1"
     ];
+
     search = [ "~." ];
 
     # If using dhcpcd:
@@ -61,10 +59,20 @@
   # Use resolved for DNS resolution, with dnscrypt-proxy as the upstream resolver (split-DNS)
   services.resolved = {
     enable = true;
-    # changed to .settings.Resolve.*
-    # extraConfig = ''
-    #   DNS=127.0.0.1
-    #   Domains=~.
-    # '';
+
+    settings = {
+      Resolve = {
+        # DNSStubListenerExtra = "172.17.0.1"; # gateway of Docker pool
+
+        # Default is config.networking.nameservers
+        # DNS = [
+        #   "127.0.0.1"
+        #   "::1"
+        # ];
+
+        # Default is config.networking.search
+        # Domains = ["~."]; # catch-all for split-DNS
+      };
+    };
   };
 }
