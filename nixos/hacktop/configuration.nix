@@ -54,6 +54,12 @@
   # Define your hostname.
   networking.hostName = "hacktop";
 
+  environment.systemPackages = with pkgs; [
+    # keep-sorted start
+    plexamp
+    # keep-sorted end
+  ];
+
   # Disable OpenSSH on the hacktop
   # services.openssh.enable = false;
 
