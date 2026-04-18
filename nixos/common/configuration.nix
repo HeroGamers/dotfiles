@@ -228,6 +228,7 @@
     file
     fish
     fzf
+    ghostscript
     git
     htop
     imagemagick
