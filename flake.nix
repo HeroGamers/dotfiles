@@ -99,8 +99,33 @@
 
       perSystem =
         { pkgs, ... }:
+        let
+          mkCrossShell =
+            crossPkgs: targetName:
+            crossPkgs.mkShell {
+              packages = [
+                crossPkgs.stdenv.cc
+              ];
+              shellHook = ''
+                echo "Cross-Compile Development Environment (${targetName})"
+                echo "Compiler: $CC"
+              '';
+            };
+        in
         {
           packages = import ./pkgs pkgs;
+
+          devShells = {
+            default = pkgs.mkShell { };
+
+            win64 = mkCrossShell pkgs.pkgsCross.mingwW64 "win64";
+            win32 = mkCrossShell pkgs.pkgsCross.mingw32 "win32";
+
+            linux-aarch64 = mkCrossShell pkgs.pkgsCross."aarch64-multiplatform" "linux-aarch64";
+            linux-armv7 = mkCrossShell pkgs.pkgsCross."armv7l-hf-multiplatform" "linux-armv7";
+            linux-riscv64 = mkCrossShell pkgs.pkgsCross.riscv64 "linux-riscv64";
+            linux-musl64 = mkCrossShell pkgs.pkgsCross.musl64 "linux-musl64";
+          };
 
           treefmt = (import ./treefmt.nix) { inherit pkgs; };
         };
