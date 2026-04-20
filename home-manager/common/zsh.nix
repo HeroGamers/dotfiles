@@ -27,6 +27,9 @@
     enable = true;
     enableZshIntegration = true;
     exitShellOnExit = true;
+    settings = {
+      show_startup_tips = false;
+    };
   };
 
   # Enable ZSH, oh-my-zsh and powerlevel10k
