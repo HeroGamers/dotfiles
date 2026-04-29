@@ -236,6 +236,7 @@
     ipcalc
     jq
     # kitty # defined in hm
+    kmod # for lsmod, modinfo, modprobe, etc.
     # lazygit # defined in hm
     libressl # netcat
     libsecret # for modifying secrets in keyring secret service
@@ -261,6 +262,41 @@
     whois
     yazi # TUI file manager
     zsh
+
+    util-linux
+    findutils
+    gnugrep
+    gnused
+    gawk
+    procps
+    iproute2
+    inetutils
+    nettools
+
+    bash
+    gnutar
+    gzip
+    bzip2
+    xz
+    diffutils
+    patch
+    file
+    which
+
+    e2fsprogs
+    dosfstools
+    ntfs3g
+    parted
+
+    curl
+    wget
+    openssh
+    bind
+    traceroute
+
+    lsof
+    usbutils
+    pciutils
 
     # keep-sorted end
   ];
