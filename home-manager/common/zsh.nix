@@ -33,6 +33,12 @@
   };
 
   # Enable ZSH, oh-my-zsh and powerlevel10k
+
+  # Common order values:
+  #   500 (mkBefore): Early initialization (replaces initExtraFirst)
+  #   550: Before completion initialization (replaces initExtraBeforeCompInit)
+  #   1000 (default): General configuration (replaces initExtra)
+  #   1500 (mkAfter): Last to run configuration
   programs.zsh =
     let
       beforeCompInit = lib.mkOrder 550 ''
@@ -44,12 +50,15 @@
           source "$P10K_INSTANT_PROMPT"
         fi
       '';
-      afterCompInit = lib.mkOrder 1000 ''
+      afterCompInit = lib.mkOrder 1100 ''
         bindkey "''${key[Up]}" up-line-or-search
         bindkey "''${key[Down]}" down-line-or-search
         bindkey "^[[H" beginning-of-line
         bindkey "^[[F" end-of-line
         bindkey "^[[3~" delete-char
+
+        # TODO: remove when https://github.com/zellij-org/zellij/issues/775 gets fixed
+        export TERM="xterm-256color"
 
         # Define a function to use nix-shell-wrapper
         function nix_shell_wrapper() {
