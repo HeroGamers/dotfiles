@@ -40,6 +40,10 @@
       url = "github:HeroGamers/ctf-man/feat/library";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -151,6 +155,13 @@
             specialArgs = { inherit inputs; };
             modules = [
               ./nixos/hero-desktop
+            ];
+          };
+          oci-vps = inputs.nixpkgs.lib.nixosSystem {
+            system = "aarch64-linux";
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./nixos/oci-vps
             ];
           };
           worktop = inputs.nixpkgs.lib.nixosSystem {
