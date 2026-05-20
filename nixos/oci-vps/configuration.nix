@@ -48,6 +48,7 @@
     extraGroups = [ "wheel" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFB/OxGoBrNAtxcGI6XFrGWMr+8Wv53x2oTx6EzDBh7 hero@cutefemboy.com"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILcDL6unYUjlcviJ800amEkKz7pcDugey9f7l71rh0vL hacktop@herogamers.dev"
     ];
   };
 
