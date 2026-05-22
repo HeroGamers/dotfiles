@@ -144,6 +144,13 @@
         nixosConfigurations = {
           # keep-sorted start block=yes
 
+          ctf-vm = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./nixos/ctf-vm
+            ];
+          };
           hacktop = inputs.nixpkgs.lib.nixosSystem {
             specialArgs = { inherit inputs; };
             modules = [
