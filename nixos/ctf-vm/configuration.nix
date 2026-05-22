@@ -4,6 +4,9 @@
 { pkgs, ... }:
 {
   imports = [
+    # AI tooling
+    ../common/ai.nix
+
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];

@@ -56,7 +56,7 @@
       url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    llm-agents.url = "github:numtide/llm-agents.nix";
+    llm-agents.url = "github:numtide/llm-agents.nix"; # This flake is only built and tested against its pinned nixpkgs-unstable input.
     minegrub-theme = {
       url = "github:Lxtharia/minegrub-theme";
       inputs.nixpkgs.follows = "nixpkgs";
