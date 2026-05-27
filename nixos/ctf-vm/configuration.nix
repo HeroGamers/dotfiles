@@ -80,6 +80,14 @@
     kdePackages.kate
   ];
 
+  # Exclude certain security packages in WSL
+  # custom.security.excludePackages = [
+  #   # keep-sorted start
+  #   "binaryninja-personal"
+  #   "ida-pro"
+  #   # keep-sorted end
+  # ];
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
