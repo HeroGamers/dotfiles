@@ -17,7 +17,13 @@
   # be accessible through 'pkgs.unstable'
   unstable-packages = final: _prev: {
     unstable = import inputs.nixpkgs-unstable {
-      system = final.system;
+      system = final.stdenv.hostPlatform.system;
+      config.allowUnfree = true;
+    };
+  };
+  stable-packages = final: _prev: {
+    stable = import inputs.nixpkgs-stable {
+      system = final.stdenv.hostPlatform.system;
       config.allowUnfree = true;
     };
   };

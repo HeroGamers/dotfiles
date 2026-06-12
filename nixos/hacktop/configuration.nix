@@ -13,6 +13,9 @@
     # Nvidia GPU
     ../common/nvidia.nix
 
+    # Local AI
+    ./ai-local.nix
+
     # Nvidia PRIME settings for hybrid graphics
     ./nvidia.nix
 

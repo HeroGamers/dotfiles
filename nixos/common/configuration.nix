@@ -40,6 +40,7 @@
       inputs.self.overlays.additions
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
+      inputs.self.overlays.stable-packages
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
