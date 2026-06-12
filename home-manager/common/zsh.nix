@@ -41,6 +41,10 @@
   #   1500 (mkAfter): Last to run configuration
   programs.zsh =
     let
+      extraFirstInit = lib.mkOrder 1 ''
+        # Load profiling module
+        #zmodload zsh/zprof
+      '';
       beforeCompInit = lib.mkOrder 550 ''
         # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
         # Initialization code that may require console input (password prompts, [y/n]
@@ -48,6 +52,27 @@
         P10K_INSTANT_PROMPT="''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
         if [[ -r "$P10K_INSTANT_PROMPT" ]]; then
           source "$P10K_INSTANT_PROMPT"
+        fi
+      '';
+      completionInit = lib.mkOrder 570 ''
+        # Keep a cached compdump and only rebuild it once per day.
+        # Oh-My-Zsh would otherwise run compinit itself, so we disable that below.
+        skip_compinit=1
+        autoload -Uz compinit
+
+        zcompdump="''${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-''${ZSH_VERSION}"
+        zcompdump_day=""
+
+        mkdir -p "''${zcompdump:h}"
+
+        if [[ -r "$zcompdump" ]]; then
+          zcompdump_day=$(date -d "@$(stat -c %Y "$zcompdump")" +%j 2>/dev/null)
+        fi
+
+        if [[ -z "$zcompdump_day" || "$(date +%j)" != "$zcompdump_day" ]]; then
+          compinit -d "$zcompdump"
+        else
+          compinit -C -d "$zcompdump"
         fi
       '';
       afterCompInit = lib.mkOrder 1100 ''
@@ -118,16 +143,28 @@
             fi
         }
       '';
+      lastInit = lib.mkOrder 9999 ''
+        # Print ZSH profiling results on shell exit
+        #zprof
+      '';
     in
     {
       enable = true;
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
+      localVariables = {
+        # Some optimizations from https://scottspence.com/posts/speeding-up-my-zsh-shell#plugin-management
+        ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE = 20;
+        ZSH_AUTOSUGGEST_USE_ASYNC = 1;
+      };
 
       initContent = lib.mkMerge [
+        extraFirstInit
         beforeCompInit
+        completionInit
         afterCompInit
+        lastInit
       ];
 
       shellAliases = {
@@ -184,15 +221,13 @@
       oh-my-zsh = {
         enable = true;
         plugins = [
-          # keep-sorted start
+          "git"
           "aliases"
-          "direnv"
           "docker"
           "docker-compose"
-          "git"
           "node"
-          "pip"
-          # keep-sorted end
+          # "pip"
+          "direnv"
         ];
         #theme = "powerlevel10k/powerlevel10k";
       };
