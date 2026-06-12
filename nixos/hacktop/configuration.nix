@@ -14,7 +14,7 @@
     ../common/nvidia.nix
 
     # Local AI
-    ./ai-local.nix
+    # ./ai-local.nix
 
     # Nvidia PRIME settings for hybrid graphics
     ./nvidia.nix
