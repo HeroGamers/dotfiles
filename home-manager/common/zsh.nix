@@ -70,9 +70,9 @@
         fi
 
         if [[ -z "$zcompdump_day" || "$(date +%j)" != "$zcompdump_day" ]]; then
-          compinit -d "$zcompdump"
+          compinit -i -d "$zcompdump"
         else
-          compinit -C -d "$zcompdump"
+          compinit -i -C -d "$zcompdump"
         fi
       '';
       afterCompInit = lib.mkOrder 1100 ''
