@@ -6,6 +6,8 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    withRuby = false;
+    withPython3 = false;
 
     # extraLuaConfig = ''
     #   ${builtins.readFile ./options.lua}
