@@ -6,7 +6,7 @@
 {
   # Module not in use - using HM instead.
   imports = [
-    inputs.dms-plugin-registry.modules.default
+    inputs.dms-plugin-registry.nixosModules.default
   ];
 
   # https://danklinux.com/docs/dankmaterialshell/nixos

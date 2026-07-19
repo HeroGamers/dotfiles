@@ -99,7 +99,7 @@
             tnscmd10g
             whatweb
             wireshark
-            wordlists
+            # wordlists # TODO: wait for fix of wfuzz build
             wpscan
             wstunnel
             zeek

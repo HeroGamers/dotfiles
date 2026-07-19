@@ -77,7 +77,7 @@ in
 {
   imports = [
     inputs.dms.homeModules.dank-material-shell
-    inputs.dms-plugin-registry.modules.default
+    inputs.dms-plugin-registry.homeModules.default
   ];
 
   # Deploy the catppuccin theme.json from the dms-plugin-registry flake source.

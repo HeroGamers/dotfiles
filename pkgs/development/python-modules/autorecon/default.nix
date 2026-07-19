@@ -10,7 +10,7 @@
   enum4linux,
   feroxbuster,
   gobuster,
-  dirsearch,
+  # dirsearch,
   ffuf,
   dirb,
   impacket,
@@ -78,7 +78,7 @@ buildPythonPackage {
       enum4linux
       feroxbuster
       gobuster
-      dirsearch # optional: dirbuster plugin supports it
+      # dirsearch # optional: dirbuster plugin supports it - TODO: wait for fix of dirsearch
       ffuf # optional: dirbuster plugin supports it
       dirb # optional: dirbuster plugin supports it
       impacket # impacket-scripts
