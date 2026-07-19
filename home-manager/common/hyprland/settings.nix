@@ -2,6 +2,12 @@
 {
   # Inspired/yoinked a lot by https://github.com/fufexan/dotfiles
   wayland.windowManager.hyprland.settings = {
+    # Catppuccin Macchiato colors
+    "$base" = "rgb(24273a)";
+    "$maroon" = "rgb(ee99a0)";
+    "$pink" = "rgb(f5bde6)";
+    "$surface2" = "rgb(5b6078)";
+
     # See https://wiki.hyprland.org/Configuring/Keywords/
     "$mod" = "SUPER"; # Sets "Windows" key as main modifier
 
@@ -155,7 +161,7 @@
     # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
     dwindle = {
       # keep floating dimentions while tiling
-      pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+      # pseudotile = true; # (Removed in Hyprland 0.55.0) Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
       preserve_split = true; # You probably want this
     };
 

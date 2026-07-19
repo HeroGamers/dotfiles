@@ -9,6 +9,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "hyprlang"; # TODO: switch to Lua
 
     # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
     # ref: https://wiki.hypr.land/Nix/Hyprland-on-Home-Manager/#using-the-home-manager-module-with-nixos

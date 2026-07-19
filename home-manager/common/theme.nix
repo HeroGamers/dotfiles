@@ -31,6 +31,8 @@ in
   # User avatar — DMS (and other apps, like AccountsService) read from ~/.face
   home.file.".face".source = user_avatar;
 
+  home.pointerCursor.enable = true;
+
   # Nerdfont
   fonts.fontconfig.enable = true;
 
@@ -51,6 +53,7 @@ in
   # https://nix.catppuccin.com/options/home-manager-options.html
   catppuccin = {
     enable = true;
+    autoEnable = true;
     cache.enable = true;
 
     accent = "pink";
@@ -62,7 +65,7 @@ in
     cursors.enable = true;
     # dunst.enable = true;
     element-desktop.enable = true;
-    hyprland.enable = true;
+    hyprland.enable = false; # TODO: re-enable when switched to Hyprland Lua
     hyprlock.enable = true;
     kitty.enable = true;
     kvantum = {
