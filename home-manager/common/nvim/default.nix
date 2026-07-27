@@ -31,7 +31,7 @@
       in
       [
         nvim-tree-lua # file managing , picker etc
-        nvim-treesitter.withAllGrammars
+        #nvim-treesitter.withAllGrammars  # takes so long
 
         # nvchad
         # nvchad-ui
