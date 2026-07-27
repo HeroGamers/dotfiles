@@ -85,6 +85,16 @@
         # TODO: remove when https://github.com/zellij-org/zellij/issues/775 gets fixed
         export TERM="xterm-256color"
 
+        # uv + virtualenvs need LD_LIBRARY_PATH directly; keep it scoped to uv only.
+        # https://wiki.nixos.org/wiki/Python#Running_Python_packages_which_requires_compilation_and/or_contains_libraries_precompiled_without_nix
+        function uvld() {
+          if [[ -n "''${NIX_LD_LIBRARY_PATH:-}" ]]; then
+            LD_LIBRARY_PATH="''${NIX_LD_LIBRARY_PATH}''${LD_LIBRARY_PATH:+:''${LD_LIBRARY_PATH}}" command uv "$@"
+          else
+            command uv "$@"
+          fi
+        }
+
         # Define a function to use nix-shell-wrapper
         function nix_shell_wrapper() {
             history -a # Save command history before starting the shell
