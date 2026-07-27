@@ -40,6 +40,11 @@ buildGoModule rec {
   ];
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    # Mock the internal state so the binary bypasses its validation and network checks
+    mkdir -p $HOME/.elastic-package/profiles/default
+    echo "v${version}" > $HOME/.elastic-package/version
+    echo "v${version}" > $HOME/.elastic-package/latestVersion
+
     installShellCompletion --cmd elastic-package \
       --bash <($out/bin/elastic-package completion bash) \
       --fish <($out/bin/elastic-package completion fish) \
