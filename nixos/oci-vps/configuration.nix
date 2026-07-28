@@ -22,6 +22,13 @@
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
+  home-manager = {
+    # The user configurations
+    users.hero = import ../../home-manager/oci-vps;
+  };
+
+  networking.hostName = "oci-vps";
+
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 
   boot.initrd.availableKernelModules = [
@@ -37,8 +44,6 @@
     # Oracle Cloud often behaves better with classic eth0 naming.
     "net.ifnames=0"
   ];
-
-  networking.hostName = "oci-vps";
 
   # DHCP should be fine for OCI.
   networking.useDHCP = true;
