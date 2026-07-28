@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -14,6 +15,18 @@
   };
 
   config = {
+    nixpkgs.overlays = [
+      # Hackpkgs, pwndbg, etc.
+      (final: prev: {
+        inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) binaryninja-personal;
+        inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) ida-pro;
+        inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) mstrings;
+        inherit (inputs.pwndbg.packages.${final.stdenv.hostPlatform.system}) pwndbg;
+        inherit (inputs.ctf-dl.packages.${final.stdenv.hostPlatform.system}) ctf-dl;
+        inherit (inputs.ctf-man.packages.${final.stdenv.hostPlatform.system}) ctf-man;
+      })
+    ];
+
     # Enable cache for the pwndbg flake
     nix.settings = {
       extra-substituters = [ "https://pwndbg.cachix.org" ];
