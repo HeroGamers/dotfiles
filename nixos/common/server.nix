@@ -9,7 +9,7 @@
   ];
 
   # Bootloader
-  boot.loader = lib.mkDefault {
+  boot.loader = {
     systemd-boot.enable = lib.mkDefault true;
     efi.canTouchEfiVariables = lib.mkDefault true;
   };
@@ -29,7 +29,7 @@
   # };
 
   # Networking stuff
-  networking = lib.mkDefault {
+  networking = {
     # Open ports in the firewall.
     firewall = {
       # Or disable the firewall altogether.

@@ -27,7 +27,7 @@
     # ./users.nix
   ];
 
-  nixpkgs = lib.mkDefault {
+  nixpkgs = {
     # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
@@ -55,7 +55,7 @@
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
-      allowUnfree = true;
+      allowUnfree = lib.mkDefault true;
 
       # Allow broken packages
       #allowBroken = true;
@@ -134,19 +134,19 @@
   time.timeZone = lib.mkDefault "Europe/Copenhagen";
 
   # Select internationalisation properties.
-  i18n = lib.mkDefault {
-    defaultLocale = "en_DK.UTF-8";
+  i18n = {
+    defaultLocale = lib.mkDefault "en_DK.UTF-8";
 
     extraLocaleSettings = {
-      LC_ADDRESS = "da_DK.UTF-8";
-      LC_IDENTIFICATION = "da_DK.UTF-8";
-      LC_MEASUREMENT = "da_DK.UTF-8";
-      LC_MONETARY = "da_DK.UTF-8";
-      LC_NAME = "da_DK.UTF-8";
-      LC_NUMERIC = "da_DK.UTF-8";
-      LC_PAPER = "da_DK.UTF-8";
-      LC_TELEPHONE = "da_DK.UTF-8";
-      LC_TIME = "en_DK.UTF-8"; # English dates/times with EU conventions (24h, ISO week)
+      LC_ADDRESS = lib.mkDefault "da_DK.UTF-8";
+      LC_IDENTIFICATION = lib.mkDefault "da_DK.UTF-8";
+      LC_MEASUREMENT = lib.mkDefault "da_DK.UTF-8";
+      LC_MONETARY = lib.mkDefault "da_DK.UTF-8";
+      LC_NAME = lib.mkDefault "da_DK.UTF-8";
+      LC_NUMERIC = lib.mkDefault "da_DK.UTF-8";
+      LC_PAPER = lib.mkDefault "da_DK.UTF-8";
+      LC_TELEPHONE = lib.mkDefault "da_DK.UTF-8";
+      LC_TIME = lib.mkDefault "en_DK.UTF-8"; # English dates/times with EU conventions (24h, ISO week)
     };
   };
 
@@ -319,14 +319,14 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh = lib.mkDefault {
+  services.openssh = {
     enable = lib.mkDefault false;
     settings = {
       # Opinionated: forbid root login through SSH.
-      PermitRootLogin = "no";
+      PermitRootLogin = lib.mkDefault "no";
       # Opinionated: use keys only.
       # Remove if you want to SSH using passwords
-      PasswordAuthentication = false;
+      PasswordAuthentication = lib.mkDefault false;
     };
   };
 }

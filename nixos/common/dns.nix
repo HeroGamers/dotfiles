@@ -35,13 +35,13 @@
   };
 
   # Networking stuff
-  networking = lib.mkDefault {
+  networking = {
     # Enable networking
     networkmanager = {
-      enable = true;
+      enable = lib.mkDefault true;
       # We use split-DNS with systemd-resolved, so we need to tell NetworkManager to use systemd-resolved for DNS resolution
       # This helps us avoid issues with WG interfaces and their defined DNS servers
-      dns = "systemd-resolved";
+      dns = lib.mkDefault "systemd-resolved";
     };
 
     # Use local nameservers
@@ -53,12 +53,12 @@
     search = [ "~." ];
 
     # If using dhcpcd:
-    dhcpcd.extraConfig = "nohook resolv.conf";
+    dhcpcd.extraConfig = lib.mkDefault "nohook resolv.conf";
   };
 
   # Use resolved for DNS resolution, with dnscrypt-proxy as the upstream resolver (split-DNS)
   services.resolved = {
-    enable = true;
+    enable = lib.mkDefault true;
 
     settings = {
       Resolve = {

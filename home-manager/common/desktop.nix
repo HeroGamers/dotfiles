@@ -12,18 +12,18 @@
     ./screencapture.nix
   ];
 
-  programs = lib.mkDefault {
+  programs = {
     # keep-sorted start
-    kitty.enable = true;
-    mpv.enable = true;
-    vscode.enable = true;
+    kitty.enable = lib.mkDefault true;
+    mpv.enable = lib.mkDefault true;
+    vscode.enable = lib.mkDefault true;
     # keep-sorted end
   };
 
-  services = lib.mkDefault {
+  services = {
     # keep-sorted start
     dunst = {
-      enable = false; # DMS has a built-in notification daemon
+      enable = lib.mkDefault false; # DMS has a built-in notification daemon
     };
     # keep-sorted end
   };

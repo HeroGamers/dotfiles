@@ -36,7 +36,7 @@
   ];
 
   # Bootloader
-  boot.loader = lib.mkDefault {
+  boot.loader = {
     systemd-boot.enable = lib.mkDefault true;
     efi.canTouchEfiVariables = lib.mkDefault true;
   };
@@ -52,9 +52,9 @@
 
   # Configure keymap in X11
   services.xserver = {
-    xkb = lib.mkDefault {
-      layout = "dk";
-      variant = "winkeys";
+    xkb = {
+      layout = lib.mkDefault "dk";
+      variant = lib.mkDefault "winkeys";
     };
   };
 
@@ -149,7 +149,7 @@
   };
 
   # Networking stuff
-  networking = lib.mkDefault {
+  networking = {
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     # Configure network proxy if necessary
@@ -158,7 +158,7 @@
 
     # Enable networking
     networkmanager = {
-      enable = true;
+      enable = lib.mkDefault true;
 
       plugins = [
         pkgs.networkmanager-iodine # for DNS tunneling with iodine

@@ -20,9 +20,9 @@
   ];
 
   # Set your username
-  home = lib.mkDefault {
-    username = "hero";
-    homeDirectory = "/home/hero";
+  home = {
+    username = lib.mkDefault "hero";
+    homeDirectory = lib.mkDefault "/home/hero";
 
     # Session variables — propagated to the systemd user environment via desktop.nix
     # so they're available to UWSM/Hyprland and all launched apps, not just terminal sessions.
@@ -30,42 +30,42 @@
     # https://wiki.hypr.land/Configuring/Environment-variables/
     sessionVariables = {
       # Wayland backends
-      QT_QPA_PLATFORM = "wayland;xcb"; # wayland with xcb fallback
-      SDL_VIDEODRIVER = "wayland";
-      XDG_SESSION_TYPE = "wayland";
-      GDK_BACKEND = "wayland,x11,*"; # GTK: wayland, then x11, then any
+      QT_QPA_PLATFORM = lib.mkDefault "wayland;xcb"; # wayland with xcb fallback
+      SDL_VIDEODRIVER = lib.mkDefault "wayland";
+      XDG_SESSION_TYPE = lib.mkDefault "wayland";
+      GDK_BACKEND = lib.mkDefault "wayland,x11,*"; # GTK: wayland, then x11, then any
       # Not needed, we only set hyprbars on floating
       # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"; # prevent double decorations with hyprbars
       # Cursor - set by UWSM
       # XCURSOR_SIZE = "24";
       # HYPRCURSOR_SIZE = "24";
       # Required for Java GUI apps (IntelliJ etc.) on tiling/compositing WMs
-      _JAVA_AWT_WM_NONREPARENTING = "1";
+      _JAVA_AWT_WM_NONREPARENTING = lib.mkDefault "1";
       # Note: XDG_SESSION_TYPE, XCURSOR_SIZE, HYPRCURSOR_SIZE are managed by UWSM
     };
   };
 
-  programs = lib.mkDefault {
+  programs = {
     # Emable git and put git config
     git = {
-      enable = true;
+      enable = lib.mkDefault true;
       settings = {
-        user.name = "Marcus Sand";
-        user.email = "hero@herogamers.dev";
+        user.name = lib.mkDefault "Marcus Sand";
+        user.email = lib.mkDefault "hero@herogamers.dev";
       };
       # evaluation warning: The default value of `programs.git.signing.format` has changed from `"openpgp"` to `null`.
-      signing.format = null;
+      signing.format = lib.mkDefault null;
     };
     # Let home Manager install and manage itself.
-    home-manager.enable = true;
+    home-manager.enable = lib.mkDefault true;
 
     # Add stuff for your user as you see fit:
 
     # keep-sorted start
 
-    btop.enable = true;
-    lazygit.enable = true;
-    neovim.enable = true;
+    btop.enable = lib.mkDefault true;
+    lazygit.enable = lib.mkDefault true;
+    neovim.enable = lib.mkDefault true;
 
     # keep-sorted end
   };

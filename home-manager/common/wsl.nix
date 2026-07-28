@@ -1,9 +1,9 @@
 { lib, ... }:
 {
 
-  programs = lib.mkDefault {
+  programs = {
     # keep-sorted start
-    vscode.enable = false;
+    vscode.enable = lib.mkDefault false;
     # keep-sorted end
   };
 
