@@ -38,7 +38,7 @@
   # Bootloader
   boot.loader = lib.mkDefault {
     systemd-boot.enable = lib.mkDefault true;
-    efi.canTouchEfiVariables = true;
+    efi.canTouchEfiVariables = lib.mkDefault true;
   };
 
   # Enable the X11 windowing system.
@@ -119,6 +119,7 @@
     # kdePackages.spectacle # only works in KDE (needs KWin) :c
     # kdePackages.xwaylandvideobridge # was removed on 1d584e3a90dc2154eba1edbd57e1dfc754e31697, dunno if this breaks Hyprland screen sharing
     keepassxc # also used for keyring secret service
+    libsecret # for modifying secrets in keyring secret service
     networkmanager # my beloved <3
     networkmanagerapplet # for waybar tray, nm-connection-editor
     obsidian
@@ -129,6 +130,7 @@
     slurp # Select region utility for Wayland
     tor-browser
     trayscale # tray icon for Tailscale
+    uwsm # Universal Wayland Session Manager
     vlc
     # vscode # Managed in home-manager
     wev
@@ -168,8 +170,8 @@
     firewall = {
       # Or disable the firewall altogether.
       # enable = false;
-      allowedTCPPorts = [ 22 ];
-      allowedUDPPorts = [ 22 ];
+      allowedTCPPorts = [ ];
+      allowedUDPPorts = [ ];
     };
   };
 

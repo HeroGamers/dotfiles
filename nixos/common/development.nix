@@ -29,6 +29,7 @@
     gcc
     # gnumake
     go
+    nasm # Netwide Assembler, for assembly programming
     # ninja
     # gdb  # use Pwndbg instead
     gradle # Gradle build tool for Java projects
@@ -50,6 +51,29 @@
     # lldb
     yamlfmt
     # keep-sorted end
+  ];
+
+  programs.nix-ld.libraries = with pkgs; [
+    # Python
+    # https://wiki.nixos.org/wiki/Python#Using_nix-ld
+    zlib
+    zstd
+    stdenv.cc.cc
+    curl
+    openssl
+    attr
+    libssh
+    bzip2
+    libxml2
+    acl
+    libsodium
+    util-linux
+    xz
+    systemd
+
+    # Electron stuff
+    # nix-alien-find-libs ./node_modules/electron/dist/electron
+    #alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out libx11.out libxscrnsaver.out libxcomposite.out libxcursor.out libxdamage.out libxext.out libxfixes.out libxi.out libxrandr.out libxrender.out libxtst.out libxcb.out
   ];
 
   nix.settings = {

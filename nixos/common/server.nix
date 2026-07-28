@@ -1,38 +1,32 @@
-# Desktop configuration for physical/baremetal NixOS installations
-# This contains desktop-specific settings: display, audio, bluetooth, GUI apps, etc.
+# Server configuration for server NixOS installations
+# This contains server-specific settings: networking, services, etc.
 {
   lib,
-  pkgs,
   ...
 }:
 {
   imports = [
   ];
 
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-    curl
-    wget
-    htop
-  ];
-
   # Bootloader
   boot.loader = lib.mkDefault {
     systemd-boot.enable = lib.mkDefault true;
-    efi.canTouchEfiVariables = true;
+    efi.canTouchEfiVariables = lib.mkDefault true;
   };
 
+  # environment.systemPackages = with pkgs; [
+  # ];
+
   services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
+    enable = lib.mkForce true;
+    openFirewall = true;
   };
 
   # Enable Tailscale
-  services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "client";
-  };
+  # services.tailscale = {
+  #   enable = true;
+  #   useRoutingFeatures = "client";
+  # };
 
   # Networking stuff
   networking = lib.mkDefault {
@@ -40,8 +34,8 @@
     firewall = {
       # Or disable the firewall altogether.
       # enable = false;
-      allowedTCPPorts = [ 22 ];
-      allowedUDPPorts = [ 22 ];
+      allowedTCPPorts = [ ];
+      allowedUDPPorts = [ ];
     };
   };
 }

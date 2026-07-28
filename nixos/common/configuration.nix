@@ -91,10 +91,12 @@
           # "https://cache.nixos.org/" # already included by default
           # Enable cache for nix-community
           "https://nix-community.cachix.org"
+          "https://cache.numtide.com"
           "https://numtide.cachix.org"
         ];
         extra-trusted-public-keys = [
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+          "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
           "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
         ];
       };
@@ -148,9 +150,10 @@
     };
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account.
   users.users = {
     hero = {
+      # Don't forget to set a password with ‘passwd’.
       initialPassword = "HelloWorld!";
       isNormalUser = true;
       description = "Hero";
@@ -169,22 +172,27 @@
       #   thunderbird
       # ];
       openssh.authorizedKeys.keys = [
-        # TODO: Add authorized SSH keys
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEFB/OxGoBrNAtxcGI6XFrGWMr+8Wv53x2oTx6EzDBh7 hero@cutefemboy.com"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILcDL6unYUjlcviJ800amEkKz7pcDugey9f7l71rh0vL hacktop@herogamers.dev"
       ];
     };
   };
 
-  security.sudo.extraRules = [
-    {
-      users = [ "hero" ];
-      commands = [
-        {
-          command = "ALL";
-          options = [ "NOPASSWD" ];
-        }
-      ];
-    }
-  ];
+  security.sudo = {
+    wheelNeedsPassword = false;
+
+    # extraRules = [
+    #   {
+    #     users = [ "hero" ];
+    #     commands = [
+    #       {
+    #         command = "ALL";
+    #         options = [ "NOPASSWD" ];
+    #       }
+    #     ];
+    #   }
+    # ];
+  };
 
   # make home-manager as a module of nixos
   # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
@@ -200,12 +208,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-
-  # git tmux neovim fish htop ranger wget curl binutils nasm gcc-multilib
-  # g++-multilib libc6-dev-i386 libc6-dbg nmap libssl-dev libffi-dev gdb build-essential
-  # ltrace strace ruby-rubygems python3 python3-gmpy2 python3-pip python3-dev python3-setuptools
-  # ruby-full netcat-traditional autoconf libtool automake zsh-autosuggestions zsh-syntax-highlighting
-  # zsh tldr bat ffmpeg imagemagick ncdu ipcalc
   environment.systemPackages = with pkgs; [
     # keep-sorted start
 
@@ -219,39 +221,30 @@
     dig
     # dunst # defined in HM
     fastfetch
-    ffmpeg-headless
     file
     fish
     fzf
-    ghostscript
     git
     htop
-    imagemagick
-    iodine
     ipcalc
     jq
     # kitty # defined in hm
     kmod # for lsmod, modinfo, modprobe, etc.
     # lazygit # defined in hm
     libressl # netcat
-    libsecret # for modifying secrets in keyring secret service
     # libsForQt5.qt5ct # Qt5 Configuration Tool
-    macchanger
     magic-wormhole # file transfer tool
     # mpv # defined in hm
-    nasm # Netwide Assembler, for assembly programming
     ncdu # NCurses Disk Usage
     # neofetch # deprecated
     net-tools
     # neovim # defined in hm
     # nix-index # using nix-index-database instead
     nix-output-monitor
-    nss
     p7zip
     tldr
     tmux
     unrar
-    uwsm
     vim # we use neovim, but vim has xxd which I use for hexdumps
     wget
     whois
@@ -283,8 +276,6 @@
     ntfs3g
     parted
 
-    curl
-    wget
     openssh
     bind
     traceroute
@@ -308,30 +299,7 @@
   ## If needed, you can add missing libraries here. nix-index-database is your friend to
   ## find the name of the package from the error message:
   ## https://github.com/nix-community/nix-index-database
-  programs.nix-ld.libraries =
-    options.programs.nix-ld.libraries.default
-    ++ (with pkgs; [
-      # Python
-      # https://wiki.nixos.org/wiki/Python#Using_nix-ld
-      zlib
-      zstd
-      stdenv.cc.cc
-      curl
-      openssl
-      attr
-      libssh
-      bzip2
-      libxml2
-      acl
-      libsodium
-      util-linux
-      xz
-      systemd
-
-      # Electron stuff
-      # nix-alien-find-libs ./node_modules/electron/dist/electron
-      #alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out libx11.out libxscrnsaver.out libxcomposite.out libxcursor.out libxdamage.out libxext.out libxfixes.out libxi.out libxrandr.out libxrender.out libxtst.out libxcb.out
-    ]);
+  programs.nix-ld.libraries = options.programs.nix-ld.libraries.default;
 
   # SSH Agent
   programs.ssh.startAgent = lib.mkDefault true;
@@ -352,7 +320,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh = lib.mkDefault {
-    enable = true;
+    enable = lib.mkDefault false;
     settings = {
       # Opinionated: forbid root login through SSH.
       PermitRootLogin = "no";

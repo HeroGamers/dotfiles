@@ -7,6 +7,9 @@
     # Import the common configuration
     ../common
 
+    # Workstation
+    ../common/workstation.nix
+
     # Development
     ../common/development.nix
 

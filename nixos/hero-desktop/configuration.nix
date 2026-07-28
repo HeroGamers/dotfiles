@@ -13,6 +13,9 @@
     # Import the common configuration
     ../common
 
+    # Workstation
+    ../common/workstation.nix
+
     # Security
     ../common/security.nix
 

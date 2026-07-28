@@ -64,6 +64,7 @@
             john
             ligolo-ng
             kerbrute
+            macchanger
             metasploit
             nikto
             mimikatz

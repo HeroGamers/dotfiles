@@ -7,6 +7,9 @@
     # Import the desktop configuration
     ../common/desktop.nix
 
+    # Workstation
+    ../common/workstation.nix
+
     # Security
     ../common/security.nix
 
