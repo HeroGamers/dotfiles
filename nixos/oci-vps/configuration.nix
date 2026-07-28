@@ -10,14 +10,17 @@
 }:
 {
   imports = [
-    inputs.disko.nixosModules.disko
+    # Import the common configuration
+    ../common
+
+    # Import the server configuration
+    ../common/server.nix
+
+    # Host specific configuration
     ./disko.nix
 
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 
@@ -39,9 +42,6 @@
 
   # DHCP should be fine for OCI.
   networking.useDHCP = true;
-
-  services.openssh.enable = true;
-  services.openssh.settings.PasswordAuthentication = false;
 
   users.users.hero = {
     isNormalUser = true;

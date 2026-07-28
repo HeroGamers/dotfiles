@@ -9,9 +9,6 @@
     # WSL-specific Home Manager config
     ../common/wsl.nix
 
-    # Security
-    ../common/security.nix
-
     # Devlopment tools and settings
     ../common/development.nix
   ];

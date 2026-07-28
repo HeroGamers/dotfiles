@@ -27,6 +27,12 @@
 
     # Office work
     ./office.nix
+
+    # Python
+    ./python.nix
+
+    # Theme
+    ./theme.nix
   ];
 
   # Bootloader

@@ -21,7 +21,7 @@
       nix-collect-garbage --delete-older-than 7d
     '';
     update.exec = ''
-      sudo bash -c 'nixos-rebuild switch --log-format internal-json -v |& nom --json'
+      sudo bash -c 'nixos-rebuild switch --accept-flake-config --log-format internal-json -v |& nom --json'
     '';
   };
 

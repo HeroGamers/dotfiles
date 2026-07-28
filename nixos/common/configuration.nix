@@ -25,12 +25,6 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-
-    # Python
-    ./python.nix
-
-    # Theme
-    ./theme.nix
   ];
 
   nixpkgs = lib.mkDefault {
@@ -93,13 +87,13 @@
         # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
         # nix-path = lib.mkForce config.nix.nixPath; # lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
 
-        substituters = [
+        extra-substituters = [
           # "https://cache.nixos.org/" # already included by default
           # Enable cache for nix-community
           "https://nix-community.cachix.org"
           "https://numtide.cachix.org"
         ];
-        trusted-public-keys = [
+        extra-trusted-public-keys = [
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
           "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
         ];
