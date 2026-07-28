@@ -7,20 +7,20 @@
   writableTmpDirAsHomeHook,
 }:
 let
-  commitHash = "9762023";
+  commitHash = "111636a";
 in
 buildGoModule rec {
   pname = "elastic-package";
-  version = "0.120.0";
+  version = "0.125.1";
 
   src = fetchFromGitHub {
     owner = "elastic";
     repo = "elastic-package";
     tag = "v${version}";
-    sha256 = "sha256-z923WIs3ibS72bJTlrc7w1GHDcG5S/v+Xow7GYPUQiE=";
+    sha256 = "sha256-T4gsIBSOGuSoNSQLpKgF7RAiipXM6zUad+gRY0DuP34=";
   };
 
-  vendorHash = "sha256-tIjTvd2FCxYUYy1j3pJQ6zA6MpwPdaTu/KsLTgJMIMQ=";
+  vendorHash = "sha256-w8NAaUUHgbP7GqrXQOLtRNhJB9TQG15IGfyvlHcbPSM=";
 
   ldflags = [
     "-s"
