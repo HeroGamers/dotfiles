@@ -333,26 +333,6 @@
         "type": "github"
       }
     },
-    "hackpkgs": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1760552220,
-        "narHash": "sha256-57rCDmOPJYcQogXFm366qPtpQd+hjzoK+wp2pP8ruiY=",
-        "ref": "refs/heads/master",
-        "rev": "3484f64f6e9b79ddfbfbe3f12af7f9d402bbcb1c",
-        "revCount": 13,
-        "type": "git",
-        "url": "ssh://git@github.com/HeroGamers/hackpkgs"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/HeroGamers/hackpkgs"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -1113,7 +1093,6 @@
         "dms": "dms",
         "dms-plugin-registry": "dms-plugin-registry",
         "flake-parts": "flake-parts",
-        "hackpkgs": "hackpkgs",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
         "hyprland": "hyprland",

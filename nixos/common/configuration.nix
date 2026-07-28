@@ -235,6 +235,7 @@
     # neovim # defined in hm
     # nix-index # using nix-index-database instead
     nix-output-monitor
+    npins
     p7zip
     tldr
     tmux

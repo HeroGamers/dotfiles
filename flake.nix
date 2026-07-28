@@ -52,10 +52,10 @@
       url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hackpkgs = {
-      url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # hackpkgs = {
+    #   url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     llm-agents.url = "github:numtide/llm-agents.nix"; # This flake is only built and tested against its pinned nixpkgs-unstable input.
     minegrub-theme = {
       url = "github:Lxtharia/minegrub-theme";
@@ -171,46 +171,50 @@
 
         homeManagerModules = import ./modules/home-manager;
 
-        nixosConfigurations = {
-          # keep-sorted start block=yes
+        nixosConfigurations =
+          let
+            pins = import ./npins;
+          in
+          {
+            # keep-sorted start block=yes
 
-          ctf-vm = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              ./nixos/ctf-vm
-            ];
-          };
-          hacktop = inputs.nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs; };
-            modules = [
-              ./nixos/hacktop
-            ];
-          };
-          hero-desktop = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              ./nixos/hero-desktop
-            ];
-          };
-          oci-vps = inputs.nixpkgs.lib.nixosSystem {
-            system = "aarch64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              ./nixos/oci-vps
-            ];
-          };
-          worktop = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              ./nixos/worktop
-            ];
-          };
+            ctf-vm = inputs.nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = { inherit inputs pins; };
+              modules = [
+                ./nixos/ctf-vm
+              ];
+            };
+            hacktop = inputs.nixpkgs.lib.nixosSystem {
+              specialArgs = { inherit inputs pins; };
+              modules = [
+                ./nixos/hacktop
+              ];
+            };
+            hero-desktop = inputs.nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = { inherit inputs pins; };
+              modules = [
+                ./nixos/hero-desktop
+              ];
+            };
+            oci-vps = inputs.nixpkgs.lib.nixosSystem {
+              system = "aarch64-linux";
+              specialArgs = { inherit inputs pins; };
+              modules = [
+                ./nixos/oci-vps
+              ];
+            };
+            worktop = inputs.nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = { inherit inputs pins; };
+              modules = [
+                ./nixos/worktop
+              ];
+            };
 
-          # keep-sorted end
-        };
+            # keep-sorted end
+          };
 
         homeConfigurations = {
           # keep-sorted start block=yes

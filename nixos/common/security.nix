@@ -3,6 +3,7 @@
   config,
   pkgs,
   inputs,
+  pins,
   ...
 }:
 {
@@ -16,11 +17,11 @@
 
   config = {
     nixpkgs.overlays = [
-      # Hackpkgs, pwndbg, etc.
+      # Hackpkgs overlay
+      (import "${pins.hackpkgs}/overlay.nix")
+
+      # pwndbg, etc.
       (final: prev: {
-        inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) binaryninja-personal;
-        inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) ida-pro;
-        inherit (inputs.hackpkgs.packages.${final.stdenv.hostPlatform.system}) mstrings;
         inherit (inputs.pwndbg.packages.${final.stdenv.hostPlatform.system}) pwndbg;
         inherit (inputs.ctf-dl.packages.${final.stdenv.hostPlatform.system}) ctf-dl;
         inherit (inputs.ctf-man.packages.${final.stdenv.hostPlatform.system}) ctf-man;

@@ -1,0 +1,17 @@
+{
+  "pins": {
+    "hackpkgs": {
+      "type": "Git",
+      "repository": {
+        "type": "Git",
+        "url": "git+ssh://git@github.com/HeroGamers/hackpkgs.git"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "06e335832df2490fab424c3e6d037f5b99d7d730",
+      "url": null,
+      "hash": "sha256-4AeZR83l85HPZ6xsynQ9f0Ee4Y7aoob4/adKYI7olgc="
+    }
+  },
+  "version": 8
+}
