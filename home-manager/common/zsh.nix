@@ -24,8 +24,8 @@
 
   # Zellij
   programs.zellij = {
-    enable = true;
-    enableZshIntegration = true;
+    enable = lib.mkDefault true;
+    enableZshIntegration = lib.mkDefault true;
     exitShellOnExit = true;
     settings = {
       show_startup_tips = false;

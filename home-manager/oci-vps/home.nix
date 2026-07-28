@@ -5,6 +5,9 @@
   imports = [
     # Global common Home Manager config
     ../common
+
+    # Server-specific Home Manager config
+    ../common/server.nix
   ];
 
   home = {
