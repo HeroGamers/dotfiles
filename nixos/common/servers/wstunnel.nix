@@ -51,8 +51,11 @@
       import ${config.sops.templates."caddy-ws-path".path}
     }
 
-    reverse_proxy @ws 127.0.0.1:${toString config.services.wstunnel.servers.wg-tunnel.listen.port}
+    handle @ws {
+      reverse_proxy 127.0.0.1:${toString config.services.wstunnel.servers.wg-tunnel.listen.port}
+    }
 
+    # Redirect all other requests
     handle {
       redir https://qs.ax
     }
