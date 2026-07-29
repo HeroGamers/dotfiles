@@ -316,6 +316,8 @@
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = lib.mkDefault false;
+    # For use with sops-nix, to generate the age keys for the host
+    generateHostKeys = lib.mkDefault true;
     settings = {
       # Opinionated: forbid root login through SSH.
       PermitRootLogin = lib.mkDefault "no";
