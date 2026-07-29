@@ -26,6 +26,8 @@
     # Servers
     ../common/servers/iodine.nix
     ../common/servers/wireguard.nix
+    ../common/servers/caddy.nix
+    ../common/servers/wstunnel.nix
   ];
 
   home-manager = {
