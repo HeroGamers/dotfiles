@@ -57,6 +57,11 @@
   # DHCP should be fine for OCI.
   networking.useDHCP = true;
 
+  # Termius public key for extra SSH access
+  users.users.hero.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPvpJMphT0ifXAk6N+RqBLP3Py0IrDB4HHo/8Px2yAE termius-iPwne@herogamers.dev"
+  ];
+
   # Note: you also need to configure open ports in the Oracle Cloud web interface
   # (Virtual Cloud Network -> Security Lists -> Ingress Rules)
   # firewall = {

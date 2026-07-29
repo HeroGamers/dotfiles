@@ -13,5 +13,13 @@
     passwordFile = config.sops.secrets."services/iodine/password".path;
   };
 
+  # Enable NAT to forward iodine traffic to the internet
+  # networking.nat = {
+  #   enable = true;
+  #   enableIPv6 = true;
+  #   externalInterface = "eth0";
+  #   internalInterfaces = [ "dns0" ];
+  # };
+
   networking.firewall.allowedUDPPorts = [ 53 ];
 }
