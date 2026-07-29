@@ -9,7 +9,9 @@
     group = "caddy";
 
     content = ''
-      path /${config.sops.placeholder."services/wstunnel/path_prefix"}/*
+      path /${config.sops.placeholder."services/wstunnel/path_prefix"} /${
+        config.sops.placeholder."services/wstunnel/path_prefix"
+      }/*
     '';
   };
 
@@ -30,6 +32,11 @@
             {
               host = "127.0.0.1";
               port = 51820;
+            }
+            # For testing connectivity
+            {
+              host = "127.0.0.1";
+              port = 22;
             }
           ];
           # restrict-http-upgrade-path-prefix = config.sops.secrets."services/wstunnel/password".path;
