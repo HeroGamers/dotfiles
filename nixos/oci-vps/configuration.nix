@@ -17,10 +17,15 @@
     # Host specific configuration
     ./disko.nix
 
-    # Iodine service
-    ../common/services/iodine.nix
-
+    # QEMU guest configuration
     (modulesPath + "/profiles/qemu-guest.nix")
+
+    # Sops
+    ./sops.nix
+
+    # Services
+    ../common/services/iodine.nix
+    ../common/services/wireguard.nix
   ];
 
   home-manager = {
