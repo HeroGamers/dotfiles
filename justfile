@@ -6,7 +6,7 @@ fw_mark := "51820"
 # Paths to SOPS secrets
 secret_wg_privkey := "/run/secrets/wg-key-client"
 secret_wstunnel := "/run/secrets/services/wstunnel/path_prefix"
-secret_iodine := "/run/secrets/services/wstunnel/password" 
+secret_iodine := "/run/secrets/services/iodine/password" 
 
 # WireGuard Client settings
 wg_ipv4_base := "10.133.70"
