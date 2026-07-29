@@ -1,4 +1,25 @@
-{ config, ... }:
+{ config, lib, ... }:
+let
+  # Peers list
+  peers = [
+    {
+      # hacktop, .2
+      publicKey = "nGkE+6ljQ+VGq+TzUAXHK7cf5b/x10HzJpEqXaX2zEM=";
+    }
+    {
+      # hero-desktop, .3
+      publicKey = "XsRSGRksVHBH4HXhnwCNRcaDRXyI1upo1S9anMYkUBA=";
+    }
+    {
+      # hero-phone, .4
+      publicKey = "stw2hI64qJsSKprakzd+ImYIeMPUlKsk+nExRbFx6kU=";
+    }
+    {
+      # unused, .5
+      publicKey = "vPM2dANBAddnMsQCdv05fgfL07h2Awuph8GTAfDA+3M=";
+    }
+  ];
+in
 {
   # PublicKey: e784IO8IPkTKO6sZSDZ4XVnZliEFQWp3Pt+cRfcGj1I=
   sops.secrets.wg-key-server = {
@@ -64,21 +85,15 @@
         # with the number 42, which can be used to define policy rules on these packets.
         FirewallMark = 42;
       };
-      wireguardPeers = [
-        {
-          # Hero phone peer
-          PublicKey = "stw2hI64qJsSKprakzd+ImYIeMPUlKsk+nExRbFx6kU=";
-          AllowedIPs = [
-            "fdf1:80c2:33a9::2/128"
-            "10.133.70.2/32"
-          ];
 
-          # RouteTable can also be set in wireguardPeers
-          # RouteTable in wireguardConfig will then be ignored.
-          # RouteTable = 1000;
-        }
-      ];
+      # Automatically map over the list of peers
+      wireguardPeers = lib.imap0 (index: peer: {
+        PublicKey = peer.publicKey;
+        AllowedIPs = [
+          "fdf1:80c2:33a9::${toString (index + 2)}/128"
+          "10.133.70.${toString (index + 2)}/32"
+        ];
+      }) peers;
     };
   };
-
 }
