@@ -1,8 +1,9 @@
 { config, ... }:
 {
   sops.secrets."services/iodine/password" = {
-    owner = "iodined";
-    group = "iodined";
+    restartUnits = [ "iodined.service" ];
+    owner = config.users.users.iodined.name;
+    group = config.users.users.iodined.group;
   };
 
   services.iodine.server = {
