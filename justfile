@@ -1,15 +1,18 @@
 # Configuration
 server := "wss://ws.qs.ax"
+iodine_domain := "i.qs.ax"
 fw_mark := "51820"
 
 # Paths to SOPS secrets
 secret_wg_privkey := "/run/secrets/wg-key-client"
 secret_wstunnel := "/run/secrets/services/wstunnel/path_prefix"
+secret_iodine := "/run/secrets/services/wstunnel/password" 
 
 # WireGuard Client settings
-wg_ipv4_base := "10.100.100"
+wg_ipv4_base := "10.133.70"
 wg_ipv6_base := "fdf1:80c2:33a9::"
 wg_server_pubkey := "e784IO8IPkTKO6sZSDZ4XVnZliEFQWp3Pt+cRfcGj1I="
+
 
 default:
     @just --list
@@ -91,6 +94,31 @@ ws-ssh sni="ws.qs.ax" local_port="9922":
         -L "tcp://{{local_port}}:127.0.0.1:22" \
         --tls-sni-override "{{sni}}" \
         "{{server}}"
+
+# Start an iodine DNS tunnel
+# Other hosts: 158.180.35.187 2603:c020:8026:3400:0:7cca:50be:793c
+# Usage: just dns-tunnel [host]
+dns-tunnel host="vps.cutefemboy.com":
+    #!/usr/bin/env bash
+    set -e
+    
+    if [ ! -f "{{secret_iodine}}" ]; then
+        echo "Error: Iodine secret not found in /run/secrets/"
+        exit 1
+    fi
+    
+    IODINE_PASSWORD=$(cat "{{secret_iodine}}")
+
+    if [ -z "$IODINE_PASSWORD" ]; then
+        echo "Error: Iodine password is empty. Please check your SOPS configuration."
+        exit 1
+    fi
+    
+    echo "Starting iodine DNS tunnel to {{iodine_domain}}..."
+    echo "-> Once connected, the server will be available at 172.16.10.1"
+    
+    # -f keeps iodine in the foreground
+    sudo iodine -f -P "$IODINE_PASSWORD" "{{host}}" "{{iodine_domain}}"
 
 # Emergency teardown if the terminal is killed ungracefully
 ws-down:

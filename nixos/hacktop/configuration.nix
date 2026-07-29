@@ -47,7 +47,9 @@
     ../common/chat.nix
 
     # Clients
+    ../common/clients/wireguard.nix
     ../common/clients/wstunnel.nix
+    ../common/clients/iodine.nix
 
     # SOPS
     ./sops.nix
