@@ -45,19 +45,25 @@
     };
   };
 
-  services.caddy.virtualHosts."ws.qs.ax".extraConfig = ''
-    @ws {
-      # Use the path prefix from the sops template
-      import ${config.sops.templates."caddy-ws-path".path}
-    }
+  services.caddy = {
+    globalConfig = ''
+      fallback_sni ws.qs.ax
+    '';
 
-    handle @ws {
-      reverse_proxy 127.0.0.1:${toString config.services.wstunnel.servers.wg-tunnel.listen.port}
-    }
+    virtualHosts."ws.qs.ax".extraConfig = ''
+      @ws {
+        # Use the path prefix from the sops template
+        import ${config.sops.templates."caddy-ws-path".path}
+      }
 
-    # Redirect all other requests
-    handle {
-      redir https://qs.ax
-    }
-  '';
+      handle @ws {
+        reverse_proxy 127.0.0.1:${toString config.services.wstunnel.servers.wg-tunnel.listen.port}
+      }
+
+      # Redirect all other requests
+      handle {
+        redir https://qs.ax
+      }
+    '';
+  };
 }
