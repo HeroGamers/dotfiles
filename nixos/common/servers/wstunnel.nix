@@ -13,22 +13,27 @@
     '';
   };
 
-  services.wstunnel.servers = {
-    wg-tunnel = {
-      enable = true;
+  services.wstunnel = {
+    enable = true;
 
-      listen = {
-        host = "127.0.0.1";
-        port = 58213;
-      };
-      settings = {
-        restrict-to = [
-          {
-            host = "127.0.0.1";
-            port = 51820;
-          }
-        ];
-        # restrict-http-upgrade-path-prefix = config.sops.secrets."services/wstunnel/password".path;
+    servers = {
+      wg-tunnel = {
+        enable = true;
+
+        listen = {
+          enableHTTPS = false; # handled by Caddy
+          host = "127.0.0.1";
+          port = 58213;
+        };
+        settings = {
+          restrict-to = [
+            {
+              host = "127.0.0.1";
+              port = 51820;
+            }
+          ];
+          # restrict-http-upgrade-path-prefix = config.sops.secrets."services/wstunnel/password".path;
+        };
       };
     };
   };
