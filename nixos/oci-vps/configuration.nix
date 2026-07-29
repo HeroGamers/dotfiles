@@ -19,6 +19,9 @@
     # Host specific configuration
     ./disko.nix
 
+    # Iodine service
+    ../common/services/iodine.nix
+
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
