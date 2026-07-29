@@ -2,9 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  inputs,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -48,8 +46,17 @@
     "net.ifnames=0"
   ];
 
+  # https://wiki.nixos.org/wiki/Install_NixOS_on_Oracle_Cloud#NixOS_configuration.nix
   # DHCP should be fine for OCI.
   networking.useDHCP = true;
+
+  # Note: you also need to configure open ports in the Oracle Cloud web interface
+  # (Virtual Cloud Network -> Security Lists -> Ingress Rules)
+  # firewall = {
+  #   # (both optional)
+  #   logRefusedConnections = false;
+  #   rejectPackets = true;
+  # };
 
   system.stateVersion = "25.05";
 }

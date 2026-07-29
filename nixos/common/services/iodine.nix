@@ -1,6 +1,9 @@
 { config, ... }:
 {
-  sops.secrets."services/iodine/password" = { };
+  sops.secrets."services/iodine/password" = {
+    owner = "iodined";
+    group = "iodined";
+  };
 
   services.iodine.server = {
     enable = true;
@@ -8,4 +11,6 @@
     ip = "172.16.10.1/24";
     passwordFile = config.sops.secrets."services/iodine/password".path;
   };
+
+  networking.firewall.allowedUDPPorts = [ 53 ];
 }
