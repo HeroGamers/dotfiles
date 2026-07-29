@@ -49,9 +49,6 @@
     @ws {
       # Use the path prefix from the sops template
       import ${config.sops.templates."caddy-ws-path".path}
-
-      header Connection *Upgrade*
-      header Upgrade websocket
     }
 
     reverse_proxy @ws 127.0.0.1:${toString config.services.wstunnel.servers.wg-tunnel.listen.port}
