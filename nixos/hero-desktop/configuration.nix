@@ -3,7 +3,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   inputs,
-  lib,
   ...
 }:
 {
@@ -21,6 +20,12 @@
 
     # Development
     ../common/development.nix
+
+    # Clients
+    ../common/clients/wstunnel.nix
+
+    # SOPS
+    ./sops.nix
 
     # WSL specific configuration
     ../common/wsl.nix

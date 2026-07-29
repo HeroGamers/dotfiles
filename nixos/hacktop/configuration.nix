@@ -46,6 +46,12 @@
     # Chat
     ../common/chat.nix
 
+    # Clients
+    ../common/clients/wstunnel.nix
+
+    # SOPS
+    ./sops.nix
+
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];

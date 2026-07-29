@@ -1,6 +1,6 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
 {
   sops.secrets.wg-key-server = {
-    sopsFile = "${inputs.self}/secrets/oci-vps/wireguard.yaml";
+    sopsFile = "${inputs.self}/secrets/${config.networking.hostName}/wireguard.yaml";
   };
 }

@@ -159,6 +159,7 @@
         "dialout"
         "docker"
         "input" # for reading udev input devices
+        "keys" # for sops keys directory reading without sudo
         "networkmanager"
         "wheel"
         "wireshark"
