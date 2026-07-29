@@ -1,0 +1,35 @@
+keys:
+  - &admin_hero age1zz9rwwd5metct9jn8zd55t8zrnkp3u65e7p7xeaxp95xm2cvj9kqnk0kxf
+  - &admin_hacktop age139xfxflnjq22q797g9ptfqqnl6fcmxcrgjr68nh23dx6n44pjf2s7p24y9
+  - &admin_worktop age1ctx224c0clehrx46y2sfkfmluccswnm3jdxzaajtl5wtgy9jhs8swm74st
+  - &server_worktop age1ghgm3m90379d26zrpxklp3k3pxttajvyfyu49903zvpsd58ejdjq03kwcd
+  - &server_oci-vps age1g2tjk06zsm6wesquydnn5rxgzzcsckuvyaaw2v3r7hse4eup0azse26n8y
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *admin_hero
+      - *admin_hacktop
+      - *admin_worktop
+      - *server_worktop
+      - *server_oci-vps
+  - path_regex: secrets/hacktop/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *admin_hero
+      - *admin_hacktop
+  - path_regex: secrets/hero-desktop/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *admin_hero
+  - path_regex: secrets/oci-vps/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *admin_hero
+      - *server_oci-vps
+  - path_regex: secrets/worktop/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *admin_hero
+      - *admin_worktop
+      - *server_worktop

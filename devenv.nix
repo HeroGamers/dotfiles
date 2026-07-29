@@ -4,6 +4,7 @@
   packages = [
     pkgs.git
     pkgs.nix-output-monitor
+    pkgs.sops
   ];
 
   # https://devenv.sh/languages/
