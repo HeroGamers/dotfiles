@@ -23,9 +23,9 @@
     # Sops
     ./sops.nix
 
-    # Services
-    ../common/services/iodine.nix
-    ../common/services/wireguard.nix
+    # Servers
+    ../common/servers/iodine.nix
+    ../common/servers/wireguard.nix
   ];
 
   home-manager = {
