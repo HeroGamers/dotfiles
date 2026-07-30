@@ -24,7 +24,6 @@
     ./sops.nix
 
     # Servers
-    ../common/services
     ../common/services/iodine.nix
     ../common/services/wireguard.nix
     ../common/services/caddy.nix
