@@ -1,4 +1,7 @@
 { config, ... }:
+let
+  svc_domain = "ws.${config.dotfiles.settings.services.domain}";
+in
 {
   sops.secrets."services/wstunnel/path_prefix" = {
     restartUnits = [ "caddy.service" ];
@@ -47,10 +50,10 @@
 
   services.caddy = {
     globalConfig = ''
-      fallback_sni ws.qs.ax
+      fallback_sni ${svc_domain}
     '';
 
-    virtualHosts."ws.qs.ax".extraConfig = ''
+    virtualHosts."${svc_domain}".extraConfig = ''
       @ws {
         # Use the path prefix from the sops template
         import ${config.sops.templates."caddy-ws-path".path}
@@ -62,7 +65,7 @@
 
       # Redirect all other requests
       handle {
-        redir https://qs.ax
+        redir https://${config.dotfiles.settings.services.domain};
       }
     '';
   };

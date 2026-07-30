@@ -19,6 +19,9 @@ let
       publicKey = "vPM2dANBAddnMsQCdv05fgfL07h2Awuph8GTAfDA+3M=";
     }
   ];
+
+  ipv4_network_prefix = "10.133.70.";
+  ipv6_network_prefix = "fdf1:80c2:33a9::";
 in
 {
   # PublicKey: e784IO8IPkTKO6sZSDZ4XVnZliEFQWp3Pt+cRfcGj1I=
@@ -59,9 +62,9 @@ in
       # WireGuard interface configuration for the server
       address = [
         # Fresh random ULA.
-        "fdf1:80c2:33a9::1/64"
+        "${ipv6_network_prefix}1/64"
         # Some random 10.x space
-        "10.133.70.1/24"
+        "${ipv4_network_prefix}1/24"
       ];
     };
 
@@ -90,8 +93,8 @@ in
       wireguardPeers = lib.imap0 (index: peer: {
         PublicKey = peer.publicKey;
         AllowedIPs = [
-          "fdf1:80c2:33a9::${toString (index + 2)}/128"
-          "10.133.70.${toString (index + 2)}/32"
+          "${ipv6_network_prefix}${toString (index + 2)}/128"
+          "${ipv4_network_prefix}${toString (index + 2)}/32"
         ];
       }) peers;
     };

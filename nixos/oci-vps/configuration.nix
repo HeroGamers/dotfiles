@@ -24,6 +24,7 @@
     ./sops.nix
 
     # Servers
+    ../common/services
     ../common/services/iodine.nix
     ../common/services/wireguard.nix
     ../common/services/caddy.nix
@@ -61,6 +62,8 @@
   users.users.hero.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPvpJMphT0ifXAk6N+RqBLP3Py0IrDB4HHo/8Px2yAE termius-iPwne@herogamers.dev"
   ];
+
+  dotfiles.settings.services.domain = lib.mkForce "qs.ax";
 
   # Note: you also need to configure open ports in the Oracle Cloud web interface
   # (Virtual Cloud Network -> Security Lists -> Ingress Rules)
