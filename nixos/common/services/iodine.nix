@@ -21,6 +21,7 @@ in
     passwordFile = config.sops.secrets."services/iodine/password".path;
   };
 
+  # HTTP(S) and SOCKS proxy for iodine clients
   services._3proxy = {
     enable = true;
     services = [
@@ -53,6 +54,21 @@ in
     ];
   };
 
+  # DNS server for iodine clients (DNS in DNS, lmao, blame iOS / Purple Haze)
+  services.dnsmasq = {
+    enable = true;
+    settings = {
+      listen-address = "${iodine_ip}";
+      bind-interfaces = true;
+      interface = "dns0";
+      no-resolv = true;
+      server = [
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
+    };
+  };
+
   # Enable NAT to forward iodine traffic to the internet
   # Gives a big packet overhead due to routing all the traffic through the iodine server, but it works... kinda.
   # networking.nat = {
@@ -63,8 +79,11 @@ in
   # };
 
   networking.firewall.allowedUDPPorts = [ 53 ];
+  networking.firewall.allowedTCPPorts = [ 53 ];
 
+  networking.firewall.interfaces."dns0".allowedUDPPorts = [ 53 ];
   networking.firewall.interfaces."dns0".allowedTCPPorts = [
+    53
     8080
     1080
   ];
