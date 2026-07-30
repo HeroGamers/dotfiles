@@ -24,10 +24,10 @@
     ./sops.nix
 
     # Servers
-    ../common/servers/iodine.nix
-    ../common/servers/wireguard.nix
-    ../common/servers/caddy.nix
-    ../common/servers/wstunnel.nix
+    ../common/services/iodine.nix
+    ../common/services/wireguard.nix
+    ../common/services/caddy.nix
+    ../common/services/wstunnel.nix
   ];
 
   home-manager = {

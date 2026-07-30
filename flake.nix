@@ -66,7 +66,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-minecraft = {
-      # For nixos/common/gameservers/minecraft-gtnh.nix
+      # For nixos/common/services/games/minecraft-gtnh.nix
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
