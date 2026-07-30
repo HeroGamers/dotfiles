@@ -23,6 +23,9 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
 
+    # Options
+    ./options.nix
+
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
 
