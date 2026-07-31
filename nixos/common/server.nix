@@ -26,6 +26,7 @@
   services.tailscale = {
     enable = lib.mkDefault true;
     useRoutingFeatures = lib.mkDefault "server";
+    openFirewall = lib.mkDefault true;
   };
 
   # Networking stuff
