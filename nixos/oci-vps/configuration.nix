@@ -3,7 +3,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   lib,
-  modulesPath,
   ...
 }:
 {
@@ -14,11 +13,11 @@
     # Import the server configuration
     ../common/server.nix
 
-    # Host specific configuration
-    ./disko.nix
+    # Hardware configuration
+    ./hardware-configuration.nix
 
-    # QEMU guest configuration
-    (modulesPath + "/profiles/qemu-guest.nix")
+    # Disk configuration
+    ./disko.nix
 
     # Sops
     ./sops.nix
@@ -37,15 +36,6 @@
 
   networking.hostName = "oci-vps";
 
-  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "virtio_pci"
-    "virtio_scsi"
-    "usbhid"
-  ];
-
   boot.kernelParams = [
     "console=ttyS0,115200n8"
     "console=ttyAMA0,115200"
@@ -56,6 +46,7 @@
   # https://wiki.nixos.org/wiki/Install_NixOS_on_Oracle_Cloud#NixOS_configuration.nix
   # DHCP should be fine for OCI.
   networking.useDHCP = true;
+  # networking.interfaces.eth0.useDHCP = lib.mkDefault true;
 
   # Termius public key for extra SSH access
   users.users.hero.openssh.authorizedKeys.keys = [
