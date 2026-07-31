@@ -189,6 +189,12 @@
                 ./nixos/ctf-vm
               ];
             };
+            flareon = inputs.nixpkgs.lib.nixosSystem {
+              specialArgs = { inherit inputs pins; };
+              modules = [
+                ./nixos/flareon
+              ];
+            };
             hacktop = inputs.nixpkgs.lib.nixosSystem {
               specialArgs = { inherit inputs pins; };
               modules = [
