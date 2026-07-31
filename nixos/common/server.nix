@@ -23,10 +23,10 @@
   };
 
   # Enable Tailscale
-  # services.tailscale = {
-  #   enable = true;
-  #   useRoutingFeatures = "client";
-  # };
+  services.tailscale = {
+    enable = lib.mkDefault true;
+    useRoutingFeatures = lib.mkDefault "server";
+  };
 
   # Networking stuff
   networking = {

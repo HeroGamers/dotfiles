@@ -98,8 +98,8 @@
 
   # Enable Tailscale
   services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "client";
+    enable = lib.mkDefault true;
+    useRoutingFeatures = lib.mkDefault "client";
   };
 
   # Install firefox.
