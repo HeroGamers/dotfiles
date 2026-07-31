@@ -1,7 +1,9 @@
 keys:
   - &admin_hero age1zz9rwwd5metct9jn8zd55t8zrnkp3u65e7p7xeaxp95xm2cvj9kqnk0kxf
+  - &admin_flareon age17km698k33xdgalc8zm482p7uet94lhtr3qxdnk8mnjvnpxavwfnq6d3q2z
   - &admin_hacktop age139xfxflnjq22q797g9ptfqqnl6fcmxcrgjr68nh23dx6n44pjf2s7p24y9
   - &admin_worktop age1ctx224c0clehrx46y2sfkfmluccswnm3jdxzaajtl5wtgy9jhs8swm74st
+  - &server_flareon age1tqwclk8d5q24cqzz90gxetwswu0h83ayfnr2r9ndqvl6yus87v8qwuruau
   - &server_hacktop age1jmjnnq2hswrp2sxldfmm7jm4rc9gd4u65rgezv7643tc4dqc7vrqp8ktg7
   - &server_hero-desktop age19zkuelanw6aeejzwr70jjxwdhe6tdjntggh9evwxtxkrclvl65qqhsggqk
   - &server_oci-vps age1g2tjk06zsm6wesquydnn5rxgzzcsckuvyaaw2v3r7hse4eup0azse26n8y
@@ -11,12 +13,20 @@ creation_rules:
     key_groups:
     - age:
       - *admin_hero
+      - *admin_flareon
       - *admin_hacktop
       - *admin_worktop
       - *server_hacktop
       - *server_hero-desktop
       - *server_oci-vps
       - *server_worktop
+      - *server_flareon
+  - path_regex: secrets/flareon/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *admin_hero
+      - *admin_flareon
+      - *server_flareon
   - path_regex: secrets/hacktop/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:

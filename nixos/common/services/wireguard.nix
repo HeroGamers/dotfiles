@@ -15,7 +15,11 @@ let
       publicKey = "stw2hI64qJsSKprakzd+ImYIeMPUlKsk+nExRbFx6kU=";
     }
     {
-      # unused, .5
+      # flareon, .5
+      publicKey = "RboxH3xjdPNxh77vAGEd22UMaA7hc+EXu/0mWFaLbBw=";
+    }
+    {
+      # unused, .6
       publicKey = "vPM2dANBAddnMsQCdv05fgfL07h2Awuph8GTAfDA+3M=";
     }
   ];

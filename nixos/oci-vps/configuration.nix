@@ -60,6 +60,7 @@
   # Termius public key for extra SSH access
   users.users.hero.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILPvpJMphT0ifXAk6N+RqBLP3Py0IrDB4HHo/8Px2yAE termius-iPwne@herogamers.dev"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDU+KXHuiJvd8lOM1nG3iBFdIQ3ZevmtfBXMrWYYtmv7 flareon@herogamers.dev"
   ];
 
   dotfiles.settings.services.domain = lib.mkForce "qs.ax";
