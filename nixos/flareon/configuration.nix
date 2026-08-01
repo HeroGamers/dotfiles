@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     # Import the common configuration
@@ -12,6 +12,11 @@
 
     # GRUB
     ../common/grub.nix
+
+    # Clients
+    ../common/clients/wireguard.nix
+    ../common/clients/wstunnel.nix
+    ../common/clients/iodine.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -31,6 +36,10 @@
   #   # keep-sorted start
   #   # keep-sorted end
   # ];
+
+  networking.networkmanager.plugins = [
+    pkgs.networkmanager-fortisslvpn
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

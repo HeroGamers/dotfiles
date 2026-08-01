@@ -98,6 +98,7 @@ in
     };
 
     enableDynamicTheming = false; # Not needed — using a static registry theme
+    enableVPN = true;
 
     # https://danklinux.com/docs/dankmaterialshell/nixos-flake#plugins
     # https://danklinux.com/plugins
