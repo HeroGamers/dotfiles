@@ -129,6 +129,7 @@
     seahorse # GNOME Keyring GUI
     slurp # Select region utility for Wayland
     tor-browser
+    tailscale
     trayscale # tray icon for Tailscale
     uwsm # Universal Wayland Session Manager
     vlc
