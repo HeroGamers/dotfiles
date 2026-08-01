@@ -6,10 +6,10 @@
 }:
 let
   # Default config
-  # https://github.com/AvengeMedia/DankMaterialShell/blob/master/quickshell/Common/SettingsData.qml
-  # https://github.com/AvengeMedia/DankMaterialShell/blob/master/quickshell/Common/settings/SettingsStore.js
-  # https://raw.githubusercontent.com/AvengeMedia/DankMaterialShell/refs/heads/master/quickshell/Common/settings/SettingsSpec.js
-  # https://raw.githubusercontent.com/AvengeMedia/DankMaterialShell/refs/heads/master/quickshell/Common/settings/SessionSpec.js
+  # https://github.com/AvengeMedia/DankMaterialShell/blob/stable/quickshell/Common/SettingsData.qml
+  # https://github.com/AvengeMedia/DankMaterialShell/blob/stable/quickshell/Common/settings/SettingsStore.js
+  # https://raw.githubusercontent.com/AvengeMedia/DankMaterialShell/refs/heads/stable/quickshell/Common/settings/SettingsSpec.js
+  # https://raw.githubusercontent.com/AvengeMedia/DankMaterialShell/refs/heads/stable/quickshell/Common/settings/SessionSpec.js
   # DMS default bar widget lists (from SettingsSpec.js / SettingsData.qml defaults).
   # Defined here so we can append to them without re-typing the whole list.
   # Update these if you ever want to track upstream default changes explicitly.
@@ -17,36 +17,22 @@ let
     settings = {
       barConfigs = [
         {
-          autoHide = false;
-          autoHideDelay = 250;
-          borderColor = "surfaceText";
-          borderEnabled = false;
-          borderOpacity = 1;
-          borderThickness = 1;
-          bottomGap = 0;
-          centerWidgets = [
-            "music"
-            "clock"
-            "weather"
-          ];
-          enabled = true;
-          fontScale = 1;
-          gothCornerRadiusOverride = false;
-          gothCornerRadiusValue = 12;
-          gothCornersEnabled = false;
           id = "default";
-          innerPadding = 0;
+          name = "Main Bar";
+          enabled = true;
+          position = 0;
+          screenPreferences = [ "all" ];
+          showOnLastDisplay = true;
           leftWidgets = [
             "launcherButton"
             "workspaceSwitcher"
             "focusedWindow"
           ];
-          name = "Main Bar";
-          noBackground = false;
-          openOnOverview = false;
-          popupGapsAuto = true;
-          popupGapsManual = 4;
-          position = 0;
+          centerWidgets = [
+            "music"
+            "clock"
+            "weather"
+          ];
           rightWidgets = [
             "systemTray"
             "clipboard"
@@ -56,14 +42,51 @@ let
             "battery"
             "controlCenterButton"
           ];
-          screenPreferences = [ "all" ];
-          showOnLastDisplay = true;
           spacing = 4;
+          innerPadding = 4;
+          barInsetPadding = -1;
+          bottomGap = 0;
+          transparency = 1.0;
+          widgetTransparency = 1.0;
           squareCorners = false;
-          transparency = 1;
+          noBackground = false;
+          maximizeWidgetIcons = false;
+          maximizeWidgetText = false;
+          removeWidgetPadding = false;
+          widgetPadding = 8;
+          gothCornersEnabled = false;
+          gothCornerRadiusOverride = false;
+          gothCornerRadiusValue = 12;
+          borderEnabled = false;
+          borderColor = "surfaceText";
+          borderOpacity = 1.0;
+          borderThickness = 1;
+          widgetOutlineEnabled = false;
+          widgetOutlineColor = "primary";
+          widgetOutlineOpacity = 1.0;
+          widgetOutlineThickness = 1;
+          fontScale = 1.0;
+          iconScale = 1.0;
+          autoHide = false;
+          autoHideStrict = false;
+          autoHideDelay = 250;
+          showOnWindowsOpen = false;
+          openOnOverview = false;
           visible = true;
-          widgetTransparency = 1;
-          widgetPadding = 12;
+          popupGapsAuto = true;
+          popupGapsManual = 4;
+          maximizeDetection = true;
+          useOverlayLayer = false;
+          scrollEnabled = true;
+          scrollXBehavior = "column";
+          scrollYBehavior = "workspace";
+          shadowIntensity = 0;
+          shadowOpacity = 60;
+          shadowColorMode = "default";
+          shadowCustomColor = "#000000";
+          clickThrough = false;
+          hoverPopouts = false;
+          hoverPopoutDelay = 150;
         }
       ];
     };
