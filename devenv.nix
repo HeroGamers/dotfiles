@@ -25,7 +25,7 @@
       sudo bash -c 'nixos-rebuild switch --accept-flake-config --log-format internal-json -v |& nom --json'
     '';
     update.exec = ''
-      nixos-rebuild switch --accept-flake-config --elevate=sudo --log-format internal-json -v |& nom --json
+      nixos-rebuild switch --accept-flake-config --sudo --log-format internal-json -v |& nom --json
     '';
   };
 
