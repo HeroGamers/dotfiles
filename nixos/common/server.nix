@@ -2,10 +2,12 @@
 # This contains server-specific settings: networking, services, etc.
 {
   lib,
+  inputs,
   ...
 }:
 {
   imports = [
+    inputs.self.nixosModules.tailscale-routing
   ];
 
   # Bootloader
@@ -27,6 +29,13 @@
     enable = lib.mkDefault true;
     useRoutingFeatures = lib.mkDefault "server";
     openFirewall = lib.mkDefault true;
+  };
+
+  # Custom module for Tailscale daemon state
+  services.tailscaleRouting = {
+    enable = true;
+    advertiseExitNode = true;
+    advertiseRoutes = [ ];
   };
 
   # Networking stuff

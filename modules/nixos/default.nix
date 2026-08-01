@@ -3,4 +3,5 @@
 {
   # List your module files here
   # my-module = import ./my-module.nix;
+  tailscale-routing = import ./tailscale-routing.nix;
 }
