@@ -21,8 +21,11 @@
     gc.exec = ''
       nix-collect-garbage --delete-older-than 7d
     '';
-    sudo-update.exec = ''
+    update-sudo.exec = ''
       sudo bash -c 'nixos-rebuild switch --accept-flake-config --log-format internal-json -v |& nom --json'
+    '';
+    update-offline.exec = ''
+      nixos-rebuild switch --accept-flake-config --sudo --offline --option substitute false --log-format internal-json -v |& nom --json
     '';
     update.exec = ''
       nixos-rebuild switch --accept-flake-config --sudo --log-format internal-json -v |& nom --json

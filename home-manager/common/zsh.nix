@@ -132,6 +132,7 @@
         ll = "ls -l";
         update = "nixos-rebuild switch --accept-flake-config --sudo --log-format internal-json -v |& nom --json";
         update-sudo = "sudo bash -c 'nixos-rebuild switch --accept-flake-config --log-format internal-json -v |& nom --json'";
+        update-offline = "nixos-rebuild switch --accept-flake-config --sudo --offline --option substitute false --log-format internal-json -v |& nom --json";
         # vi = "vim";
         # vim = "nvim";
         lg = "lazygit";
