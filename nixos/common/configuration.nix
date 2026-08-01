@@ -229,6 +229,7 @@
     htop
     ipcalc
     jq
+    just
     # kitty # defined in hm
     kmod # for lsmod, modinfo, modprobe, etc.
     # lazygit # defined in hm
