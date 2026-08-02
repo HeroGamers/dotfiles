@@ -32,6 +32,8 @@
   # Define your hostname.
   networking.hostName = "flareon";
 
+  #networking.modemmanager.enable = true;
+
   # environment.systemPackages = with pkgs; [
   #   # keep-sorted start
   #   # keep-sorted end
