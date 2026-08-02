@@ -32,7 +32,8 @@
   # Define your hostname.
   networking.hostName = "flareon";
 
-  #networking.modemmanager.enable = true;
+  # Makes the nix daemon crash...?
+  networking.modemmanager.enable = true;
 
   # environment.systemPackages = with pkgs; [
   #   # keep-sorted start
