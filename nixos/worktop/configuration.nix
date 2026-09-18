@@ -14,6 +14,7 @@
     ../common/development.nix
 
     # AI tooling
+    ../common/ai.nix
     ../common/ai-local.nix
 
     # WSL specific configuration
