@@ -79,10 +79,6 @@
           "hero"
         ];
 
-        # Automatically detect files in the store that have identical contents, and replace them with hard links to a single copy. This saves disk space.
-        # Also makes rebuilds slower, from what I can read.
-        auto-optimise-store = true;
-
         # Workaround for https://github.com/NixOS/nix/issues/9574
         # https://nixos-and-flakes.thiscute.world/best-practices/nix-path-and-flake-registry
         # nix-path = lib.mkForce config.nix.nixPath; # lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
@@ -113,7 +109,7 @@
 
       # Enable automatic optimization of the Nix store.
       # https://wiki.nixos.org/wiki/Storage_optimization#Automatic
-      optimise.automatic = true; # although likely not needed when auto-optimise-store is enabled
+      optimise.automatic = true;
 
       # Enable automatic garbage collection of the Nix store.
       # https://wiki.nixos.org/wiki/Storage_optimization#Automation

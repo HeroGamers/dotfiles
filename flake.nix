@@ -3,8 +3,8 @@
 
   inputs = {
     # Core Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.follows = "nixpkgs-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
 
     # Home Manager
@@ -19,7 +19,7 @@
 
     # Flake Utilities
     flake-parts.url = "github:hercules-ci/flake-parts";
-    systems.url = "github:nix-systems/default";
+    systems.url = "github:nix-systems/default-linux";
 
     # Hyprland Ecosystem
     hyprland.url = "github:hyprwm/Hyprland"; # Has binary cache
@@ -154,7 +154,9 @@
             };
         in
         {
-          packages = import ./pkgs pkgs;
+          packages = pkgs.lib.filterAttrs (
+            _: package: pkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform package
+          ) (import ./pkgs pkgs);
 
           pre-commit.settings = {
             hooks.treefmt.enable = true;

@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - nix
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    env:
+      NIXPKGS_ALLOW_UNFREE: "1"
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@b85815f71a6de0ddee80b8a80a98d43f4bcc66c7 # v31
+
+      - name: Configure access to hackpkgs
+        if: github.event_name == 'push'
+        env:
+          HACKPKGS_SSH_KEY: ${{ secrets.HACKPKGS_SSH_KEY }}
+        run: |
+          if [[ -z "$HACKPKGS_SSH_KEY" ]]; then
+            echo 'The HACKPKGS_SSH_KEY repository secret is required.' >&2
+            exit 1
+          fi
+          install -d -m 700 "$HOME/.ssh"
+          install -m 600 /dev/null "$HOME/.ssh/id_ed25519"
+          printf '%s\n' "$HACKPKGS_SSH_KEY" > "$HOME/.ssh/id_ed25519"
+          ssh-keyscan github.com > "$HOME/.ssh/known_hosts"
+
+      - name: Evaluate all outputs
+        if: github.event_name == 'push'
+        run: |
+          nix flake check --accept-flake-config --impure --no-build --all-systems \
+            --no-update-lock-file
+
+      - name: Run repository checks
+        run: |
+          nix build --accept-flake-config --no-link --no-update-lock-file \
+            .#checks.x86_64-linux.pre-commit \
+            .#checks.x86_64-linux.treefmt
