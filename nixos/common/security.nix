@@ -76,21 +76,21 @@
             iodine
             jadx # Dex to Java decompiler
             john
-            ligolo-ng
             kerbrute
+            ligolo-ng
             macchanger
             metasploit
-            nikto
             mimikatz
             mitmproxy
             mstrings
             nbtscan
             net-snmp
             netexec
+            nikto
             nmap
             nss
-            onesixtyone
             one_gadget
+            onesixtyone
             oscanner
             patchelf
             pdfminer

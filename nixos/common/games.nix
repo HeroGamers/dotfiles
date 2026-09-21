@@ -15,8 +15,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # keep-sorted start
-    # factorio-space-age
     (heroic.override {
       extraPkgs =
         pkgs': with pkgs'; [
@@ -24,6 +22,9 @@
           gamemode
         ];
     })
+
+    # keep-sorted start
+    # factorio-space-age
     mindustry
     protonup-qt
     # keep-sorted end
