@@ -50,6 +50,8 @@ The NixOS configuration names are `ctf-vm`, `flareon`, `hacktop`,
 ## Development environment
 
 If direnv is available, run `direnv allow` once. Otherwise use `nix develop`.
+When a required tool is not installed, use `nix-shell -p <package>` for a
+temporary environment. The `ns` wrapper is available as a shorter equivalent.
 
 Useful commands:
 

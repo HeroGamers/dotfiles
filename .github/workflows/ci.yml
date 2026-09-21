@@ -41,9 +41,17 @@ jobs:
           printf '%s\n' "$HACKPKGS_SSH_KEY" > "$HOME/.ssh/id_ed25519"
           ssh-keyscan github.com > "$HOME/.ssh/known_hosts"
 
-      - name: Evaluate all outputs
+      - name: Evaluate NixOS hosts and all outputs
         if: github.event_name == 'push'
         run: |
+          for host in ctf-vm flareon hacktop hero-desktop oci-vps worktop; do
+            echo "::group::Evaluate $host"
+            nix eval --raw --accept-flake-config --no-update-lock-file \
+              ".#nixosConfigurations.$host.config.system.build.toplevel.drvPath"
+            echo
+            echo "::endgroup::"
+          done
+
           nix flake check --accept-flake-config --impure --no-build --all-systems \
             --no-update-lock-file
 
