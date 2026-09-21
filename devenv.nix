@@ -3,7 +3,12 @@
   # https://devenv.sh/packages/
   packages = [
     pkgs.git
+    pkgs.jq
+    pkgs.just
+    pkgs.keep-sorted
     pkgs.nix-output-monitor
+    pkgs.nixfmt
+    pkgs.ripgrep
     pkgs.sops
   ];
 

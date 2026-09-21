@@ -214,78 +214,72 @@
 
     alejandra # A formatter for Nix files
     aria2
+    bash
+    bind
+    bzip2
     # busybox
     # blueman # Bluetooth manager, primarily for the tray icon - done with service instead
     coreutils # Provides basic GNU utilities
     cowsay
     curl
+    diffutils
     dig
+    dosfstools
+    e2fsprogs
     # dunst # defined in HM
     fastfetch
     file
+    findutils
     fish
     fzf
+    gawk
     git
+    gnugrep
+    gnused
+    gnutar
+    gzip
     htop
+    inetutils
     ipcalc
+    iproute2
     jq
     just
     # kitty # defined in hm
     kmod # for lsmod, modinfo, modprobe, etc.
     # lazygit # defined in hm
     libressl # netcat
+    lsof
     # libsForQt5.qt5ct # Qt5 Configuration Tool
     magic-wormhole # file transfer tool
     # mpv # defined in hm
     ncdu # NCurses Disk Usage
     # neofetch # deprecated
     net-tools
+    nettools
     # neovim # defined in hm
     # nix-index # using nix-index-database instead
     nix-output-monitor
     npins
+    ntfs3g
+    openssh
     p7zip
+    parted
+    patch
+    pciutils
+    procps
     tldr
     tmux
+    traceroute
     unrar
+    usbutils
+    util-linux
     vim # we use neovim, but vim has xxd which I use for hexdumps
     wget
+    which
     whois
+    xz
     yazi # TUI file manager
     zsh
-
-    util-linux
-    findutils
-    gnugrep
-    gnused
-    gawk
-    procps
-    iproute2
-    inetutils
-    nettools
-
-    bash
-    gnutar
-    gzip
-    bzip2
-    xz
-    diffutils
-    patch
-    file
-    which
-
-    e2fsprogs
-    dosfstools
-    ntfs3g
-    parted
-
-    openssh
-    bind
-    traceroute
-
-    lsof
-    usbutils
-    pciutils
 
     # keep-sorted end
   ];

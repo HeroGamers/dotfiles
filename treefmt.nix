@@ -8,6 +8,12 @@
 
   # Be a bit more verbose by default, so we can see progress happening
   settings.verbose = 1;
+  settings.global.excludes = [
+    ".sops.yaml"
+    "npins/default.nix"
+    "secrets/*.yaml"
+    "secrets/**/*.yaml"
+  ];
 
   programs.actionlint.enable = true;
 
@@ -44,13 +50,11 @@
       retain_line_breaks = true;
     };
   };
-
   programs.nixf-diagnose.enable = true;
   settings.formatter.nixf-diagnose = {
     # Ensure nixfmt cleans up after nixf-diagnose.
     priority = -1;
     options = [
-      "--auto-fix"
       # Rule names can currently be looked up here:
       # https://github.com/nix-community/nixd/blob/main/libnixf/src/Basic/diagnostic.py
       # TODO: Remove the following and fix things.

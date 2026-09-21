@@ -29,7 +29,6 @@
     gcc
     # gnumake
     go
-    nasm # Netwide Assembler, for assembly programming
     # ninja
     # gdb  # use Pwndbg instead
     gradle # Gradle build tool for Java projects
@@ -41,6 +40,7 @@
     llvm
     # ant
     maven # Apache Maven for Java projects
+    nasm # Netwide Assembler, for assembly programming
     nixd # Nix language server
     nixfmt # nix formatter as defined by RFC 0166, prev. nixfmt-rfc-style
     nixfmt-tree # treefmt nix formatter

@@ -107,7 +107,6 @@
       "https://devenv.cachix.org"
       "https://hyprland.cachix.org"
       "https://cache.nixos-cuda.org"
-      "https://cuda-maintainers.cachix.org"
       "https://pwndbg.cachix.org"
       "https://catppuccin.cachix.org"
       "https://walker.cachix.org"
@@ -120,7 +119,6 @@
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
-      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       "pwndbg.cachix.org-1:HhtIpP7j73SnuzLgobqqa8LVTng5Qi36sQtNt79cD3k="
       "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
       "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
@@ -154,7 +152,18 @@
           packages = import ./pkgs pkgs;
 
           devShells = {
-            default = pkgs.mkShell { };
+            default = pkgs.mkShell {
+              packages = with pkgs; [
+                git
+                jq
+                just
+                keep-sorted
+                nix-output-monitor
+                nixfmt
+                ripgrep
+                sops
+              ];
+            };
 
             win64 = mkCrossShell pkgs.pkgsCross.mingwW64 "win64";
             win32 = mkCrossShell pkgs.pkgsCross.mingw32 "win32";

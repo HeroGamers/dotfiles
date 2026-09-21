@@ -128,8 +128,8 @@
     playerctl # CLI media player controller
     seahorse # GNOME Keyring GUI
     slurp # Select region utility for Wayland
-    tor-browser
     tailscale
+    tor-browser
     trayscale # tray icon for Tailscale
     uwsm # Universal Wayland Session Manager
     vlc

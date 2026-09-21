@@ -17,6 +17,22 @@ wg_server_pubkey := "e784IO8IPkTKO6sZSDZ4XVnZliEFQWp3Pt+cRfcGj1I="
 default:
     @just --list
 
+# Format all supported files with the flake's treefmt configuration
+fmt:
+    nix fmt --accept-flake-config
+
+# Fail if formatting would change tracked files
+check-format:
+    nix fmt --accept-flake-config -- --fail-on-change
+
+# Evaluate flake checks without building every output
+check:
+    NIXPKGS_ALLOW_UNFREE=1 nix flake check --accept-flake-config --impure --no-build
+
+# Evaluate one NixOS host configuration
+check-host host:
+    nix eval ".#nixosConfigurations.{{host}}.config.system.build.toplevel.drvPath"
+
 # Bring up the VPN purely in memory. 
 # Usage: just ws-wg [octet] [sni]
 ws-wg octet="2" sni="ws.qs.ax":
