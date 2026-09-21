@@ -4,8 +4,10 @@ Configuration files
 
 ## Development
 
-Enter the repository environment with `devenv shell` (or allow the included
-direnv configuration), then run `just --list` to see the available workflows.
+Enter the repository environment with `nix develop` (or allow the included
+nix-direnv configuration), then run `just --list` to see the available workflows.
+Entering the environment installs a pre-commit hook backed by the same treefmt
+configuration as `nix fmt`.
 `just check-format` and `just check` provide the fast pre-commit validation
 path; use `just check-host <host>` after changing a NixOS configuration.
 

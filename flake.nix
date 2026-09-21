@@ -52,6 +52,10 @@
       url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    git-hooks-nix = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # hackpkgs = {
     #   url = "git+ssh://git@github.com/HeroGamers/hackpkgs";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -104,7 +108,6 @@
       "https://nix-community.cachix.org"
       "https://numtide.cachix.org"
       "https://cache.numtide.com"
-      "https://devenv.cachix.org"
       "https://hyprland.cachix.org"
       "https://cache.nixos-cuda.org"
       "https://pwndbg.cachix.org"
@@ -116,7 +119,6 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
-      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
       "pwndbg.cachix.org-1:HhtIpP7j73SnuzLgobqqa8LVTng5Qi36sQtNt79cD3k="
@@ -131,10 +133,13 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = import inputs.systems;
 
-      imports = [ inputs.treefmt-nix.flakeModule ];
+      imports = [
+        inputs.git-hooks-nix.flakeModule
+        inputs.treefmt-nix.flakeModule
+      ];
 
       perSystem =
-        { pkgs, ... }:
+        { config, pkgs, ... }:
         let
           mkCrossShell =
             crossPkgs: targetName:
@@ -151,18 +156,29 @@
         {
           packages = import ./pkgs pkgs;
 
+          pre-commit.settings = {
+            hooks.treefmt.enable = true;
+            package = pkgs.prek;
+          };
+
           devShells = {
             default = pkgs.mkShell {
-              packages = with pkgs; [
-                git
-                jq
-                just
-                keep-sorted
-                nix-output-monitor
-                nixfmt
-                ripgrep
-                sops
-              ];
+              packages =
+                (with pkgs; [
+                  git
+                  jq
+                  just
+                  keep-sorted
+                  nix-output-monitor
+                  nixfmt
+                  ripgrep
+                  sops
+                ])
+                ++ config.pre-commit.settings.enabledPackages;
+              shellHook = ''
+                ${config.pre-commit.shellHook}
+                echo "Welcome to the dotfiles development environment!"
+              '';
             };
 
             win64 = mkCrossShell pkgs.pkgsCross.mingwW64 "win64";

@@ -23,7 +23,6 @@
     # keep-sorted start
     antigravity
     cmake
-    devenv
     docker
     # jekyll
     gcc
@@ -75,9 +74,4 @@
     # nix-alien-find-libs ./node_modules/electron/dist/electron
     #alsa-lib.out at-spi2-atk.out cairo.out cups.lib dbus.lib expat.out gdk-pixbuf.out glib.out gtk3.out nspr.out nss.out pango.out libx11.out libxscrnsaver.out libxcomposite.out libxcursor.out libxdamage.out libxext.out libxfixes.out libxi.out libxrandr.out libxrender.out libxtst.out libxcb.out
   ];
-
-  nix.settings = {
-    extra-substituters = [ "https://devenv.cachix.org" ];
-    extra-trusted-public-keys = [ "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=" ];
-  };
 }

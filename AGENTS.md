@@ -21,8 +21,8 @@ copying these instructions.
 - `secrets/` contains SOPS-encrypted data. Treat even encrypted secret files as
   sensitive and do not edit or decrypt them unless the task explicitly requires
   it.
-- `devenv.nix` defines the contributor environment, while `treefmt.nix` is the
-  formatting source of truth.
+- The default flake dev shell defines the contributor environment, while
+  `treefmt.nix` is the formatting source of truth.
 
 The NixOS configuration names are `ctf-vm`, `flareon`, `hacktop`,
 `hero-desktop`, `oci-vps`, and `worktop`.
@@ -35,9 +35,9 @@ The NixOS configuration names are `ctf-vm`, `flareon`, `hacktop`,
    existing option precedence (`mkDefault`, `mkForce`, and plain assignments).
 3. Keep regions marked for `keep-sorted` sorted. Let the repository formatter
    handle layout instead of hand-formatting around them.
-4. Do not update `flake.lock`, `devenv.lock`, or `npins/sources.json` unless the
-   task is specifically about dependency updates.
-5. Do not edit generated `.devenv*`, `.direnv`, `result`, or `result-*` paths.
+4. Do not update `flake.lock` or `npins/sources.json` unless the task is
+   specifically about dependency updates.
+5. Do not edit generated `.direnv`, `result`, or `result-*` paths.
 6. Never print secret values or read material from `/run/secrets`. Do not run
    SOPS decryption in routine validation.
 7. A live `nixos-rebuild switch`, Home Manager activation, service restart,
@@ -49,9 +49,7 @@ The NixOS configuration names are `ctf-vm`, `flareon`, `hacktop`,
 
 ## Development environment
 
-If direnv is available, run `direnv allow` once. Otherwise use `devenv shell`.
-The flake shell (`nix develop`) is a lightweight alternative for repository
-tools.
+If direnv is available, run `direnv allow` once. Otherwise use `nix develop`.
 
 Useful commands:
 
