@@ -46,6 +46,18 @@ The NixOS configuration names are `ctf-vm`, `flareon`, `hacktop`,
    defaults.
 8. Preserve unrelated work in a dirty worktree. Do not discard or rewrite user
    changes.
+9. Never change `system.stateVersion` or `home.stateVersion` as part of a
+   routine upgrade. Change one only for an explicitly requested compatibility
+   migration after reviewing its consequences.
+10. Put user-session programs and dotfiles in Home Manager. Put services,
+    drivers, boot requirements, and genuinely system-wide packages in NixOS.
+    Keep host-only packages in that host's directory and shared packages in the
+    narrowest applicable common module.
+11. Only commit, push, create a pull request, or bypass commit hooks when the
+    user explicitly requests it.
+12. This repository follows unstable nixpkgs. Verify changing NixOS and Home
+    Manager options and package names against the pinned flake or current
+    upstream documentation instead of relying only on memory.
 
 ## Development environment
 
@@ -63,11 +75,11 @@ just check
 just check-host hero-desktop
 ```
 
-Use `nix build .#<package>` for a changed custom package. Building a host closure
-is stronger validation when warranted:
+Use `nix build .#<package> --no-link` for a changed custom package. Building a
+host closure is stronger validation when warranted:
 
 ```sh
-nix build .#nixosConfigurations.<host>.config.system.build.toplevel
+nix build .#nixosConfigurations.<host>.config.system.build.toplevel --no-link
 ```
 
 ## Validation
@@ -76,9 +88,12 @@ Run checks in proportion to the change, and report checks that could not run.
 
 - Documentation-only: `just check-format`. Treefmt applies fixes before failing,
   so inspect the resulting diff.
+- Single Nix file: use `nix-instantiate --parse path/to/file.nix` for fast syntax
+  feedback before broader evaluation.
 - Nix module or flake change: `just check-format`, `just check`, and
   `just check-host <affected-host>` for every affected host.
-- Custom package change: the checks above plus `nix build .#<package>`.
+- Custom package change: the checks above plus
+  `nix build .#<package> --no-link`.
 - Cross-cutting common-module change: evaluate every host that imports it; use a
   full host build when evaluation alone would not exercise the behavior.
 
@@ -92,3 +107,10 @@ changed.
 Before handing off work, inspect `git diff --check`, `git diff`, and
 `git status --short`. Summarize the behavior changed, validation performed, and
 any follow-up that still requires activation on a real host.
+
+## Maintaining this file
+
+Keep this file limited to durable knowledge useful across future sessions. Do
+not duplicate facts that are obvious from the repository; point to the
+authoritative file or command instead. Prefer pruning or rewriting stale
+guidance over continually appending rules.
