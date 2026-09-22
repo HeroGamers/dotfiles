@@ -21,34 +21,35 @@
 
   environment.systemPackages = with pkgs; [
     # keep-sorted start
+    # lld
+    # lldb
+    # nodejs-10_x
+    # ninja
+    # gdb  # use Pwndbg instead
+    # jekyll
+    # gnumake
+    # ant
+    # electron
     antigravity
     cmake
     docker
-    # jekyll
     gcc
     gh
-    # gnumake
     go
-    # ninja
-    # gdb  # use Pwndbg instead
     gradle # Gradle build tool for Java projects
-    # nodejs-10_x
     jdk # newest LTS Java JDK
     just
     just-lsp
     keep-sorted # Tool to keep lists sorted
     llvm
-    # ant
     maven # Apache Maven for Java projects
     nasm # Netwide Assembler, for assembly programming
     nixd # Nix language server
     nixfmt # nix formatter as defined by RFC 0166, prev. nixfmt-rfc-style
     nixfmt-tree # treefmt nix formatter
-    # electron
     nodejs
     rustup # Rust toolchain installer
-    # lld
-    # lldb
+    uv
     yamlfmt
     # keep-sorted end
   ];
