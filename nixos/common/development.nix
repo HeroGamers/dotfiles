@@ -26,6 +26,7 @@
     docker
     # jekyll
     gcc
+    gh
     # gnumake
     go
     # ninja
