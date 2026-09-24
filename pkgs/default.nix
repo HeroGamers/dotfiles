@@ -6,6 +6,7 @@ pkgs: {
 
   autorecon = pkgs.callPackage ./by-name/au/autorecon { };
   binwalk2 = pkgs.callPackage ./by-name/bi/binwalk2 { };
+  codex-auth = pkgs.callPackage ./by-name/co/codex-auth { };
   elastic-package = pkgs.callPackage ./by-name/el/elastic-package { };
   oscanner = pkgs.callPackage ./by-name/os/oscanner { };
   # peepdf = pkgs.callPackage ./by-name/pe/peepdf { };

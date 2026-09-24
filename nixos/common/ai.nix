@@ -13,5 +13,6 @@ in
     llmPkgs.claude-code
     llmPkgs.codex
     llmPkgs.gemini-cli
+    pkgs.codex-auth
   ];
 }
