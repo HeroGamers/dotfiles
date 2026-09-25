@@ -11,6 +11,9 @@
 
     # Devlopment tools and settings
     ../common/development.nix
+
+    # SSH
+    ./ssh.nix
   ];
 
   home = {
