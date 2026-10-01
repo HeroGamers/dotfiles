@@ -35,10 +35,12 @@
   # Makes the nix daemon crash...?
   networking.modemmanager.enable = true;
 
-  # environment.systemPackages = with pkgs; [
-  #   # keep-sorted start
-  #   # keep-sorted end
-  # ];
+  environment.systemPackages = with pkgs; [
+    # keep-sorted start
+    ffmpeg
+    obs-studio
+    # keep-sorted end
+  ];
 
   networking.networkmanager.plugins = [
     pkgs.networkmanager-fortisslvpn
