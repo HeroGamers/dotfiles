@@ -21,6 +21,9 @@
     # Development
     ../common/development.nix
 
+    # AI tooling
+    ../common/ai.nix
+
     # Clients
     ../common/clients/wireguard.nix
     ../common/clients/wstunnel.nix
