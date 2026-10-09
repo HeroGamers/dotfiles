@@ -30,6 +30,7 @@
     ../common/clients/iodine.nix
 
     # SOPS
+    ../common/sops.nix
     ./sops.nix
 
     # WSL specific configuration

@@ -52,6 +52,7 @@
     ../common/clients/iodine.nix
 
     # SOPS
+    ../common/sops.nix
     ./sops.nix
 
     # Import your generated (nixos-generate-config) hardware configuration

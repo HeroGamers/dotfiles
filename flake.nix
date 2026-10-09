@@ -222,6 +222,13 @@
                 ./nixos/flareon
               ];
             };
+            hackathon = inputs.nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = { inherit inputs pins; };
+              modules = [
+                ./nixos/hackathon
+              ];
+            };
             hacktop = inputs.nixpkgs.lib.nixosSystem {
               specialArgs = { inherit inputs pins; };
               modules = [

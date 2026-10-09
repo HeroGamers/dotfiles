@@ -18,6 +18,9 @@
     ../common/clients/wstunnel.nix
     ../common/clients/iodine.nix
 
+    # Sops
+    ../common/sops.nix
+
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];

@@ -20,6 +20,7 @@
     ./disko.nix
 
     # Sops
+    ../common/sops.nix
     ./sops.nix
 
     # Servers
