@@ -12,6 +12,7 @@ in
     pkgs.bubblewrap
     llmPkgs.claude-code
     llmPkgs.codex
+    llmPkgs.hermes-agent
     llmPkgs.gemini-cli
     pkgs.codex-auth
   ];
