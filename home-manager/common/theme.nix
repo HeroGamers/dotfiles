@@ -21,6 +21,7 @@
     # keep-sorted start block=yes
 
     btop.enable = true;
+    helix.enable = true;
     lazygit.enable = true;
     nvim.enable = true;
     tmux.enable = true;
