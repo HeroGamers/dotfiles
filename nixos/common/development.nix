@@ -43,6 +43,7 @@
     keep-sorted # Tool to keep lists sorted
     llvm
     maven # Apache Maven for Java projects
+    mosh # Mobile Shell
     nasm # Netwide Assembler, for assembly programming
     nixd # Nix language server
     nixfmt # nix formatter as defined by RFC 0166, prev. nixfmt-rfc-style
