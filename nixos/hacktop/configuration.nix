@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   imports = [
     # Import the common configuration
     ../common
@@ -76,6 +76,29 @@
     plexamp
     # keep-sorted end
   ];
+
+  # Captive portals: dnscrypt-proxy can't resolve the portal before login, so
+  # `captive-browser` opens a Chromium that resolves via the DHCP-provided DNS
+  programs.captive-browser = {
+    enable = true;
+    interface = "wlp0s20f3";
+    # Upstream default, but with ungoogled-chromium instead of chromium
+    browser = lib.concatStringsSep " " [
+      ''env XDG_CONFIG_HOME="$PREV_CONFIG_HOME"''
+      (lib.getExe pkgs.ungoogled-chromium)
+      "--user-data-dir=\${XDG_DATA_HOME:-$HOME/.local/share}/chromium-captive"
+      ''--proxy-server="socks5://$PROXY"''
+      ''--proxy-bypass-list="<-loopback>"''
+      "--no-first-run"
+      "--new-window"
+      "--incognito"
+      "--no-default-browser-check"
+      "--disable-extensions"
+      "--disable-sync"
+      "--disable-background-networking"
+      "http://cache.nixos.org/"
+    ];
+  };
 
   # Disable OpenSSH on the hacktop
   # services.openssh.enable = false;

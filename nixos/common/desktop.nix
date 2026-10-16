@@ -131,6 +131,7 @@
     tailscale
     tor-browser
     trayscale # tray icon for Tailscale
+    ungoogled-chromium # for testing Chromium compatibility
     uwsm # Universal Wayland Session Manager
     vlc
     # vscode # Managed in home-manager
