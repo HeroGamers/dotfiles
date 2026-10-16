@@ -183,6 +183,9 @@ in
     gtk4.theme = config.gtk.theme;
     gtk3.theme = config.gtk.theme;
     gtk2.theme = config.gtk.theme;
+    # KDE's GTK settings sync keeps replacing ~/.gtkrc-2.0 with a plain file,
+    # which breaks activation once a .backup already exists
+    gtk2.force = true;
 
     #   # gtk4.extraConfig = {
     #   #   gtk-xft-antialias = 1;
