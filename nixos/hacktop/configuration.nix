@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   imports = [
     # Import the common configuration
     ../common
@@ -18,6 +17,9 @@
 
     # Local AI
     # ./ai-local.nix
+
+    # AI tooling
+    ../common/ai.nix
 
     # Nvidia PRIME settings for hybrid graphics
     ./nvidia.nix
