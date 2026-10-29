@@ -38,6 +38,14 @@
         hostname = "192.168.13.15";
         user = "pi";
       };
+      "dev" = {
+        hostname = "marcdev01.test.ops.l";
+        user = "ansible";
+      };
+      "web-dev" = {
+        hostname = "socweb01.test.ops.l";
+        user = "ansible";
+      };
     };
   };
 }
