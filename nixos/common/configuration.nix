@@ -282,6 +282,7 @@
   users.users.hero.shell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
+  programs.zsh.shellInit = "zsh-newuser-install() { :; }";
   environment.pathsToLink = [ "/share/zsh" ];
 
   # Enable LD
