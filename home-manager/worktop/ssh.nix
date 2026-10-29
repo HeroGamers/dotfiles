@@ -40,7 +40,7 @@
       };
       "dev" = {
         hostname = "marcdev01.test.ops.l";
-        user = "ansible";
+        user = "msusn";
       };
       "web-dev" = {
         hostname = "socweb01.test.ops.l";
