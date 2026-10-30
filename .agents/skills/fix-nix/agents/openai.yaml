@@ -1,0 +1,3 @@
+interface:
+  display_name: "Fix Nix"
+  short_description: "Diagnose Nix failures using pinned sources and docs"

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Nix Package Maintenance"
+  short_description: "Maintain custom Nix packages, hashes, and patches"

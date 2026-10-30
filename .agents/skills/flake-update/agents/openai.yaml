@@ -1,0 +1,3 @@
+interface:
+  display_name: "Flake Update"
+  short_description: "Update flake inputs and resolve compatibility failures"
