@@ -30,7 +30,7 @@
     # gnumake
     # ant
     # electron
-    antigravity
+    antigravity-ide
     cmake
     docker
     gcc

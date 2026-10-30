@@ -125,10 +125,8 @@ in
 
     # https://danklinux.com/docs/dankmaterialshell/nixos-flake#plugins
     # https://danklinux.com/plugins
-    # For example, dms://plugin/install/dankBatteryAlerts has the ID dankBatteryAlerts.
     plugins = {
       # Simply enable plugins by their ID (from the registry)
-      dankBatteryAlerts.enable = true;
       dockerManager.enable = true;
       # nixMonitor = {
       #   enable = true;
@@ -185,7 +183,9 @@ in
       useAutoLocation = true; # Auto location from IP for weather widget
       osdAlwaysShowValue = true; # Show percentage in on screen display (OSD) for volume/brightness changes
 
-      # Power Settings - Idle Inhibitor timeout
+      # Power settings and built-in battery alerts
+      batteryNotifyLow = true;
+      batteryNotifyCritical = true;
       acMonitorTimeout = 15 * 60; # 15 minutes
       acLockTimeout = 5 * 60; # 5 minutes
       batteryMonitorTimeout = 15 * 60; # 15 minutes

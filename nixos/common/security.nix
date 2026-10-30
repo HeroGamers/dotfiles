@@ -50,7 +50,7 @@
             binutils
             binwalk
             binwalk2
-            bloodhound
+            bloodhound-ce
             bubblewrap
             burpsuite
             capstone

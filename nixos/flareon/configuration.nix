@@ -46,7 +46,7 @@
   ];
 
   networking.networkmanager.plugins = [
-    pkgs.networkmanager-fortisslvpn
+    pkgs.networkmanager-openconnect
   ];
 
   # This value determines the NixOS release from which the default

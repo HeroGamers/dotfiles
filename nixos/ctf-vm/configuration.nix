@@ -36,7 +36,7 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.defaultSession = "plasmax11";
+  services.displayManager.defaultSession = "plasma";
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
