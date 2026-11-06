@@ -14,6 +14,7 @@ in
     llmPkgs.codex
     llmPkgs.hermes-agent
     llmPkgs.gemini-cli
+    llmPkgs.omp
     pkgs.codex-auth
   ];
 }

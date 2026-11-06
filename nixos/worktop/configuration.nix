@@ -1,9 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
+    inputs.sops-nix.nixosModules.sops
+
     # Import the common configuration
     ../common
 
@@ -31,6 +33,16 @@
   };
 
   networking.hostName = "worktop";
+
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+
+  sops.secrets.custom-llm-api-key = {
+    sopsFile = ../../secrets/worktop/llm.json;
+    format = "json";
+    key = "api_key";
+    owner = "hero";
+    mode = "0400";
+  };
 
   environment.systemPackages = with pkgs; [
     # keep-sorted start
