@@ -16,6 +16,8 @@
     ./ssh.nix
   ];
 
+  programs.zsh.shellAliases.omp-soc = "env NODE_EXTRA_CA_CERTS=/run/secrets/custom-llm-ca omp";
+
   home = {
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "25.11";

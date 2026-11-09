@@ -44,6 +44,14 @@
     mode = "0400";
   };
 
+  sops.secrets.custom-llm-ca = {
+    sopsFile = ../../secrets/worktop/llm-ca.json;
+    format = "json";
+    key = "ca_bundle";
+    owner = "hero";
+    mode = "0400";
+  };
+
   environment.systemPackages = with pkgs; [
     # keep-sorted start
     elastic-package # Elastic integrations development tool
