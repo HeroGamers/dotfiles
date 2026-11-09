@@ -5,6 +5,7 @@
 {
   imports = [
     inputs.sops-nix.nixosModules.sops
+    ./windows-ca.nix
 
     # Import the common configuration
     ../common
