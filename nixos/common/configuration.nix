@@ -26,9 +26,14 @@
     # Options
     ./options.nix
 
+    # Shared Python environment
+    ./python.nix
+
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
   ];
+
+  custom.python.enable = lib.mkDefault true;
 
   nixpkgs = {
     # You can add overlays here

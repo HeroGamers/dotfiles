@@ -16,6 +16,24 @@
   };
 
   config = {
+    custom.python.packages = with pkgs.python3Packages; [
+      # keep-sorted start
+      # angr # TODO: fix broken - https://github.com/NixOS/nixpkgs/issues/501379
+      capstone
+      # dirsearch
+      gmpy2
+      impacket
+      mitmproxy
+      # pwndbg # removed
+      pwntools
+      pycryptodome
+      pyelftools
+      ropgadget
+      ropper
+      z3-solver
+      # keep-sorted end
+    ];
+
     nixpkgs.overlays = [
       # Hackpkgs overlay
       (import "${pins.hackpkgs}/overlay.nix")

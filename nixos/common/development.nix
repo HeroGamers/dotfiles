@@ -1,5 +1,28 @@
 { pkgs, ... }:
 {
+  custom.python.packages = with pkgs.python3Packages; [
+    # keep-sorted start
+    aiofiles
+    aiohttp
+    beautifulsoup4
+    black
+    fastapi
+    flake8
+    jinja2
+    matplotlib
+    numpy
+    pandas
+    pillow
+    pyaudio
+    pydantic
+    requests
+    scipy
+    sympy
+    tkinter
+    uvicorn
+    # keep-sorted end
+  ];
+
   # Enable docker
   virtualisation.docker = {
     enable = true;
@@ -50,7 +73,6 @@
     nixfmt-tree # treefmt nix formatter
     nodejs
     rustup # Rust toolchain installer
-    uv
     yamlfmt
     # keep-sorted end
   ];
