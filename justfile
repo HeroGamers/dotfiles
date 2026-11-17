@@ -25,9 +25,10 @@ fmt:
 check-format:
     nix fmt --accept-flake-config -- --fail-on-change
 
-# Evaluate flake checks without building every output
+# Evaluate flake outputs and run declared checks without building host closures
 check:
-    NIXPKGS_ALLOW_UNFREE=1 nix flake check --accept-flake-config --impure --no-build
+    # --no-build makes the store read-only and breaks missing evaluation dependencies.
+    NIXPKGS_ALLOW_UNFREE=1 nix flake check --accept-flake-config --impure
 
 # Evaluate one NixOS host configuration
 check-host host:

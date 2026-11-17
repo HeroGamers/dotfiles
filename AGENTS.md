@@ -97,10 +97,12 @@ Run checks in proportion to the change, and report checks that could not run.
 - Cross-cutting common-module change: evaluate every host that imports it; use a
   full host build when evaluation alone would not exercise the behavior.
 
-`just check` evaluates flake checks without building every output. It opts into
-unfree evaluation because the flake exports `elastic-package`; it is not a
-substitute for a targeted package or system build when derivation contents
-changed.
+`just check` evaluates flake outputs and runs the declared check derivations
+without building host closures. Keep evaluation writable: `--no-build` makes
+the store read-only and can fail on missing evaluation-time dependencies after
+garbage collection. The command opts into unfree evaluation because the flake
+exports `elastic-package`; it is not a substitute for a targeted package or
+system build when derivation contents changed.
 
 ## Review expectations
 
