@@ -1,0 +1,26 @@
+default:
+    @just --list
+
+# Load the configured local models; does not enable automatic startup
+start:
+    systemctl --user start llama-laptop
+
+# Stop inference and release model memory
+stop:
+    systemctl --user stop llama-laptop
+
+# Reload the model presets by restarting inference
+restart:
+    systemctl --user restart llama-laptop
+
+# Show the inference service status
+status:
+    systemctl --user status llama-laptop --no-pager
+
+# Show recent inference logs
+logs lines="40":
+    journalctl --user -u llama-laptop -n {{lines}} --no-pager
+
+# Follow inference logs until interrupted
+follow:
+    journalctl --user -u llama-laptop -f

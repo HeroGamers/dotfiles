@@ -2,6 +2,10 @@
 
 Configuration files
 
+Manual setup references:
+
+- [Worktop local inference with llama.cpp and OMP](home-manager/worktop/local-inference/README.md)
+
 ## Development
 
 Enter the repository environment with `nix develop` (or allow the included
