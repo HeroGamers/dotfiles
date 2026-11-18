@@ -47,6 +47,7 @@ in
   environment.variables = {
     NODE_EXTRA_CA_CERTS = config.sops.secrets.windows-ca.path;
     REQUESTS_CA_BUNDLE = bundle;
+    SSL_CERT_FILE = bundle;
   };
   nix.settings.ssl-cert-file = bundle;
 
