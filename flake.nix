@@ -268,6 +268,13 @@
             extraSpecialArgs = { inherit inputs; };
             modules = [
               ./home-manager/hacktop
+              (
+                { pkgs, ... }:
+                {
+                  nix.package = pkgs.nix;
+                  nixpkgs.config.allowUnfree = true;
+                }
+              )
             ];
           };
 
