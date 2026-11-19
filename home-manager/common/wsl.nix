@@ -1,9 +1,12 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
 
   programs = {
     # keep-sorted start
     vscode.enable = lib.mkDefault false;
+    zsh.syntaxHighlighting.package = pkgs.zsh-syntax-highlighting.overrideAttrs (old: {
+      patches = (old.patches or [ ]) ++ [ ./config/zsh/wsl-command-lookup.patch ];
+    });
     # keep-sorted end
   };
 

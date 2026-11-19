@@ -1,0 +1,22 @@
+--- a/highlighters/main/main-highlighter.zsh
++++ b/highlighters/main/main-highlighter.zsh
+@@ -194,8 +194,17 @@
+       REPLY=function
+     elif (( $+builtins[(e)$1] )); then
+       REPLY=builtin
+-    elif (( $+commands[(e)$1] )); then
+-      REPLY=command
++    elif [[ $1 != */* ]]; then
++      # Checking $commands can enumerate every directory on PATH. On WSL,
++      # probe the typed name directly and leave Windows drive mounts to execution.
++      local dir
++      REPLY=none
++      for dir in "${(@)path:#/mnt/[a-z](|/*)}"; do
++        if [[ -x "${dir:-.}/$1" && ! -d "${dir:-.}/$1" ]]; then
++          REPLY=command
++          break
++        fi
++      done
+     # None of the special hashes had a match, so fall back to 'type -w', for
+     # forward compatibility with future versions of zsh that may add new command
+     # types.
