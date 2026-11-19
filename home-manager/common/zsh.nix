@@ -32,7 +32,11 @@
     };
   };
 
-  # Enable ZSH, oh-my-zsh and powerlevel10k
+  programs.oh-my-posh = {
+    enable = true;
+    enableZshIntegration = true;
+    configFile = ./config/zsh/prompt.omp.json;
+  };
 
   # Common order values:
   #   500 (mkBefore): Early initialization (replaces initExtraFirst)
@@ -44,15 +48,6 @@
       extraFirstInit = lib.mkOrder 1 ''
         # Load profiling module
         #zmodload zsh/zprof
-      '';
-      beforeCompInit = lib.mkOrder 550 ''
-        # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-        # Initialization code that may require console input (password prompts, [y/n]
-        # confirmations, etc.) must go above this block; everything else may go below.
-        P10K_INSTANT_PROMPT="''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-        if [[ -r "$P10K_INSTANT_PROMPT" ]]; then
-          source "$P10K_INSTANT_PROMPT"
-        fi
       '';
       completionInit = lib.mkOrder 570 ''
         # Keep a cached compdump and only rebuild it once per day.
@@ -76,6 +71,10 @@
         fi
       '';
       afterCompInit = lib.mkOrder 1100 ''
+        # Load suggestions once the line editor is idle.
+        autoload -Uz ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer
+        zsh-defer -d source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
         bindkey "''${key[Up]}" up-line-or-search
         bindkey "''${key[Down]}" down-line-or-search
         bindkey "^[[H" beginning-of-line
@@ -112,7 +111,6 @@
     {
       enable = true;
       enableCompletion = true;
-      autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       localVariables = {
         # Some optimizations from https://scottspence.com/posts/speeding-up-my-zsh-shell#plugin-management
@@ -122,7 +120,6 @@
 
       initContent = lib.mkMerge [
         extraFirstInit
-        beforeCompInit
         completionInit
         afterCompInit
         lastInit
@@ -159,24 +156,9 @@
           src = "${nix-zsh-completions}/share/zsh/plugins/nix";
         }
         {
-          file = "p10k.zsh";
-          name = "powerlevel10k-config";
-          src = ./config/zsh/p10k;
-        }
-        {
-          file = "powerlevel10k.zsh-theme";
-          name = "powerlevel10k";
-          src = "${zsh-powerlevel10k}/share/zsh-powerlevel10k";
-        }
-        {
           file = "zsh-autocomplete.plugin.zsh";
           name = "zsh-autocomplete";
           src = "${zsh-autocomplete}/share/zsh-autocomplete";
-        }
-        {
-          file = "zsh-autosuggestions.plugin.zsh";
-          name = "zsh-autosuggestions";
-          src = "${zsh-autocomplete}/share/zsh-autosuggestions";
         }
         # keep-sorted end
       ];
@@ -192,7 +174,6 @@
           # "pip"
           "direnv"
         ];
-        #theme = "powerlevel10k/powerlevel10k";
       };
     };
 }

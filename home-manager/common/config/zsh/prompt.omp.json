@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 4,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": "{{ if or .SSHSession .Root }}{{ .UserName }}@{{ .HostName }} {{ end }}"
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "cyan",
+          "template": "<b>{{ .Path }}</b>",
+          "options": { "style": "agnoster_short" }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "magenta",
+          "template": "  {{ .HEAD }}{{ if .Staging.Changed }} +{{ end }}{{ if .Working.Changed }} *{{ end }}{{ if gt .Ahead 0 }} ↑{{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} ↓{{ .Behind }}{{ end }}",
+          "options": { "fetch_status": true }
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "blue",
+          "templates_logic": "first_match",
+          "templates": [
+            "{{ with .Env.NIX_SHELL_WRAPPER_DESCRIPTIONS }}   {{ . }}{{ end }}",
+            "{{ with .Env.IN_NIX_SHELL }}   {{ . }}{{ end }}",
+            "{{ if and .Env.DIRENV_FILE (not .Env.VIRTUAL_ENV) }}  direnv{{ end }}"
+          ]
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "green",
+          "template": "{{ with .Env.VIRTUAL_ENV }}  ({{ base . }}){{ end }}"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": "{{ .FormattedMs }} ",
+          "options": { "threshold": 3000, "style": "round" }
+        },
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground": "green",
+          "foreground_templates": ["{{ if gt .Code 0 }}red{{ end }}"],
+          "template": "{{ if gt .Code 0 }}{{ .Code }} {{ end }}❯ ",
+          "options": { "always_enabled": true }
+        }
+      ]
+    }
+  ],
+  "transient_prompt": {
+    "foreground": "green",
+    "foreground_templates": ["{{ if gt .Code 0 }}red{{ end }}"],
+    "template": "❯ "
+  }
+}
