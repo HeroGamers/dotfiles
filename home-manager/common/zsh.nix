@@ -40,7 +40,17 @@
   programs.oh-my-posh = {
     enable = true;
     enableZshIntegration = true;
-    configFile = ./config/zsh/prompt.omp.json;
+    settings =
+      let
+        inherit (config.catppuccin) accent flavor sources;
+        colors = (lib.importJSON "${sources.palette}/palette.json").${flavor}.colors;
+      in
+      lib.importJSON ./config/zsh/prompt.omp.json
+      // {
+        palette = lib.mapAttrs (_: color: color.hex) colors // {
+          accent = colors.${accent}.hex;
+        };
+      };
   };
 
   # Common order values:

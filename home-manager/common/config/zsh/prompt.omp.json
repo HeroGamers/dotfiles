@@ -7,29 +7,44 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "os",
+          "style": "diamond",
+          "leading_diamond": "╭─",
+          "background": "p:accent",
+          "foreground": "p:base",
+          "template": " {{ .Icon }} "
+        },
+        {
           "type": "session",
-          "style": "plain",
-          "foreground": "yellow",
-          "template": "{{ if or .SSHSession .Root }}{{ .UserName }}@{{ .HostName }} {{ end }}"
+          "style": "powerline",
+          "powerline_symbol": "",
+          "background": "p:surface0",
+          "foreground": "p:accent",
+          "template": "{{ if or .SSHSession .Root }} {{ .UserName }}@{{ .HostName }} {{ end }}"
         },
         {
           "type": "path",
-          "style": "plain",
-          "foreground": "cyan",
-          "template": "<b>{{ .Path }}</b>",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "background": "p:surface1",
+          "foreground": "p:text",
+          "template": "  <b>{{ .Path }}</b> ",
           "options": { "style": "agnoster_short" }
         },
         {
           "type": "git",
-          "style": "plain",
-          "foreground": "magenta",
-          "template": "  {{ .HEAD }}{{ if .Staging.Changed }} +{{ end }}{{ if .Working.Changed }} *{{ end }}{{ if gt .Ahead 0 }} ↑{{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} ↓{{ .Behind }}{{ end }}",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "background": "p:surface0",
+          "foreground": "p:subtext1",
+          "foreground_templates": ["{{ if or .Staging.Changed .Working.Changed }}p:peach{{ end }}"],
+          "template": " {{ .HEAD }}{{ if .Staging.Changed }} +{{ end }}{{ if .Working.Changed }} *{{ end }}{{ if gt .Ahead 0 }} ↑{{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} ↓{{ .Behind }}{{ end }} ",
           "options": { "fetch_status": true }
         },
         {
           "type": "text",
           "style": "plain",
-          "foreground": "blue",
+          "foreground": "p:accent",
           "templates_logic": "first_match",
           "templates": [
             "{{ with .Env.NIX_SHELL_WRAPPER_DESCRIPTIONS }}   {{ . }}{{ end }}",
@@ -40,8 +55,25 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "green",
+          "foreground": "p:subtext1",
           "template": "{{ with .Env.VIRTUAL_ENV }}  ({{ base . }}){{ end }}"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "overflow": "hide",
+      "segments": [
+        {
+          "type": "time",
+          "style": "diamond",
+          "leading_diamond": "",
+          "trailing_diamond": "─╮",
+          "background": "p:surface0",
+          "foreground": "p:subtext1",
+          "template": " {{ .CurrentDate | date .Format }}  ",
+          "options": { "time_format": "15:04" }
         }
       ]
     },
@@ -51,26 +83,32 @@
       "newline": true,
       "segments": [
         {
+          "type": "text",
+          "style": "plain",
+          "foreground": "p:accent",
+          "template": "╰─"
+        },
+        {
           "type": "executiontime",
           "style": "plain",
-          "foreground": "yellow",
-          "template": "{{ .FormattedMs }} ",
+          "foreground": "p:subtext1",
+          "template": " {{ .FormattedMs }} ",
           "options": { "threshold": 3000, "style": "round" }
         },
         {
           "type": "status",
           "style": "plain",
-          "foreground": "green",
-          "foreground_templates": ["{{ if gt .Code 0 }}red{{ end }}"],
-          "template": "{{ if gt .Code 0 }}{{ .Code }} {{ end }}❯ ",
+          "foreground": "p:accent",
+          "foreground_templates": ["{{ if gt .Code 0 }}p:red{{ end }}"],
+          "template": "{{ if gt .Code 0 }} {{ .Code }} {{ end }}❯ ",
           "options": { "always_enabled": true }
         }
       ]
     }
   ],
   "transient_prompt": {
-    "foreground": "green",
-    "foreground_templates": ["{{ if gt .Code 0 }}red{{ end }}"],
+    "foreground": "p:accent",
+    "foreground_templates": ["{{ if gt .Code 0 }}p:red{{ end }}"],
     "template": "❯ "
   }
 }
