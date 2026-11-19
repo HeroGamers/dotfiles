@@ -49,27 +49,6 @@
         # Load profiling module
         #zmodload zsh/zprof
       '';
-      completionInit = lib.mkOrder 570 ''
-        # Keep a cached compdump and only rebuild it once per day.
-        # Oh-My-Zsh would otherwise run compinit itself, so we disable that below.
-        skip_compinit=1
-        autoload -Uz compinit
-
-        zcompdump="''${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-''${ZSH_VERSION}"
-        zcompdump_day=""
-
-        mkdir -p "''${zcompdump:h}"
-
-        if [[ -r "$zcompdump" ]]; then
-          zcompdump_day=$(date -d "@$(stat -c %Y "$zcompdump")" +%j 2>/dev/null)
-        fi
-
-        if [[ -z "$zcompdump_day" || "$(date +%j)" != "$zcompdump_day" ]]; then
-          compinit -i -d "$zcompdump"
-        else
-          compinit -i -C -d "$zcompdump"
-        fi
-      '';
       afterCompInit = lib.mkOrder 1100 ''
         # Load suggestions once the line editor is idle.
         autoload -Uz ${pkgs.zsh-defer}/share/zsh-defer/zsh-defer
@@ -120,7 +99,6 @@
 
       initContent = lib.mkMerge [
         extraFirstInit
-        completionInit
         afterCompInit
         lastInit
       ];
@@ -146,19 +124,9 @@
       plugins = with pkgs; [
         # keep-sorted start block=yes
         {
-          file = "F-Sy-H.plugin.zsh";
-          name = "F-Sy-H";
-          src = "${zsh-f-sy-h}/share/zsh/site-functions";
-        }
-        {
           file = "nix-zsh-completions.plugin.zsh";
           name = "nix-zsh-completions";
           src = "${nix-zsh-completions}/share/zsh/plugins/nix";
-        }
-        {
-          file = "zsh-autocomplete.plugin.zsh";
-          name = "zsh-autocomplete";
-          src = "${zsh-autocomplete}/share/zsh-autocomplete";
         }
         # keep-sorted end
       ];
@@ -172,7 +140,6 @@
           "docker-compose"
           "node"
           # "pip"
-          "direnv"
         ];
       };
     };

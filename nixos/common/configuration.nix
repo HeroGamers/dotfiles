@@ -290,6 +290,13 @@
   users.users.hero.shell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
+  # Oh My Zsh initializes completion for hero after loading the user's fpath.
+  programs.zsh.enableGlobalCompInit = false;
+  programs.zsh.interactiveShellInit = ''
+    if [[ $USERNAME != hero ]]; then
+      autoload -Uz compinit && compinit
+    fi
+  '';
   programs.zsh.shellInit = "zsh-newuser-install() { :; }";
   environment.pathsToLink = [ "/share/zsh" ];
 
