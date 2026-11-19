@@ -15,6 +15,11 @@
   # Enable ripgrep
   programs.ripgrep.enable = true;
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   # Direnv
   programs.direnv = {
     enable = true;
@@ -60,8 +65,10 @@
         bindkey "^[[F" end-of-line
         bindkey "^[[3~" delete-char
 
-        # TODO: remove when https://github.com/zellij-org/zellij/issues/775 gets fixed
-        export TERM="xterm-256color"
+        # Remote hosts may lack terminfo for Kitty or a Zellij pane.
+        if [[ $TERM == xterm-kitty || -n $ZELLIJ ]]; then
+          alias ssh='TERM=xterm-256color ssh'
+        fi
 
         # uv + virtualenvs need LD_LIBRARY_PATH directly; keep it scoped to uv only.
         # https://wiki.nixos.org/wiki/Python#Running_Python_packages_which_requires_compilation_and/or_contains_libraries_precompiled_without_nix
@@ -75,11 +82,9 @@
 
         # Define a function to use nix-shell-wrapper
         function nix_shell_wrapper() {
-            history -a # Save command history before starting the shell
-            ${
-              inputs.nix-shell-wrapper.packages.${pkgs.stdenv.hostPlatform.system}.default
-            }/bin/nix-shell-wrapper "$@"
-            history -r # Reload command history after exiting the shell
+          ${
+            inputs.nix-shell-wrapper.packages.${pkgs.stdenv.hostPlatform.system}.default
+          }/bin/nix-shell-wrapper "$@"
         }
       '';
       lastInit = lib.mkOrder 9999 ''
